@@ -1,16 +1,148 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Home - Mingxi Yan">
+  <Navigation />
+
+  <!-- Hero Section -->
+  <main class="flex-grow">
+    <section class="min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <!-- Decorative background elements -->
+      <div class="absolute inset-0 -z-10">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-gray-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div class="absolute top-40 right-10 w-72 h-72 bg-gray-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-gray-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+      </div>
+
+      <div class="max-w-5xl mx-auto text-center">
+        <div class="space-y-8">
+          <h1 class="text-6xl md:text-8xl font-bold tracking-tight text-gradient opacity-0 animate-fade-in-up leading-normal pb-2">
+            Mingxi Yan
+          </h1>
+
+          <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-xl md:text-2xl text-gray-600 opacity-0 animate-fade-in-up delay-200">
+            <span class="font-serif italic">Code</span>
+            <span class="hidden md:inline text-gray-300">|</span>
+            <span class="font-serif italic">Poker</span>
+            <span class="hidden md:inline text-gray-300">|</span>
+            <span class="font-serif italic">Write</span>
+            <span class="hidden md:inline text-gray-300">|</span>
+            <span class="font-serif italic">Sports</span>
+          </div>
+
+          <p class="max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed opacity-0 animate-fade-in-up delay-300">
+            Exploring the intersections of technology, strategy, and creativity.
+            Building with code, thinking through games, expressing with words.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-6 pt-8 opacity-0 animate-fade-in-up delay-400">
+            <a href="/academic" class="group px-8 py-3 bg-black text-white font-medium rounded-none hover:bg-gray-800 transition-all duration-300 hover:shadow-lg">
+              View Work
+              <span class="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+            <a href="/writing" class="px-8 py-3 border-2 border-black text-black font-medium rounded-none hover:bg-black hover:text-white transition-all duration-300">
+              Read Writing
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in delay-400">
+        <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+          <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Sections -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Academic Card -->
+          <a href="/academic" class="group bg-white p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <div class="flex items-center justify-center w-12 h-12 bg-black text-white mb-6 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-gray-600 transition-colors">Academic</h3>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              Explore my projects, research, and educational expriences in computer science.
+            </p>
+            <span class="text-sm font-medium group-hover:underline">Learn more →</span>
+          </a>
+
+          <!-- Poker Card -->
+          <a href="/poker" class="group bg-white p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <div class="flex items-center justify-center w-12 h-12 bg-black text-white mb-6 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-gray-600 transition-colors">Poker</h3>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              Discover dealer's choice game variations created by me!
+            </p>
+            <span class="text-sm font-medium group-hover:underline">See games →</span>
+          </a>
+
+          <!-- Writing Card -->
+          <a href="/writing" class="group bg-white p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <div class="flex items-center justify-center w-12 h-12 bg-black text-white mb-6 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-gray-600 transition-colors">Writing</h3>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              Read my articles, poems, philosophical musings, and favorite quotes.
+            </p>
+            <span class="text-sm font-medium group-hover:underline">Read more →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <blockquote class="text-2xl md:text-3xl font-serif italic text-gray-700 leading-relaxed">
+          "Poetically Man Dwells on this earth"
+        </blockquote>
+        <p class="mt-6 text-gray-500">— Martin Heidegger</p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+</style>

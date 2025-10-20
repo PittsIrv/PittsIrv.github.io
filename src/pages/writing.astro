@@ -1,0 +1,282 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+const poems = [
+  {
+    title: "Digital Dreams",
+    date: "October 2024",
+    excerpt: "In circuits deep and algorithms bright, Where data flows like rivers through the night...",
+    category: "Technology"
+  },
+  {
+    title: "The Gambler's Mind",
+    date: "September 2024",
+    excerpt: "Between the shuffle and the deal, A universe of chance revealed...",
+    category: "Poker"
+  },
+  {
+    title: "Infinite Recursion",
+    date: "August 2024",
+    excerpt: "A function calls itself to find, The patterns hidden in the mind...",
+    category: "Philosophy"
+  }
+];
+
+const articles = [
+  {
+    title: "The Philosophy of Code",
+    date: "October 15, 2024",
+    readTime: "8 min",
+    excerpt: "Exploring the deeper meaning behind software development and how it mirrors philosophical thought processes.",
+    tags: ["Philosophy", "Programming", "Reflection"]
+  },
+  {
+    title: "Game Theory in Everyday Life",
+    date: "September 20, 2024",
+    readTime: "6 min",
+    excerpt: "How poker and game theory principles apply to decision-making beyond the card table.",
+    tags: ["Game Theory", "Poker", "Decision Making"]
+  },
+  {
+    title: "The Art of Problem Solving",
+    date: "August 10, 2024",
+    readTime: "10 min",
+    excerpt: "A meditation on the creative process of solving complex technical challenges.",
+    tags: ["Programming", "Creativity", "Learning"]
+  }
+];
+
+const quotes = [
+  {
+    text: "The only way to do great work is to love what you do.",
+    author: "Steve Jobs"
+  },
+  {
+    text: "In theory, theory and practice are the same. In practice, they are not.",
+    author: "Albert Einstein"
+  },
+  {
+    text: "Code is like humor. When you have to explain it, it's bad.",
+    author: "Cory House"
+  },
+  {
+    text: "The unexamined life is not worth living.",
+    author: "Socrates"
+  },
+  {
+    text: "Life is not a matter of holding good cards, but of playing a poor hand well.",
+    author: "Robert Louis Stevenson"
+  },
+  {
+    text: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
+    author: "Aristotle"
+  }
+];
+---
+
+<Layout title="Writing - Mingxi Yan">
+  <Navigation />
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+      <div class="max-w-5xl mx-auto">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 opacity-0 animate-fade-in-up">Writing</h1>
+        <p class="text-xl text-gray-600 max-w-3xl opacity-0 animate-fade-in-up delay-100">
+          Poetry, articles, philosophical musings, and collected wisdom from minds greater than mine.
+        </p>
+
+        <!-- Category Filter -->
+        <div class="mt-8 flex flex-wrap gap-3 opacity-0 animate-fade-in-up delay-200">
+          <button class="category-btn px-4 py-2 bg-black text-white font-medium text-sm transition-all" data-category="all">
+            All
+          </button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-gray-700 font-medium text-sm hover:bg-gray-300 transition-all" data-category="poems">
+            Poems
+          </button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-gray-700 font-medium text-sm hover:bg-gray-300 transition-all" data-category="articles">
+            Articles
+          </button>
+          <button class="category-btn px-4 py-2 bg-gray-200 text-gray-700 font-medium text-sm hover:bg-gray-300 transition-all" data-category="quotes">
+            Quotes
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Poems Section -->
+    <section class="content-section py-16 px-4 sm:px-6 lg:px-8" data-category="poems">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 flex items-center">
+          <span class="w-12 h-1 bg-black mr-4"></span>
+          Poems
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {poems.map((poem) => (
+            <div class="bg-white border border-gray-200 p-6 hover:shadow-lg transition-all duration-300 group cursor-pointer">
+              <div class="mb-4">
+                <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">{poem.category}</span>
+                <h3 class="text-xl font-bold mt-2 mb-3 group-hover:text-gray-600 transition-colors">{poem.title}</h3>
+                <p class="text-sm text-gray-500 mb-4">{poem.date}</p>
+              </div>
+              <p class="text-gray-600 italic leading-relaxed">{poem.excerpt}</p>
+              <div class="mt-4 pt-4 border-t border-gray-200">
+                <span class="text-sm font-medium group-hover:underline">Read full poem →</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="content-section py-16 px-4 sm:px-6 lg:px-8 bg-gray-50" data-category="articles">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 flex items-center">
+          <span class="w-12 h-1 bg-black mr-4"></span>
+          Articles
+        </h2>
+
+        <div class="space-y-8">
+          {articles.map((article) => (
+            <article class="bg-white p-8 hover:shadow-lg transition-all duration-300 group cursor-pointer">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                <div class="flex-1">
+                  <h3 class="text-2xl font-bold mb-2 group-hover:text-gray-600 transition-colors">{article.title}</h3>
+                  <div class="flex items-center text-sm text-gray-500 space-x-4 mb-4">
+                    <span>{article.date}</span>
+                    <span>•</span>
+                    <span>{article.readTime} read</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-gray-600 leading-relaxed mb-4">{article.excerpt}</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                {article.tags.map((tag) => (
+                  <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium">{tag}</span>
+                ))}
+              </div>
+              <span class="text-sm font-medium group-hover:underline">Read more →</span>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section class="content-section py-16 px-4 sm:px-6 lg:px-8" data-category="quotes">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 flex items-center">
+          <span class="w-12 h-1 bg-black mr-4"></span>
+          Favorite Quotes
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {quotes.map((quote, index) => (
+            <div class="bg-white border-l-4 border-black p-6 hover:shadow-lg transition-all duration-300" style={`animation-delay: ${index * 100}ms`}>
+              <blockquote class="text-lg font-serif italic text-gray-700 mb-4 leading-relaxed">
+                "{quote.text}"
+              </blockquote>
+              <p class="text-sm text-gray-500 font-medium">— {quote.author}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="content-section py-16 px-4 sm:px-6 lg:px-8 bg-gray-50" data-category="all">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 flex items-center">
+          <span class="w-12 h-1 bg-black mr-4"></span>
+          Philosophical Musings
+        </h2>
+
+        <div class="space-y-8">
+          <div class="bg-white p-8">
+            <h3 class="text-2xl font-bold mb-4">On Uncertainty</h3>
+            <div class="prose prose-gray max-w-none text-gray-600 leading-relaxed space-y-4">
+              <p>
+                In poker, as in life, we make decisions under uncertainty. We calculate probabilities, read patterns,
+                and trust our instincts. The parallel to software development is striking: both require us to make the
+                best decision with incomplete information.
+              </p>
+              <p>
+                Perhaps this is why I'm drawn to both fields. They teach us to be comfortable with uncertainty, to make
+                rational decisions while acknowledging that we can't control every outcome. The skill isn't in avoiding
+                uncertainty—it's in navigating it with grace and logic.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white p-8">
+            <h3 class="text-2xl font-bold mb-4">The Beauty of Abstraction</h3>
+            <div class="prose prose-gray max-w-none text-gray-600 leading-relaxed space-y-4">
+              <p>
+                Code is poetry. Not because it's beautiful to read (though sometimes it is), but because it requires
+                the same distillation of complex ideas into their essential forms. A well-written function is like a
+                haiku: every element serves a purpose, nothing is wasted.
+              </p>
+              <p>
+                This pursuit of elegant simplicity extends beyond programming. In writing, in strategy, in life—we
+                seek patterns, create abstractions, build mental models that help us understand complexity. The goal
+                isn't just to solve problems, but to find the most beautiful solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-black text-white">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">Want to discuss ideas?</h2>
+        <p class="text-gray-300 mb-8">
+          I'm always interested in conversations about technology, philosophy, game theory, and creative writing.
+        </p>
+        <a href="mailto:your.email@example.com" class="inline-block px-8 py-3 bg-white text-black font-medium hover:bg-gray-100 transition-colors">
+          Get in touch
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Category filter functionality
+  const categoryBtns = document.querySelectorAll('.category-btn');
+  const contentSections = document.querySelectorAll('.content-section');
+
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+
+      // Update button states
+      categoryBtns.forEach(b => {
+        if (b === btn) {
+          b.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+          b.classList.add('bg-black', 'text-white');
+        } else {
+          b.classList.remove('bg-black', 'text-white');
+          b.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+        }
+      });
+
+      // Show/hide sections
+      contentSections.forEach(section => {
+        const sectionCategory = section.getAttribute('data-category');
+        if (category === 'all' || sectionCategory === category || sectionCategory === 'all') {
+          section.classList.remove('hidden');
+        } else {
+          section.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>

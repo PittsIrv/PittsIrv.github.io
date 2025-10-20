@@ -1,0 +1,275 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Academic - Mingxi Yan">
+  <Navigation />
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+      <div class="max-w-5xl mx-auto">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 opacity-0 animate-fade-in-up">Academic Portfolio</h1>
+        <p class="text-xl text-gray-600 max-w-3xl opacity-0 animate-fade-in-up delay-100">
+          Information Systems & Computer Science student at Carnegie Mellon University. Full-stack engineer with experience in AI research, cloud infrastructure, and real-time systems.
+        </p>
+        <div class="mt-8 opacity-0 animate-fade-in-up delay-200">
+          <a href="/resume.pdf" class="inline-flex items-center px-6 py-3 bg-black text-white font-medium hover:bg-gray-800 transition-colors">
+            <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 flex items-center">
+          <span class="w-12 h-1 bg-black mr-4"></span>
+          Education
+        </h2>
+
+        <div class="space-y-8">
+          <div class="border-l-2 border-gray-300 pl-8 pb-8 relative">
+            <div class="absolute -left-2 top-0 w-4 h-4 bg-black rounded-full"></div>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+              <h3 class="text-2xl font-bold">BS in Information Systems and Computer Science</h3>
+              <span class="text-gray-500 font-medium">Expected May 2026</span>
+            </div>
+            <p class="text-gray-600 mb-2 font-semibold">Carnegie Mellon University, Pittsburgh, PA</p>
+            <p class="text-gray-600 italic mb-2">Minor in Logic and Computation</p>
+            <p class="text-gray-600 italic mb-4">GPA: 3.9/4.0 (Major GPA: 3.9/4.0)</p>
+            <div class="mb-2">
+              <p class="text-gray-700 font-medium mb-2">Selected Coursework:</p>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Machine Learning, Data Structures & Algorithms, Computer Systems, Distributed Systems,
+                Functional Programming, Database Design, Application Development, Parallel & Sequential Algorithms,
+                Probability, Logic & Proof
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 flex items-center">
+          <span class="w-12 h-1 bg-black mr-4"></span>
+          Experience
+        </h2>
+
+        <div class="space-y-12">
+          <div class="bg-white p-8 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold">Software Engineer Intern</h3>
+                <p class="text-gray-600">AlpSoft, Singapore</p>
+              </div>
+              <div class="text-gray-500 font-medium">
+                <span>May 2025 – Aug 2025</span>
+              </div>
+            </div>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Maintained and upgraded secure enterprise sites for EnterpriseSG; shipped UI/UX and backend API improvements</li>
+              <li>Fixed penetration-test reports by removing exposed URL paths and tightening authorization for user/admin actions</li>
+              <li>Supported deployment sessions on AWS using Docker and Terraform</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold">Full Stack Engineer & Team Lead</h3>
+                <p class="text-gray-600">Enterview (Startup), Pittsburgh, PA</p>
+              </div>
+              <div class="text-gray-500 font-medium">
+                <span>Jun 2023 – Nov 2024</span>
+              </div>
+            </div>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Led a 4-member team to build an AI-driven interview-prep platform with real-time mock interviews</li>
+              <li>Designed a multi-agent mock interview session; used AI-assisted development to accelerate feature delivery</li>
+              <li>Optimized WebSocket handling for lower latency and smoother feedback</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold">Research Assistant</h3>
+                <p class="text-gray-600">Chimps Lab, CMU — WeAudit</p>
+              </div>
+              <div class="text-gray-500 font-medium">
+                <span>May 2024 – Present</span>
+              </div>
+            </div>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Built tools to analyze demographic distributions in AI-generated images for bias audits</li>
+              <li>Parallelized large-scale image generation with async Promises, reducing processing time</li>
+              <li>Developed visualizations; containerized and deployed on AWS EC2</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold">Research Assistant</h3>
+                <p class="text-gray-600">Tsinghua University, THUNLP Lab — OpenBMB</p>
+              </div>
+              <div class="text-gray-500 font-medium">
+                <span>May 2023 – Aug 2023</span>
+              </div>
+            </div>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Converted REST APIs into modular "tools" and wrote automated unit tests</li>
+              <li>Applied embeddings-based clustering to categorize APIs for improved search</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold">Teaching Assistant</h3>
+                <p class="text-gray-600">CMU — Great Ideas in Theoretical Computer Science (15-251)</p>
+              </div>
+              <div class="text-gray-500 font-medium">
+                <span>Feb 2025 – Present</span>
+              </div>
+            </div>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Assisted students via 1:1 tutor sessions on proofs and theory topics</li>
+              <li>Designed study guides and exam reviews</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold">IS Consulting Project</h3>
+                <p class="text-gray-600">ProtectPT (Non-Profit), Pittsburgh, PA</p>
+              </div>
+              <div class="text-gray-500 font-medium">
+                <span>Spring 2024</span>
+              </div>
+            </div>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Co-designed and delivered a searchable database to support anti-fracking advocacy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 flex items-center">
+          <span class="w-12 h-1 bg-black mr-4"></span>
+          Featured Projects
+        </h2>
+
+        <div class="max-w-3xl">
+          <!-- Dealer's Choice Project -->
+          <div class="bg-white border-2 border-gray-200 p-8 hover:shadow-xl transition-all duration-300">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="text-2xl font-bold mb-2">Dealer's Choice</h3>
+                <p class="text-gray-500 text-sm">Jun 2025 – Present</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 bg-black text-white text-xs font-bold">Featured</span>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              Online multiplayer Texas Hold'em poker platform with customized game variants and real-time gameplay.
+              Built with a focus on security, scalability, and low-latency communication.
+            </p>
+            <ul class="list-disc list-inside text-gray-600 space-y-2 mb-6">
+              <li>Developed poker platform with customized invariants and real-time gameplay</li>
+              <li>Implemented CI/CD pipeline for automated testing and deployment</li>
+              <li>Deployed via ECS cluster in private subnets with a public ALB for security</li>
+              <li>Optimized WebSocket connections for smooth, real-time player interactions</li>
+            </ul>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium">TypeScript</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium">NestJS</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium">WebSocket</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium">AWS ECS</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium">Docker</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium">CI/CD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 flex items-center">
+          <span class="w-12 h-1 bg-black mr-4"></span>
+          Technical Skills
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Languages</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Python</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">C</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">JavaScript</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">TypeScript</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">SQL</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">HTML/CSS</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold mb-4">Frameworks & Tools</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">React</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Next.js</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">NestJS</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Django</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Flask</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Docker</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Terraform</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">AWS</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Redis</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">WebSocket</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold mb-4">Databases</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">PostgreSQL</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">MySQL</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold mb-4">Other Skills</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Algorithm Design</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">CI/CD</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Cloud Security</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Statistical Analysis</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Game Theory</span>
+              <span class="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium">Formal Logic</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
