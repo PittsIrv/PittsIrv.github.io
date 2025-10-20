@@ -6,18 +6,54 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Mingxi Yan - CS Student, Poker Player, Writer" } = Astro.props;
+const { title, description = "Mingxi Yan - CS Student, Poker Player, Writer. Exploring technology, strategy, and creativity through code, poker, and writing." } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL('/social-image.png', Astro.site);
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Mingxi Yan" />
+    <meta name="keywords" content="Mingxi Yan, Computer Science, Poker, Writing, Software Engineer, Tech Blog, Personal Website" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:site_name" content="Mingxi Yan" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImageURL} />
+
+    <!-- Structured Data for Search Engines -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mingxi Yan",
+        "url": "https://pittsirv.github.io",
+        "sameAs": [],
+        "jobTitle": "Computer Science Student",
+        "description": "CS Student, Poker Player, and Writer exploring technology, strategy, and creativity."
+      }
+    </script>
   </head>
   <body class="bg-white text-black antialiased">
     <div class="min-h-screen flex flex-col">
