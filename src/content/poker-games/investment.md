@@ -2,7 +2,7 @@
 name: "Investment"
 category: "created"
 description: "Collaborative variant where players can invest cards in others and earn returns from their wins."
-quote: "Choose your allies wisely—or make them weak."
+quote: "Your chips grow safely in someone else’s hands."
 rules:
   - "Standard starting hands"
   - "Each player has a limit of 1-2 investments they can give and 1-2 investments they can receive (set before game)"

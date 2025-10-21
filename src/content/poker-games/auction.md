@@ -2,7 +2,7 @@
 name: "Auction"
 category: "created"
 description: "Economic variant where players bid to receive additional cards."
-quote: "Everything has a price, even luck."
+quote: "Everything has a price..."
 rules:
   - "Standard 2-card starting hands"
   - "On a player's action, they can 'deal' a card from the deck, starting bid at 1BB"

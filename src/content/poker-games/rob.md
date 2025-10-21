@@ -2,7 +2,7 @@
 name: "Rob"
 category: "created"
 description: "High-risk variant where players can steal cards from opponents."
-quote: "Trust no one, not even yourself."
+quote: "Steal a card, lose a friend."
 rules:
   - "Standard 2-card starting hands"
   - "Each player gets ONE rob opportunity per game"

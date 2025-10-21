@@ -6,6 +6,6 @@ quote: "Learn to bluff with words, right now."
 rules:
   - "Each player receives 2 cards: one placed face-out on their forehead (visible to all others), one in hand (visible only to them)"
   - "Players can see all other players' forehead cards but not their own"
-  - "Standard betting rounds apply"
+  - "Standard betting rounds"
   - "Pot limit, bomb pot"
 ---
