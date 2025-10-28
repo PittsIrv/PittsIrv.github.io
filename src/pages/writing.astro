@@ -2,78 +2,66 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
 
-const poems = [
-  {
-    title: "Digital Dreams",
-    date: "October 2024",
-    excerpt: "In circuits deep and algorithms bright, Where data flows like rivers through the night...",
-    category: "Technology"
-  },
-  {
-    title: "The Gambler's Mind",
-    date: "September 2024",
-    excerpt: "Between the shuffle and the deal, A universe of chance revealed...",
-    category: "Poker"
-  },
-  {
-    title: "Infinite Recursion",
-    date: "August 2024",
-    excerpt: "A function calls itself to find, The patterns hidden in the mind...",
-    category: "Philosophy"
-  }
-];
+// Load poems, articles, and quotes from content collections
+const allPoems = await getCollection('poems');
+const allArticles = await getCollection('articles');
+const allQuotes = await getCollection('quotes');
 
-const articles = [
-  {
-    title: "The Philosophy of Code",
-    date: "October 15, 2024",
-    readTime: "8 min",
-    excerpt: "Exploring the deeper meaning behind software development and how it mirrors philosophical thought processes.",
-    tags: ["Philosophy", "Programming", "Reflection"]
-  },
-  {
-    title: "Game Theory in Everyday Life",
-    date: "September 20, 2024",
-    readTime: "6 min",
-    excerpt: "How poker and game theory principles apply to decision-making beyond the card table.",
-    tags: ["Game Theory", "Poker", "Decision Making"]
-  },
-  {
-    title: "The Art of Problem Solving",
-    date: "August 10, 2024",
-    readTime: "10 min",
-    excerpt: "A meditation on the creative process of solving complex technical challenges.",
-    tags: ["Programming", "Creativity", "Learning"]
-  }
-];
+// Filter out drafts and sort
+const poems = allPoems
+  .filter(poem => !poem.data.draft)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .map(poem => {
+    // Get excerpt from content (first 4 non-empty lines to show poem structure)
+    const allLines = poem.body.split('\n');
+    const nonEmptyLines = allLines.filter(line => line.trim().length > 0);
+    const excerpt = nonEmptyLines.slice(0, 4).join('\n');
 
-const quotes = [
-  {
-    text: "The only way to do great work is to love what you do.",
-    author: "Steve Jobs"
-  },
-  {
-    text: "In theory, theory and practice are the same. In practice, they are not.",
-    author: "Albert Einstein"
-  },
-  {
-    text: "Code is like humor. When you have to explain it, it's bad.",
-    author: "Cory House"
-  },
-  {
-    text: "The unexamined life is not worth living.",
-    author: "Socrates"
-  },
-  {
-    text: "Life is not a matter of holding good cards, but of playing a poor hand well.",
-    author: "Robert Louis Stevenson"
-  },
-  {
-    text: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
-    author: "Aristotle"
+    return {
+      title: poem.data.title,
+      date: poem.data.date,
+      category: poem.data.category,
+      excerpt,
+      slug: poem.slug
+    };
+  });
+
+const articles = allArticles
+  .filter(article => !article.data.draft)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .map(article => {
+    // Get excerpt from content (first paragraph)
+    const paragraphs = article.body.split('\n\n').filter(p => p.trim());
+    const excerpt = paragraphs[0] || '';
+
+    return {
+      title: article.data.title,
+      date: article.data.date,
+      readTime: article.data.readTime,
+      excerpt,
+      tags: article.data.tags,
+      slug: article.slug
+    };
+  });
+
+// Randomly select 6 quotes to display
+const shuffleArray = (array) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
-];
+  return shuffled;
+};
+
+const quotes = shuffleArray(allQuotes)
+  .slice(0, 6)
+  .map(quote => ({
+    text: quote.data.text,
+    author: quote.data.author
+  }));
 ---
 
 <Layout title="Writing - Mingxi Yan">
@@ -116,15 +104,21 @@ const quotes = [
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {poems.map((poem) => (
-            <div class="bg-white border border-gray-200 p-6 hover:shadow-lg transition-all duration-300 group cursor-pointer">
+            <div class="bg-white border border-gray-200 p-6 hover:shadow-lg transition-all duration-300 group">
               <div class="mb-4">
                 <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">{poem.category}</span>
-                <h3 class="text-xl font-bold mt-2 mb-3 group-hover:text-gray-600 transition-colors">{poem.title}</h3>
+                <h3 class="text-xl font-bold mt-2 mb-3 group-hover:text-gray-600 transition-colors">
+                  {poem.title}
+                </h3>
                 <p class="text-sm text-gray-500 mb-4">{poem.date}</p>
               </div>
-              <p class="text-gray-600 italic leading-relaxed">{poem.excerpt}</p>
+
+              <p class="text-gray-600 italic leading-relaxed whitespace-pre-line">
+                {poem.excerpt}
+              </p>
+
               <div class="mt-4 pt-4 border-t border-gray-200">
-                <span class="text-sm font-medium group-hover:underline">Read full poem →</span>
+                <a href={`/poems/${poem.slug}`} class="text-sm font-medium hover:underline">Read full poem →</a>
               </div>
             </div>
           ))}
@@ -142,10 +136,12 @@ const quotes = [
 
         <div class="space-y-8">
           {articles.map((article) => (
-            <article class="bg-white p-8 hover:shadow-lg transition-all duration-300 group cursor-pointer">
+            <article class="bg-white p-8 hover:shadow-lg transition-all duration-300 group">
               <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                 <div class="flex-1">
-                  <h3 class="text-2xl font-bold mb-2 group-hover:text-gray-600 transition-colors">{article.title}</h3>
+                  <h3 class="text-2xl font-bold mb-2 group-hover:text-gray-600 transition-colors">
+                    {article.title}
+                  </h3>
                   <div class="flex items-center text-sm text-gray-500 space-x-4 mb-4">
                     <span>{article.date}</span>
                     <span>•</span>
@@ -153,13 +149,17 @@ const quotes = [
                   </div>
                 </div>
               </div>
-              <p class="text-gray-600 leading-relaxed mb-4">{article.excerpt}</p>
+
+              <p class="text-gray-600 leading-relaxed mb-4">
+                {article.excerpt}
+              </p>
+
               <div class="flex flex-wrap gap-2 mb-4">
                 {article.tags.map((tag) => (
                   <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium">{tag}</span>
                 ))}
               </div>
-              <span class="text-sm font-medium group-hover:underline">Read more →</span>
+              <a href={`/articles/${article.slug}`} class="text-sm font-medium hover:underline">Read more →</a>
             </article>
           ))}
         </div>
@@ -238,7 +238,7 @@ const quotes = [
         <p class="text-gray-300 mb-8">
           I'm always interested in conversations about technology, philosophy, game theory, and creative writing.
         </p>
-        <a href="mailto:your.email@example.com" class="inline-block px-8 py-3 bg-white text-black font-medium hover:bg-gray-100 transition-colors">
+        <a href="mailto:mingxiy66@gmail.com" class="inline-block px-8 py-3 bg-white text-black font-medium hover:bg-gray-100 transition-colors">
           Get in touch
         </a>
       </div>
@@ -279,4 +279,5 @@ const quotes = [
       });
     });
   });
+
 </script>

@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const poems = await getCollection('poems');
+  return poems
+    .filter(poem => !poem.data.draft)
+    .map(poem => ({
+      params: { slug: poem.slug },
+      props: { poem },
+    }));
+}
+
+const { poem } = Astro.props;
+const { Content } = await poem.render();
+---
+
+<Layout title={`${poem.data.title} - Mingxi Yan`}>
+  <Navigation />
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+      <div class="max-w-4xl mx-auto">
+        <a href="/writing" class="inline-flex items-center text-gray-600 hover:text-black mb-8 transition-colors">
+          ← Back to Writing
+        </a>
+
+        <div class="mb-6">
+          <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">{poem.data.category}</span>
+          <h1 class="text-4xl md:text-5xl font-bold mt-2 mb-4">{poem.data.title}</h1>
+          <p class="text-gray-500">{poem.data.date}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Poem Content -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="poem-content whitespace-pre-line text-gray-700 leading-relaxed text-lg">
+          <Content />
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation to other poems -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <div class="max-w-4xl mx-auto text-center">
+        <a href="/writing" class="inline-block px-8 py-3 bg-black text-white font-medium hover:bg-gray-800 transition-colors">
+          View All Writing
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
