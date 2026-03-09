@@ -1,34 +1,34 @@
-# Personal Website
+# Mingxi's Personal Website
 
-A minimalist, artistic personal website built with Astro and Tailwind CSS. Features sections for academic work, poker games, writing, and more.
+Built with Astro and Tailwind CSS. Features sections for academic work, poker games, writing, and more.
 
 ## 🚀 Features
 
-- **Minimalist Design**: Clean black, white, and grey color scheme
-- **Fully Responsive**: Works beautifully on all devices
-- **Easy Content Management**: Edit content using simple Markdown files
-- **Fast Performance**: Built with Astro for optimal speed
-- **Modern Stack**: Astro + Tailwind CSS + TypeScript
+- **Design**: Clean black, white, and grey color scheme
+- **Responsive**: Works beautifully on all devices
+- **Content Management**: Edit content using simple Markdown files
+- **Performance**: Built with Astro for optimal speed
+- **Stack**: Astro + Tailwind CSS + TypeScript
 
 ## 📁 Project Structure
 
 ```
 /
-├── public/              # Static assets (images, resume PDF, etc.)
+├── public/              # Static assets
 ├── src/
 │   ├── components/      # Reusable Astro components
 │   ├── content/         # Markdown content files
-│   │   ├── poems/       # Your poems
-│   │   ├── articles/    # Your articles
-│   │   ├── projects/    # Your projects
-│   │   └── poker-games/ # Poker game variations
+│   │   ├── poems/       
+│   │   ├── articles/    
+│   │   ├── projects/    
+│   │   └── poker-games/ 
 │   ├── layouts/         # Page layouts
-│   ├── pages/           # Website pages (become routes)
+│   ├── pages/           # Website pages
 │   └── styles/          # Global styles
 └── package.json
 ```
 
-## 🛠️ Getting Started
+## 🛠️ Use as a Template
 
 ### Prerequisites
 
@@ -59,7 +59,7 @@ npm run dev
 
 All content is managed through Markdown files in the `src/content/` directory.
 
-### Adding a New Poem
+### Eg. Adding a New Poem
 
 Create a new file in `src/content/poems/`:
 
@@ -141,7 +141,7 @@ Update the following:
 
 ## 🚀 Deployment to GitHub Pages
 
-### Option 1: Automatic Deployment (Recommended)
+### Option 1: Automatic Deployment
 
 This project includes a GitHub Actions workflow that automatically deploys to GitHub Pages when you push to the main branch.
 
