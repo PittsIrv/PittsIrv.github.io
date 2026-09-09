@@ -27,18 +27,6 @@ const articles = defineCollection({
   }),
 });
 
-const projects = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    tags: z.array(z.string()),
-    github: z.string().optional(),
-    demo: z.string().optional(),
-    featured: z.boolean().optional(),
-  }),
-});
-
 const pokerGames = defineCollection({
   type: 'content',
   schema: z.object({
@@ -62,7 +50,6 @@ const quotes = defineCollection({
 export const collections = {
   poems,
   articles,
-  projects,
   'poker-games': pokerGames,
   quotes,
 };

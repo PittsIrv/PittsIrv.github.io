@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m 'Add editorial redesign design spec *)",
+      "Bash(codex --version)",
+      "Bash(codex exec *)",
+      "Bash(codex login *)"
+    ]
+  }
+}

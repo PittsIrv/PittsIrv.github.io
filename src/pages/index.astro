@@ -2,147 +2,122 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const allQuotes = await getCollection('quotes');
+const quote = allQuotes.length
+  ? allQuotes[Math.floor(Math.random() * allQuotes.length)].data
+  : null;
+
+const featured = [
+  {
+    href: '/work#experience',
+    title: 'TikTok — Data Engineer Intern',
+    blurb:
+      'Led an enterprise data-discovery capability that lets internal AI agents find usable data sources from plain-language questions, and built a revenue-diagnosis workflow for livestream operations.',
+  },
+  {
+    href: '/work#publications',
+    title: 'PersonaTeaming — CMU–Apple, UIST 2026',
+    blurb:
+      'Second author. Proposed persona as an additional axis for automated red-teaming, designed the dynamic persona-generation mechanism, and ran the evaluation across six target models.',
+  },
+  {
+    href: '/work#publications',
+    title: 'Teaching a model to explain poker',
+    blurb:
+      'Fine-tuned Llama 3 8B to produce both a solver-backed action and an explanation for it, then built a rule-based verifier and validated it against 200 blind human judgments.',
+  },
+];
 ---
 
-<Layout title="Home - Mingxi Yan">
+<Layout
+  title="Mingxi Yan"
+  description="Mingxi Yan — AI systems engineer and CMU Language Technologies master's student. Experience at TikTok, CMU Chimps Lab (CMU–Apple), and CMU Sapling Lab."
+>
   <Navigation />
 
-  <!-- Hero Section -->
   <main class="flex-grow">
-    <section class="min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <!-- Decorative background elements -->
-      <div class="absolute inset-0 -z-10">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-gray-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div class="absolute top-40 right-10 w-72 h-72 bg-gray-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-gray-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-      </div>
+    <!-- Positioning -->
+    <section class="pt-20 pb-14 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6 opacity-0 animate-fade-in-up">
+          Mingxi Yan
+        </h1>
 
-      <div class="max-w-5xl mx-auto text-center">
-        <div class="space-y-8">
-          <h1 class="text-6xl md:text-8xl font-bold tracking-tight text-gradient opacity-0 animate-fade-in-up leading-normal pb-2">
-            Mingxi Yan
-          </h1>
+        <p class="text-xl md:text-2xl text-gray-800 max-w-2xl leading-snug font-serif opacity-0 animate-fade-in-up delay-100">
+          I build AI systems and the infrastructure around them — retrieval, evaluation,
+          data pipelines, and the services that put models in front of real users.
+        </p>
 
-          <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-xl md:text-2xl text-gray-600 opacity-0 animate-fade-in-up delay-200">
-            <span class="font-serif italic">Code</span>
-            <span class="hidden md:inline text-gray-300">|</span>
-            <span class="font-serif italic">Poker</span>
-            <span class="hidden md:inline text-gray-300">|</span>
-            <span class="font-serif italic">Write</span>
-            <span class="hidden md:inline text-gray-300">|</span>
-            <span class="font-serif italic">Sports</span>
-          </div>
+        <p class="mt-6 text-gray-600 max-w-2xl leading-relaxed opacity-0 animate-fade-in-up delay-200">
+          Carnegie Mellon University — fifth-year master's at the Language Technologies Institute,
+          expected August 2027. Previously Data Engineer Intern at TikTok, and second author on
+          PersonaTeaming, a CMU–Apple collaboration at UIST 2026.
+        </p>
 
-          <p class="max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed opacity-0 animate-fade-in-up delay-300">
-            Exploring the intersections of technology, strategy, and creativity.
-            Building with code, thinking through games, expressing with words.
-          </p>
-
-          <div class="flex flex-wrap items-center justify-center gap-6 pt-8 opacity-0 animate-fade-in-up delay-400">
-            <a href="/academic" class="group px-8 py-3 bg-black text-white font-medium rounded-none hover:bg-gray-800 transition-all duration-300 hover:shadow-lg">
-              View Work
-              <span class="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
-            </a>
-            <a href="/writing" class="px-8 py-3 border-2 border-black text-black font-medium rounded-none hover:bg-black hover:text-white transition-all duration-300">
-              Read Writing
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in delay-400">
-        <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-          <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm opacity-0 animate-fade-in-up delay-300">
+          <a href="/work" class="font-medium px-5 py-2.5 bg-black text-white hover:bg-gray-800 transition-colors">
+            See my work
+          </a>
+          <a href="/resume.pdf" class="font-medium border-b border-black hover:text-gray-600 hover:border-gray-600 transition-colors">Resume (PDF)</a>
+          <a href="https://github.com/PittsIrv" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-black transition-colors">GitHub</a>
+          <a href="https://www.linkedin.com/in/mingxi-yan-0b9581272" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-black transition-colors">LinkedIn</a>
+          <a href="mailto:mingxiy66@gmail.com" class="text-gray-600 hover:text-black transition-colors">Email</a>
         </div>
       </div>
     </section>
 
-    <!-- Featured Sections -->
-    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div class="max-w-7xl mx-auto">
+    <!-- Featured work -->
+    <section class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Selected work</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Academic Card -->
-          <a href="/academic" class="group bg-white p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-            <div class="flex items-center justify-center w-12 h-12 bg-black text-white mb-6 group-hover:scale-110 transition-transform">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            </div>
-            <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-gray-600 transition-colors">Academic</h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
-              Explore my projects, research, and educational expriences in computer science.
-            </p>
-            <span class="text-sm font-medium group-hover:underline">Learn more →</span>
-          </a>
-
-          <!-- Poker Card -->
-          <a href="/poker" class="group bg-white p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-            <div class="flex items-center justify-center w-12 h-12 bg-black text-white mb-6 group-hover:scale-110 transition-transform">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-gray-600 transition-colors">Poker</h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
-              Discover dealer's choice game variations created by me!
-            </p>
-            <span class="text-sm font-medium group-hover:underline">See games →</span>
-          </a>
-
-          <!-- Writing Card -->
-          <a href="/writing" class="group bg-white p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-            <div class="flex items-center justify-center w-12 h-12 bg-black text-white mb-6 group-hover:scale-110 transition-transform">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-              </svg>
-            </div>
-            <h3 class="text-2xl font-serif font-bold mb-4 group-hover:text-gray-600 transition-colors">Writing</h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
-              Read my articles, poems, philosophical musings, and favorite quotes.
-            </p>
-            <span class="text-sm font-medium group-hover:underline">Read more →</span>
-          </a>
+          {featured.map(item => (
+            <a href={item.href} class="group border-t border-gray-300 pt-5">
+              <h3 class="text-lg font-semibold mb-2 group-hover:text-gray-600 transition-colors">{item.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{item.blurb}</p>
+              <span class="inline-block mt-3 text-sm text-gray-500 group-hover:text-black transition-colors">Read more →</span>
+            </a>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- Quote Section -->
-    <section class="py-24 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto text-center">
-        <blockquote class="text-2xl md:text-3xl font-serif italic text-gray-700 leading-relaxed">
-          "Poetically Man Dwells on this earth"
-        </blockquote>
-        <p class="mt-6 text-gray-500">— Martin Heidegger</p>
+    <!-- Through-line -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto">
+        <div class="space-y-5 text-gray-700 leading-[1.75] font-serif text-[1.0625rem]">
+          <p>
+            I came to code late — only after starting university — which means I still remember what
+            it feels like not to understand it.
+          </p>
+          <p>
+            Outside of work I invent poker games. Then I built a platform so my friends and I could
+            actually play them, and later spent a semester teaching a language model to explain poker
+            decisions rather than just make them. It turns out that's the same instinct every time:
+            find the system underneath, then make it explain itself.
+          </p>
+          <p>
+            I also write — poems, essays, fragments — mostly to find out what I think.
+            That, and the poker rules, live <a href="/personal" class="border-b border-gray-400 hover:border-black transition-colors">on the personal side</a> of this site.
+          </p>
+        </div>
       </div>
     </section>
+
+    <!-- Quote -->
+    {quote && (
+      <section class="py-16 px-4 sm:px-6 lg:px-8 border-t border-gray-200">
+        <div class="max-w-2xl mx-auto text-center">
+          <blockquote class="text-xl md:text-2xl font-serif italic text-gray-700 leading-relaxed">
+            "{quote.text}"
+          </blockquote>
+          <p class="mt-5 text-sm text-gray-500">— {quote.author}</p>
+        </div>
+      </section>
+    )}
   </main>
 
   <Footer />
 </Layout>
-
-<style>
-  @keyframes blob {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-  }
-
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-</style>

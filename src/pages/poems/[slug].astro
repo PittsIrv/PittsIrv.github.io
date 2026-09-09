@@ -23,15 +23,15 @@ const { Content } = await poem.render();
 
   <main class="flex-grow">
     <!-- Hero Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+    <section class="pt-16 pb-10 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
       <div class="max-w-4xl mx-auto">
-        <a href="/writing" class="inline-flex items-center text-gray-600 hover:text-black mb-8 transition-colors">
-          ← Back to Writing
+        <a href="/personal#writing" class="inline-flex items-center text-gray-600 hover:text-black mb-8 transition-colors">
+          ← Back to Personal
         </a>
 
         <div class="mb-6">
           <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">{poem.data.category}</span>
-          <h1 class="text-4xl md:text-5xl font-bold mt-2 mb-4">{poem.data.title}</h1>
+          <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mt-2 mb-4">{poem.data.title}</h1>
           <p class="text-gray-500">{poem.data.date}</p>
         </div>
       </div>
@@ -49,8 +49,8 @@ const { Content } = await poem.render();
     <!-- Navigation to other poems -->
     <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div class="max-w-4xl mx-auto text-center">
-        <a href="/writing" class="inline-block px-8 py-3 bg-black text-white font-medium hover:bg-gray-800 transition-colors">
-          View All Writing
+        <a href="/personal#writing" class="inline-block px-8 py-3 bg-black text-white font-medium hover:bg-gray-800 transition-colors">
+          View all writing
         </a>
       </div>
     </section>

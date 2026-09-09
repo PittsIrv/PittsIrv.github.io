@@ -1,0 +1,348 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const allGames = await getCollection('poker-games');
+const learnedGames = allGames.filter(game => game.data.category === 'learned');
+const myGames = allGames.filter(game => game.data.category === 'created');
+
+const allPoems = await getCollection('poems');
+const allArticles = await getCollection('articles');
+const allQuotes = await getCollection('quotes');
+
+const poems = allPoems
+  .filter(poem => !poem.data.draft)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .map(poem => {
+    const nonEmptyLines = poem.body.split('\n').filter(line => line.trim().length > 0);
+    return {
+      title: poem.data.title,
+      date: poem.data.date,
+      category: poem.data.category,
+      excerpt: nonEmptyLines.slice(0, 4).join('\n'),
+      slug: poem.slug,
+    };
+  });
+
+const articles = allArticles
+  .filter(article => !article.data.draft)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .map(article => {
+    const paragraphs = article.body.split('\n\n').filter(p => p.trim());
+    return {
+      title: article.data.title,
+      date: article.data.date,
+      readTime: article.data.readTime,
+      excerpt: paragraphs[0] || '',
+      tags: article.data.tags,
+      slug: article.slug,
+    };
+  });
+
+const shuffleArray = (array) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
+const quotes = shuffleArray(allQuotes)
+  .slice(0, 6)
+  .map(quote => ({ text: quote.data.text, author: quote.data.author }));
+
+// Update this by hand every couple of months — the date is the honesty mechanism.
+const nowUpdated = 'September 2026';
+const now = [
+  {
+    label: 'Building',
+    text: "Dealer's Choice, the platform for the poker variants below, and a simulation study on how people attribute minds to AI over long conversations.",
+  },
+  {
+    label: 'Learning',
+    text: 'Search engines, AI agents, and multimodal machine learning — my first semester of graduate coursework at LTI.',
+  },
+  {
+    label: 'Reading',
+    text: 'The Unbearable Lightness of Being (Kundera), Ludwig Wittgenstein: The Duty of Genius (Monk), The Order of Time (Rovelli).',
+  },
+  {
+    label: 'Playing',
+    text: 'Basketball whenever there is a court, pot-limit home games whenever there are enough people, and whatever game has a system worth taking apart.',
+  },
+];
+
+const interests = [
+  {
+    title: 'Guitar & songwriting',
+    text: 'Crafting simple songs on the guitar, still learning but finding beauty in the imperfection. There is something raw about translating feeling into melody, about watching chords become stories.',
+  },
+  {
+    title: 'Photography',
+    text: 'Learning to see through the lens — people in their unguarded moments, landscapes that breathe, composition that creates tension. Photography is about finding what is already there, waiting to be noticed at the right angle.',
+  },
+  {
+    title: 'Storytelling',
+    text: 'How to hook a reader from the first line, when to land the punchline, how to design the arc. Stories are engineered as much as they are written, and I am learning both sides.',
+  },
+];
+
+const sports = [
+  { name: 'Basketball', level: 'Good' },
+  { name: 'Ping Pong', level: 'Good' },
+  { name: 'Pool', level: 'Med' },
+  { name: 'Frisbee', level: 'Med' },
+  { name: 'Badminton', level: 'Med' },
+  { name: 'Volleyball', level: 'Low' },
+  { name: 'Football', level: 'Low' },
+  { name: 'Tennis', level: 'Low' },
+  { name: 'Soccer', level: 'Low' },
+  { name: 'Golf', level: 'Low' },
+  { name: 'Climbing', level: 'Low' },
+];
+---
+
+<Layout
+  title="Personal - Mingxi Yan"
+  description="Poker variants I invented, poems, prose, quotes, and what I'm doing right now."
+>
+  <Navigation />
+
+  <main class="flex-grow">
+    <!-- Header -->
+    <section class="pt-16 pb-10 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+      <div class="max-w-5xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5 opacity-0 animate-fade-in-up">Personal</h1>
+        <p class="text-lg text-gray-700 max-w-2xl leading-relaxed font-serif opacity-0 animate-fade-in-up delay-100">
+          The poker games I invent, the things I write, and what I happen to be doing at the moment.
+          None of this is work, which is rather the point.
+        </p>
+        <nav class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-500 opacity-0 animate-fade-in-up delay-200">
+          <a href="#now" class="hover:text-black transition-colors">Right now</a>
+          <a href="#poker" class="hover:text-black transition-colors">Poker</a>
+          <a href="#writing" class="hover:text-black transition-colors">Writing</a>
+          <a href="#quotes" class="hover:text-black transition-colors">Quotes</a>
+          <a href="#elsewhere" class="hover:text-black transition-colors">Elsewhere</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Right now -->
+    <section id="now" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
+      <div class="max-w-5xl mx-auto">
+        <div class="flex items-baseline justify-between mb-8">
+          <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500">Right now</h2>
+          <span class="text-sm text-gray-400">Updated {nowUpdated}</span>
+        </div>
+        <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-7 max-w-4xl">
+          {now.map(item => (
+            <div class="border-t border-gray-300 pt-4">
+              <dt class="font-semibold mb-2">{item.label}</dt>
+              <dd class="text-gray-600 leading-relaxed">{item.text}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- Poker -->
+    <section id="poker" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-6">Dealer's Choice</h2>
+        <p class="text-gray-700 max-w-2xl leading-relaxed mb-3">
+          Custom poker variants for home games — {myGames.length} I invented, {learnedGames.length} I learned from others.
+          All are <strong>pot limit</strong> and <strong>bomb pots</strong> unless noted otherwise, and all assume you know standard Texas Hold'em.
+        </p>
+        <p class="text-sm text-gray-500 mb-10">
+          These are the games <a href="/work#projects" class="border-b border-gray-400 hover:border-black transition-colors">the platform I built</a> exists to play.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-6">My creations</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
+          {myGames.map(game => (
+            <div class="border-t border-gray-300 pt-5">
+              <h4 class="text-lg font-semibold mb-2">{game.data.name}</h4>
+              <p class="text-sm italic text-gray-500 mb-3">"{game.data.quote}"</p>
+              <p class="text-gray-600 mb-4 leading-relaxed">{game.data.description}</p>
+              <ol class="space-y-1.5 text-sm text-gray-600 list-decimal list-outside pl-5">
+                {game.data.rules.map(rule => <li class="pl-1">{rule}</li>)}
+              </ol>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="text-xl font-semibold mb-6">Games I learned</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {learnedGames.map(game => (
+            <div class="border-t border-gray-300 pt-5">
+              <h4 class="text-lg font-semibold mb-2">{game.data.name}</h4>
+              <p class="text-sm italic text-gray-500 mb-3">"{game.data.quote}"</p>
+              <p class="text-gray-600 mb-4 leading-relaxed">{game.data.description}</p>
+              <ol class="space-y-1.5 text-sm text-gray-600 list-decimal list-outside pl-5">
+                {game.data.rules.map(rule => <li class="pl-1">{rule}</li>)}
+              </ol>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-14 border-t border-gray-300 pt-6">
+          <h3 class="text-base font-semibold mb-5">Terminology</h3>
+          <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-sm">
+            <div><dt class="font-medium inline">Bomb pot — </dt><dd class="text-gray-600 inline">All players ante before cards are dealt. No pre-flop betting; action starts at the flop.</dd></div>
+            <div><dt class="font-medium inline">Pot limit — </dt><dd class="text-gray-600 inline">Maximum bet or raise cannot exceed the current pot size.</dd></div>
+            <div><dt class="font-medium inline">Double board — </dt><dd class="text-gray-600 inline">Two separate community boards are dealt; the pot typically splits between the winners of each.</dd></div>
+            <div><dt class="font-medium inline">BB — </dt><dd class="text-gray-600 inline">Big blind. The standard betting unit; 1BB is the minimum bet for that game.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Writing -->
+    <section id="writing" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Writing</h2>
+
+        <h3 class="text-xl font-semibold mb-6">Poems</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
+          {poems.map(poem => (
+            <div class="border-t border-gray-300 pt-5">
+              <span class="text-xs uppercase tracking-wide text-gray-500">{poem.category}</span>
+              <h4 class="text-lg font-semibold mt-1 mb-1">{poem.title}</h4>
+              <p class="text-sm text-gray-500 mb-4">{poem.date}</p>
+              <p class="text-gray-600 italic leading-relaxed whitespace-pre-line font-serif">{poem.excerpt}</p>
+              <a href={`/poems/${poem.slug}`} class="inline-block mt-4 text-sm text-gray-500 hover:text-black transition-colors">Read the full poem →</a>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="text-xl font-semibold mb-6">Prose</h3>
+        <div class="space-y-10 max-w-3xl">
+          {articles.map(article => (
+            <div class="border-t border-gray-300 pt-5">
+              <h4 class="text-lg font-semibold mb-1">{article.title}</h4>
+              <p class="text-sm text-gray-500 mb-4">{article.date} · {article.readTime} read</p>
+              <p class="text-gray-600 leading-relaxed font-serif">{article.excerpt}</p>
+              <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
+                {article.tags.map(tag => <span>{tag}</span>)}
+              </div>
+              <a href={`/articles/${article.slug}`} class="inline-block mt-4 text-sm text-gray-500 hover:text-black transition-colors">Read more →</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophical musings -->
+    <section class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Musings</h2>
+
+        <div class="space-y-12">
+          <div class="border-t border-gray-300 pt-6">
+            <h3 class="text-xl font-semibold mb-4">On freedom and responsibility</h3>
+            <div class="space-y-4 text-gray-700 leading-[1.75] font-serif text-[1.0625rem]">
+              <p>
+                Perhaps we are not free. Perhaps every choice is predetermined by the firing of neurons, the chemistry
+                of our brains, the circumstances of our birth. Perhaps free will is an elaborate illusion our minds
+                construct to make sense of a deterministic universe.
+              </p>
+              <p>
+                And yet, Kant teaches us that we must act as if we are free. When we stand at a crossroads, we cannot
+                wait for neuroscience to settle the question of determinism. We must choose. We must deliberate. We must
+                take responsibility for our actions as if they truly originated from us.
+              </p>
+              <p>
+                This is the beautiful paradox: even if freedom is an illusion, it is a necessary one. To be moral, to be
+                human, to make any decision at all, we must assume our freedom. The question is not whether we are truly
+                free, but whether we have the courage to act as if we are.
+              </p>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-300 pt-6">
+            <h3 class="text-xl font-semibold mb-4">On uncertainty</h3>
+            <div class="space-y-4 text-gray-700 leading-[1.75] font-serif text-[1.0625rem]">
+              <p>
+                At the poker table, uncertainty is not an obstacle but rather the game itself. You cannot see your opponent's
+                cards. You cannot know which river card will fall. You calculate odds, read tells, and make the best
+                decision you can with incomplete information. Then you accept the result, whatever it may be.
+              </p>
+              <p>
+                Heidegger speaks of being-toward-death, the idea that authentic existence requires confronting our own
+                mortality. Death is the ultimate uncertainty, the one certainty we cannot escape but whose timing and
+                manner remain unknown. Every decision we make is made in its shadow.
+              </p>
+              <p>
+                Perhaps this is why poker feels so honest. It strips away the illusion that we can control outcomes. It
+                teaches us to make peace with uncertainty, to act decisively while acknowledging our limitations. In poker,
+                as in life, we are always playing with incomplete information. The wisdom is not in eliminating uncertainty,
+                which is impossible, but in learning to dance with it, to make our choices and let go of the rest.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quotes -->
+    <section id="quotes" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Quotes I keep</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-9">
+          {quotes.map(quote => (
+            <div class="border-t border-gray-300 pt-5">
+              <blockquote class="font-serif italic text-gray-700 leading-relaxed mb-3">"{quote.text}"</blockquote>
+              <p class="text-sm text-gray-500">— {quote.author}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Elsewhere -->
+    <section id="elsewhere" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Elsewhere</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-8 mb-14">
+          {interests.map(item => (
+            <div class="border-t border-gray-300 pt-5">
+              <h3 class="text-lg font-semibold mb-2">{item.title}</h3>
+              <p class="text-gray-600 leading-relaxed">{item.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="border-t border-gray-300 pt-6">
+          <h3 class="text-base font-semibold mb-5">Sports I play, honestly ranked</h3>
+          <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            {sports.map(sport => (
+              <span class="text-gray-600">
+                {sport.name}
+                <span class="text-gray-400 ml-1.5">{sport.level}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-2xl font-semibold mb-3">Want to discuss any of this?</h2>
+        <p class="text-gray-600 mb-7 leading-relaxed">
+          I am always up for a conversation about technology, philosophy, game theory, or a poker hand you cannot stop thinking about.
+        </p>
+        <a href="mailto:mingxiy66@gmail.com" class="inline-block px-6 py-2.5 bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors">
+          Get in touch
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

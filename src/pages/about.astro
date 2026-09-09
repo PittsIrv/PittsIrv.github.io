@@ -2,237 +2,153 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+
+const pillars = [
+  {
+    title: 'Computer science',
+    text: "I came to code late — only after starting university — which means I still remember what it feels like not to understand it. That perspective keeps me grounded. When something breaks, the machine doesn't lie; it tells you exactly where your thinking went wrong, and that brutal honesty is liberating. The craft isn't in writing clever code. It's in building systems where each piece clicks into place and complexity resolves into clarity.",
+  },
+  {
+    title: 'Poker',
+    text: "I study GTO charts not to memorize them but to understand the reasoning beneath the ranges. That understanding is what gives you the freedom to deviate — because the real art isn't playing optimally, it's knowing when to bend the rules because your opponent isn't optimal either. Every fold is data. Every bet is a question. Every river card is a reminder that you control the decision, never the outcome.",
+  },
+  {
+    title: 'Writing',
+    text: "Writing is thinking made visible — the slow work of turning vague intuition into something sharp enough to cut. Wittgenstein believed the limits of language are the limits of our world, and I take that as a standing challenge: to find sentences that expand understanding rather than constrain it. I write to discover what I think, and occasionally the sentence that emerges is clearer than the thought that started it. That's when I know I'm onto something.",
+  },
+  {
+    title: 'Basketball',
+    text: "There's a bit of Kyrie in my step — quick, unpredictable, finding space where none seems to exist. What draws me to the game is its artistry: passes threaded through tight windows, cuts and shots so precise they feel like geometry come alive. The wordless communication is the best part, eyes meeting across the court, a subtle gesture that shifts the entire play. And yes, there's the moment when the shot drops and the crowd screams.",
+  },
+  {
+    title: 'Gaming',
+    text: "Whatever the genre, my approach is the same: understand the essence first. Before grinding for wins, I want to know why the system works the way it does. That understanding is the shortcut. The victories come quietly — not from loud triumphs but from watching the pattern emerge, from turning complexity into simplicity. No rage quits, no tilting; just the satisfaction of a plan unfolding as predicted, or the quick pivot when it doesn't.",
+  },
+];
 ---
 
-<Layout title="About - Mingxi Yan">
+<Layout title="About - Mingxi Yan" description="About Mingxi Yan — how I came to code late, and what I've been chasing since.">
   <Navigation />
 
   <main class="flex-grow">
-    <!-- Hero Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+    <!-- Header -->
+    <section class="pt-16 pb-10 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
       <div class="max-w-5xl mx-auto">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 opacity-0 animate-fade-in-up">About Me</h1>
-        <p class="text-xl text-gray-600 max-w-3xl opacity-0 animate-fade-in-up delay-100">
-          A journey through code, cards, and creativity.
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5 opacity-0 animate-fade-in-up">About</h1>
+        <p class="text-lg text-gray-700 max-w-2xl leading-relaxed font-serif opacity-0 animate-fade-in-up delay-100">
+          I came to code late, and I have been making up for it ever since.
         </p>
       </div>
     </section>
 
-    <!-- Main Content -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto">
-        <div class="prose prose-lg max-w-none">
-          <!-- Introduction -->
-          <div class="mb-16">
-            <h2 class="text-3xl font-bold mb-6 flex items-center">
-              <span class="w-12 h-1 bg-black mr-4"></span>
-              Who I Am
-            </h2>
-            <div class="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                Life unfolds like a vast, uncharted horizon, where each step forward is both a choice and a surrender. 
-                Freedom is not the absence of constraints, but the quiet courage to embrace the unknown, to dwell in moments that reveal themselves only when all else falls away. 
-                The weight of decisions does not stifle, but gives form to the endless possibilities that beckon just beyond reach. 
-                In these moments, existence feels like a dance with time—each movement, deliberate yet fleeting, filled with purpose yet rooted in uncertainty.
-                To live fully is to recognize the delicate balance between the paths chosen and those left behind. The journey is not about control but about allowing oneself to be shaped by experiences, letting the world reveal its truths, sometimes softly, sometimes harshly. 
-                In this openness, there is freedom. An authentic, profound sense of belonging to the world, not as a conqueror, but as a participant in its unfolding mystery.
-                The beauty of life lies not in mastery, but in the gentle awareness that each day offers a chance to rediscover what it means to be, to think, to choose, and ultimately, to be free.
-              </p>
-            </div>
-          </div>
-
-          <!-- Four Pillars -->
-          <div class="mb-16">
-            <h2 class="text-3xl font-bold mb-6 flex items-center">
-              <span class="w-12 h-1 bg-black mr-4"></span>
-              When I'm Not Philosophizing
-            </h2>
-
-            <div class="space-y-8">
-              <!-- Computer Science -->
-              <div class="bg-white border-l-4 border-black p-6">
-                <h3 class="text-2xl font-bold mb-3">💻 Computer Science</h3>
-                <p class="text-gray-600 leading-relaxed">
-                  I came to code late—only after university—which means I still remember what it feels like to not understand it. That perspective
-                  keeps me grounded. There's something deeply satisfying about building systems piece by piece, watching small components combine
-                  into something larger, something that actually works. When it breaks, the machine doesn't lie; it tells you exactly where your
-                  thinking went wrong. That brutal honesty is liberating. The craft isn't in writing clever code—it's in creating systems where
-                  each piece clicks into place, where complexity resolves into clarity. The best code doesn't just run; it reads like the clearest
-                  expression of an idea, elegant in structure, inevitable in logic.
-                </p>
-              </div>
-
-              <!-- Poker -->
-              <div class="bg-white border-l-4 border-black p-6">
-                <h3 class="text-2xl font-bold mb-3">♠ Poker</h3>
-                <p class="text-gray-600 leading-relaxed">
-                  Poker is where calculation meets instinct, where uncertainty and probability collide in real-time. I study GTO charts not to
-                  memorize them blindly, but to understand the reasoning beneath the ranges, the logic behind the frequencies. That understanding
-                  gives me the freedom to deviate because the real art isn't playing optimally, it's knowing when to bend the rules because your
-                  opponent isn't optimal either. Every fold is data, every bet is a question, every river card a reminder that you can't control
-                  the outcome, only the decision. The math keeps you in the game, but reading ane exploiting separates competence from mastery.
-                </p>
-              </div>
-
-              <!-- Writing -->
-              <div class="bg-white border-l-4 border-black p-6">
-                <h3 class="text-2xl font-bold mb-3">✍️ Writing</h3>
-                <p class="text-gray-600 leading-relaxed">
-                  Writing is thinking made visible, the slow work of turning vague intuition into something sharp enough to cut. It's where I go
-                  to express what gets buried beneath the fast pace of daily life, emotions deeply hidden in tiny moments that would otherwise slip
-                  away unnoticed. I write to stop, to reflect, to capture what lives beneath the surface. Wittgenstein believed the limits of
-                  language are the limits of our world, and I take that chanllenge constantly: the speaking of what exists beyond words, of
-                  finding sentences that expand rather than constrain understanding. Poetry, essays, fragments, whatever form the idea demands. I
-                  write to discover what I think, and sometimes, if I'm lucky, the sentence that emerges is clearer than the thought that started
-                  it, when I know I'm onto something.
-                </p>
-              </div>
-
-              <!-- Basketball -->
-              <div class="bg-white border-l-4 border-black p-6">
-                <h3 class="text-2xl font-bold mb-3">🏀 Basketball</h3>
-                <p class="text-gray-600 leading-relaxed">
-                  On the basketball court, there's a bit of Kyrie in my step, quick, unpredictable, finding space where none seems to exist. What
-                  draws me to the game is its artistry: creative moves that tricks the camera, beautiful passes threaded through tight windows, cuts
-                  and shots so precise they feel like geometry come alive. The wordless communication, eyes meeting across the court, a subtle hand
-                  gesture that shifts the entire play, that's the deepest kind of teamwork. Every possession is pattern recognition at full speed,
-                  anticipation and reaction flowing into one continuous motion. And yes, there's that moment when you kill the game, when the shot
-                  drops and the crowd screams. That's the payoff for all the repetition refined into instinct, for making the complex look effortless.
-                </p>
-              </div>
-
-              <!-- Gaming -->
-              <div class="bg-white border-l-4 border-black p-6">
-                <h3 class="text-2xl font-bold mb-3">🎮 Gaming</h3>
-                <p class="text-gray-600 leading-relaxed">
-                  I play all kinds of games, each appealing to something different: strategic games for planning and foresight, creative games for
-                  building something from nothing, action games for that pure rush when the heartbeat quickens and reflexes take over. But regardless
-                  of genre, my approach stays consistent: understand the essence first. Before grinding for wins, I want to know why the system works
-                  the way it does, what makes it tick. That understanding becomes the booster, the thing that helps me master games quickly. The
-                  victories come quietly, not from loud triumphs but from seeing the pattern emerge, from turning complexity into simplicity. Once
-                  you grasp the underlying logic, the optimal play becomes obvious. No rage quits, no tilting, just the calm satisfaction of watching
-                  a plan unfold exactly as predicted, or the quick pivot when it doesn't.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Philosophy -->
-          <div class="mb-16">
-            <h2 class="text-3xl font-bold mb-6 flex items-center">
-              <span class="w-12 h-1 bg-black mr-4"></span>
-              My Philosophy
-            </h2>
-            <div class="bg-gray-50 p-8">
-              <div class="space-y-4 text-gray-600 leading-relaxed">
-                <p class="text-lg italic font-serif">
-                  "Be curious. Stay humble. Build things that matter."
-                </p>
-                <p>
-                  I believe in continuous learning, not because I have to, but I genuinely can't imagine living any other way.
-                  Every book I read, every people I met, every skills I developed, adds another tool to my mental toolkit.
-                </p>
-                <p>
-                  I believe in systems thinking. Most problems aren't isolated. They're part of larger patterns. Whether debugging
-                  code or analyzing a poker hand, the solution often lies in understanding the broader context.
-                </p>
-                <p>
-                  I believe in balancing logic with intuition, analysis with creativity, individual excellence with collaboration.
-                  The best solutions come smoothly and naturally after finding the right synthesis.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- What I'm Looking For -->
-          <div class="mb-16">
-            <h2 class="text-3xl font-bold mb-6 flex items-center">
-              <span class="w-12 h-1 bg-black mr-4"></span>
-              What I'm Looking For
-            </h2>
-            <div class="space-y-4 text-gray-600 leading-relaxed">
-              <p>
-                I'm looking for opportunities where I can apply my technical skills to meaningful problems. I want to work with
-                teams that value both rigorous engineering and creative problem solving. I'm drawn to projects at the intersection
-                of technology and human, tools that genuinely make people's lives better.
-              </p>
-              <p>
-                I'm also looking for conversations. If you're interested in technology, game theory, philosophy, or the intersection
-                of any of these fields, I'd love to connect. Many of my ideas have come from unexpected conversations with
-                people with different backgrounds.
-              </p>
-            </div>
-          </div>
-
-          <!-- Fun Facts -->
-          <div class="mb-16">
-            <h2 class="text-3xl font-bold mb-6 flex items-center">
-              <span class="w-12 h-1 bg-black mr-4"></span>
-              A Few More Things
-            </h2>
-            <ul class="space-y-3 text-gray-600">
-              <li class="flex items-start">
-                <span class="mr-3 text-xl">•</span>
-                <span>I'm convinced that most complex problems can be solved with a whiteboard and enough time</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-xl">•</span>
-                <span>Slow down, slow down. Even when the world rushes forward. Whether in love or in life, the most meaningful discoveries happen not in haste, but in the quiet spaces where we allow ourselves to pause, to feel, to truly be present</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-xl">•</span>
-                <span>There are things more important to me than profit: the elegance of a solution, the depth of understanding, the impact on people's lives. But that is not true when playing poker.</span>
-              </li>
-            </ul>
-          </div>
+    <!-- Origin -->
+    <section class="py-14 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto">
+        <div class="space-y-5 text-gray-700 leading-[1.75] font-serif text-[1.0625rem]">
+          <p>
+            I wrote my first line of code after starting university. Everyone around me seemed to have
+            been programming since they were twelve, and for a while that felt like a deficit I would
+            never close.
+          </p>
+          <p>
+            It turned out to be the opposite. Because I learned it late, I remember every place it was
+            confusing, and I can still find my way back to not understanding something — which is most
+            of what teaching is, and a fair amount of what good engineering is too. The best systems I
+            have built were the ones I could explain to the version of me who did not get it yet.
+          </p>
+          <p>
+            The rest of what I do follows the same shape. I invent poker games and then need a platform
+            to run them. I read solver output and then want to know why it says what it says. I write
+            to find out what I actually think. In every case the interesting part is not the answer —
+            it is getting the system to explain itself.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-black text-white">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8 text-center">Let's Talk</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div>
-            <h3 class="font-bold mb-3">Professional</h3>
-            <a href="https://www.linkedin.com/in/mingxi-yan-0b9581272" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors">
-              LinkedIn
-            </a>
-          </div>
-          <div>
-            <h3 class="font-bold mb-3">Code</h3>
-            <a href="https://github.com/PittsIrv" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors">
-              GitHub
-            </a>
-          </div>
-          <div>
-            <h3 class="font-bold mb-3">Direct</h3>
-            <a href="mailto:mingxiy66@gmail.com" class="text-gray-300 hover:text-white transition-colors">
-              Email
-            </a>
-          </div>
+    <!-- Pillars -->
+    <section class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">What I spend time on</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+          {pillars.map(pillar => (
+            <div class="border-t border-gray-300 pt-5">
+              <h3 class="text-lg font-semibold mb-3">{pillar.title}</h3>
+              <p class="text-gray-600 leading-relaxed">{pillar.text}</p>
+            </div>
+          ))}
         </div>
-        <div class="mt-12 text-center">
-          <p class="text-gray-400">
-            Whether you want to discuss a project, share ideas, or just say hi—I'm always happy to connect.
+      </div>
+    </section>
+
+    <!-- What I'm looking for -->
+    <section class="py-14 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-7">What I'm looking for</h2>
+        <div class="space-y-5 text-gray-700 leading-[1.75]">
+          <p>
+            Work where the engineering is rigorous and the problem is worth solving — ideally at the
+            point where AI systems meet actual people, since that is where the hard questions live.
+          </p>
+          <p>
+            I am also looking for conversations. If you think about technology, game theory, or
+            philosophy, I would like to talk. Most of my better ideas arrived through someone whose
+            background looked nothing like mine.
           </p>
         </div>
+      </div>
+    </section>
+
+    <!-- A few more things -->
+    <section class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-7">A few more things</h2>
+        <ul class="space-y-4 text-gray-700 leading-relaxed">
+          <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>I am convinced most complex problems can be solved with a whiteboard and enough time.</span></li>
+          <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Slow down. Even when the world rushes forward, the discoveries that matter happen in the quiet spaces where we let ourselves pause.</span></li>
+          <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Some things matter more to me than profit: the elegance of a solution, the depth of understanding, the effect on people's lives. This is not true when I am playing poker.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Closing philosophy -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto">
+        <div class="space-y-5 text-gray-700 leading-[1.75] font-serif text-[1.0625rem]">
+          <p class="text-lg italic">"Be curious. Stay humble. Build things that matter."</p>
+          <p>
+            Freedom is not the absence of constraints but the willingness to be shaped by what you
+            did not choose. To live fully is to hold the balance between the paths taken and the ones
+            left behind — not as a conqueror of the world, but as a participant in it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-black text-white">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold mb-8 text-center">Let's talk</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div>
+            <h3 class="text-sm font-semibold mb-2 text-gray-400 uppercase tracking-wide">Professional</h3>
+            <a href="https://www.linkedin.com/in/mingxi-yan-0b9581272" target="_blank" rel="noopener noreferrer" class="text-gray-200 hover:text-white transition-colors">LinkedIn</a>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold mb-2 text-gray-400 uppercase tracking-wide">Code</h3>
+            <a href="https://github.com/PittsIrv" target="_blank" rel="noopener noreferrer" class="text-gray-200 hover:text-white transition-colors">GitHub</a>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold mb-2 text-gray-400 uppercase tracking-wide">Direct</h3>
+            <a href="mailto:mingxiy66@gmail.com" class="text-gray-200 hover:text-white transition-colors">Email</a>
+          </div>
+        </div>
+        <p class="mt-10 text-center text-gray-400 text-sm">
+          Whether you want to discuss a project, share ideas, or just say hi — I am always happy to connect.
+        </p>
       </div>
     </section>
   </main>
 
   <Footer />
 </Layout>
-
-<style>
-  .prose h2 {
-    color: #000;
-    font-weight: 700;
-  }
-
-  .prose h3 {
-    color: #000;
-    font-weight: 700;
-  }
-</style>

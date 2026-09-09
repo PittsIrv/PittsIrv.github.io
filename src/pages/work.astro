@@ -1,0 +1,303 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+const education = [
+  {
+    degree: "Fifth-Year Master's, Language Technologies Institute",
+    school: 'Carnegie Mellon University, Pittsburgh, PA',
+    dates: 'Expected August 2027',
+    notes: [],
+    courseLabel: 'Current coursework',
+    courses:
+      'Search Engines (11-642), AI Agents (11-768), Multimodal Machine Learning (11-777), Introduction to Research in Language Technologies (11-705), Directed Research (11-910)',
+  },
+  {
+    degree: 'BS in Information Systems and Computer Science',
+    school: 'Carnegie Mellon University, Pittsburgh, PA',
+    dates: 'May 2026',
+    notes: ['Minor in Logic and Computation', 'GPA: 3.9/4.0 (Major GPA: 3.9/4.0)'],
+    courseLabel: 'Selected coursework',
+    courses:
+      'Machine Learning (10-301), Generative AI (10-423), Natural Language Processing (11-411), Algorithm Design and Analysis (15-451), Distributed Systems (15-440), Introduction to Computer Systems (15-213), Parallel and Sequential Algorithms (15-210), Bug Catching: Automated Program Verification (15-414), Foundations of Software Engineering (17-313), Database Design and Development (67-262), Probability and Statistical Inference I–II (36-235/236), Game Theory (80-305)',
+  },
+];
+
+const experience = [
+  {
+    role: 'Data Engineer Intern',
+    org: 'TikTok',
+    dates: 'June – August 2026',
+    bullets: [
+      'Led the design and implementation of an enterprise data-discovery capability that lets internal AI agents locate usable data sources directly from natural-language analytical questions, instead of requiring users to already know table names.',
+      'Packaged it as a self-contained, agent-callable Python service with an evidence-first interface — every recommendation returns a stable data-source identifier plus the supporting evidence behind it — and integrated it into existing company data agents.',
+      'Main contributor on a livestreaming operations revenue-diagnosis workflow: detect revenue downside, diagnose which metrics moved abnormally, interpret the business cause, and recommend corrective action. Built the data extraction, cleaning, metric aggregation, feature engineering, and scheduled pipeline behind it.',
+      'Both systems were validated with operations and business stakeholders and adopted into their working process.',
+    ],
+    tags: ['Python', 'SQL', 'Graph retrieval', 'Query rewriting', 'Ranking', 'Data pipelines', 'Feature engineering', 'LLM agents'],
+  },
+  {
+    role: 'Research Assistant',
+    org: 'Chimps Lab, CMU',
+    dates: 'May 2024 – Present',
+    bullets: [
+      'PersonaTeaming (CMU–Apple collaboration, UIST 2026), second author: proposed persona as an additional axis for automated red-teaming and designed the dynamic persona-generation mechanism, which generates a candidate persona per seed prompt and keeps whichever persona better fits the attack.',
+      'Implemented the end-to-end PersonaTeaming workflow, built the experiment orchestration, and ran the full technical evaluation across six target models, measuring both attack success and corpus-level diversity. Wrote the technical results section of the paper.',
+      'Built the PersonaTeaming Playground interface with persistent database storage and deployed it on AWS; the interface was used as the platform for an industry practitioner study run by the Apple side.',
+      'WeAudit: built tooling to analyze demographic distributions in AI-generated images for bias audits, parallelized large-scale image generation with batching for reliability, and containerized and deployed the system on AWS EC2.',
+    ],
+    tags: ['Python', 'React', 'AWS', 'LLM APIs', 'Evaluation pipelines', 'LLM-as-judge', 'Adversarial prompting', 'AI safety'],
+  },
+  {
+    role: 'Research Assistant — NLP-side lead',
+    org: 'Sapling Lab, CMU',
+    dates: 'May 2026 – Present',
+    bullets: [
+      'NLP-side lead on an NSF-funded interdisciplinary research program studying Mutual Theory of Mind — how the mental-state attributions users form toward socially responsive AI emerge and evolve over sustained interaction.',
+      'Leading an ongoing first-author simulation study, originating from my own research idea, on how user characteristics, assistant social behavior, and conversational situation shape mind attribution across a multi-turn conversation. Manuscript in preparation.',
+      'Designed the simulation pipeline and the turn-by-turn measurement approach for tracking attribution trajectories; work is intended both as a paper and as a computational tool supporting the broader research program.',
+    ],
+    tags: ['LLM simulation', 'Multi-turn evaluation', 'Measurement design', 'Research methodology', 'Python'],
+  },
+  {
+    role: 'Software Engineer Intern',
+    org: 'AlpSoft, Singapore',
+    dates: 'May 2025 – August 2025',
+    bullets: [
+      'Maintained and upgraded secure enterprise sites for EnterpriseSG; shipped UI/UX and backend API improvements.',
+      'Remediated penetration-test findings by removing exposed URL paths and tightening authorization on user and admin actions.',
+      'Supported deployment sessions on AWS using Docker and Terraform.',
+    ],
+    tags: ['AWS', 'Docker', 'Terraform', 'Backend APIs', 'Application security'],
+  },
+  {
+    role: 'Full Stack Engineer & Team Lead',
+    org: 'Enterview (Startup), Pittsburgh, PA',
+    dates: 'June 2023 – November 2024',
+    bullets: [
+      'Led a 4-member team building an AI-driven interview-preparation platform with real-time mock interviews.',
+      'Designed a multi-agent mock interview session and used AI-assisted development to accelerate feature delivery.',
+      'Optimized WebSocket handling for lower latency and smoother feedback.',
+    ],
+    tags: ['TypeScript', 'WebSocket', 'Multi-agent systems', 'Full stack'],
+  },
+  {
+    role: 'Research Intern',
+    org: 'Tsinghua University, THUNLP — OpenBMB',
+    dates: 'May 2023 – August 2023',
+    bullets: [
+      'Prototyped embedding-based organization of heterogeneous REST APIs for the BMTools tool-learning framework, standardizing API documentation into a consistent representation.',
+      'Clustered tool representations so a language model could select an appropriate category before attempting a call, and wrote unit tests for tool-call format and output readability.',
+    ],
+    tags: ['Python', 'Embeddings', 'Clustering', 'Tool learning', 'Unit testing'],
+  },
+  {
+    role: 'Teaching Assistant',
+    org: 'CMU — Great Ideas in Theoretical Computer Science (15-251)',
+    dates: 'February 2025 – Present',
+    bullets: [
+      'Support students through 1:1 tutoring sessions on proofs and theory topics.',
+      'Design study guides and exam reviews.',
+    ],
+    tags: ['Algorithms', 'Complexity', 'Proof technique'],
+  },
+  {
+    role: 'IS Consulting Project',
+    org: 'ProtectPT (Non-Profit), Pittsburgh, PA',
+    dates: 'Spring 2024',
+    bullets: ['Co-designed and delivered a searchable database supporting anti-fracking advocacy.'],
+    tags: ['Database design', 'Requirements'],
+  },
+];
+
+const skills = [
+  { group: 'Languages', items: ['Python', 'TypeScript', 'JavaScript', 'C', 'Standard ML', 'SQL', 'HTML/CSS'] },
+  { group: 'Backend & Systems', items: ['NestJS', 'Django', 'Flask', 'REST APIs', 'WebSocket', 'Distributed systems', 'Concurrency', 'Redis'] },
+  { group: 'Cloud & Infrastructure', items: ['AWS (EC2, ECS)', 'Docker', 'Terraform', 'CI/CD', 'Cloud security'] },
+  { group: 'ML & LLM systems', items: ['PyTorch', 'Hugging Face', 'LoRA / PEFT', 'SFT', 'DPO', 'RAG', 'Embeddings', 'LLM evaluation', 'Agent tooling'] },
+  { group: 'Data', items: ['PostgreSQL', 'MySQL', 'SQLite', 'Data pipelines', 'Feature engineering', 'Metric aggregation'] },
+  { group: 'Quantitative & Formal', items: ['Probability & statistical inference', 'Game theory', 'Algorithm design', 'Formal logic', 'Program verification'] },
+];
+---
+
+<Layout
+  title="Work - Mingxi Yan"
+  description="Mingxi Yan — AI systems engineer. Experience at TikTok, CMU Chimps Lab (CMU–Apple PersonaTeaming), and CMU Sapling Lab."
+>
+  <Navigation />
+
+  <main class="flex-grow">
+    <!-- Header -->
+    <section class="pt-16 pb-10 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+      <div class="max-w-5xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5 opacity-0 animate-fade-in-up">Work</h1>
+        <p class="text-lg text-gray-700 max-w-2xl leading-relaxed opacity-0 animate-fade-in-up delay-100 font-serif">
+          I build AI systems and the infrastructure around them — retrieval, evaluation, data pipelines,
+          and the services that put models in front of real users. Currently a fifth-year master's student
+          at Carnegie Mellon's Language Technologies Institute.
+        </p>
+        <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm opacity-0 animate-fade-in-up delay-200">
+          <a href="/resume.pdf" class="font-medium border-b border-black hover:text-gray-600 hover:border-gray-600 transition-colors">Resume (PDF)</a>
+          <a href="https://github.com/PittsIrv" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-black transition-colors">GitHub</a>
+          <a href="https://www.linkedin.com/in/mingxi-yan-0b9581272" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-black transition-colors">LinkedIn</a>
+          <a href="mailto:mingxiy66@gmail.com" class="text-gray-600 hover:text-black transition-colors">Email</a>
+        </div>
+        <nav class="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-500 opacity-0 animate-fade-in-up delay-300">
+          <a href="#education" class="hover:text-black transition-colors">Education</a>
+          <a href="#experience" class="hover:text-black transition-colors">Experience</a>
+          <a href="#projects" class="hover:text-black transition-colors">Projects</a>
+          <a href="#publications" class="hover:text-black transition-colors">Publications</a>
+          <a href="#skills" class="hover:text-black transition-colors">Skills</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Education</h2>
+        <div class="space-y-10">
+          {education.map(item => (
+            <div>
+              <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-1">
+                <h3 class="text-xl font-semibold">{item.degree}</h3>
+                <span class="text-sm text-gray-500 shrink-0 md:ml-6">{item.dates}</span>
+              </div>
+              <p class="text-gray-700">{item.school}</p>
+              {item.notes.map(note => <p class="text-gray-600 text-sm mt-1">{note}</p>)}
+              <p class="text-sm text-gray-600 mt-3 leading-relaxed">
+                <span class="text-gray-900 font-medium">{item.courseLabel}:</span> {item.courses}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Experience</h2>
+        <div class="space-y-12">
+          {experience.map(job => (
+            <div class="border-t border-gray-300 pt-6">
+              <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-3">
+                <div>
+                  <h3 class="text-xl font-semibold">{job.role}</h3>
+                  <p class="text-gray-700">{job.org}</p>
+                </div>
+                <span class="text-sm text-gray-500 shrink-0 md:ml-6">{job.dates}</span>
+              </div>
+              <ul class="space-y-2 text-gray-700 leading-relaxed">
+                {job.bullets.map(b => (
+                  <li class="flex">
+                    <span class="text-gray-400 mr-3 shrink-0">—</span>
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
+                {job.tags.map(tag => <span>{tag}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Projects</h2>
+        <div class="border-t border-gray-300 pt-6 max-w-3xl">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-3">
+            <h3 class="text-xl font-semibold">Dealer's Choice</h3>
+            <span class="text-sm text-gray-500 shrink-0 md:ml-6">June 2025 – Present</span>
+          </div>
+          <p class="text-gray-700 leading-relaxed mb-3">
+            An online multiplayer Texas Hold'em platform built to play the poker variants I invent —
+            the rules for those games are <a href="/personal#poker" class="border-b border-gray-400 hover:border-black transition-colors">on my personal page</a>.
+          </p>
+          <ul class="space-y-2 text-gray-700 leading-relaxed">
+            <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Custom game variants with real-time multiplayer gameplay.</span></li>
+            <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>CI/CD pipeline for automated testing and deployment.</span></li>
+            <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Deployed on an ECS cluster in private subnets behind a public ALB.</span></li>
+            <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Optimized WebSocket connections for low-latency player interaction.</span></li>
+          </ul>
+          <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
+            <span>TypeScript</span><span>NestJS</span><span>WebSocket</span><span>AWS ECS</span><span>Docker</span><span>CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Publications & Writing</h2>
+
+        <div class="space-y-10 max-w-3xl">
+          <div class="border-t border-gray-300 pt-6">
+            <h3 class="text-xl font-semibold mb-1">
+              PersonaTeaming: Persona-Conditioned Automated Red Teaming
+            </h3>
+            <p class="text-sm text-gray-500 mb-3">UIST 2026 · CMU–Apple collaboration · Second author</p>
+            <p class="text-gray-700 leading-relaxed">
+              Adds a human-perspective axis to automated red-teaming by conditioning adversarial prompt
+              mutation on personas, including a dynamic method that generates and scores candidate personas
+              rather than relying on a fixed set. I proposed the persona axis, designed the generation
+              mechanism, implemented the workflow, and ran the evaluation across six target models.
+            </p>
+          </div>
+
+          <div class="border-t border-gray-300 pt-6">
+            <h3 class="text-xl font-semibold mb-1">
+              Solver-Guided Fine-Tuning for Accurate and Explainable Poker Decisions
+            </h3>
+            <p class="text-sm text-gray-500 mb-3">10-423/623 Generative AI, Spring 2026 · with Cassandra Shi &amp; Harry Huang</p>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              We fine-tune Llama 3 8B to jointly produce a poker action and a natural-language explanation,
+              using solver-backed labels from PokerBench as ground truth. Since no human explanations exist
+              for these scenarios, we prompt a larger model as a teacher, score its candidates with a
+              custom rule-based verifier, and validate that verifier against 200 blind human judgments.
+              Supervised fine-tuning closes most of the zero-shot gap (18.0% &rarr; 56.2% exact match), and
+              preference optimization (DPO) sharpens explanation quality further at a small cost to action
+              accuracy &mdash; an alignment tax we trace back to the action and explanation objectives sharing
+              the same backbone parameters.
+            </p>
+            <a href="/papers/solver-guided-poker-finetuning.pdf" target="_blank" rel="noopener noreferrer" class="text-sm font-medium border-b border-black hover:text-gray-600 hover:border-gray-600 transition-colors">
+              Read the paper (PDF)
+            </a>
+          </div>
+
+          <div class="border-t border-gray-300 pt-6">
+            <h3 class="text-xl font-semibold mb-1">Mutual Theory of Mind in Multi-Turn Human–AI Conversation</h3>
+            <p class="text-sm text-gray-500 mb-3">First author · Manuscript in preparation</p>
+            <p class="text-gray-700 leading-relaxed">
+              A simulation study of how user characteristics, assistant social behavior, and conversational
+              situation shape mind attribution turn by turn. Ongoing work at Sapling Lab.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Skills</h2>
+        <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-7">
+          {skills.map(s => (
+            <div class="border-t border-gray-300 pt-4">
+              <dt class="font-semibold mb-2">{s.group}</dt>
+              <dd class="text-gray-600 leading-relaxed">{s.items.join(' · ')}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
