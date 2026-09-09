@@ -24,4 +24,4 @@ Claude does not implement changes directly in this repo. Instead:
 
 Never use `--dangerously-bypass-approvals-and-sandbox`. One task per `codex exec` call; keep prompts self-contained since Codex has no memory between calls.
 
-Active design spec: `docs/superpowers/specs/2026-07-17-editorial-redesign-design.md`.
+Active design spec: `docs/superpowers/specs/2026-09-08-professional-restructure-design.md` (supersedes the 2026-07-17 editorial redesign spec).

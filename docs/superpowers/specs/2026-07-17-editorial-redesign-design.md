@@ -1,7 +1,7 @@
 # Editorial Redesign — Design Spec
 
 **Date:** 2026-07-17
-**Status:** Approved (planning only; implementation not yet started)
+**Status:** Superseded by `2026-09-08-professional-restructure-design.md` (never implemented)
 **Goal:** Make the site interesting through storytelling and voice while staying professional for a balanced audience (recruiters/engineers and friends/general readers, 50/50).
 
 ## Diagnosis
