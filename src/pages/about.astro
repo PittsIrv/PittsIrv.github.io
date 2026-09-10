@@ -6,23 +6,28 @@ import Footer from '../components/Footer.astro';
 const pillars = [
   {
     title: 'Computer science',
-    text: "I came to code late — only after starting university — which means I still remember what it feels like not to understand it. That keeps me grounded. When something breaks, the machine doesn't lie; it tells you where your thinking went wrong, and I find that honesty a relief. What I like is not clever code so much as systems where each piece clicks into place and complexity settles into something clearer.",
+    lead: 'I came to code late — only after starting university — which means I still remember what it feels like not to understand it.',
+    text: "That keeps me grounded. When something breaks, the machine doesn't lie; it tells you where your thinking went wrong, and I find that honesty a relief. What I like is not clever code so much as systems where each piece clicks into place and complexity settles into something clearer.",
   },
   {
     title: 'Poker',
-    text: "I enjoy playing poker. I like reading GTO charts, not to memorize them but to follow the reasoning underneath the ranges — which is also what makes it possible to depart from them, since your opponent is not playing perfectly either. Every fold is a bit of data, every bet a question, and every river card a reminder that you get to choose the decision and not the outcome.",
+    lead: 'I enjoy playing poker — mostly for the reasoning underneath the ranges.',
+    text: "I like reading GTO charts, not to memorize them but to follow the reasoning underneath the ranges — which is also what makes it possible to depart from them, since your opponent is not playing perfectly either. Every fold is a bit of data, every bet a question, and every river card a reminder that you get to choose the decision and not the outcome.",
   },
   {
     title: 'Writing',
-    text: "Writing is thinking made visible — the slow work of turning a vague intuition into something clear enough to be useful. Wittgenstein thought the limits of language were the limits of our world, and I like sitting with that: trying to find sentences that widen understanding rather than narrow it. Mostly I write to find out what I think, and now and then a sentence comes out clearer than the thought that started it.",
+    lead: 'Writing is thinking made visible — the slow work of turning a vague intuition into something clear enough to be useful.',
+    text: "Wittgenstein thought the limits of language were the limits of our world, and I like sitting with that: trying to find sentences that widen understanding rather than narrow it. Mostly I write to find out what I think, and now and then a sentence comes out clearer than the thought that started it.",
   },
   {
     title: 'Basketball',
-    text: "I like to think there is a little Kyrie in my step, though I would not push the comparison. What draws me to the game is the artistry: passes threaded through tight windows, cuts and shots precise enough to feel like geometry. The wordless part is my favourite — eyes meeting across the court, a small gesture that shifts the whole play. And there is still nothing quite like a shot dropping late.",
+    lead: 'I like to think there is a little Kyrie in my step, though I would not push the comparison.',
+    text: "What draws me to the game is the artistry: passes threaded through tight windows, cuts and shots precise enough to feel like geometry. The wordless part is my favourite — eyes meeting across the court, a small gesture that shifts the whole play. And there is still nothing quite like a shot dropping late.",
   },
   {
     title: 'Gaming',
-    text: "Whatever the genre, I tend to go about it the same way: understand the essence first. Before grinding for wins I want to know why the system works the way it does, which usually turns out to be the shortcut anyway. The wins come quietly — watching a pattern emerge, complexity turning into something simple. No rage quits, no tilting; just a plan unfolding roughly as expected, or a quick pivot when it doesn't.",
+    lead: 'Whatever the genre, I tend to go about it the same way: understand the essence first.',
+    text: "Before grinding for wins I want to know why the system works the way it does, which usually turns out to be the shortcut anyway. The wins come quietly — watching a pattern emerge, complexity turning into something simple. No rage quits, no tilting; just a plan unfolding roughly as expected, or a quick pivot when it doesn't.",
   },
 ];
 ---
@@ -73,8 +78,17 @@ const pillars = [
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
           {pillars.map(pillar => (
             <div class="border-t border-gray-300 pt-5">
-              <h3 class="text-lg font-semibold mb-3">{pillar.title}</h3>
-              <p class="text-gray-600 leading-relaxed">{pillar.text}</p>
+              <h3 class="text-lg font-semibold mb-2">{pillar.title}</h3>
+              <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">{pillar.lead}</p>
+              <details class="disclosure mt-3">
+                <summary>
+                  <span class="disclosure-closed">More</span>
+                  <span class="disclosure-open">Close</span>
+                </summary>
+                <div class="disclosure-body pt-3">
+                  <p class="text-gray-600 leading-relaxed">{pillar.text}</p>
+                </div>
+              </details>
             </div>
           ))}
         </div>

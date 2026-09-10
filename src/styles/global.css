@@ -76,3 +76,51 @@
 ::-webkit-scrollbar-track { background: #f5f5f5; }
 ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* Progressive disclosure: a one-line lead, with the detail one click away. */
+.disclosure > summary {
+  @apply inline-flex items-center gap-1.5 cursor-pointer list-none text-sm text-gray-500 hover:text-black transition-colors select-none;
+}
+
+.disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.disclosure > summary::after {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-1px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.disclosure[open] > summary::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.disclosure > summary:focus-visible {
+  @apply outline-2 outline-offset-4 outline-black;
+}
+
+/* Label swap: prompt when closed, dismissal when open. */
+.disclosure > summary .disclosure-open,
+.disclosure[open] > summary .disclosure-closed {
+  display: none;
+}
+
+.disclosure[open] > summary .disclosure-open {
+  display: inline;
+}
+
+/* Expanded content settles in rather than snapping. */
+.disclosure[open] > .disclosure-body {
+  animation: fadeIn 0.25s ease-out both;
+}
+
+/* Anything collapsed should still be printable and findable. */
+@media print {
+  .disclosure > summary { display: none; }
+  .disclosure > .disclosure-body { display: block !important; }
+}

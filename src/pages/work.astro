@@ -29,6 +29,7 @@ const experience = [
     role: 'Data Engineer Intern',
     org: 'TikTok',
     dates: 'June – August 2026',
+    lead: 'Data tooling for internal AI agents — finding the right data source from a plain-language question, and diagnosing why livestream revenue moved.',
     bullets: [
       'Designed and, with my mentor, implemented an enterprise data-discovery capability that helps internal AI agents locate usable data sources from natural-language questions, rather than requiring users to already know table names.',
       'Packaged it as a self-contained, agent-callable Python service that returns a stable data-source identifier along with the evidence behind each suggestion, and integrated it into the existing company data agents.',
@@ -41,6 +42,7 @@ const experience = [
     role: 'Research Assistant',
     org: 'Chimps Lab, CMU',
     dates: 'May 2024 – Present',
+    lead: 'Red-teaming and bias-auditing research, including PersonaTeaming — a CMU–Apple paper at UIST 2026.',
     bullets: [
       'PersonaTeaming (CMU–Apple collaboration, UIST 2026), second author: suggested persona as an additional axis for automated red-teaming and worked on the dynamic persona-generation mechanism, which generates a candidate persona per seed prompt and keeps whichever one better fits the attack.',
       'Implemented the end-to-end workflow, set up the experiment orchestration, and ran the evaluation across six target models, measuring both attack success and corpus-level diversity. Wrote the technical results section of the paper.',
@@ -53,6 +55,7 @@ const experience = [
     role: 'Research Assistant — NLP-side lead',
     org: 'Sapling Lab, CMU',
     dates: 'May 2026 – Present',
+    lead: 'How people form and revise beliefs about an AI’s mind over a long conversation.',
     bullets: [
       'NLP-side lead on an NSF-funded interdisciplinary research program studying Mutual Theory of Mind — how the mental-state attributions users form toward socially responsive AI emerge and evolve over sustained interaction.',
       'Working on an ongoing first-author simulation study, which grew out of an idea I wanted to pursue, on how user characteristics, assistant social behavior, and conversational situation shape mind attribution across a multi-turn conversation. Manuscript in preparation.',
@@ -64,6 +67,7 @@ const experience = [
     role: 'Software Engineer Intern',
     org: 'AlpSoft, Singapore',
     dates: 'May 2025 – August 2025',
+    lead: 'Secure enterprise web work for a Singapore government agency.',
     bullets: [
       'Maintained and upgraded secure enterprise sites for EnterpriseSG; shipped UI/UX and backend API improvements.',
       'Remediated penetration-test findings by removing exposed URL paths and tightening authorization on user and admin actions.',
@@ -75,6 +79,7 @@ const experience = [
     role: 'Full Stack Engineer & Team Lead',
     org: 'Enterview (Startup), Pittsburgh, PA',
     dates: 'June 2023 – November 2024',
+    lead: 'An AI mock-interview platform, with a team of four.',
     bullets: [
       'Worked with a team of four on an AI-driven interview-preparation platform with real-time mock interviews.',
       'Put together a multi-agent mock interview session and used AI-assisted development to speed up feature delivery.',
@@ -86,6 +91,7 @@ const experience = [
     role: 'Research Intern',
     org: 'Tsinghua University, THUNLP — OpenBMB',
     dates: 'May 2023 – August 2023',
+    lead: 'Organizing heterogeneous REST APIs so a language model can pick the right one to call.',
     bullets: [
       'Prototyped embedding-based organization of heterogeneous REST APIs for the BMTools tool-learning framework, standardizing API documentation into a consistent representation.',
       'Clustered tool representations so a language model could select an appropriate category before attempting a call, and wrote unit tests for tool-call format and output readability.',
@@ -96,6 +102,7 @@ const experience = [
     role: 'Teaching Assistant',
     org: 'CMU — Great Ideas in Theoretical Computer Science (15-251)',
     dates: 'February 2025 – Present',
+    lead: 'Tutoring proofs and theory, one student at a time.',
     bullets: [
       'Support students through 1:1 tutoring sessions on proofs and theory topics.',
       'Design study guides and exam reviews.',
@@ -106,8 +113,33 @@ const experience = [
     role: 'IS Consulting Project',
     org: 'ProtectPT (Non-Profit), Pittsburgh, PA',
     dates: 'Spring 2024',
+    lead: 'A searchable database for a local anti-fracking non-profit.',
     bullets: ['Co-designed and delivered a searchable database supporting anti-fracking advocacy.'],
     tags: ['Database design', 'Requirements'],
+  },
+];
+
+const publications = [
+  {
+    title: 'PersonaTeaming: Persona-Conditioned Automated Red Teaming',
+    meta: 'UIST 2026 · CMU–Apple collaboration · Second author',
+    lead: 'Conditioning automated red-teaming on personas, so the attacks reflect the range of people who actually use these systems.',
+    body: `Adds a human-perspective axis to automated red-teaming by conditioning adversarial prompt mutation on personas, including a dynamic method that generates and scores candidate personas rather than relying on a fixed set. I suggested the persona axis, worked on the generation mechanism, implemented the workflow, and ran the evaluation across six target models.`,
+    link: null,
+  },
+  {
+    title: 'Solver-Guided Fine-Tuning for Accurate and Explainable Poker Decisions',
+    meta: '10-423/623 Generative AI, Spring 2026 · with Cassandra Shi & Harry Huang',
+    lead: 'Fine-tuning an 8B model to explain its poker decisions, not just make them.',
+    body: `A course project fine-tuning Llama 3 8B to jointly produce a poker action and a natural-language explanation, using solver-backed labels from PokerBench as ground truth. Since no human explanations exist for these scenarios, we prompt a larger model as a teacher, score its candidates with a custom rule-based verifier, and validate that verifier against 200 blind human judgments. Supervised fine-tuning closes most of the zero-shot gap (18.0% → 56.2% exact match), and preference optimization (DPO) sharpens explanation quality further at a small cost to action accuracy — an alignment tax we trace back to the action and explanation objectives sharing the same backbone parameters.`,
+    link: { href: '/papers/solver-guided-poker-finetuning.pdf', label: 'Read the paper (PDF)' },
+  },
+  {
+    title: 'Mutual Theory of Mind in Multi-Turn Human–AI Conversation',
+    meta: 'First author · Manuscript in preparation',
+    lead: 'A simulation of how mind attribution shifts, turn by turn, across a conversation.',
+    body: `A simulation study of how user characteristics, assistant social behavior, and conversational situation shape mind attribution turn by turn. Still ongoing at Sapling Lab.`,
+    link: null,
   },
 ];
 
@@ -134,8 +166,10 @@ const skills = [
         <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5 opacity-0 animate-fade-in-up">Work</h1>
         <p class="text-lg text-gray-700 max-w-2xl leading-relaxed opacity-0 animate-fade-in-up delay-100 font-serif">
           I like working on AI systems and the infrastructure around them — retrieval, evaluation,
-          data pipelines, and the parts that connect models to real users. Currently a fifth-year
-          master's student at Carnegie Mellon's Language Technologies Institute.
+          data pipelines, and the parts that connect models to real users.
+        </p>
+        <p class="mt-3 text-sm text-gray-500 max-w-2xl opacity-0 animate-fade-in-up delay-100">
+          Each entry below opens if you want the detail.
         </p>
         <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm opacity-0 animate-fade-in-up delay-200">
           <a href="/resume.pdf" class="font-medium border-b border-black hover:text-gray-600 hover:border-gray-600 transition-colors">Resume (PDF)</a>
@@ -166,9 +200,15 @@ const skills = [
               </div>
               <p class="text-gray-700">{item.school}</p>
               {item.notes.map(note => <p class="text-gray-600 text-sm mt-1">{note}</p>)}
-              <p class="text-sm text-gray-600 mt-3 leading-relaxed">
-                <span class="text-gray-900 font-medium">{item.courseLabel}:</span> {item.courses}
-              </p>
+              <details class="disclosure mt-3">
+                <summary>
+                  <span class="disclosure-closed">{item.courseLabel}</span>
+                  <span class="disclosure-open">Hide coursework</span>
+                </summary>
+                <div class="disclosure-body pt-3">
+                  <p class="text-sm text-gray-600 leading-relaxed">{item.courses}</p>
+                </div>
+              </details>
             </div>
           ))}
         </div>
@@ -179,27 +219,36 @@ const skills = [
     <section id="experience" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
         <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Experience</h2>
-        <div class="space-y-12">
+        <div class="space-y-10">
           {experience.map(job => (
             <div class="border-t border-gray-300 pt-6">
-              <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-3">
+              <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
                 <div>
                   <h3 class="text-xl font-semibold">{job.role}</h3>
                   <p class="text-gray-700">{job.org}</p>
                 </div>
                 <span class="text-sm text-gray-500 shrink-0 md:ml-6">{job.dates}</span>
               </div>
-              <ul class="space-y-2 text-gray-700 leading-relaxed">
-                {job.bullets.map(b => (
-                  <li class="flex">
-                    <span class="text-gray-400 mr-3 shrink-0">—</span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-              <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
-                {job.tags.map(tag => <span>{tag}</span>)}
-              </div>
+              <p class="text-gray-700 leading-relaxed max-w-3xl font-serif text-[1.0625rem]">{job.lead}</p>
+              <details class="disclosure mt-4">
+                <summary>
+                  <span class="disclosure-closed">What I worked on</span>
+                  <span class="disclosure-open">Close</span>
+                </summary>
+                <div class="disclosure-body pt-4">
+                  <ul class="space-y-2 text-gray-700 leading-relaxed">
+                    {job.bullets.map(b => (
+                      <li class="flex">
+                        <span class="text-gray-400 mr-3 shrink-0">—</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
+                    {job.tags.map(tag => <span>{tag}</span>)}
+                  </div>
+                </div>
+              </details>
             </div>
           ))}
         </div>
@@ -211,23 +260,31 @@ const skills = [
       <div class="max-w-5xl mx-auto">
         <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Projects</h2>
         <div class="border-t border-gray-300 pt-6 max-w-3xl">
-          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-3">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
             <h3 class="text-xl font-semibold">Dealer's Choice</h3>
             <span class="text-sm text-gray-500 shrink-0 md:ml-6">June 2025 – Present</span>
           </div>
-          <p class="text-gray-700 leading-relaxed mb-3">
-            An online multiplayer Texas Hold'em platform for the poker variants we play at home games —
-            the rules for those are <a href="/personal#poker" class="border-b border-gray-400 hover:border-black transition-colors">on my personal page</a>.
+          <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">
+            An online multiplayer poker platform for the variants we play at home games.
           </p>
-          <ul class="space-y-2 text-gray-700 leading-relaxed">
-            <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Custom game variants with real-time multiplayer gameplay.</span></li>
-            <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>CI/CD pipeline for automated testing and deployment.</span></li>
-            <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Deployed on an ECS cluster in private subnets behind a public ALB.</span></li>
-            <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Optimized WebSocket connections for low-latency player interaction.</span></li>
-          </ul>
-          <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
-            <span>TypeScript</span><span>NestJS</span><span>WebSocket</span><span>AWS ECS</span><span>Docker</span><span>CI/CD</span>
-          </div>
+          <details class="disclosure mt-4">
+            <summary>
+              <span class="disclosure-closed">What I worked on</span>
+              <span class="disclosure-open">Close</span>
+            </summary>
+            <div class="disclosure-body pt-4">
+              <ul class="space-y-2 text-gray-700 leading-relaxed">
+                <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Custom game variants with real-time multiplayer gameplay.</span></li>
+                <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>CI/CD pipeline for automated testing and deployment.</span></li>
+                <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Deployed on an ECS cluster in private subnets behind a public ALB.</span></li>
+                <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Optimized WebSocket connections for low-latency player interaction.</span></li>
+                <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>The rules for the variants are <a href="/personal#poker" class="border-b border-gray-400 hover:border-black transition-colors">on my personal page</a>.</span></li>
+              </ul>
+              <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
+                <span>TypeScript</span><span>NestJS</span><span>WebSocket</span><span>AWS ECS</span><span>Docker</span><span>CI/CD</span>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -236,49 +293,28 @@ const skills = [
     <section id="publications" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
         <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Publications & Writing</h2>
-
         <div class="space-y-10 max-w-3xl">
-          <div class="border-t border-gray-300 pt-6">
-            <h3 class="text-xl font-semibold mb-1">
-              PersonaTeaming: Persona-Conditioned Automated Red Teaming
-            </h3>
-            <p class="text-sm text-gray-500 mb-3">UIST 2026 · CMU–Apple collaboration · Second author</p>
-            <p class="text-gray-700 leading-relaxed">
-              Adds a human-perspective axis to automated red-teaming by conditioning adversarial prompt
-              mutation on personas, including a dynamic method that generates and scores candidate personas
-              rather than relying on a fixed set. I suggested the persona axis, worked on the generation
-              mechanism, implemented the workflow, and ran the evaluation across six target models.
-            </p>
-          </div>
-
-          <div class="border-t border-gray-300 pt-6">
-            <h3 class="text-xl font-semibold mb-1">
-              Solver-Guided Fine-Tuning for Accurate and Explainable Poker Decisions
-            </h3>
-            <p class="text-sm text-gray-500 mb-3">10-423/623 Generative AI, Spring 2026 · with Cassandra Shi &amp; Harry Huang</p>
-            <p class="text-gray-700 leading-relaxed mb-4">
-              A course project fine-tuning Llama 3 8B to jointly produce a poker action and a natural-language explanation,
-              using solver-backed labels from PokerBench as ground truth. Since no human explanations exist
-              for these scenarios, we prompt a larger model as a teacher, score its candidates with a
-              custom rule-based verifier, and validate that verifier against 200 blind human judgments.
-              Supervised fine-tuning closes most of the zero-shot gap (18.0% &rarr; 56.2% exact match), and
-              preference optimization (DPO) sharpens explanation quality further at a small cost to action
-              accuracy &mdash; an alignment tax we trace back to the action and explanation objectives sharing
-              the same backbone parameters.
-            </p>
-            <a href="/papers/solver-guided-poker-finetuning.pdf" target="_blank" rel="noopener noreferrer" class="text-sm font-medium border-b border-black hover:text-gray-600 hover:border-gray-600 transition-colors">
-              Read the paper (PDF)
-            </a>
-          </div>
-
-          <div class="border-t border-gray-300 pt-6">
-            <h3 class="text-xl font-semibold mb-1">Mutual Theory of Mind in Multi-Turn Human–AI Conversation</h3>
-            <p class="text-sm text-gray-500 mb-3">First author · Manuscript in preparation</p>
-            <p class="text-gray-700 leading-relaxed">
-              A simulation study of how user characteristics, assistant social behavior, and conversational
-              situation shape mind attribution turn by turn. Still ongoing at Sapling Lab.
-            </p>
-          </div>
+          {publications.map(pub => (
+            <div class="border-t border-gray-300 pt-6">
+              <h3 class="text-xl font-semibold mb-1">{pub.title}</h3>
+              <p class="text-sm text-gray-500 mb-2">{pub.meta}</p>
+              <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">{pub.lead}</p>
+              <details class="disclosure mt-4">
+                <summary>
+                  <span class="disclosure-closed">More on this</span>
+                  <span class="disclosure-open">Close</span>
+                </summary>
+                <div class="disclosure-body pt-4">
+                  <p class="text-gray-700 leading-relaxed">{pub.body}</p>
+                  {pub.link && (
+                    <a href={pub.link.href} target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-sm font-medium border-b border-black hover:text-gray-600 hover:border-gray-600 transition-colors">
+                      {pub.link.label}
+                    </a>
+                  )}
+                </div>
+              </details>
+            </div>
+          ))}
         </div>
       </div>
     </section>
