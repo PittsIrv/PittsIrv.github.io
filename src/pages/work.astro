@@ -30,9 +30,9 @@ const experience = [
     org: 'TikTok',
     dates: 'June – August 2026',
     bullets: [
-      'Led the design and implementation of an enterprise data-discovery capability that lets internal AI agents locate usable data sources directly from natural-language analytical questions, instead of requiring users to already know table names.',
-      'Packaged it as a self-contained, agent-callable Python service with an evidence-first interface — every recommendation returns a stable data-source identifier plus the supporting evidence behind it — and integrated it into existing company data agents.',
-      'Main contributor on a livestreaming operations revenue-diagnosis workflow: detect revenue downside, diagnose which metrics moved abnormally, interpret the business cause, and recommend corrective action. Built the data extraction, cleaning, metric aggregation, feature engineering, and scheduled pipeline behind it.',
+      'Designed and, with my mentor, implemented an enterprise data-discovery capability that helps internal AI agents locate usable data sources from natural-language questions, rather than requiring users to already know table names.',
+      'Packaged it as a self-contained, agent-callable Python service that returns a stable data-source identifier along with the evidence behind each suggestion, and integrated it into the existing company data agents.',
+      'Worked on a livestreaming operations revenue-diagnosis workflow: detect revenue downside, diagnose which metrics moved abnormally, interpret the business cause, and suggest corrective action. Handled the data extraction, cleaning, metric aggregation, feature engineering, and scheduled pipeline behind it.',
       'Both systems were validated with operations and business stakeholders and adopted into their working process.',
     ],
     tags: ['Python', 'SQL', 'Graph retrieval', 'Query rewriting', 'Ranking', 'Data pipelines', 'Feature engineering', 'LLM agents'],
@@ -42,10 +42,10 @@ const experience = [
     org: 'Chimps Lab, CMU',
     dates: 'May 2024 – Present',
     bullets: [
-      'PersonaTeaming (CMU–Apple collaboration, UIST 2026), second author: proposed persona as an additional axis for automated red-teaming and designed the dynamic persona-generation mechanism, which generates a candidate persona per seed prompt and keeps whichever persona better fits the attack.',
-      'Implemented the end-to-end PersonaTeaming workflow, built the experiment orchestration, and ran the full technical evaluation across six target models, measuring both attack success and corpus-level diversity. Wrote the technical results section of the paper.',
-      'Built the PersonaTeaming Playground interface with persistent database storage and deployed it on AWS; the interface was used as the platform for an industry practitioner study run by the Apple side.',
-      'WeAudit: built tooling to analyze demographic distributions in AI-generated images for bias audits, parallelized large-scale image generation with batching for reliability, and containerized and deployed the system on AWS EC2.',
+      'PersonaTeaming (CMU–Apple collaboration, UIST 2026), second author: suggested persona as an additional axis for automated red-teaming and worked on the dynamic persona-generation mechanism, which generates a candidate persona per seed prompt and keeps whichever one better fits the attack.',
+      'Implemented the end-to-end workflow, set up the experiment orchestration, and ran the evaluation across six target models, measuring both attack success and corpus-level diversity. Wrote the technical results section of the paper.',
+      'Put together the PersonaTeaming Playground interface with persistent database storage and deployed it on AWS; it was used as the platform for an industry practitioner study run by the Apple side.',
+      'WeAudit: worked on tooling to analyze demographic distributions in AI-generated images for bias audits, parallelized large-scale image generation with batching for reliability, and containerized and deployed the system on AWS EC2.',
     ],
     tags: ['Python', 'React', 'AWS', 'LLM APIs', 'Evaluation pipelines', 'LLM-as-judge', 'Adversarial prompting', 'AI safety'],
   },
@@ -55,8 +55,8 @@ const experience = [
     dates: 'May 2026 – Present',
     bullets: [
       'NLP-side lead on an NSF-funded interdisciplinary research program studying Mutual Theory of Mind — how the mental-state attributions users form toward socially responsive AI emerge and evolve over sustained interaction.',
-      'Leading an ongoing first-author simulation study, originating from my own research idea, on how user characteristics, assistant social behavior, and conversational situation shape mind attribution across a multi-turn conversation. Manuscript in preparation.',
-      'Designed the simulation pipeline and the turn-by-turn measurement approach for tracking attribution trajectories; work is intended both as a paper and as a computational tool supporting the broader research program.',
+      'Working on an ongoing first-author simulation study, which grew out of an idea I wanted to pursue, on how user characteristics, assistant social behavior, and conversational situation shape mind attribution across a multi-turn conversation. Manuscript in preparation.',
+      'Worked out the simulation pipeline and the turn-by-turn measurement approach for tracking attribution trajectories; it is intended both as a paper and as a computational tool supporting the broader research program.',
     ],
     tags: ['LLM simulation', 'Multi-turn evaluation', 'Measurement design', 'Research methodology', 'Python'],
   },
@@ -76,8 +76,8 @@ const experience = [
     org: 'Enterview (Startup), Pittsburgh, PA',
     dates: 'June 2023 – November 2024',
     bullets: [
-      'Led a 4-member team building an AI-driven interview-preparation platform with real-time mock interviews.',
-      'Designed a multi-agent mock interview session and used AI-assisted development to accelerate feature delivery.',
+      'Worked with a team of four on an AI-driven interview-preparation platform with real-time mock interviews.',
+      'Put together a multi-agent mock interview session and used AI-assisted development to speed up feature delivery.',
       'Optimized WebSocket handling for lower latency and smoother feedback.',
     ],
     tags: ['TypeScript', 'WebSocket', 'Multi-agent systems', 'Full stack'],
@@ -133,9 +133,9 @@ const skills = [
       <div class="max-w-5xl mx-auto">
         <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5 opacity-0 animate-fade-in-up">Work</h1>
         <p class="text-lg text-gray-700 max-w-2xl leading-relaxed opacity-0 animate-fade-in-up delay-100 font-serif">
-          I build AI systems and the infrastructure around them — retrieval, evaluation, data pipelines,
-          and the services that put models in front of real users. Currently a fifth-year master's student
-          at Carnegie Mellon's Language Technologies Institute.
+          I like working on AI systems and the infrastructure around them — retrieval, evaluation,
+          data pipelines, and the parts that connect models to real users. Currently a fifth-year
+          master's student at Carnegie Mellon's Language Technologies Institute.
         </p>
         <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm opacity-0 animate-fade-in-up delay-200">
           <a href="/resume.pdf" class="font-medium border-b border-black hover:text-gray-600 hover:border-gray-600 transition-colors">Resume (PDF)</a>
@@ -216,8 +216,8 @@ const skills = [
             <span class="text-sm text-gray-500 shrink-0 md:ml-6">June 2025 – Present</span>
           </div>
           <p class="text-gray-700 leading-relaxed mb-3">
-            An online multiplayer Texas Hold'em platform built to play the poker variants I invent —
-            the rules for those games are <a href="/personal#poker" class="border-b border-gray-400 hover:border-black transition-colors">on my personal page</a>.
+            An online multiplayer Texas Hold'em platform for the poker variants we play at home games —
+            the rules for those are <a href="/personal#poker" class="border-b border-gray-400 hover:border-black transition-colors">on my personal page</a>.
           </p>
           <ul class="space-y-2 text-gray-700 leading-relaxed">
             <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Custom game variants with real-time multiplayer gameplay.</span></li>
@@ -246,7 +246,7 @@ const skills = [
             <p class="text-gray-700 leading-relaxed">
               Adds a human-perspective axis to automated red-teaming by conditioning adversarial prompt
               mutation on personas, including a dynamic method that generates and scores candidate personas
-              rather than relying on a fixed set. I proposed the persona axis, designed the generation
+              rather than relying on a fixed set. I suggested the persona axis, worked on the generation
               mechanism, implemented the workflow, and ran the evaluation across six target models.
             </p>
           </div>
@@ -257,7 +257,7 @@ const skills = [
             </h3>
             <p class="text-sm text-gray-500 mb-3">10-423/623 Generative AI, Spring 2026 · with Cassandra Shi &amp; Harry Huang</p>
             <p class="text-gray-700 leading-relaxed mb-4">
-              We fine-tune Llama 3 8B to jointly produce a poker action and a natural-language explanation,
+              A course project fine-tuning Llama 3 8B to jointly produce a poker action and a natural-language explanation,
               using solver-backed labels from PokerBench as ground truth. Since no human explanations exist
               for these scenarios, we prompt a larger model as a teacher, score its candidates with a
               custom rule-based verifier, and validate that verifier against 200 blind human judgments.
@@ -276,7 +276,7 @@ const skills = [
             <p class="text-sm text-gray-500 mb-3">First author · Manuscript in preparation</p>
             <p class="text-gray-700 leading-relaxed">
               A simulation study of how user characteristics, assistant social behavior, and conversational
-              situation shape mind attribution turn by turn. Ongoing work at Sapling Lab.
+              situation shape mind attribution turn by turn. Still ongoing at Sapling Lab.
             </p>
           </div>
         </div>
