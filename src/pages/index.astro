@@ -12,25 +12,25 @@ const entries = [
   { number: '01', topic: 'systems', kind: 'Engineering · TikTok', title: 'Finding the right data is part of the problem.', text: 'An internal AI agent should be able to find a usable data source from a question. The user should not have to know the table name first.', detail: 'During my data engineering internship, I worked on data discovery for internal AI agents and a revenue-diagnosis workflow for livestream operations. Both were validated with operations and business stakeholders and adopted into their working process.', href: '/work#tiktok', link: 'What I worked on' },
   { number: '02', topic: 'systems', kind: 'Research · CMU–Apple', title: 'Who is asking changes the attack.', text: 'PersonaTeaming adds personas to automated red-teaming. I worked on how those personas are generated and evaluated the workflow across six target models.', detail: 'I am the second author on this UIST 2026 paper. I suggested persona as an additional axis, worked on the dynamic generation mechanism, implemented the workflow, and wrote the technical results section.', href: '/work#personateaming', link: 'Read about PersonaTeaming' },
   { number: '03', topic: 'poker systems', kind: 'Course project · Poker + AI', title: 'A good action. A convincing explanation. Are both right?', text: 'I worked on fine-tuning Llama 3 8B to produce a solver-backed poker action and explain it. Improving the explanation came with a small cost to action accuracy.', detail: 'With Cassandra Shi and Harry Huang, I used solver-backed labels, teacher-generated explanations, and a rule-based verifier checked against 200 blind human judgments. The tradeoff between action accuracy and explanation quality is part of the result.', href: '/work#poker-paper', link: 'The project and paper' },
-  { number: '04', topic: 'poker', kind: 'Side project · Home games', title: 'We wanted to play our own rules.', text: "I like inventing poker variants for our home games. Dealer’s Choice became a small multiplayer platform so friends and I could actually play them.", detail: 'The platform supports custom variants and real-time play. I worked on the WebSocket connections, automated testing and deployment, and the AWS deployment. The rules themselves are on this site too.', href: '/personal#poker', link: `Explore ${games.length} poker variants` },
+  { number: '04', topic: 'poker', kind: 'Side project · Home games', title: 'We wanted to play our own rules.', text: "I like playing poker with friends and trying different rules. Dealer’s Choice became a small multiplayer platform for the variants we play at home games.", detail: 'The platform supports custom variants and real-time play. I worked on the WebSocket connections, automated testing and deployment, and the AWS deployment. The rules themselves are on this site too.', href: '/personal#poker', link: `Explore ${games.length} poker variants` },
   { number: '05', topic: 'systems', kind: 'Ongoing research · Sapling Lab', title: 'When does someone start treating an AI as having a mind?', text: 'I am working on a simulation study of how these beliefs form and change over a long conversation.', detail: 'The study looks at user characteristics, assistant social behavior, and conversational situation. I lead the NLP side and work on the simulation pipeline and turn-by-turn measurement. The manuscript is in preparation.', href: '/work#sapling', link: 'The ongoing study' },
   { number: '06', topic: 'writing', kind: 'Poems & prose', title: 'Sometimes I write to find out what I think.', text: 'Poems, an essay, and fragments. A different way of working through something that is not quite clear yet.', detail: 'These are the pieces already collected on the personal side of this site. Some are in Chinese; some are in English.', href: '/personal#writing', link: `Read ${poems.length} poems and ${articles.length} essay` },
 ];
 const firstQuote = quotes[0];
 ---
-<Layout title="Mingxi Yan — Work, questions & other things" description="I build AI systems, study how they behave, invent poker variants, and write. Work and personal notes by Mingxi Yan at Carnegie Mellon.">
+<Layout title="Mingxi Yan — Work, questions & other things" description="AI systems, games and poker, philosophy and logic, and writing about love and growth. Work and personal notes by Mingxi Yan at Carnegie Mellon.">
   <Navigation />
   <main id="main-content" class="notebook-home">
     <section class="home-intro page-shell">
       <div class="intro-copy">
         <p class="eyebrow">Mingxi Yan <span class="ink-dot" aria-hidden="true">•</span> Carnegie Mellon · LTI</p>
         <h1>I like understanding<br />what’s underneath.</h1>
-        <p class="intro-text">I build AI systems and the parts around them. I also invent poker variants and write. Usually, I want to know why something works the way it does.</p>
+        <p class="intro-text">I build AI systems and the parts around them. I also play poker and other games, and sometimes invent new variants. I like philosophy, especially logic, and I write about love and growth. Usually, I want to know why something works the way it does.</p>
         <div class="intro-links"><a class="text-link" href="/work">My work <span aria-hidden="true">↗</span></a><a href="/resume.pdf">Resume (PDF) ↗</a><a href="mailto:mingxiy66@gmail.com">Say hello ↗</a></div>
       </div>
       <aside class="margin-note">
         <span class="eyebrow">A place to start</span>
-        <p>I came to code after starting university. I still remember what it feels like not to understand it.</p>
+        <p>I like turning an idea into something I can try. Building it helps me understand what works, what doesn’t, and what to change next.</p>
         <a class="text-link" href="/about">A little about me ↗</a>
         <span class="margin-caption">Fifth-year master’s student<br />Language Technologies Institute</span>
       </aside>
@@ -62,7 +62,7 @@ const firstQuote = quotes[0];
       <div class="dealer-preview">
         <div class="section-heading"><p class="eyebrow">From our home games</p><span class="suit-mark" aria-hidden="true">♠</span></div>
         <h2>Dealer’s choice.</h2>
-        <p class="side-intro">{games.filter(g => g.data.category === 'created').length} variants I came up with. {games.filter(g => g.data.category === 'learned').length} I picked up from friends.</p>
+        <p class="side-intro">{games.length} variants we play at home games. Some are mine; some I picked up from friends.</p>
         <div id="game-preview" aria-live="polite" aria-atomic="true">
           {games.map((game, i) => <div class="game-preview-item" hidden={i !== 0}><span class="eyebrow">{game.data.category === 'created' ? 'One of mine' : 'Picked up from friends'}</span><h3>{game.data.name}</h3><p>{game.data.description}</p><a class="text-link" href={`/personal#game-${game.slug}`}>Read the rules ↗</a></div>)}
         </div>
