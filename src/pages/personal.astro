@@ -78,15 +78,15 @@ const now = [
 const interests = [
   {
     title: 'Guitar & songwriting',
-    text: 'Crafting simple songs on the guitar, still learning but finding beauty in the imperfection. There is something raw about translating feeling into melody, about watching chords become stories.',
+    text: 'I play guitar and try writing simple songs. I am still learning.',
   },
   {
     title: 'Photography',
-    text: 'Learning to see through the lens — people in their unguarded moments, landscapes that breathe, composition that creates tension. Photography is about finding what is already there, waiting to be noticed at the right angle.',
+    text: 'I like photographing people and landscapes. I am learning to pay more attention to composition and timing.',
   },
   {
     title: 'Storytelling',
-    text: 'How to hook a reader from the first line, when to land the punchline, how to shape the arc. Stories seem to be engineered as much as they are written, and I am still learning both sides.',
+    text: 'I want to understand what makes a story work: the first line, the timing of a joke, and how the pieces fit together.',
   },
 ];
 
@@ -111,14 +111,14 @@ const sports = [
 >
   <Navigation />
 
-  <main class="flex-grow">
+  <main id="main-content" class="flex-grow">
     <!-- Header -->
     <section class="pt-16 pb-10 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
       <div class="max-w-5xl mx-auto">
         <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5 opacity-0 animate-fade-in-up">Personal</h1>
         <p class="text-lg text-gray-700 max-w-2xl leading-relaxed font-serif opacity-0 animate-fade-in-up delay-100">
           Poker games I like to play, things I write, and whatever I happen to be doing at the moment.
-          None of this is work, which is rather the point.
+          Some of these became projects. Some are just things I like.
         </p>
         <nav class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-500 opacity-0 animate-fade-in-up delay-200">
           <a href="#now" class="hover:text-black transition-colors">Right now</a>
@@ -154,7 +154,7 @@ const sports = [
         <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-6">Dealer's Choice</h2>
         <p class="text-gray-700 max-w-2xl leading-relaxed mb-3">
           Poker variants we play at home games — {myGames.length} I came up with, {learnedGames.length} I picked up from friends.
-          All are <strong>pot limit</strong> and <strong>bomb pots</strong> unless noted otherwise, and all assume you know standard Texas Hold'em.
+          Open a game for its rules. All are <strong>pot limit</strong> and <strong>bomb pots</strong> unless noted otherwise, and all assume you know standard Texas Hold'em.
         </p>
         <p class="text-sm text-gray-500 mb-10">
           These are the games <a href="/work#projects" class="border-b border-gray-400 hover:border-black transition-colors">the platform I worked on</a> is for.
@@ -163,28 +163,28 @@ const sports = [
         <h3 class="text-xl font-semibold mb-6">Variants I came up with</h3>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
           {myGames.map(game => (
-            <div class="border-t border-gray-300 pt-5">
-              <h4 class="text-lg font-semibold mb-2">{game.data.name}</h4>
+            <details id={`game-${game.slug}`} class="poker-rule">
+              <summary><h4 class="text-lg font-semibold">{game.data.name}</h4><span aria-hidden="true">+</span></summary>
               <p class="text-sm italic text-gray-500 mb-3">"{game.data.quote}"</p>
               <p class="text-gray-600 mb-4 leading-relaxed">{game.data.description}</p>
-              <ol class="space-y-1.5 text-sm text-gray-600 list-decimal list-outside pl-5">
+              <ol class="space-y-2 text-base text-gray-600 list-decimal list-outside pl-5">
                 {game.data.rules.map(rule => <li class="pl-1">{rule}</li>)}
               </ol>
-            </div>
+            </details>
           ))}
         </div>
 
         <h3 class="text-xl font-semibold mb-6">Games I picked up</h3>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {learnedGames.map(game => (
-            <div class="border-t border-gray-300 pt-5">
-              <h4 class="text-lg font-semibold mb-2">{game.data.name}</h4>
+            <details id={`game-${game.slug}`} class="poker-rule">
+              <summary><h4 class="text-lg font-semibold">{game.data.name}</h4><span aria-hidden="true">+</span></summary>
               <p class="text-sm italic text-gray-500 mb-3">"{game.data.quote}"</p>
               <p class="text-gray-600 mb-4 leading-relaxed">{game.data.description}</p>
-              <ol class="space-y-1.5 text-sm text-gray-600 list-decimal list-outside pl-5">
+              <ol class="space-y-2 text-base text-gray-600 list-decimal list-outside pl-5">
                 {game.data.rules.map(rule => <li class="pl-1">{rule}</li>)}
               </ol>
-            </div>
+            </details>
           ))}
         </div>
 
@@ -346,3 +346,13 @@ const sports = [
 
   <Footer />
 </Layout>
+
+<script>
+  function openLinkedGame() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const game = document.getElementById(id);
+    if (game instanceof HTMLDetailsElement) game.open = true;
+  }
+  openLinkedGame();
+  window.addEventListener('hashchange', openLinkedGame);
+</script>

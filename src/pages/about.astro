@@ -2,168 +2,36 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-
-const pillars = [
-  {
-    title: 'Computer science',
-    lead: 'I came to code late — only after starting university — which means I still remember what it feels like not to understand it.',
-    text: "That keeps me grounded. When something breaks, the machine doesn't lie; it tells you where your thinking went wrong, and I find that honesty a relief. What I like is not clever code so much as systems where each piece clicks into place and complexity settles into something clearer.",
-  },
-  {
-    title: 'Poker',
-    lead: 'I enjoy playing poker — mostly for the reasoning underneath the ranges.',
-    text: "I like reading GTO charts, not to memorize them but to follow the reasoning underneath the ranges — which is also what makes it possible to depart from them, since your opponent is not playing perfectly either. Every fold is a bit of data, every bet a question, and every river card a reminder that you get to choose the decision and not the outcome.",
-  },
-  {
-    title: 'Writing',
-    lead: 'Writing is thinking made visible — the slow work of turning a vague intuition into something clear enough to be useful.',
-    text: "Wittgenstein thought the limits of language were the limits of our world, and I like sitting with that: trying to find sentences that widen understanding rather than narrow it. Mostly I write to find out what I think, and now and then a sentence comes out clearer than the thought that started it.",
-  },
-  {
-    title: 'Basketball',
-    lead: 'I like to think there is a little Kyrie in my step, though I would not push the comparison.',
-    text: "What draws me to the game is the artistry: passes threaded through tight windows, cuts and shots precise enough to feel like geometry. The wordless part is my favourite — eyes meeting across the court, a small gesture that shifts the whole play. And there is still nothing quite like a shot dropping late.",
-  },
-  {
-    title: 'Gaming',
-    lead: 'Whatever the genre, I tend to go about it the same way: understand the essence first.',
-    text: "Before grinding for wins I want to know why the system works the way it does, which usually turns out to be the shortcut anyway. The wins come quietly — watching a pattern emerge, complexity turning into something simple. No rage quits, no tilting; just a plan unfolding roughly as expected, or a quick pivot when it doesn't.",
-  },
+const interests = [
+  { title: 'Poker', text: 'I like reading GTO charts to understand the reasoning underneath the ranges. That also helps me think about when to depart from them, because the person across the table is not playing perfectly either.', href: '/personal#poker', link: 'The variants we play' },
+  { title: 'Writing', text: 'Mostly I write to find out what I think. Sometimes a sentence comes out clearer than the thought that started it. I keep poems and prose here, along with lines from books I want to remember.', href: '/personal#writing', link: 'Poems and prose' },
+  { title: 'Basketball', text: 'I like to think there is a little Kyrie in my step, though I would not push the comparison. My favourite part is the wordless coordination: a look across the court or a small gesture that changes the play.' },
+  { title: 'Games', text: 'Before grinding for wins, I want to understand why the system works the way it does. Usually that turns out to help. Then I can make a plan and change it when it stops working.' },
 ];
 ---
-
-<Layout title="About - Mingxi Yan" description="About Mingxi Yan — how I came to code late, and what I've been chasing since.">
+<Layout title="About — Mingxi Yan" description="I started coding after starting university. A little about how I learn, what I build, and what I do outside work.">
   <Navigation />
-
-  <main class="flex-grow">
-    <!-- Header -->
-    <section class="pt-16 pb-10 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
-      <div class="max-w-5xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5 opacity-0 animate-fade-in-up">About</h1>
-        <p class="text-lg text-gray-700 max-w-2xl leading-relaxed font-serif opacity-0 animate-fade-in-up delay-100">
-          I came to code late, and I have been catching up ever since.
-        </p>
+  <main id="main-content">
+    <section class="page-shell about-opening">
+      <p class="eyebrow">A little about me</p>
+      <h1>I came to code late.</h1>
+      <div class="about-story">
+        <p>I wrote my first line of code after starting university. Everyone around me seemed to have been programming since they were twelve. For a while, that felt like a gap I would never close.</p>
+        <p>But learning it late means I still remember where it was confusing. That helps when I teach, and when I build something that someone else has to understand. The work I am happiest with is the kind I could explain to the version of me who did not get it yet.</p>
+        <p>I am now a fifth-year master’s student at Carnegie Mellon’s Language Technologies Institute. I work on AI systems, from the data and tools around a model to how we evaluate its behavior.</p>
+        <a class="text-link" href="/work">Experience, research, and projects ↗</a>
       </div>
     </section>
-
-    <!-- Origin -->
-    <section class="py-14 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto">
-        <div class="space-y-5 text-gray-700 leading-[1.75] font-serif text-[1.0625rem]">
-          <p>
-            I wrote my first line of code after starting university. Everyone around me seemed to have
-            been programming since they were twelve, and for a while that felt like a deficit I would
-            never close.
-          </p>
-          <p>
-            It turned out to help more than I expected. Because I learned it late, I remember where it
-            was confusing, and I can still find my way back to not understanding something — which is
-            most of what teaching is, and some of what good engineering is too. The work I am happiest
-            with is the kind I could explain to the version of me who did not get it yet.
-          </p>
-          <p>
-            The rest of what I do has a similar shape. I enjoy poker, and I like coming up with variants
-            for our home games, which is how the platform started. I read solver output and want to know
-            why it says what it says. I write to find out what I actually think. In each case the part I
-            enjoy is not the answer so much as getting the thing to explain itself.
-          </p>
-        </div>
-      </div>
+    <section class="page-shell about-interests">
+      <div class="section-heading"><div><p class="eyebrow">Outside the work</p><h2>What else I spend time on</h2></div></div>
+      <div class="about-grid">{interests.map(item => <article><h3>{item.title}</h3><p>{item.text}</p>{item.href && <a class="text-link" href={item.href}>{item.link} ↗</a>}</article>)}</div>
     </section>
-
-    <!-- Pillars -->
-    <section class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">What I spend time on</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-          {pillars.map(pillar => (
-            <div class="border-t border-gray-300 pt-5">
-              <h3 class="text-lg font-semibold mb-2">{pillar.title}</h3>
-              <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">{pillar.lead}</p>
-              <details class="disclosure mt-3">
-                <summary>
-                  <span class="disclosure-closed">More</span>
-                  <span class="disclosure-open">Close</span>
-                </summary>
-                <div class="disclosure-body pt-3">
-                  <p class="text-gray-600 leading-relaxed">{pillar.text}</p>
-                </div>
-              </details>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- What I'm looking for -->
-    <section class="py-14 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-7">What I'm looking for</h2>
-        <div class="space-y-5 text-gray-700 leading-[1.75]">
-          <p>
-            Work where the engineering is careful and the problem feels worth solving — ideally around
-            the point where AI systems meet actual people, since that is where the harder questions seem
-            to be.
-          </p>
-          <p>
-            I would also just like to talk. If you think about technology, game theory, or philosophy,
-            I would enjoy the conversation. Most of my better ideas arrived through someone whose
-            background looked nothing like mine.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- A few more things -->
-    <section class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200">
-      <div class="max-w-2xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-7">A few more things</h2>
-        <ul class="space-y-4 text-gray-700 leading-relaxed">
-          <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>I suspect most complex problems can be worked out with a whiteboard and enough time.</span></li>
-          <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Slow down. Even when the world rushes forward, the discoveries that matter happen in the quiet spaces where we let ourselves pause.</span></li>
-          <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Some things matter more to me than profit: the elegance of a solution, the depth of understanding, the effect on people's lives. This is not true when I am playing poker.</span></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Closing philosophy -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto">
-        <div class="space-y-5 text-gray-700 leading-[1.75] font-serif text-[1.0625rem]">
-          <p class="text-lg italic">"Be curious. Stay humble. Build things that matter."</p>
-          <p>
-            Freedom is not the absence of constraints but the willingness to be shaped by what you
-            did not choose. To live fully is to hold the balance between the paths taken and the ones
-            left behind — not as a conqueror of the world, but as a participant in it.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-black text-white">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-2xl font-semibold mb-8 text-center">Let's talk</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div>
-            <h3 class="text-sm font-semibold mb-2 text-gray-400 uppercase tracking-wide">Professional</h3>
-            <a href="https://www.linkedin.com/in/mingxi-yan-0b9581272" target="_blank" rel="noopener noreferrer" class="text-gray-200 hover:text-white transition-colors">LinkedIn</a>
-          </div>
-          <div>
-            <h3 class="text-sm font-semibold mb-2 text-gray-400 uppercase tracking-wide">Code</h3>
-            <a href="https://github.com/PittsIrv" target="_blank" rel="noopener noreferrer" class="text-gray-200 hover:text-white transition-colors">GitHub</a>
-          </div>
-          <div>
-            <h3 class="text-sm font-semibold mb-2 text-gray-400 uppercase tracking-wide">Direct</h3>
-            <a href="mailto:mingxiy66@gmail.com" class="text-gray-200 hover:text-white transition-colors">Email</a>
-          </div>
-        </div>
-        <p class="mt-10 text-center text-gray-400 text-sm">
-          Whether you want to discuss a project, share ideas, or just say hi — I am always happy to connect.
-        </p>
-      </div>
+    <section class="page-shell about-closing">
+      <p class="eyebrow">What I’m looking for</p><h2>Careful engineering.<br />A problem worth solving.</h2>
+      <p>I like working where AI systems meet actual people. The question is what it takes for the whole system to work, including the parts around the model.</p>
+      <p>I am also happy to talk about technology, game theory, philosophy, or a poker hand you cannot stop thinking about.</p>
+      <a class="text-link" href="mailto:mingxiy66@gmail.com">Send me a note ↗</a>
     </section>
   </main>
-
   <Footer />
 </Layout>

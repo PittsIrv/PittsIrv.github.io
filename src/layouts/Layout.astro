@@ -8,7 +8,7 @@ interface Props {
 
 const { title, description = "Mingxi Yan - AI systems engineer and CMU Language Technologies master's student. Previously Data Engineer Intern at TikTok." } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL('/social-image.png', Astro.site);
+
 ---
 
 <!doctype html>
@@ -33,15 +33,13 @@ const socialImageURL = new URL('/social-image.png', Astro.site);
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={socialImageURL} />
     <meta property="og:site_name" content="Mingxi Yan" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:card" content="summary" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={socialImageURL} />
 
     <!-- Structured Data for Search Engines -->
     <script type="application/ld+json">
@@ -61,19 +59,6 @@ const socialImageURL = new URL('/social-image.png', Astro.site);
     <div class="min-h-screen flex flex-col">
       <slot />
     </div>
-    <script>
-      // Smooth scroll behavior
-      document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-              target.scrollIntoView({ behavior: 'smooth' });
-            }
-          });
-        });
-      });
-    </script>
+
   </body>
 </html>

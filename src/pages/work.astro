@@ -28,6 +28,7 @@ const experience = [
   {
     role: 'Data Engineer Intern',
     org: 'TikTok',
+    id: 'tiktok',
     dates: 'June – August 2026',
     lead: 'Data tooling for internal AI agents — finding the right data source from a plain-language question, and diagnosing why livestream revenue moved.',
     bullets: [
@@ -54,6 +55,7 @@ const experience = [
   {
     role: 'Research Assistant — NLP-side lead',
     org: 'Sapling Lab, CMU',
+    id: 'sapling',
     dates: 'May 2026 – Present',
     lead: 'How people form and revise beliefs about an AI’s mind over a long conversation.',
     bullets: [
@@ -122,6 +124,7 @@ const experience = [
 const publications = [
   {
     title: 'PersonaTeaming: Persona-Conditioned Automated Red Teaming',
+    id: 'personateaming',
     meta: 'UIST 2026 · CMU–Apple collaboration · Second author',
     lead: 'Conditioning automated red-teaming on personas, so the attacks reflect the range of people who actually use these systems.',
     body: `Adds a human-perspective axis to automated red-teaming by conditioning adversarial prompt mutation on personas, including a dynamic method that generates and scores candidate personas rather than relying on a fixed set. I suggested the persona axis, worked on the generation mechanism, implemented the workflow, and ran the evaluation across six target models.`,
@@ -129,6 +132,7 @@ const publications = [
   },
   {
     title: 'Solver-Guided Fine-Tuning for Accurate and Explainable Poker Decisions',
+    id: 'poker-paper',
     meta: '10-423/623 Generative AI, Spring 2026 · with Cassandra Shi & Harry Huang',
     lead: 'Fine-tuning an 8B model to explain its poker decisions, not just make them.',
     body: `A course project fine-tuning Llama 3 8B to jointly produce a poker action and a natural-language explanation, using solver-backed labels from PokerBench as ground truth. Since no human explanations exist for these scenarios, we prompt a larger model as a teacher, score its candidates with a custom rule-based verifier, and validate that verifier against 200 blind human judgments. Supervised fine-tuning closes most of the zero-shot gap (18.0% → 56.2% exact match), and preference optimization (DPO) sharpens explanation quality further at a small cost to action accuracy — an alignment tax we trace back to the action and explanation objectives sharing the same backbone parameters.`,
@@ -159,7 +163,7 @@ const skills = [
 >
   <Navigation />
 
-  <main class="flex-grow">
+  <main id="main-content" class="flex-grow">
     <!-- Header -->
     <section class="pt-16 pb-10 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
       <div class="max-w-5xl mx-auto">
@@ -221,7 +225,7 @@ const skills = [
         <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Experience</h2>
         <div class="space-y-10">
           {experience.map(job => (
-            <div class="border-t border-gray-300 pt-6">
+            <div id={job.id} class="border-t border-gray-300 pt-6">
               <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
                 <div>
                   <h3 class="text-xl font-semibold">{job.role}</h3>
@@ -295,7 +299,7 @@ const skills = [
         <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Publications & Writing</h2>
         <div class="space-y-10 max-w-3xl">
           {publications.map(pub => (
-            <div class="border-t border-gray-300 pt-6">
+            <div id={pub.id} class="border-t border-gray-300 pt-6">
               <h3 class="text-xl font-semibold mb-1">{pub.title}</h3>
               <p class="text-sm text-gray-500 mb-2">{pub.meta}</p>
               <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">{pub.lead}</p>

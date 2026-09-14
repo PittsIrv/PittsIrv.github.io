@@ -4,118 +4,117 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
-const allQuotes = await getCollection('quotes');
-const quote = allQuotes.length
-  ? allQuotes[Math.floor(Math.random() * allQuotes.length)].data
-  : null;
-
-const featured = [
-  {
-    href: '/work#experience',
-    title: 'TikTok — Data Engineer Intern',
-    blurb:
-      'Worked on a data-discovery capability that helps internal AI agents find usable data sources from plain-language questions, and on a revenue-diagnosis workflow for livestream operations.',
-  },
-  {
-    href: '/work#publications',
-    title: 'PersonaTeaming — CMU–Apple, UIST 2026',
-    blurb:
-      'Second author. Suggested persona as an additional axis for automated red-teaming, worked on the persona-generation mechanism, and ran the evaluation across six target models.',
-  },
-  {
-    href: '/work#publications',
-    title: 'Getting a model to explain poker',
-    blurb:
-      'A course project fine-tuning Llama 3 8B to give both a solver-backed action and an explanation for it, with a rule-based verifier checked against 200 blind human judgments.',
-  },
+const games = (await getCollection('poker-games')).sort((a, b) => a.data.name.localeCompare(b.data.name));
+const poems = (await getCollection('poems')).filter(p => !p.data.draft);
+const articles = (await getCollection('articles')).filter(p => !p.data.draft);
+const quotes = (await getCollection('quotes')).sort((a, b) => a.id.localeCompare(b.id));
+const entries = [
+  { number: '01', topic: 'systems', kind: 'Engineering · TikTok', title: 'Finding the right data is part of the problem.', text: 'An internal AI agent should be able to find a usable data source from a question. The user should not have to know the table name first.', detail: 'During my data engineering internship, I worked on data discovery for internal AI agents and a revenue-diagnosis workflow for livestream operations. Both were validated with operations and business stakeholders and adopted into their working process.', href: '/work#tiktok', link: 'What I worked on' },
+  { number: '02', topic: 'systems', kind: 'Research · CMU–Apple', title: 'Who is asking changes the attack.', text: 'PersonaTeaming adds personas to automated red-teaming. I worked on how those personas are generated and evaluated the workflow across six target models.', detail: 'I am the second author on this UIST 2026 paper. I suggested persona as an additional axis, worked on the dynamic generation mechanism, implemented the workflow, and wrote the technical results section.', href: '/work#personateaming', link: 'Read about PersonaTeaming' },
+  { number: '03', topic: 'poker systems', kind: 'Course project · Poker + AI', title: 'A good action. A convincing explanation. Are both right?', text: 'I worked on fine-tuning Llama 3 8B to produce a solver-backed poker action and explain it. Improving the explanation came with a small cost to action accuracy.', detail: 'With Cassandra Shi and Harry Huang, I used solver-backed labels, teacher-generated explanations, and a rule-based verifier checked against 200 blind human judgments. The tradeoff between action accuracy and explanation quality is part of the result.', href: '/work#poker-paper', link: 'The project and paper' },
+  { number: '04', topic: 'poker', kind: 'Side project · Home games', title: 'We wanted to play our own rules.', text: "I like inventing poker variants for our home games. Dealer’s Choice became a small multiplayer platform so friends and I could actually play them.", detail: 'The platform supports custom variants and real-time play. I worked on the WebSocket connections, automated testing and deployment, and the AWS deployment. The rules themselves are on this site too.', href: '/personal#poker', link: `Explore ${games.length} poker variants` },
+  { number: '05', topic: 'systems', kind: 'Ongoing research · Sapling Lab', title: 'When does someone start treating an AI as having a mind?', text: 'I am working on a simulation study of how these beliefs form and change over a long conversation.', detail: 'The study looks at user characteristics, assistant social behavior, and conversational situation. I lead the NLP side and work on the simulation pipeline and turn-by-turn measurement. The manuscript is in preparation.', href: '/work#sapling', link: 'The ongoing study' },
+  { number: '06', topic: 'writing', kind: 'Poems & prose', title: 'Sometimes I write to find out what I think.', text: 'Poems, an essay, and fragments. A different way of working through something that is not quite clear yet.', detail: 'These are the pieces already collected on the personal side of this site. Some are in Chinese; some are in English.', href: '/personal#writing', link: `Read ${poems.length} poems and ${articles.length} essay` },
 ];
+const firstQuote = quotes[0];
 ---
-
-<Layout
-  title="Mingxi Yan"
-  description="Mingxi Yan — AI systems engineer and CMU Language Technologies master's student. Experience at TikTok, CMU Chimps Lab (CMU–Apple), and CMU Sapling Lab."
->
+<Layout title="Mingxi Yan — Work, questions & other things" description="I build AI systems, study how they behave, invent poker variants, and write. Work and personal notes by Mingxi Yan at Carnegie Mellon.">
   <Navigation />
+  <main id="main-content" class="notebook-home">
+    <section class="home-intro page-shell">
+      <div class="intro-copy">
+        <p class="eyebrow">Mingxi Yan <span class="ink-dot" aria-hidden="true">•</span> Carnegie Mellon · LTI</p>
+        <h1>I like understanding<br />what’s underneath.</h1>
+        <p class="intro-text">I build AI systems and the parts around them. I also invent poker variants and write. Usually, I want to know why something works the way it does.</p>
+        <div class="intro-links"><a class="text-link" href="/work">My work <span aria-hidden="true">↗</span></a><a href="/resume.pdf">Resume (PDF) ↗</a><a href="mailto:mingxiy66@gmail.com">Say hello ↗</a></div>
+      </div>
+      <aside class="margin-note">
+        <span class="eyebrow">A place to start</span>
+        <p>I came to code after starting university. I still remember what it feels like not to understand it.</p>
+        <a class="text-link" href="/about">A little about me ↗</a>
+        <span class="margin-caption">Fifth-year master’s student<br />Language Technologies Institute</span>
+      </aside>
+    </section>
 
-  <main class="flex-grow">
-    <!-- Positioning -->
-    <section class="pt-20 pb-14 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-5xl mx-auto">
-        <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-6 opacity-0 animate-fade-in-up">
-          Mingxi Yan
-        </h1>
-
-        <p class="text-xl md:text-2xl text-gray-800 max-w-2xl leading-snug font-serif opacity-0 animate-fade-in-up delay-100">
-          I like working on AI systems and the infrastructure around them — retrieval,
-          evaluation, data pipelines, and the parts that connect models to real users.
-        </p>
-
-        <p class="mt-6 text-gray-600 max-w-2xl leading-relaxed opacity-0 animate-fade-in-up delay-200">
-          Carnegie Mellon University — fifth-year master's at the Language Technologies Institute.
-        </p>
-
-        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm opacity-0 animate-fade-in-up delay-300">
-          <a href="/work" class="font-medium px-5 py-2.5 bg-black text-white hover:bg-gray-800 transition-colors">
-            See my work
-          </a>
-          <a href="/resume.pdf" class="font-medium border-b border-black hover:text-gray-600 hover:border-gray-600 transition-colors">Resume (PDF)</a>
-          <a href="https://github.com/PittsIrv" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-black transition-colors">GitHub</a>
-          <a href="https://www.linkedin.com/in/mingxi-yan-0b9581272" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-black transition-colors">LinkedIn</a>
-          <a href="mailto:mingxiy66@gmail.com" class="text-gray-600 hover:text-black transition-colors">Email</a>
+    <section id="explore" class="explore-section page-shell" aria-labelledby="explore-title">
+      <div class="section-heading"><div><p class="eyebrow">Follow a thread</p><h2 id="explore-title">Things I spend time on</h2></div><p class="section-aside">Open a note. See where it leads.</p></div>
+      <div class="explore-controls" hidden>
+        <div class="filter-group" role="group" aria-label="Explore by interest">
+          <button type="button" data-filter="all" aria-pressed="true">Everything <span>06</span></button>
+          <button type="button" data-filter="systems" aria-pressed="false">AI & systems</button>
+          <button type="button" data-filter="poker" aria-pressed="false">Poker</button>
+          <button type="button" data-filter="writing" aria-pressed="false">Writing</button>
         </div>
+        <button type="button" id="surprise-note" class="quiet-button">Pick one for me <span aria-hidden="true">↗</span></button>
+      </div>
+      <p id="filter-status" class="sr-only" role="status"></p>
+      <div class="note-grid">
+        {entries.map(entry => (
+          <details class="explore-note" data-topic={entry.topic} id={`note-${entry.number}`}>
+            <summary><span class="note-top"><span class="eyebrow">{entry.kind}</span><span class="note-number">{entry.number}</span></span><h3>{entry.title}</h3><p>{entry.text}</p><span class="note-prompt"><span class="when-closed">Open the note</span><span class="when-open">Close the note</span><span class="note-plus" aria-hidden="true">+</span></span></summary>
+            <div class="note-detail"><p>{entry.detail}</p><a class="text-link" href={entry.href}>{entry.link} ↗</a></div>
+          </details>
+        ))}
       </div>
     </section>
 
-    <!-- Featured work -->
-    <section class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Selected work</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {featured.map(item => (
-            <a href={item.href} class="group border-t border-gray-300 pt-5">
-              <h3 class="text-lg font-semibold mb-2 group-hover:text-gray-600 transition-colors">{item.title}</h3>
-              <p class="text-gray-600 text-sm leading-relaxed">{item.blurb}</p>
-              <span class="inline-block mt-3 text-sm text-gray-500 group-hover:text-black transition-colors">Read more →</span>
-            </a>
-          ))}
+    <section class="side-tracks page-shell" aria-label="A couple of detours">
+      <div class="dealer-preview">
+        <div class="section-heading"><p class="eyebrow">From our home games</p><span class="suit-mark" aria-hidden="true">♠</span></div>
+        <h2>Dealer’s choice.</h2>
+        <p class="side-intro">{games.filter(g => g.data.category === 'created').length} variants I came up with. {games.filter(g => g.data.category === 'learned').length} I picked up from friends.</p>
+        <div id="game-preview" aria-live="polite" aria-atomic="true">
+          {games.map((game, i) => <div class="game-preview-item" hidden={i !== 0}><span class="eyebrow">{game.data.category === 'created' ? 'One of mine' : 'Picked up from friends'}</span><h3>{game.data.name}</h3><p>{game.data.description}</p><a class="text-link" href={`/personal#game-${game.slug}`}>Read the rules ↗</a></div>)}
         </div>
+        <button class="outline-button" id="deal-game" type="button" hidden>Deal me another variant ↻</button>
+      </div>
+      <div class="writing-preview">
+        <p class="eyebrow">Away from the code</p><h2>A few things I’ve written.</h2>
+        <div class="writing-list">{poems.map(poem => <a href={`/poems/${poem.slug}`}><span><small>Poem · {poem.data.date}</small><strong>{poem.data.title}</strong></span><span aria-hidden="true">↗</span></a>)}{articles.map(article => <a href={`/articles/${article.slug}`}><span><small>Essay · {article.data.readTime} read</small><strong>{article.data.title}</strong></span><span aria-hidden="true">↗</span></a>)}</div>
+        <a class="text-link" href="/personal#now">What I’m doing now ↗</a>
       </div>
     </section>
-
-    <!-- Through-line -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto">
-        <div class="space-y-5 text-gray-700 leading-[1.75] font-serif text-[1.0625rem]">
-          <p>
-            I came to code late — only after starting university — which means I still remember what
-            it feels like not to understand it.
-          </p>
-          <p>
-            Outside of work I enjoy playing poker, and I like coming up with variants for our home
-            games. That turned into a small platform so friends and I could play them, and later into
-            a course project on getting a language model to explain poker decisions rather than just
-            make them. I suppose I just like understanding how a system works underneath.
-          </p>
-          <p>
-            I also write — poems, essays, fragments — mostly to find out what I think.
-            That, and the poker rules, are <a href="/personal" class="border-b border-gray-400 hover:border-black transition-colors">on the personal side</a> of this site.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quote -->
-    {quote && (
-      <section class="py-16 px-4 sm:px-6 lg:px-8 border-t border-gray-200">
-        <div class="max-w-2xl mx-auto text-center">
-          <blockquote class="text-xl md:text-2xl font-serif italic text-gray-700 leading-relaxed">
-            "{quote.text}"
-          </blockquote>
-          <p class="mt-5 text-sm text-gray-500">— {quote.author}</p>
-        </div>
-      </section>
-    )}
+    {firstQuote && <section class="quote-section page-shell" aria-label="Quotes I keep"><p class="eyebrow">A line I kept</p><div id="quote-display" aria-live="polite" aria-atomic="true">{quotes.map((quote, i) => <figure class="quote-item" hidden={i !== 0}><blockquote>“{quote.data.text}”</blockquote><figcaption>— {quote.data.author}</figcaption></figure>)}</div><button type="button" id="another-quote" class="quiet-button" hidden>Another line ↻</button></section>}
   </main>
-
   <Footer />
 </Layout>
+<script>
+  const notes = [...document.querySelectorAll<HTMLDetailsElement>('.explore-note')];
+  const filters = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const controls = document.querySelector<HTMLElement>('.explore-controls');
+  if (controls) controls.hidden = false;
+  filters.forEach(button => button.addEventListener('click', () => {
+    filters.forEach(filter => filter.setAttribute('aria-pressed', String(filter === button)));
+    notes.forEach(note => { note.hidden = button.dataset.filter !== 'all' && !note.dataset.topic?.split(' ').includes(button.dataset.filter!); });
+    const status = document.getElementById('filter-status');
+    if (status) status.textContent = `${notes.filter(note => !note.hidden).length} notes shown.`;
+  }));
+  let lastPick: HTMLDetailsElement | undefined;
+  document.getElementById('surprise-note')?.addEventListener('click', () => {
+    const visible = notes.filter(note => !note.hidden);
+    const pool = visible.length > 1 ? visible.filter(note => note !== lastPick) : visible;
+    const note = pool[Math.floor(Math.random() * pool.length)];
+    if (!note) return;
+    note.open = true;
+    lastPick = note;
+    note.querySelector('summary')?.focus({ preventScroll: true });
+    note.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' });
+  });
+  function cycle(buttonId: string, selector: string) {
+    const button = document.getElementById(buttonId);
+    const items = [...document.querySelectorAll<HTMLElement>(selector)];
+    let current = 0;
+    if (!button || items.length < 2) return;
+    button.hidden = false;
+    let remaining = items.map((_, i) => i).slice(1);
+    button.addEventListener('click', () => {
+      if (!remaining.length) remaining = items.map((_, i) => i).filter(i => i !== current);
+      const next = remaining.splice(Math.floor(Math.random() * remaining.length), 1)[0];
+      items[current].hidden = true;
+      items[next].hidden = false;
+      current = next;
+    });
+  }
+  cycle('deal-game', '.game-preview-item');
+  cycle('another-quote', '.quote-item');
+</script>
