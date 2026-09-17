@@ -157,6 +157,15 @@ a, button { touch-action: manipulation; }
 .margin-note { align-self: center; border-left: 1px solid var(--line); padding-left: 1.6rem; }
 .margin-note p { font-family: var(--font-serif); font-size: 1.1rem; line-height: 1.6; margin: 1rem 0; }
 .margin-caption { display: block; font-size: .75rem; line-height: 1.7; color: var(--muted); margin-top: 2.4rem; }
+.built-section { padding-bottom: 5rem; }
+.built-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+.built-tile { display: block; border: 1px solid var(--line); background: var(--paper); transition: border-color .2s, transform .2s; }
+.built-tile img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; border-bottom: 1px solid var(--line); }
+.built-caption { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; padding: .9rem 1.1rem; }
+.built-caption strong { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 500; letter-spacing: -.02em; }
+.built-caption span { font-size: .8125rem; color: var(--muted); }
+.built-tile:hover { border-color: var(--accent); transform: translateY(-2px); }
+.built-tile:hover .built-caption span { color: var(--accent); }
 .explore-section { padding-bottom: 5rem; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; }
 .section-heading h2, .side-tracks h2 { font-size: clamp(1.8rem, 3vw, 2.35rem); font-weight: 450; line-height: 1.2; letter-spacing: -.035em; margin-top: .5rem; }
@@ -221,7 +230,8 @@ body .text-black { color: var(--ink); }
 body .text-gray-500, body .text-gray-600 { color: var(--muted); }
 .poem-content { font-family: var(--font-serif); }
 @media (max-width: 900px) { .home-intro { gap: 2.5rem; grid-template-columns: minmax(0, 1fr) 210px; } .note-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .explore-note:nth-child(3) { border-top: 0; } .side-tracks { gap: 2rem; } }
-@media (max-width: 640px) { .nav-inner { min-height: 70px; gap: .8rem; flex-wrap: wrap; padding-block: .7rem; } .site-wordmark { font-size: 1.25rem; } .nav-links { gap: 1rem; } .home-intro { grid-template-columns: 1fr; padding-block: 3rem; gap: 2rem; } .home-intro h1 { font-size: clamp(2.5rem, 10.5vw, 3.4rem); } .margin-note { padding-left: 1rem; } .margin-note p { max-width: 32rem; } .margin-caption { margin-top: 1rem; } .section-heading { align-items: start; flex-direction: column; } .note-grid { grid-template-columns: 1fr; } .explore-note:nth-child(2) { border-top: 0; } .explore-note, .explore-note summary { min-height: 0; } .explore-note h3 { margin-top: 1rem; } .side-tracks { grid-template-columns: 1fr; gap: 2rem; } .dealer-preview { padding: 1.5rem; } .game-preview-item { min-height: 0; } .explore-section { padding-bottom: 3rem; } }
+@media (max-width: 640px) { .nav-inner { min-height: 70px; gap: .8rem; flex-wrap: wrap; padding-block: .7rem; } .site-wordmark { font-size: 1.25rem; } .nav-links { gap: 1rem; } .home-intro { grid-template-columns: 1fr; padding-block: 3rem; gap: 2rem; } .home-intro h1 { font-size: clamp(2.5rem, 10.5vw, 3.4rem); } .margin-note { padding-left: 1rem; } .margin-note p { max-width: 32rem; } .margin-caption { margin-top: 1rem; } .section-heading { align-items: start; flex-direction: column; } .built-grid { grid-template-columns: 1fr; } .note-grid { grid-template-columns: 1fr; } .explore-note:nth-child(2) { border-top: 0; } .explore-note, .explore-note summary { min-height: 0; } .explore-note h3 { margin-top: 1rem; } .side-tracks { grid-template-columns: 1fr; gap: 2rem; } .dealer-preview { padding: 1.5rem; } .game-preview-item { min-height: 0; } .explore-section { padding-bottom: 3rem; } }
+@media (prefers-reduced-motion: reduce) { .built-tile, .built-tile:hover { transition: none; transform: none; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; transition-duration: .01ms !important; } }
 .about-opening { padding-block: 4.5rem; }
 .about-opening h1 { font-size: clamp(3rem, 6vw, 4.8rem); line-height: 1.1; letter-spacing: -.05em; margin-block: 1rem 2rem; font-weight: 450; }
