@@ -266,6 +266,34 @@ const skills = [
         <div class="space-y-10">
           <div class="border-t border-gray-300 pt-6 max-w-3xl">
             <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
+              <h3 class="text-xl font-semibold">Golfie</h3>
+              <span class="text-sm text-gray-500 shrink-0 md:ml-6">January 2026 – Present</span>
+            </div>
+            <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">
+              A golf coaching platform. Upload a swing video, see the faults that matter, and get drills and a coach's review.
+            </p>
+            <p class="mt-2 text-sm"><a href="https://golfie-beta.vercel.app/" target="_blank" rel="noopener noreferrer" class="border-b border-gray-400 hover:border-black transition-colors">Try it: golfie-beta.vercel.app ↗</a></p>
+            <details class="disclosure mt-4">
+              <summary>
+                <span class="disclosure-closed">What I worked on</span>
+                <span class="disclosure-open">Close</span>
+              </summary>
+              <div class="disclosure-body pt-4">
+                <ul class="space-y-2 text-gray-700 leading-relaxed">
+                  <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>A three-phase analysis pipeline: pose estimation, rule-based fault detection, and an LLM-generated drill plan.</span></li>
+                  <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Pose tiers from RTMPose on CPU to 3D lifting on serverless GPUs (Modal), chosen per video.</span></li>
+                  <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>A coarse pass to find the swing, then a dense pass at native frame rate so the impact frame is actually sampled.</span></li>
+                  <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Swing metrics and fault checks keyed to five phases, from address to finish.</span></li>
+                  <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>A web app for students and coaches, with a FastAPI backend.</span></li>
+                </ul>
+                <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
+                  <span>Python</span><span>FastAPI</span><span>Next.js</span><span>TypeScript</span><span>RTMPose</span><span>ONNX Runtime</span><span>Modal</span><span>Docker</span>
+                </div>
+              </div>
+            </details>
+          </div>
+          <div class="border-t border-gray-300 pt-6 max-w-3xl">
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
               <h3 class="text-xl font-semibold">Dealer's Choice</h3>
               <span class="text-sm text-gray-500 shrink-0 md:ml-6">June 2025 – Present</span>
             </div>
