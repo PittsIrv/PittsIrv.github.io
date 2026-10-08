@@ -91,6 +91,7 @@ const experience = [
   },
   {
     role: 'Research Intern',
+    compact: true,
     org: 'Tsinghua University, THUNLP — OpenBMB',
     dates: 'May 2023 – August 2023',
     lead: 'Organizing heterogeneous REST APIs so a language model can pick the right one to call.',
@@ -102,6 +103,7 @@ const experience = [
   },
   {
     role: 'Teaching Assistant',
+    compact: true,
     org: 'CMU — Great Ideas in Theoretical Computer Science (15-251)',
     dates: 'February 2025 – Present',
     lead: 'Tutoring proofs and theory, one student at a time.',
@@ -113,6 +115,7 @@ const experience = [
   },
   {
     role: 'IS Consulting Project',
+    compact: true,
     org: 'ProtectPT (Non-Profit), Pittsburgh, PA',
     dates: 'Spring 2024',
     lead: 'A searchable database for a local anti-fracking non-profit.',
@@ -224,7 +227,7 @@ const skills = [
       <div class="max-w-5xl mx-auto">
         <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Experience</h2>
         <div class="space-y-10">
-          {experience.map(job => (
+          {experience.filter(job => !job.compact).map(job => (
             <div id={job.id} class="border-t border-gray-300 pt-6">
               <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
                 <div>
@@ -256,6 +259,17 @@ const skills = [
             </div>
           ))}
         </div>
+        <div class="border-t border-gray-300 pt-6 mt-10">
+          <h3 class="text-base font-semibold mb-4">Also</h3>
+          <ul class="space-y-3">
+            {experience.filter(job => job.compact).map(job => (
+              <li class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+                <span class="text-gray-700"><span class="font-medium text-black">{job.role}</span> · {job.org}. {job.lead}</span>
+                <span class="text-sm text-gray-500 shrink-0 md:ml-6">{job.dates}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -273,6 +287,14 @@ const skills = [
               A golf coaching platform. Upload a swing video, see the faults that matter, and get drills and a coach's review.
             </p>
             <p class="mt-2 text-sm"><a href="https://golfie-beta.vercel.app/" target="_blank" rel="noopener noreferrer" class="border-b border-gray-400 hover:border-black transition-colors">Try it: golfie-beta.vercel.app ↗</a></p>
+            <img src="/images/built/golfie.jpg" alt="Golfie start screen with a sample swing analysis" width="1200" height="750" loading="lazy" decoding="async" class="mt-5 w-full h-auto border border-gray-200" />
+            <p class="mt-5 text-gray-700 leading-relaxed">
+              The hard part is measuring a swing from a phone video. Fast pose models on CPU are cheap but miss detail, so each
+              video gets a tier, from RTMPose on CPU up to a GPU model on Modal. A first pass finds the swing; a second re-runs
+              only that window at the video's native frame rate, because at 15 fps the impact frame is often skipped. I also
+              tried reading 3D pose from the image with InstantHMR. It under-read the backswing turn and took about 77 seconds
+              a swing, so it is off in production for now. Getting turn angles right from a single camera is the next problem.
+            </p>
             <details class="disclosure mt-4">
               <summary>
                 <span class="disclosure-closed">What I worked on</span>
@@ -301,6 +323,7 @@ const skills = [
               An online multiplayer poker platform for the variants we play at home games.
             </p>
             <p class="mt-2 text-sm"><a href="https://dealer-s-choice.vercel.app/" target="_blank" rel="noopener noreferrer" class="border-b border-gray-400 hover:border-black transition-colors">Play it: dealer-s-choice.vercel.app ↗</a></p>
+            <img src="/images/built/dealers-choice.jpg" alt="Dealer's Choice start screen" width="1200" height="750" loading="lazy" decoding="async" class="mt-5 w-full h-auto border border-gray-200" />
             <details class="disclosure mt-4">
               <summary>
                 <span class="disclosure-closed">What I worked on</span>
