@@ -57,38 +57,13 @@ const quotes = shuffleArray(allQuotes)
 // Update this by hand every couple of months — the date is the honesty mechanism.
 const nowUpdated = 'October 2026';
 const now = [
-  {
-    label: 'Building',
-    text: "standin, an open-source agent that talks to people as me; Golfie, a swing-analysis coach; Daybook, a private Screen Time review; Brawl Lab, a Brawl Stars draft model; Table Forty Nine, a poker card battler; and a simulation study on how people attribute minds to AI over long conversations.",
-  },
-  {
-    label: 'Learning',
-    text: 'Search engines, AI agents, and multimodal machine learning — my first semester of graduate coursework at LTI.',
-  },
-  {
-    label: 'Reading',
-    text: 'The Unbearable Lightness of Being (Kundera), Ludwig Wittgenstein: The Duty of Genius (Monk), The Order of Time (Rovelli).',
-  },
-  {
-    label: 'Playing',
-    text: 'Basketball whenever there is a court, pot-limit home games whenever enough people are around, and whatever game has a system I feel like taking apart.',
-  },
+  { label: 'Building', text: 'standin, Golfie, Daybook, Brawl Lab, Table Forty Nine; mind-attribution research.' },
+  { label: 'Learning', text: 'Search Engines, AI Agents, Multimodal Machine Learning.' },
+  { label: 'Reading', text: 'The Unbearable Lightness of Being (Kundera), Ludwig Wittgenstein: The Duty of Genius (Monk), The Order of Time (Rovelli).' },
+  { label: 'Playing', text: 'Basketball, Poker, Games.' },
 ];
 
-const interests = [
-  {
-    title: 'Guitar & songwriting',
-    text: 'I play guitar and try writing simple songs. I am still learning.',
-  },
-  {
-    title: 'Photography',
-    text: 'I like photographing people and landscapes. I am learning to pay more attention to composition and timing.',
-  },
-  {
-    title: 'Storytelling',
-    text: 'I want to understand what makes a story work: the first line, the timing of a joke, and how the pieces fit together.',
-  },
-];
+const interests = ['Guitar & songwriting', 'Photography', 'Storytelling'];
 
 const sports = [
   { name: 'Basketball', level: 'Good' },
@@ -107,7 +82,7 @@ const sports = [
 
 <Layout
   title="Personal - Mingxi Yan"
-  description="Poker variants I invented, poems, prose, quotes, and what I'm doing right now."
+  description="Mingxi Yan: poker variants, writing, quotes, and current activities."
 >
   <Navigation />
 
@@ -117,11 +92,10 @@ const sports = [
       <div class="max-w-5xl mx-auto">
         <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5 opacity-0 animate-fade-in-up">Personal</h1>
         <p class="text-lg text-gray-700 max-w-2xl leading-relaxed font-serif opacity-0 animate-fade-in-up delay-100">
-          Poker games I like to play, things I write, and whatever I happen to be doing at the moment.
-          Some of these became projects. Some are just things I like.
+          Poker variants, writing, and current activities.
         </p>
         <nav class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-500 opacity-0 animate-fade-in-up delay-200">
-          <a href="#now" class="hover:text-black transition-colors">Right now</a>
+          <a href="#now" class="hover:text-black transition-colors">Now</a>
           <a href="#poker" class="hover:text-black transition-colors">Poker</a>
           <a href="#writing" class="hover:text-black transition-colors">Writing</a>
           <a href="#quotes" class="hover:text-black transition-colors">Quotes</a>
@@ -130,11 +104,11 @@ const sports = [
       </div>
     </section>
 
-    <!-- Right now -->
+    <!-- Now -->
     <section id="now" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500">Right now</h2>
+          <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500">Now</h2>
           <span class="text-sm text-gray-400">Updated {nowUpdated}</span>
         </div>
         <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-7 max-w-4xl">
@@ -153,14 +127,13 @@ const sports = [
       <div class="max-w-5xl mx-auto">
         <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-6">Dealer's Choice</h2>
         <p class="text-gray-700 max-w-2xl leading-relaxed mb-3">
-          Poker variants we play at home games — {myGames.length} I came up with, {learnedGames.length} I picked up from friends.
-          Open a game for its rules. All are <strong>pot limit</strong> and <strong>bomb pots</strong> unless noted otherwise, and all assume you know standard Texas Hold'em.
+          Home-game poker variants: {myGames.length} original, {learnedGames.length} learned. All are <strong>pot limit</strong> and <strong>bomb pots</strong> unless noted; standard Texas Hold'em rules apply.
         </p>
         <p class="text-sm text-gray-500 mb-10">
-          These are the games <a href="/work#projects" class="border-b border-gray-400 hover:border-black transition-colors">the platform I worked on</a> is for. You can <a href="https://dealer-s-choice.vercel.app/" target="_blank" rel="noopener noreferrer" class="border-b border-gray-400 hover:border-black transition-colors">play them online</a>, with friends or against bots.
+          Playable online, with friends or bots: <a href="https://dealer-s-choice.vercel.app/" target="_blank" rel="noopener noreferrer" class="border-b border-gray-400 hover:border-black transition-colors">dealer-s-choice.vercel.app</a>. <a href="/work#projects" class="border-b border-gray-400 hover:border-black transition-colors">Project details</a>.
         </p>
 
-        <h3 class="text-xl font-semibold mb-6">Variants I came up with</h3>
+        <h3 class="text-xl font-semibold mb-6">Original variants</h3>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
           {myGames.map(game => (
             <details id={`game-${game.slug}`} class="poker-rule">
@@ -174,7 +147,7 @@ const sports = [
           ))}
         </div>
 
-        <h3 class="text-xl font-semibold mb-6">Games I picked up</h3>
+        <h3 class="text-xl font-semibold mb-6">Learned variants</h3>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {learnedGames.map(game => (
             <details id={`game-${game.slug}`} class="poker-rule">
@@ -213,7 +186,7 @@ const sports = [
               <h4 class="text-lg font-semibold mt-1 mb-1">{poem.title}</h4>
               <p class="text-sm text-gray-500 mb-4">{poem.date}</p>
               <p class="text-gray-600 italic leading-relaxed whitespace-pre-line font-serif">{poem.excerpt}</p>
-              <a href={`/poems/${poem.slug}`} class="inline-block mt-4 text-sm text-gray-500 hover:text-black transition-colors">Read the full poem →</a>
+              <a href={`/poems/${poem.slug}`} class="inline-block mt-4 text-sm text-gray-500 hover:text-black transition-colors">Read →</a>
             </div>
           ))}
         </div>
@@ -228,63 +201,17 @@ const sports = [
               <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
                 {article.tags.map(tag => <span>{tag}</span>)}
               </div>
-              <a href={`/articles/${article.slug}`} class="inline-block mt-4 text-sm text-gray-500 hover:text-black transition-colors">Read more →</a>
+              <a href={`/articles/${article.slug}`} class="inline-block mt-4 text-sm text-gray-500 hover:text-black transition-colors">Read →</a>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- Philosophical musings -->
-    <section class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200">
+    <!-- Quotes -->
+    <section id="quotes" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Musings & quotes</h2>
-
-        <div class="space-y-12 max-w-3xl">
-          <div class="border-t border-gray-300 pt-6">
-            <h3 class="text-xl font-semibold mb-4">On freedom and responsibility</h3>
-            <div class="space-y-4 text-gray-700 leading-[1.75] font-serif text-[1.0625rem]">
-              <p>
-                Perhaps we are not free. Perhaps every choice is predetermined by the firing of neurons, the chemistry
-                of our brains, the circumstances of our birth. Perhaps free will is an elaborate illusion our minds
-                construct to make sense of a deterministic universe.
-              </p>
-              <p>
-                And yet, Kant teaches us that we must act as if we are free. When we stand at a crossroads, we cannot
-                wait for neuroscience to settle the question of determinism. We must choose. We must deliberate. We must
-                take responsibility for our actions as if they truly originated from us.
-              </p>
-              <p>
-                This is the beautiful paradox: even if freedom is an illusion, it is a necessary one. To be moral, to be
-                human, to make any decision at all, we must assume our freedom. The question is not whether we are truly
-                free, but whether we have the courage to act as if we are.
-              </p>
-            </div>
-          </div>
-
-          <div class="border-t border-gray-300 pt-6">
-            <h3 class="text-xl font-semibold mb-4">On uncertainty</h3>
-            <div class="space-y-4 text-gray-700 leading-[1.75] font-serif text-[1.0625rem]">
-              <p>
-                At the poker table, uncertainty is not an obstacle but rather the game itself. You cannot see your opponent's
-                cards. You cannot know which river card will fall. You calculate odds, read tells, and make the best
-                decision you can with incomplete information. Then you accept the result, whatever it may be.
-              </p>
-              <p>
-                Heidegger speaks of being-toward-death, the idea that authentic existence requires confronting our own
-                mortality. Death is the ultimate uncertainty, the one certainty we cannot escape but whose timing and
-                manner remain unknown. Every decision we make is made in its shadow.
-              </p>
-              <p>
-                Perhaps this is why poker feels so honest. It strips away the illusion that we can control outcomes. It
-                teaches us to make peace with uncertainty, to act decisively while acknowledging our limitations. In poker,
-                as in life, we are always playing with incomplete information. The wisdom is not in eliminating uncertainty,
-                which is impossible, but in learning to dance with it, to make our choices and let go of the rest.
-              </p>
-            </div>
-          </div>
-        </div>
-        <h3 id="quotes" class="text-base font-semibold mt-14 mb-6 scroll-mt-16">Quotes I keep</h3>
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Quotes</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-9">
           {quotes.map(quote => (
             <div class="border-t border-gray-300 pt-5">
@@ -301,17 +228,15 @@ const sports = [
       <div class="max-w-5xl mx-auto">
         <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Elsewhere</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-8 mb-14">
-          {interests.map(item => (
-            <div class="border-t border-gray-300 pt-5">
-              <h3 class="text-lg font-semibold mb-2">{item.title}</h3>
-              <p class="text-gray-600 leading-relaxed">{item.text}</p>
-            </div>
-          ))}
+        <div class="border-t border-gray-300 pt-6 mb-10">
+          <h3 class="text-base font-semibold mb-5">Interests</h3>
+          <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
+            {interests.map(item => <span>{item}</span>)}
+          </div>
         </div>
 
         <div class="border-t border-gray-300 pt-6">
-          <h3 class="text-base font-semibold mb-5">Sports I play, honestly rated</h3>
+          <h3 class="text-base font-semibold mb-5">Sports</h3>
           <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             {sports.map(sport => (
               <span class="text-gray-600">

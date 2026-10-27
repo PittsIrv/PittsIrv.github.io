@@ -9,24 +9,24 @@ const builtThings = [
   { name: "Golfie", href: "https://golfie-beta.vercel.app/", host: "golfie-beta.vercel.app", image: "/images/built/golfie.jpg" },
 ];
 const entries = [
-  { number: '01', kind: 'Engineering · TikTok', title: 'Finding the right data is part of the problem.', text: 'An internal AI agent should be able to find a usable data source from a question. The user should not have to know the table name first.', detail: 'At TikTok I designed a graph-based retrieval skill over Hive tables, dashboards, documents, and millions of metadata fields, evaluated on a benchmark built from on-call Q&A, and built a livestream revenue-diagnosis copilot that operations now use.', href: '/work#tiktok', link: 'What I worked on' },
-  { number: '02', kind: 'Research · CMU–Apple', title: 'Who is asking changes the attack.', text: 'PersonaTeaming adds personas to automated red-teaming. I worked on how those personas are generated and evaluated the workflow across six target models.', detail: 'A UIST 2026 paper with Apple Research. I designed the persona-generation algorithm. Across 11 conditions and 6 target models, it raised mean attack success by 46% and attack diversity by 7% over the RainbowPlus baseline.', href: '/work#personateaming', link: 'Read about PersonaTeaming' },
-  { number: '03', kind: 'Ongoing research · Sapling Lab', title: 'When does someone start treating an AI as having a mind?', text: 'I am working on a simulation study of how these beliefs form and change over a long conversation.', detail: 'The study looks at user characteristics, assistant social behavior, and conversational situation. I lead the NLP side and work on the simulation pipeline and turn-by-turn measurement. The manuscript is in preparation.', href: '/work#sapling', link: 'The ongoing study' },
+  { number: '01', kind: 'Engineering · TikTok', title: 'Enterprise retrieval for AI agents', text: 'Graph-based retrieval over Hive tables, dashboards, and documents.', detail: 'Evaluated on an on-call Q&A benchmark and shipped as an internal skill. Also built a livestream revenue-diagnosis copilot now used by operations.', href: '/work#tiktok', link: 'Details' },
+  { number: '02', kind: 'Research · CMU–Apple', title: 'PersonaTeaming', text: 'Persona-conditioned automated red-teaming. UIST 2026.', detail: 'Designed the persona-generation algorithm. Across 11 conditions and 6 target models: +46% attack success and +7% attack diversity over RainbowPlus.', href: '/work#personateaming', link: 'Details' },
+  { number: '03', kind: 'Research · Sapling Lab', title: 'Mind attribution in human–AI conversation', text: 'Simulation study of how users attribute minds to AI over long conversations.', detail: 'NLP lead. Multi-turn user simulation and turn-level LLM judges. Manuscript in preparation.', href: '/work#sapling', link: 'Details' },
 ];
 ---
-<Layout title="Mingxi Yan — AI Systems Engineer" description="Mingxi Yan is a master’s student at Carnegie Mellon’s Language Technologies Institute building AI systems and the infrastructure around them: retrieval, evaluation, agents, and data.">
+<Layout title="Mingxi Yan — AI Systems Engineer" description="Mingxi Yan: AI systems engineer and MS student at Carnegie Mellon’s Language Technologies Institute. Retrieval, evaluation, agents, and data.">
   <Navigation />
   <main id="main-content" class="notebook-home">
     <section class="home-intro page-shell">
       <div class="intro-copy">
         <p class="eyebrow">Carnegie Mellon <span class="ink-dot" aria-hidden="true">•</span> Language Technologies Institute</p>
         <h1>Mingxi Yan</h1>
-        <div class="intro-links"><a class="text-link" href="/work">My work <span aria-hidden="true">↗</span></a><a href="/resume.pdf">Resume (PDF) ↗</a><a href="mailto:mingxiy66@gmail.com">Email ↗</a></div>
+        <div class="intro-links"><a class="text-link" href="/work">Work <span aria-hidden="true">↗</span></a><a href="/resume.pdf">Resume (PDF) ↗</a><a href="mailto:mingxiy66@gmail.com">Email ↗</a></div>
       </div>
       <aside class="margin-note">
         <span class="eyebrow">Currently</span>
-        <p>Fifth-year master’s student, graduating August 2027. Looking for full-time roles in AI systems and infrastructure.</p>
-        <a class="text-link" href="/about">About me ↗</a>
+        <p>MS student, graduating August 2027. Seeking full-time roles in AI systems and infrastructure.</p>
+        <a class="text-link" href="/about">About ↗</a>
         <span class="margin-caption">BS, Computer Science and Information Systems<br />Carnegie Mellon, May 2026</span>
       </aside>
     </section>
@@ -44,11 +44,11 @@ const entries = [
     </section>
 
     <section id="explore" class="explore-section page-shell" aria-labelledby="explore-title">
-      <div class="section-heading"><div><p class="eyebrow">Selected work</p><h2 id="explore-title">What I’m working on</h2></div><a class="section-aside text-link" href="/personal">Poker, writing, and the rest ↗</a></div>
+      <div class="section-heading"><div><p class="eyebrow">Research & engineering</p><h2 id="explore-title">Selected work</h2></div><a class="section-aside text-link" href="/personal">Personal ↗</a></div>
       <div class="note-grid">
         {entries.map(entry => (
           <details class="explore-note" id={`note-${entry.number}`}>
-            <summary><span class="note-top"><span class="eyebrow">{entry.kind}</span><span class="note-number">{entry.number}</span></span><h3>{entry.title}</h3><p>{entry.text}</p><span class="note-prompt"><span class="when-closed">Open the note</span><span class="when-open">Close the note</span><span class="note-plus" aria-hidden="true">+</span></span></summary>
+            <summary><span class="note-top"><span class="eyebrow">{entry.kind}</span><span class="note-number">{entry.number}</span></span><h3>{entry.title}</h3><p>{entry.text}</p><span class="note-prompt"><span class="when-closed">Details</span><span class="when-open">Close</span><span class="note-plus" aria-hidden="true">+</span></span></summary>
             <div class="note-detail"><p>{entry.detail}</p><a class="text-link" href={entry.href}>{entry.link} ↗</a></div>
           </details>
         ))}

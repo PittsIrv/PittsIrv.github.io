@@ -30,11 +30,11 @@ const experience = [
     org: 'TikTok, San Jose',
     id: 'tiktok',
     dates: 'June – August 2026',
-    lead: 'Enterprise retrieval for internal AI agents, and a copilot that diagnoses why livestream revenue moved.',
+    lead: 'Enterprise retrieval for internal AI agents; livestream revenue-diagnosis copilot.',
     bullets: [
       'Designed a graph-based enterprise retrieval skill over Hive tables, datasets, dashboards, documents, and millions of metadata fields and values, using query decomposition, contextual rewriting, graph expansion, and reciprocal rank fusion (RRF).',
       'Built a benchmark from on-call Q&A pairs to evaluate agent results. The skill was integrated and published as an internal skill.',
-      'Built a livestream revenue-diagnosis copilot: feature engineering, LightGBM percentile prediction, comparison cohorts, and business rules detect revenue downside and abnormal metrics, then relevant business documentation is retrieved to ground the recommendations.',
+      'Built a livestream revenue-diagnosis copilot: LightGBM percentile prediction, comparison cohorts, and business rules flag revenue drops and abnormal metrics; retrieved business documentation grounds the recommendations.',
       'Validated with operations stakeholders and integrated into their workflow.',
     ],
     tags: ['Python', 'SQL', 'Graph retrieval', 'Query rewriting', 'RRF', 'LightGBM', 'Feature engineering', 'LLM agents'],
@@ -44,9 +44,9 @@ const experience = [
     org: 'Sapling Lab, CMU',
     id: 'sapling',
     dates: 'May 2026 – Present',
-    lead: 'How users form and update Theory-of-Mind attributions toward AI over long-term interaction.',
+    lead: 'Theory-of-Mind attribution toward AI in long-term interaction.',
     bullets: [
-      'Lead the NLP research on an NSF- and OpenAI-funded interdisciplinary project studying how users form and update Theory-of-Mind attributions toward AI during long-term human–AI interaction.',
+      'Lead NLP research on an NSF- and OpenAI-funded interdisciplinary project.',
       'Developing a multi-turn user simulation that varies user traits, assistant social behavior, memory, and scenario.',
       'Developing turn-level LLM judges and heuristic measures to evaluate how attributions change across a conversation. Manuscript in preparation.',
     ],
@@ -56,12 +56,12 @@ const experience = [
     role: 'Research Assistant',
     org: 'Chimps Lab, CMU',
     dates: 'May 2024 – May 2026',
-    lead: 'Adaptive LLM red-teaming and image-generation bias auditing, including PersonaTeaming (UIST 2026, with Apple).',
+    lead: 'LLM red-teaming and image-generation bias auditing.',
     bullets: [
       'PersonaTeaming (UIST 2026, with Apple Research): designed the persona-generation algorithm for adaptive LLM red-teaming.',
       'Evaluated 11 experimental conditions on 6 target LLMs. Improved mean attack success rate by 46% and attack diversity by 7% over the RainbowPlus baseline.',
-      'Built the PersonaTeaming Playground with persistent storage and deployed it on AWS; it was the platform for an industry practitioner study.',
-      'Built scalable bias-auditing infrastructure for image generation, with persistent history, caching, and batching to support 100 images per prompt, plus interactive visualizations for researchers and participants to work together.',
+      'Built and deployed the PersonaTeaming Playground on AWS, used in an industry practitioner study.',
+      'Built bias-auditing infrastructure for image generation: persistent history, caching, and batching at 100 images per prompt, with interactive visualizations.',
     ],
     tags: ['Python', 'React', 'AWS', 'LLM red-teaming', 'Evaluation pipelines', 'LLM-as-judge', 'AI safety'],
   },
@@ -69,11 +69,11 @@ const experience = [
     role: 'Full Stack Engineer & Tech Lead',
     org: 'Enterview (AI startup), Pittsburgh, PA',
     dates: 'June 2023 – November 2024',
-    lead: 'An AI interview-preparation platform, built with a team of four engineers.',
+    lead: 'AI interview-preparation platform.',
     bullets: [
-      'Led a four-engineer team building an AI interview-preparation platform, and partnered on technical product decisions.',
-      'Designed persistent user-context data models and backend APIs for personalized coaching, integrating an LLM and a speech-recognition model to evaluate spoken answers and give targeted feedback.',
-      'Optimized WebSocket handling for lower latency and smoother feedback.',
+      'Led a team of four engineers; owned technical product decisions.',
+      'Designed user-context data models and backend APIs, integrating an LLM and speech recognition to evaluate spoken answers.',
+      'Reduced feedback latency by optimizing WebSocket handling.',
     ],
     tags: ['TypeScript', 'Backend APIs', 'Data modeling', 'Speech recognition', 'WebSocket'],
   },
@@ -82,7 +82,7 @@ const experience = [
     compact: true,
     org: 'AlpSoft, Singapore',
     dates: 'May 2025 – August 2025',
-    lead: 'Secure enterprise sites for EnterpriseSG, including penetration-test fixes and AWS deployments.',
+    lead: 'Enterprise sites for EnterpriseSG; penetration-test fixes and AWS deployments.',
     bullets: [],
     tags: [],
   },
@@ -91,7 +91,7 @@ const experience = [
     compact: true,
     org: 'Tsinghua University, THUNLP — OpenBMB',
     dates: 'May 2023 – August 2023',
-    lead: 'Turned REST APIs into LLM-callable tools and used embedding-based clustering to improve tool retrieval.',
+    lead: 'REST APIs as LLM-callable tools; embedding-based clustering for tool retrieval.',
     bullets: [],
     tags: [],
   },
@@ -100,7 +100,7 @@ const experience = [
     compact: true,
     org: 'CMU — Great Ideas in Theoretical Computer Science (15-251)',
     dates: 'February – May 2025',
-    lead: 'Tutoring proofs and theory, and writing study guides and exam reviews.',
+    lead: 'Proof and theory tutoring; study guides and exam reviews.',
     bullets: [],
     tags: [],
   },
@@ -109,7 +109,7 @@ const experience = [
     compact: true,
     org: 'ProtectPT (Non-Profit), Pittsburgh, PA',
     dates: 'Spring 2024',
-    lead: 'A searchable database for a local anti-fracking non-profit.',
+    lead: 'Searchable database for a local anti-fracking non-profit.',
     bullets: [],
     tags: [],
   },
@@ -119,34 +119,34 @@ const projects = [
   {
     name: 'standin',
     dates: 'October 2026 – Present',
-    lead: 'An open-source agent that talks to people as you, drawing on your private data but publishing only what you approve.',
-    link: { href: 'https://github.com/PittsIrv/standin', label: 'Source: github.com/PittsIrv/standin' },
+    lead: 'Open-source personal agent that answers as you and discloses only approved information.',
+    link: { href: 'https://github.com/PittsIrv/standin', label: 'github.com/PittsIrv/standin' },
     image: null,
     bullets: [
-      'A local store of sourced, bitemporal memories, including explicit unknowns, so the agent can say "I don’t know" instead of guessing.',
-      'A default-deny airlock: nothing reaches the public agent unless it is approved and published as a versioned, reversible bundle.',
-      'Hybrid retrieval (keyword search plus local embeddings, fused with RRF) and an eval harness that fails on any leak.',
+      'Local store of sourced, bitemporal memories, including explicit unknowns.',
+      'Default-deny airlock: only approved, versioned, reversible bundles reach the public agent.',
+      'Hybrid retrieval (keyword search and local embeddings, fused with RRF); eval harness that fails on any leak.',
     ],
     tags: ['TypeScript', 'SQLite', 'Claude API', 'Hybrid retrieval', 'Evals', 'Privacy'],
   },
   {
     name: 'Golfie',
     dates: 'January 2026 – Present',
-    lead: 'A golf coaching app that turns a phone video of your swing into detected faults, drills, and a coach’s review.',
-    link: { href: 'https://golfie-beta.vercel.app/', label: 'Try it: golfie-beta.vercel.app' },
+    lead: 'Golf swing analysis from phone video: fault detection, drills, and coach review.',
+    link: { href: 'https://golfie-beta.vercel.app/', label: 'golfie-beta.vercel.app' },
     image: { src: '/images/built/golfie.jpg', alt: 'Golfie start screen with a sample swing analysis', width: 1200, height: 750 },
     bullets: [
-      'A three-phase pipeline: pose estimation, rule-based fault detection keyed to five swing phases, and an LLM-generated drill plan.',
-      'Pose tiers from RTMPose on CPU up to a GPU model on Modal, chosen per video.',
-      'A coarse pass finds the swing, then a dense pass at native frame rate, because at 15 fps the impact frame is often skipped.',
+      'Three-phase pipeline: pose estimation, rule-based fault detection across five swing phases, LLM-generated drill plan.',
+      'Per-video pose tiers, from RTMPose on CPU to GPU models on Modal.',
+      'Coarse pass to locate the swing, then a dense pass at native frame rate to capture impact.',
     ],
     tags: ['Python', 'FastAPI', 'Next.js', 'TypeScript', 'RTMPose', 'ONNX Runtime', 'Modal', 'Docker'],
   },
   {
     name: 'Daybook',
     dates: 'October 2026 – Present',
-    lead: 'A private weekly review of your Mac Screen Time that runs entirely on your Mac, with no account, API key, or Full Disk Access.',
-    link: { href: 'https://github.com/PittsIrv/daybook', label: 'Source and alpha release: github.com/PittsIrv/daybook' },
+    lead: 'Local-only weekly review of Mac Screen Time.',
+    link: { href: 'https://github.com/PittsIrv/daybook', label: 'github.com/PittsIrv/daybook' },
     image: { src: '/images/built/daybook.jpg', alt: 'Daybook weekly review, shown with fictional demo data', width: 1280, height: 720 },
     bullets: [],
     tags: [],
@@ -154,12 +154,12 @@ const projects = [
   {
     name: 'Dealer’s Choice',
     dates: 'June 2025 – Present',
-    lead: 'An online multiplayer poker platform for the variants we play at home games.',
-    link: { href: 'https://dealer-s-choice.vercel.app/', label: 'Play it: dealer-s-choice.vercel.app' },
+    lead: 'Online multiplayer platform for home-game poker variants.',
+    link: { href: 'https://dealer-s-choice.vercel.app/', label: 'dealer-s-choice.vercel.app' },
     image: { src: '/images/built/dealers-choice.jpg', alt: 'Dealer’s Choice start screen', width: 1200, height: 750 },
     bullets: [
-      'Custom variants with real-time multiplayer play over optimized WebSocket connections.',
-      'Deployed on an ECS cluster in private subnets behind a public ALB, with CI/CD for testing and deployment.',
+      'Custom variants with real-time multiplayer over WebSocket.',
+      'ECS in private subnets behind a public ALB; CI/CD for testing and deployment.',
     ],
     rulesLink: true,
     tags: ['TypeScript', 'NestJS', 'WebSocket', 'AWS ECS', 'Docker', 'CI/CD'],
@@ -167,7 +167,7 @@ const projects = [
   {
     name: 'Brawl Lab',
     dates: 'October 2026 – Present',
-    lead: 'A Brawl Stars draft tool that recommends the final pick, using a calibrated logistic-regression model trained on about 400,000 Ranked sets.',
+    lead: 'Brawl Stars final-pick recommender. Calibrated logistic regression trained on about 400,000 Ranked sets.',
     link: null,
     image: { src: '/images/built/brawl-lab.jpg', alt: 'Brawl Lab final-pick interface', width: 1280, height: 720 },
     bullets: [],
@@ -176,7 +176,7 @@ const projects = [
   {
     name: 'Table Forty Nine',
     dates: 'October 2026 – Present',
-    lead: 'A 1v1 online card battler, now in design, where poker hands become attacks.',
+    lead: '1v1 online poker card battler. In design.',
     link: null,
     image: null,
     bullets: [],
@@ -189,23 +189,23 @@ const publications = [
     title: 'PersonaTeaming: Persona-Conditioned Automated Red Teaming',
     id: 'personateaming',
     meta: 'UIST 2026 · CMU–Apple collaboration',
-    lead: 'Conditioning automated red-teaming on personas, so the attacks reflect the range of people who actually use these systems.',
-    body: `Adds a human-perspective axis to automated red-teaming by conditioning adversarial prompt mutation on personas, including a dynamic method that generates and scores candidate personas rather than relying on a fixed set. I designed the persona-generation algorithm, implemented the workflow, and ran the evaluation: 11 experimental conditions across 6 target LLMs. Over the RainbowPlus baseline, mean attack success rate improved by 46% and attack diversity by 7%.`,
+    lead: 'Persona-conditioned automated red-teaming.',
+    body: `Conditions adversarial prompt mutation on personas, including a dynamic method that generates and scores candidate personas. Designed the persona-generation algorithm, implemented the workflow, and ran the evaluation: 11 conditions, 6 target LLMs. Over RainbowPlus: +46% mean attack success rate, +7% attack diversity.`,
     link: null,
   },
   {
     title: 'Solver-Guided Fine-Tuning for Accurate and Explainable Poker Decisions',
     id: 'poker-paper',
     meta: '10-423/623 Generative AI, Spring 2026 · with Cassandra Shi & Harry Huang',
-    lead: 'Fine-tuning an 8B model to explain its poker decisions, not just make them.',
-    body: `A solver-guided post-training pipeline for Llama 3 8B. We built 3,000 SFT examples and 2,534 DPO pairs from PokerBench solver labels and verifier-ranked Llama 3.3 70B explanations, and validated the rule-based verifier against 200 blind human judgments. LoRA SFT raised exact solver-action match from 18.0% to 56.2% and verifier score from 0.426 to 0.645. DPO sharpened explanations further at a small cost to action accuracy, a tradeoff we trace to the two objectives sharing the same backbone parameters.`,
+    lead: 'Solver-guided post-training of an 8B model for accurate, explainable poker decisions.',
+    body: `Llama 3 8B trained on 3,000 SFT examples and 2,534 DPO pairs from PokerBench solver labels and verifier-ranked Llama 3.3 70B explanations; rule-based verifier validated against 200 blind human judgments. LoRA SFT: solver-action match 18.0% → 56.2%, verifier score 0.426 → 0.645. DPO improved explanations at a small cost to action accuracy.`,
     link: { href: '/papers/solver-guided-poker-finetuning.pdf', label: 'Read the paper (PDF)' },
   },
   {
     title: 'Mutual Theory of Mind in Multi-Turn Human–AI Conversation',
     meta: 'Manuscript in preparation',
-    lead: 'A simulation of how mind attribution shifts, turn by turn, across a conversation.',
-    body: `A multi-turn user simulation of how user traits, assistant social behavior, memory, and scenario shape mind attribution, measured turn by turn with LLM judges and heuristic measures. Ongoing at Sapling Lab.`,
+    lead: 'Turn-by-turn mind attribution in multi-turn human–AI conversation.',
+    body: `Multi-turn user simulation varying user traits, assistant social behavior, memory, and scenario; measured with turn-level LLM judges and heuristic measures. Sapling Lab.`,
     link: null,
   },
 ];
@@ -221,7 +221,7 @@ const skills = [
 
 <Layout
   title="Work - Mingxi Yan"
-  description="Mingxi Yan — AI systems engineer. Experience at TikTok, CMU Sapling Lab, and CMU Chimps Lab (PersonaTeaming, UIST 2026), plus projects in agents, retrieval, and computer vision."
+  description="Mingxi Yan: experience, projects, and publications in AI systems. TikTok, CMU Sapling Lab, CMU Chimps Lab."
 >
   <Navigation />
 
@@ -231,11 +231,7 @@ const skills = [
       <div class="max-w-5xl mx-auto">
         <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5 opacity-0 animate-fade-in-up">Work</h1>
         <p class="text-lg text-gray-700 max-w-2xl leading-relaxed opacity-0 animate-fade-in-up delay-100 font-serif">
-          I like working on AI systems and the infrastructure around them — retrieval, evaluation,
-          data pipelines, and the parts that connect models to real users.
-        </p>
-        <p class="mt-3 text-sm text-gray-500 max-w-2xl opacity-0 animate-fade-in-up delay-100">
-          Each entry below opens if you want the detail.
+          AI systems and infrastructure: retrieval, evaluation, agents, and data pipelines.
         </p>
         <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm opacity-0 animate-fade-in-up delay-200">
           <a href="/resume.pdf" class="font-medium border-b border-black hover:text-gray-600 hover:border-gray-600 transition-colors">Resume (PDF)</a>
@@ -270,7 +266,7 @@ const skills = [
               <p class="text-gray-700 leading-relaxed max-w-3xl font-serif text-[1.0625rem]">{job.lead}</p>
               <details class="disclosure mt-4">
                 <summary>
-                  <span class="disclosure-closed">What I worked on</span>
+                  <span class="disclosure-closed">Details</span>
                   <span class="disclosure-open">Close</span>
                 </summary>
                 <div class="disclosure-body pt-4">
@@ -320,13 +316,13 @@ const skills = [
               {project.image && <img src={project.image.src} alt={project.image.alt} width={project.image.width} height={project.image.height} loading="lazy" decoding="async" class="mt-5 w-full h-auto border border-gray-200" />}
               {project.bullets.length > 0 && <details class="disclosure mt-4">
                 <summary>
-                  <span class="disclosure-closed">What I worked on</span>
+                  <span class="disclosure-closed">Details</span>
                   <span class="disclosure-open">Close</span>
                 </summary>
                 <div class="disclosure-body pt-4">
                   <ul class="space-y-2 text-gray-700 leading-relaxed">
                     {project.bullets.map(b => <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>{b}</span></li>)}
-                    {project.rulesLink && <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>The rules for the variants are <a href="/personal#poker" class="border-b border-gray-400 hover:border-black transition-colors">on my personal page</a>.</span></li>}
+                    {project.rulesLink && <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Variant rules: <a href="/personal#poker" class="border-b border-gray-400 hover:border-black transition-colors">Personal</a>.</span></li>}
                   </ul>
                   <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
                     {project.tags.map(tag => <span>{tag}</span>)}
@@ -342,7 +338,7 @@ const skills = [
     <!-- Publications -->
     <section id="publications" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Publications & Writing</h2>
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Publications</h2>
         <div class="space-y-10 max-w-3xl">
           {publications.map(pub => (
             <div id={pub.id} class="border-t border-gray-300 pt-6">
@@ -351,7 +347,7 @@ const skills = [
               <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">{pub.lead}</p>
               <details class="disclosure mt-4">
                 <summary>
-                  <span class="disclosure-closed">More on this</span>
+                  <span class="disclosure-closed">Details</span>
                   <span class="disclosure-open">Close</span>
                 </summary>
                 <div class="disclosure-body pt-4">
@@ -385,7 +381,7 @@ const skills = [
               <details class="disclosure mt-3">
                 <summary>
                   <span class="disclosure-closed">{item.courseLabel}</span>
-                  <span class="disclosure-open">Hide coursework</span>
+                  <span class="disclosure-open">Close</span>
                 </summary>
                 <div class="disclosure-body pt-3">
                   <p class="text-sm text-gray-600 leading-relaxed">{item.courses}</p>
