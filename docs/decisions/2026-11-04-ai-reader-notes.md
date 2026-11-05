@@ -31,3 +31,16 @@ Spend: $0.00
 ## Log
 - 2026-11-04: pasted outside opinion adjudicated in chat; decision card shown; Mingxi picked the hidden canary.
 - 2026-11-04: Mingxi proposed hidden praise in JSON-LD; Claude advised against; Mingxi revised to small visible captions on Work and Personal, then About. Build passes.
+
+## Independent review — 2026-11-04 (gemini-3.1-pro-preview, review mode, middle tier)
+- "11px muted text is highly likely to fail WCAG contrast" → disagree. Measured: `--muted` #56627a on `--paper` #fbfcff is 5.98:1, which passes AA (4.5:1) for text of any size. WCAG has no minimum font size.
+- "`page-shell` on a `<p>` is unverified and could break width" → disagree. `.page-shell` is a max-width container with auto margins and inline padding (global.css:140); the paragraph renders inside the same column as every section. Verified in the browser on all three pages.
+- "Assumes ATS and search engines will not flag 11px muted text as cloaked" → partly agree. 11px at 5.98:1 is not what cloaking heuristics target (near-zero size, colour-matched, off-screen), but it is smaller than any other text on the site, so it is the one element a heuristic could single out. Mitigation available: body size.
+- "Assumes a human reader will not find standalone third-person praise jarring or keyword-stuffed" → agree. This is the concern Claude recorded before the review; the independent reviewer reached it with no access to the chat.
+- "Assumes AI readers weight it, despite 'near zero' expected effect" → agree. Already stated in the record; it is the strongest argument against the captions.
+- Challenge: move AI-directed context to llms.txt → noted; llms.txt is already deferred and compatible with either outcome.
+- Challenge: use body font size and integrate into page copy instead of a small footer line → agree as the best version of Mingxi's intent, if the captions stay.
+- Documentation gaps (page-shell CSS, hex values) → agree; package should include `global.css` tokens and container classes next time. The values are now in this record: `--muted` #56627a, `--paper` #fbfcff, 5.98:1.
+- Done well: the line against influencing evaluations → noted.
+
+Verdict: Do not ship. Action taken: merge held per the ship rule; decision returned to Mingxi with three options (ship as is, fold into page copy at body size, revert and do llms.txt only). The two factual findings are rebutted above; the design finding is upheld as a concern and is Mingxi's to weigh.
