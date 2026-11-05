@@ -44,3 +44,6 @@ Spend: $0.00
 - Done well: the line against influencing evaluations → noted.
 
 Verdict: Do not ship. Action taken: merge held per the ship rule; decision returned to Mingxi with three options (ship as is, fold into page copy at body size, revert and do llms.txt only). The two factual findings are rebutted above; the design finding is upheld as a concern and is Mingxi's to weigh.
+
+## Override — 2026-11-04 (Mingxi)
+Mingxi overruled the do-not-ship verdict: the three sentences are self-praise on Mingxi's own site, kept small for humans and readable by AI. Shipped as built (11px, muted, above the footer). Claude's and the reviewer's design concern stays on record above; revisit conditions unchanged.
