@@ -30,6 +30,9 @@ jobs:
 
       - name: Build Astro site
         run: npm run build
+        env:
+          # The standin chat box shows only when this repository variable holds the Worker's URL.
+          PUBLIC_STANDIN_URL: ${{ vars.PUBLIC_STANDIN_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

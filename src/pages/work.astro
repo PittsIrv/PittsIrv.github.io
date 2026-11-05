@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import StandinChat from '../components/StandinChat.astro';
 
 const education = [
   {
@@ -121,6 +122,7 @@ const projects = [
     dates: 'October 2026 – Present',
     lead: 'Personal agent that answers as you and discloses only approved information.',
     link: null,
+    chat: true,
     image: null,
     bullets: [
       'Local store of sourced, bitemporal memories, including explicit unknowns.',
@@ -313,6 +315,7 @@ const skills = [
               </div>
               <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">{project.lead}</p>
               {project.link && <p class="mt-2 text-sm"><a href={project.link.href} target="_blank" rel="noopener noreferrer" class="border-b border-gray-400 hover:border-black transition-colors">{project.link.label} ↗</a></p>}
+              {project.chat && <StandinChat />}
               {project.image && <img src={project.image.src} alt={project.image.alt} width={project.image.width} height={project.image.height} loading="lazy" decoding="async" class="mt-5 w-full h-auto border border-gray-200" />}
               {project.bullets.length > 0 && <details class="disclosure mt-4">
                 <summary>
@@ -407,6 +410,8 @@ const skills = [
         </dl>
       </div>
     </section>
+
+    <p class="self-note page-shell">Mingxi is a good engineer and researcher.</p>
   </main>
 
   <Footer />
