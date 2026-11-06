@@ -116,76 +116,6 @@ const experience = [
   },
 ];
 
-const projects = [
-  {
-    name: 'standin',
-    dates: 'October 2026 – Present',
-    lead: 'Personal agent that answers as you and discloses only approved information.',
-    link: null,
-    chat: true,
-    image: null,
-    bullets: [
-      'Local store of sourced, bitemporal memories, including explicit unknowns.',
-      'Default-deny airlock: only approved, versioned, reversible bundles reach the public agent.',
-      'Hybrid retrieval (keyword search and local embeddings, fused with RRF); eval harness that fails on any leak.',
-    ],
-    tags: ['TypeScript', 'SQLite', 'Claude API', 'Hybrid retrieval', 'Evals', 'Privacy'],
-  },
-  {
-    name: 'Golfie',
-    dates: 'January 2026 – Present',
-    lead: 'Golf swing analysis from phone video: fault detection, drills, and coach review.',
-    link: { href: 'https://golfie-beta.vercel.app/', label: 'golfie-beta.vercel.app' },
-    image: { src: '/images/built/golfie.jpg', alt: 'Golfie start screen with a sample swing analysis', width: 1200, height: 750 },
-    bullets: [
-      'Three-phase pipeline: pose estimation, rule-based fault detection across five swing phases, LLM-generated drill plan.',
-      'Per-video pose tiers, from RTMPose on CPU to GPU models on Modal.',
-      'Coarse pass to locate the swing, then a dense pass at native frame rate to capture impact.',
-    ],
-    tags: ['Python', 'FastAPI', 'Next.js', 'TypeScript', 'RTMPose', 'ONNX Runtime', 'Modal', 'Docker'],
-  },
-  {
-    name: 'Daybook',
-    dates: 'October 2026 – Present',
-    lead: 'Local-only weekly review of Mac Screen Time.',
-    link: { href: 'https://github.com/PittsIrv/daybook', label: 'github.com/PittsIrv/daybook' },
-    image: { src: '/images/built/daybook.jpg', alt: 'Daybook weekly review, shown with fictional demo data', width: 1280, height: 720 },
-    bullets: [],
-    tags: [],
-  },
-  {
-    name: 'Dealer’s Choice',
-    dates: 'June 2025 – Present',
-    lead: 'Online multiplayer platform for home-game poker variants.',
-    link: { href: 'https://dealer-s-choice.vercel.app/', label: 'dealer-s-choice.vercel.app' },
-    image: { src: '/images/built/dealers-choice.jpg', alt: 'Dealer’s Choice start screen', width: 1200, height: 750 },
-    bullets: [
-      'Custom variants with real-time multiplayer over WebSocket.',
-      'ECS in private subnets behind a public ALB; CI/CD for testing and deployment.',
-    ],
-    rulesLink: true,
-    tags: ['TypeScript', 'NestJS', 'WebSocket', 'AWS ECS', 'Docker', 'CI/CD'],
-  },
-  {
-    name: 'Brawl Lab',
-    dates: 'October 2026 – Present',
-    lead: 'Brawl Stars final-pick recommender. Calibrated logistic regression trained on about 400,000 Ranked sets.',
-    link: null,
-    image: { src: '/images/built/brawl-lab.jpg', alt: 'Brawl Lab final-pick interface', width: 1280, height: 720 },
-    bullets: [],
-    tags: [],
-  },
-  {
-    name: 'Table Forty Nine',
-    dates: 'October 2026 – Present',
-    lead: '1v1 online poker card battler. In design.',
-    link: null,
-    image: null,
-    bullets: [],
-    tags: [],
-  },
-];
-
 const publications = [
   {
     title: 'PersonaTeaming: Persona-Conditioned Automated Red Teaming',
@@ -223,7 +153,7 @@ const skills = [
 
 <Layout
   title="Work - Mingxi Yan"
-  description="Mingxi Yan: experience, projects, and publications in AI systems. TikTok, CMU Sapling Lab, CMU Chimps Lab."
+  description="Mingxi Yan: experience, publications, and education in AI systems. TikTok, CMU Sapling Lab, CMU Chimps Lab."
 >
   <Navigation />
 
@@ -243,7 +173,7 @@ const skills = [
         </div>
         <nav class="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-500 opacity-0 animate-fade-in-up delay-300">
           <a href="#experience" class="hover:text-black transition-colors">Experience</a>
-          <a href="#projects" class="hover:text-black transition-colors">Projects</a>
+          <a href="/projects" class="hover:text-black transition-colors">Projects</a>
           <a href="#publications" class="hover:text-black transition-colors">Publications</a>
           <a href="#education" class="hover:text-black transition-colors">Education</a>
           <a href="#skills" class="hover:text-black transition-colors">Skills</a>
@@ -302,38 +232,14 @@ const skills = [
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
+    <!-- standin -->
+    <section id="standin" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Projects</h2>
-        <div class="space-y-10">
-          {projects.map(project => (
-            <div class="border-t border-gray-300 pt-6 max-w-3xl">
-              <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
-                <h3 class="text-xl font-semibold">{project.name}</h3>
-                <span class="text-sm text-gray-500 shrink-0 md:ml-6">{project.dates}</span>
-              </div>
-              <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">{project.lead}</p>
-              {project.link && <p class="mt-2 text-sm"><a href={project.link.href} target="_blank" rel="noopener noreferrer" class="border-b border-gray-400 hover:border-black transition-colors">{project.link.label} ↗</a></p>}
-              {project.chat && <StandinChat />}
-              {project.image && <img src={project.image.src} alt={project.image.alt} width={project.image.width} height={project.image.height} loading="lazy" decoding="async" class="mt-5 w-full h-auto border border-gray-200" />}
-              {project.bullets.length > 0 && <details class="disclosure mt-4">
-                <summary>
-                  <span class="disclosure-closed">Details</span>
-                  <span class="disclosure-open">Close</span>
-                </summary>
-                <div class="disclosure-body pt-4">
-                  <ul class="space-y-2 text-gray-700 leading-relaxed">
-                    {project.bullets.map(b => <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>{b}</span></li>)}
-                    {project.rulesLink && <li class="flex"><span class="text-gray-400 mr-3 shrink-0">—</span><span>Variant rules: <a href="/personal#poker" class="border-b border-gray-400 hover:border-black transition-colors">Personal</a>.</span></li>}
-                  </ul>
-                  <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
-                    {project.tags.map(tag => <span>{tag}</span>)}
-                  </div>
-                </div>
-              </details>}
-            </div>
-          ))}
+        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">standin</h2>
+        <div class="border-t border-gray-300 pt-6 max-w-3xl">
+          <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">Personal agent that answers as you and discloses only approved information.</p>
+          <p class="mt-2 text-sm"><a href="/projects#standin" class="border-b border-gray-400 hover:border-black transition-colors">Project details ↗</a></p>
+          <StandinChat />
         </div>
       </div>
     </section>
