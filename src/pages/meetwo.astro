@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import MeeTwoChat from '../components/MeeTwoChat.astro';
+---
+<Layout title="MeeTwo - Mingxi Yan" description="Ask MeeTwo, Mingxi Yan's personal agent. It answers from approved information and says when it does not know.">
+  <Navigation />
+  <main id="main-content" class="flex-grow">
+    <section class="pt-16 pb-14 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5">MeeTwo</h1>
+        <p class="text-lg text-gray-700 max-w-2xl leading-relaxed font-serif">Ask my MeeTwo. It answers from what I've approved and says when it doesn't know.</p>
+        <div class="max-w-2xl">
+          <MeeTwoChat standalone />
+        </div>
+        <p class="mt-8 text-sm"><a href="/projects#meetwo" class="border-b border-gray-400 hover:border-black transition-colors">Project details ↗</a></p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
