@@ -53,6 +53,7 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
                 {p.visibility === 'public' && <ul class="project-did">
                   {p.did.map(b => <li><span aria-hidden="true">—</span><span>{b}</span></li>)}
                 </ul>}
+                {'comingSoon' in p && <p class="project-links"><span>{p.comingSoon}: coming soon</span></p>}
                 {p.visibility === 'public' && Object.keys(p.links).length > 0 && (
                   <p class="project-links">
                     {Object.entries(p.links).map(([k, href]) => (

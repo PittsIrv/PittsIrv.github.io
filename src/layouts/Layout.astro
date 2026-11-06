@@ -1,12 +1,14 @@
 ---
 import '../styles/global.css';
+import MeeTwoLauncher from '../components/MeeTwoLauncher.astro';
 
 interface Props {
   title: string;
   description?: string;
+  launcher?: boolean;
 }
 
-const { title, description = "Mingxi Yan - AI systems engineer and CMU Language Technologies master's student. Previously Data Engineer Intern at TikTok." } = Astro.props;
+const { launcher = true, title, description = "Mingxi Yan - AI systems engineer and CMU Language Technologies master's student. Previously Data Engineer Intern at TikTok." } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 ---
@@ -59,6 +61,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <div class="min-h-screen flex flex-col">
       <slot />
     </div>
-
+    {launcher && <MeeTwoLauncher />}
   </body>
 </html>

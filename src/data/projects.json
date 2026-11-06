@@ -46,9 +46,47 @@
     "visibility": "public"
   },
   {
+    "name": "Agent Relay",
+    "oneLine": "Git-backed handoffs of unfinished coding tasks between collaborators' local coding agents.",
+    "status": "active",
+    "period": {
+      "start": "2026-11",
+      "end": "now"
+    },
+    "did": [
+      "Task state and checkpoint branches live in a shared Git remote; no hosted coordinator, database or account.",
+      "Each collaborator keeps their own machine and CLI login; finished attempts are marked for human review, never merged automatically.",
+      "Offline two-clone demo runs without a model; Claude Code and Codex adapters are experimental."
+    ],
+    "links": {
+      "repo": "https://github.com/PittsIrv/agent-relay"
+    },
+    "tags": [
+      "Python",
+      "Git",
+      "Agents",
+      "CLI"
+    ],
+    "visibility": "public"
+  },
+  {
+    "name": "Agent Workspace",
+    "oneLine": "Workspace for personal AI agents and tooling.",
+    "status": "active",
+    "period": {
+      "start": "2026-11",
+      "end": "now"
+    },
+    "did": [],
+    "links": {},
+    "comingSoon": "Repository",
+    "tags": [],
+    "visibility": "title"
+  },
+  {
     "name": "Golfie",
     "oneLine": "Golf swing analysis from phone video: fault detection, drills, and coach review.",
-    "status": "paused",
+    "status": "active",
     "period": {
       "start": "2026-01",
       "end": "now"
@@ -108,7 +146,8 @@
       "Public demo on Vercel; personal data stays in a private app."
     ],
     "links": {
-      "site": "https://brawl-lab-ten.vercel.app"
+      "site": "https://brawl-lab-ten.vercel.app",
+      "repo": "https://github.com/PittsIrv/brawl-lab-public"
     },
     "tags": [
       "Analytics",

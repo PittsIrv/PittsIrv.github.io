@@ -32,6 +32,21 @@ const handle = import.meta.env.PUBLIC_MEETWO_HANDLE || 'mingxi';
   const FAILED = "Something went wrong. Please try again.";
   const MAX_HISTORY = 10;
   type Turn = { question: string; reply: string; cites: unknown[] };
+  type Saved = { history: Turn[]; conversationId: string | null };
+  const KEY = "meetwo:v1";
+  const load = (): Saved => {
+    try {
+      const s = JSON.parse(sessionStorage.getItem(KEY) ?? "");
+      if (Array.isArray(s?.history)) {
+        const history = s.history.filter((t: Turn) => typeof t?.question === "string" && typeof t?.reply === "string");
+        return { history, conversationId: typeof s.conversationId === "string" ? s.conversationId : null };
+      }
+    } catch {}
+    return { history: [], conversationId: null };
+  };
+  const save = (s: Saved) => {
+    try { sessionStorage.setItem(KEY, JSON.stringify(s)); } catch {}
+  };
 
   for (const box of document.querySelectorAll<HTMLElement>(".meetwo-chat")) {
     const base = (box.dataset.url ?? "").replace(/\/$/, "");
@@ -43,8 +58,24 @@ const handle = import.meta.env.PUBLIC_MEETWO_HANDLE || 'mingxi';
     const input = box.querySelector("input")!;
     const button = box.querySelector("button")!;
     const list = box.querySelector("ol")!;
-    const history: Turn[] = [];
-    let conversationId: string | null = null;
+    const saved = load();
+    const history: Turn[] = saved.history;
+    let conversationId: string | null = saved.conversationId;
+
+    // Answers stay for the browser session, so the conversation survives moving between pages.
+    const addItem = (question: string, text: string) => {
+      const item = document.createElement("li");
+      const asked = document.createElement("p");
+      asked.className = "text-sm text-gray-500";
+      asked.textContent = question;
+      const reply = document.createElement("p");
+      reply.className = "mt-1 text-gray-800 leading-relaxed font-serif text-[1.0625rem]";
+      reply.textContent = text;
+      item.append(asked, reply);
+      list.prepend(item);
+      return reply;
+    };
+    for (const t of history) addItem(t.question, t.reply);
 
     const show = (ok: boolean) => {
       if (ok) {
@@ -67,15 +98,7 @@ const handle = import.meta.env.PUBLIC_MEETWO_HANDLE || 'mingxi';
       e.preventDefault();
       const question = input.value.trim();
       if (!question) return;
-      const item = document.createElement("li");
-      const asked = document.createElement("p");
-      asked.className = "text-sm text-gray-500";
-      asked.textContent = question;
-      const reply = document.createElement("p");
-      reply.className = "mt-1 text-gray-800 leading-relaxed font-serif text-[1.0625rem]";
-      reply.textContent = "…";
-      item.append(asked, reply);
-      list.prepend(item);
+      const reply = addItem(question, "…");
       input.value = "";
       button.disabled = true;
       try {
@@ -91,6 +114,7 @@ const handle = import.meta.env.PUBLIC_MEETWO_HANDLE || 'mingxi';
           reply.textContent = body.text;
           conversationId = body.conversationId ?? conversationId;
           history.push({ question, reply: body.text, cites: body.cites ?? [] });
+          save({ history: history.slice(-MAX_HISTORY), conversationId });
         } else {
           reply.textContent = r.status === 429 ? (body.text ?? body.error ?? FAILED) : FAILED;
         }
