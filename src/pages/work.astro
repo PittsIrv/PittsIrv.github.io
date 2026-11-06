@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import MeeTwoChat from '../components/MeeTwoChat.astro';
 
 const education = [
   {
@@ -41,13 +40,13 @@ const experience = [
     tags: ['Python', 'SQL', 'Graph retrieval', 'Query rewriting', 'RRF', 'LightGBM', 'Feature engineering', 'LLM agents'],
   },
   {
-    role: 'Research Assistant — NLP lead',
+    role: 'Research Assistant',
     org: 'Sapling Lab, CMU',
     id: 'sapling',
     dates: 'May 2026 – Present',
     lead: 'Theory-of-Mind attribution toward AI in long-term interaction.',
     bullets: [
-      'Lead NLP research on an NSF- and OpenAI-funded interdisciplinary project.',
+      'Research on an NSF- and OpenAI-funded interdisciplinary project.',
       'Developing a multi-turn user simulation that varies user traits, assistant social behavior, memory, and scenario.',
       'Developing turn-level LLM judges and heuristic measures to evaluate how attributions change across a conversation. Manuscript in preparation.',
     ],
@@ -239,7 +238,6 @@ const skills = [
         <div class="border-t border-gray-300 pt-6 max-w-3xl">
           <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">Personal agent that answers as you and discloses only approved information.</p>
           <p class="mt-2 text-sm"><a href="/meetwo" class="border-b border-gray-400 hover:border-black transition-colors">Ask MeeTwo ↗</a> <span class="text-gray-400">·</span> <a href="/projects#meetwo" class="border-b border-gray-400 hover:border-black transition-colors">Project details ↗</a></p>
-          <MeeTwoChat />
         </div>
       </div>
     </section>
