@@ -23,3 +23,17 @@ Open any page, click "Ask MeeTwo" (bottom-right), ask a question, close it, open
 
 ## Revisit when
 `PittsIrv/agentic-workstation` becomes public (replace `comingSoon` with a `repo` link), or 2026-12-01.
+
+## Independent review — 2026-11-06 (gpt-6-astra, high)
+Full text kept outside the repo (`~/.claude/router/reviews/T-0024-review.md`). The reviewer's diff was taken against a stale local `main`, so findings that cite the old component or the removed gallery are artifacts of that.
+- Mobile launcher has no accessible name → agree — `aria-label="Ask MeeTwo"` added.
+- Malformed stored history can break init → agree — entries are validated on load.
+- Navigation during a pending request loses it → disagree — the question is saved only once answered; an unanswered request is not replayable.
+- Health failure is not retried → defer — client logic stays as in T-0023 until the MeeTwo session's diagnosis lands.
+- Focus when opening before health completes → agree — focus moves to the dialog itself.
+- `/work#projects` lost → disagree — decided in T-0022; a static page cannot redirect fragments.
+- `personal.astro` date → agree — "November 2026".
+- CORS, retention evidence, end-to-end test → open — verified by Mingxi's live test and the MeeTwo session, not by this PR.
+- Lazy health check on first open → defer — one small GET per page; revisit with the diagnosis.
+- Project schema validation, tests, `astro check`; the old `/v1/ask` and gallery-removal points (stale diff) → deferred or not applicable, as in T-0022.
+Verdict: ship with fixes. Action taken: accessible name, history validation, dialog focus and the date applied.

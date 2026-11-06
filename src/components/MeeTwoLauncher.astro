@@ -6,14 +6,14 @@ const url = import.meta.env.PUBLIC_STANDIN_URL;
 
 {url && (
   <div id="meetwo-launcher">
-    <section id="meetwo-panel" role="dialog" aria-label="MeeTwo" hidden>
+    <section id="meetwo-panel" role="dialog" aria-label="MeeTwo" tabindex="-1" hidden>
       <header>
         <span>MeeTwo</span>
         <button type="button" class="ml-close" aria-label="Close MeeTwo">×</button>
       </header>
       <div class="ml-body"><MeeTwoChat standalone /></div>
     </section>
-    <button type="button" class="ml-fab" aria-expanded="false" aria-controls="meetwo-panel">
+    <button type="button" class="ml-fab" aria-label="Ask MeeTwo" aria-expanded="false" aria-controls="meetwo-panel">
       <span class="ml-mark" aria-hidden="true">M</span><span class="ml-label">Ask MeeTwo</span>
     </button>
   </div>
@@ -30,7 +30,7 @@ const url = import.meta.env.PUBLIC_STANDIN_URL;
       fab.hidden = open;
       fab.setAttribute("aria-expanded", String(open));
       try { sessionStorage.setItem(KEY, open ? "1" : "0"); } catch {}
-      if (open) panel.querySelector<HTMLInputElement>("input")?.focus({ preventScroll: true });
+      if (open) panel.focus({ preventScroll: true });
       else fab.focus({ preventScroll: true });
     };
     fab.addEventListener("click", () => set(true));

@@ -37,7 +37,10 @@ const handle = import.meta.env.PUBLIC_MEETWO_HANDLE || 'mingxi';
   const load = (): Saved => {
     try {
       const s = JSON.parse(sessionStorage.getItem(KEY) ?? "");
-      if (Array.isArray(s?.history)) return s;
+      if (Array.isArray(s?.history)) {
+        const history = s.history.filter((t: Turn) => typeof t?.question === "string" && typeof t?.reply === "string");
+        return { history, conversationId: typeof s.conversationId === "string" ? s.conversationId : null };
+      }
     } catch {}
     return { history: [], conversationId: null };
   };
