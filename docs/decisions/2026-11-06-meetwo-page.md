@@ -10,7 +10,7 @@ Give a visitor a dedicated space on the site to talk with Mingxi's MeeTwo as it 
 - Replies are plain text; the API's rate-limit (429) and paused-budget texts show as replies; any other error shows "Something went wrong. Please try again." Worker.
 - On `/meetwo`, an unset address or a failed health check shows "MeeTwo is not available right now." The Work page embed stays hidden in that case. Worker.
 - The build job gets `environment: github-pages` because the repository variable is scoped to that environment. Router, 2026-11-06.
-- The old "kept for 90 days" privacy line is removed: it described the retired Worker, and the hosted API's retention is not documented in this repo. A correct line needs the MeeTwo session's wording.
+- The old "kept for 90 days" line described the retired Worker. Replaced with the wording verified against the hosted API's code by the MeeTwo session (Router, 2026-11-06): "Questions and answers are kept for 30 days so the owner can review them, along with a short summary of the conversation; your address is not stored by the app." The "by the app" hedge is deliberate: the host's own access logs are outside the code.
 
 ## Intuitions and rejected alternatives
 - Rejected: a floating bubble on every page.
@@ -20,7 +20,7 @@ Give a visitor a dedicated space on the site to talk with Mingxi's MeeTwo as it 
 Open `/`: "Ask MeeTwo" in the intro links. Open `/meetwo`: with the variable set and the API healthy, type a question and get a reply; a follow-up keeps the conversation. With the variable unset or the API down, the page shows the fallback line.
 
 ## Revisit when
-The retention line is supplied, or 2026-12-01.
+The API's retention changes, or 2026-12-01.
 
 ## Independent review — 2026-11-06 (gpt-6-astra, high)
 Full text kept outside the repo (`~/.claude/router/reviews/T-0023-review.md`).
@@ -29,7 +29,7 @@ Full text kept outside the repo (`~/.claude/router/reviews/T-0023-review.md`).
 - Handle override not wired in the workflow → agree — `PUBLIC_MEETWO_HANDLE` is passed to the build; empty falls back to `mingxi`.
 - `/work#projects` bookmarks → disagree — a static page cannot redirect fragments (as in T-0022).
 - CORS and the real API contract → open — Mingxi set `WEB_ORIGIN` on Render; verified by their live test, not by this PR.
-- Retention disclosure missing → agree, open: needs the MeeTwo session's accurate wording before the chat is public; merge held on this.
+- Retention disclosure missing → agree — line added above the chat, verified wording from the MeeTwo session.
 - Citations hidden → disagree — plain-text replies were Mingxi's earlier ruling (decision 124 in the MeeTwo repo).
 - Automated tests, schema validation, immutable ids, `astro check` → deferred; same reasons as T-0022.
-Verdict: ship with fixes. Action taken: timeout and handle fixes applied; the retention line is outstanding.
+Verdict: ship with fixes. Action taken: timeout and handle fixes applied; the retention line is added.
