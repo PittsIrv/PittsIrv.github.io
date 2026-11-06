@@ -1,0 +1,103 @@
+---
+// Ask MeeTwo. Talks to the hosted MeeTwo API. The box stays hidden until the server reports healthy; with `standalone`,
+// a short line shows instead when the address is unset or the server is down, so a page never looks broken.
+interface Props { standalone?: boolean }
+const { standalone = false } = Astro.props;
+const url = import.meta.env.PUBLIC_STANDIN_URL;
+const handle = import.meta.env.PUBLIC_MEETWO_HANDLE || 'mingxi';
+---
+
+{(url || standalone) && (
+  <div class="meetwo-chat mt-5" data-url={url ?? ''} data-handle={handle} hidden={!standalone}>
+    {standalone && <p class="meetwo-fallback text-gray-600 font-serif text-[1.0625rem]" hidden={Boolean(url)}>MeeTwo is not available right now.</p>}
+    <div class="meetwo-box" hidden={standalone}>
+      <form class="flex gap-2">
+        <input
+          name="question"
+          aria-label="Ask MeeTwo"
+          maxlength="500"
+          placeholder="Ask me anything"
+          autocomplete="off"
+          class="flex-1 min-w-0 border border-gray-300 bg-white px-3 py-2 font-serif text-[1.0625rem] focus:outline-none focus:border-black"
+        />
+        <button class="shrink-0 border border-black px-4 py-2 text-sm font-medium hover:bg-black hover:text-white transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-black">Ask</button>
+      </form>
+      <ol class="mt-4 space-y-4" aria-live="polite"></ol>
+    </div>
+  </div>
+)}
+
+<script>
+  const FAILED = "Something went wrong. Please try again.";
+  const MAX_HISTORY = 10;
+  type Turn = { question: string; reply: string; cites: unknown[] };
+
+  for (const box of document.querySelectorAll<HTMLElement>(".meetwo-chat")) {
+    const base = (box.dataset.url ?? "").replace(/\/$/, "");
+    const handle = encodeURIComponent(box.dataset.handle ?? "");
+    const standalone = box.querySelector(".meetwo-fallback") !== null;
+    const inner = box.querySelector<HTMLElement>(".meetwo-box")!;
+    const fallback = box.querySelector<HTMLElement>(".meetwo-fallback");
+    const form = box.querySelector("form")!;
+    const input = box.querySelector("input")!;
+    const button = box.querySelector("button")!;
+    const list = box.querySelector("ol")!;
+    const history: Turn[] = [];
+    let conversationId: string | null = null;
+
+    const show = (ok: boolean) => {
+      if (ok) {
+        box.hidden = false;
+        inner.hidden = false;
+        if (fallback) fallback.hidden = true;
+      } else if (standalone) {
+        box.hidden = false;
+        if (fallback) fallback.hidden = false;
+      }
+    };
+
+    if (!base) { show(false); continue; }
+    fetch(`${base}/v1/health`)
+      .then((r) => (r.ok ? r.json() : { ok: false }))
+      .then((h: { ok?: boolean }) => show(h.ok === true))
+      .catch(() => show(false));
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const question = input.value.trim();
+      if (!question) return;
+      const item = document.createElement("li");
+      const asked = document.createElement("p");
+      asked.className = "text-sm text-gray-500";
+      asked.textContent = question;
+      const reply = document.createElement("p");
+      reply.className = "mt-1 text-gray-800 leading-relaxed font-serif text-[1.0625rem]";
+      reply.textContent = "…";
+      item.append(asked, reply);
+      list.prepend(item);
+      input.value = "";
+      button.disabled = true;
+      try {
+        const r = await fetch(`${base}/v1/agents/${handle}/ask`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question, history: history.slice(-MAX_HISTORY), conversationId }),
+        });
+        const body = (await r.json().catch(() => ({}))) as { text?: string; error?: string; cites?: unknown[]; conversationId?: string | null };
+        // The API's own messages (too many questions, the month's budget) read as replies; any other error gets the fallback.
+        if (r.ok && typeof body.text === "string") {
+          reply.textContent = body.text;
+          conversationId = body.conversationId ?? conversationId;
+          history.push({ question, reply: body.text, cites: body.cites ?? [] });
+        } else {
+          reply.textContent = r.status === 429 ? (body.text ?? body.error ?? FAILED) : FAILED;
+        }
+      } catch {
+        reply.textContent = FAILED;
+      } finally {
+        button.disabled = false;
+        input.focus();
+      }
+    });
+  }
+</script>
