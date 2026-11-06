@@ -57,7 +57,7 @@ const handle = import.meta.env.PUBLIC_MEETWO_HANDLE || 'mingxi';
     };
 
     if (!base) { show(false); continue; }
-    fetch(`${base}/v1/health`)
+    fetch(`${base}/v1/health`, { signal: AbortSignal.timeout(8000) })
       .then((r) => (r.ok ? r.json() : { ok: false }))
       .then((h: { ok?: boolean }) => show(h.ok === true))
       .catch(() => show(false));
@@ -82,6 +82,7 @@ const handle = import.meta.env.PUBLIC_MEETWO_HANDLE || 'mingxi';
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question, history: history.slice(-MAX_HISTORY), conversationId }),
+          signal: AbortSignal.timeout(45000),
         });
         const body = (await r.json().catch(() => ({}))) as { text?: string; error?: string; cites?: unknown[]; conversationId?: string | null };
         // The API's own messages (too many questions, the month's budget) read as replies; any other error gets the fallback.

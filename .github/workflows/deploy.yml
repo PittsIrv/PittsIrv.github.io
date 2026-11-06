@@ -35,6 +35,8 @@ jobs:
         env:
           # The MeeTwo chat shows only when this variable holds the MeeTwo API's address.
           PUBLIC_STANDIN_URL: ${{ vars.PUBLIC_STANDIN_URL }}
+          # Optional; the site defaults to the handle `mingxi`.
+          PUBLIC_MEETWO_HANDLE: ${{ vars.PUBLIC_MEETWO_HANDLE }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

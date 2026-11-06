@@ -21,3 +21,15 @@ Open `/`: "Ask MeeTwo" in the intro links. Open `/meetwo`: with the variable set
 
 ## Revisit when
 The retention line is supplied, or 2026-12-01.
+
+## Independent review — 2026-11-06 (gpt-6-astra, high)
+Full text kept outside the repo (`~/.claude/router/reviews/T-0023-review.md`).
+- No timeout on health or ask → agree — 8 s on health, 45 s on ask; either failure shows the fallback or the error line.
+- Paused budget with a non-2xx status → disagree — the Router states the API returns paused with a 200.
+- Handle override not wired in the workflow → agree — `PUBLIC_MEETWO_HANDLE` is passed to the build; empty falls back to `mingxi`.
+- `/work#projects` bookmarks → disagree — a static page cannot redirect fragments (as in T-0022).
+- CORS and the real API contract → open — Mingxi set `WEB_ORIGIN` on Render; verified by their live test, not by this PR.
+- Retention disclosure missing → agree, open: needs the MeeTwo session's accurate wording before the chat is public; merge held on this.
+- Citations hidden → disagree — plain-text replies were Mingxi's earlier ruling (decision 124 in the MeeTwo repo).
+- Automated tests, schema validation, immutable ids, `astro check` → deferred; same reasons as T-0022.
+Verdict: ship with fixes. Action taken: timeout and handle fixes applied; the retention line is outstanding.
