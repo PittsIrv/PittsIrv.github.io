@@ -3,11 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
-const builtThings = [
-  { name: "Dealer’s Choice", href: "https://dealer-s-choice.vercel.app/", host: "dealer-s-choice.vercel.app", image: "/images/built/dealers-choice.jpg" },
-  { name: "UNIFY", href: "https://unify-renew.vercel.app/", host: "unify-renew.vercel.app", image: "/images/built/unify.jpg" },
-  { name: "Golfie", href: "https://golfie-beta.vercel.app/", host: "golfie-beta.vercel.app", image: "/images/built/golfie.jpg" },
-];
 const entries = [
   { number: '01', kind: 'Engineering · TikTok', title: 'Enterprise retrieval for AI agents', text: 'Graph-based retrieval over Hive tables, dashboards, and documents.', detail: 'Evaluated on an on-call Q&A benchmark and shipped as an internal skill. Also built a livestream revenue-diagnosis copilot now used by operations.', href: '/work#tiktok', link: 'Details' },
   { number: '02', kind: 'Research · CMU–Apple', title: 'PersonaTeaming', text: 'Persona-conditioned automated red-teaming. UIST 2026.', detail: 'Designed the persona-generation algorithm. Across 11 conditions and 6 target models: +46% attack success and +7% attack diversity over RainbowPlus.', href: '/work#personateaming', link: 'Details' },
@@ -31,16 +26,8 @@ const entries = [
       </aside>
     </section>
 
-    <section class="built-section page-shell" aria-labelledby="built-title">
-      <p class="eyebrow" id="built-title">Live projects</p>
-      <div class="built-grid">
-        {builtThings.map(thing => (
-          <a class="built-tile" href={thing.href} target="_blank" rel="noopener noreferrer">
-            <img src={thing.image} alt={`${thing.name} start screen`} width="1200" height="750" loading="lazy" decoding="async" />
-            <span class="built-caption"><strong>{thing.name}</strong><span>{thing.host} <span aria-hidden="true">↗</span></span></span>
-          </a>
-        ))}
-      </div>
+    <section class="explore-section page-shell" aria-labelledby="projects-title">
+      <div class="section-heading"><div><p class="eyebrow">Projects</p><h2 id="projects-title">All projects</h2></div><a class="section-aside text-link" href="/projects">Gallery ↗</a></div>
     </section>
 
     <section id="explore" class="explore-section page-shell" aria-labelledby="explore-title">

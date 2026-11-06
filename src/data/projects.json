@@ -1,0 +1,144 @@
+[
+  {
+    "name": "standin",
+    "oneLine": "Personal agent that answers as its owner and discloses only approved information.",
+    "status": "active",
+    "period": {
+      "start": "2026-10",
+      "end": "now"
+    },
+    "did": [
+      "Local store of sourced, bitemporal memories, including explicit unknowns.",
+      "Default-deny airlock: only approved, versioned, reversible bundles reach the public agent.",
+      "Hybrid retrieval (keyword search and local embeddings, fused with RRF) and an eval harness that fails on any leak."
+    ],
+    "links": {},
+    "tags": [
+      "TypeScript",
+      "SQLite",
+      "Agents",
+      "Retrieval",
+      "Evals",
+      "Privacy"
+    ],
+    "visibility": "public"
+  },
+  {
+    "name": "Table Forty Nine",
+    "oneLine": "Card battler where poker hands are attacks and skill cards bend the rules.",
+    "status": "active",
+    "period": {
+      "start": "2026-10",
+      "end": "now"
+    },
+    "did": [
+      "Game design and rules specification across several revisions.",
+      "Browser client and game server with real-time multiplayer.",
+      "Match-length simulation used to tune balance across table sizes."
+    ],
+    "links": {},
+    "tags": [
+      "TypeScript",
+      "WebSocket",
+      "Game design",
+      "Simulation"
+    ],
+    "visibility": "public"
+  },
+  {
+    "name": "Golfie",
+    "oneLine": "Golf swing analysis from phone video: fault detection, drills, and coach review.",
+    "status": "paused",
+    "period": {
+      "start": "2026-01",
+      "end": "now"
+    },
+    "did": [
+      "Three-phase pipeline: pose estimation, rule-based fault detection across five swing phases, LLM-generated drill plan.",
+      "Per-video pose tiers, from RTMPose on CPU to GPU models on Modal.",
+      "Coarse pass to locate the swing, then a dense pass at native frame rate to capture impact."
+    ],
+    "links": {
+      "site": "https://golfie-beta.vercel.app/"
+    },
+    "tags": [
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "RTMPose",
+      "ONNX Runtime",
+      "Modal"
+    ],
+    "visibility": "public"
+  },
+  {
+    "name": "Daybook",
+    "oneLine": "Local-only review of Mac Screen Time by app and purpose.",
+    "status": "shipped",
+    "period": {
+      "start": "2026-10",
+      "end": "now"
+    },
+    "did": [
+      "Imports Screen Time exports and reports hours and minutes per app.",
+      "Labels each app once as focus, entertainment or other; labels carry over to past and future days.",
+      "Local MCP interface so a personal agent can read the totals."
+    ],
+    "links": {
+      "repo": "https://github.com/PittsIrv/daybook"
+    },
+    "tags": [
+      "macOS",
+      "MCP",
+      "Local-first"
+    ],
+    "visibility": "public"
+  },
+  {
+    "name": "Brawl Lab",
+    "oneLine": "Ranked analytics workspace and final-pick recommender for Brawl Stars.",
+    "status": "shipped",
+    "period": {
+      "start": "2026-10",
+      "end": "now"
+    },
+    "did": [
+      "Calibrated logistic regression trained on about 400,000 Ranked sets.",
+      "Population map and ban guidance, counter and combo exploration, legal final-pick comparison.",
+      "Public demo on Vercel; personal data stays in a private app."
+    ],
+    "links": {
+      "site": "https://brawl-lab-ten.vercel.app"
+    },
+    "tags": [
+      "Analytics",
+      "Logistic regression",
+      "Vercel"
+    ],
+    "visibility": "public"
+  },
+  {
+    "name": "Dealer’s Choice",
+    "oneLine": "Online multiplayer platform for home-game poker variants.",
+    "status": "shipped",
+    "period": {
+      "start": "2025-06",
+      "end": "now"
+    },
+    "did": [
+      "Custom variants with real-time multiplayer over WebSocket.",
+      "ECS in private subnets behind a public ALB; CI/CD for testing and deployment."
+    ],
+    "links": {
+      "site": "https://dealer-s-choice.vercel.app/"
+    },
+    "tags": [
+      "TypeScript",
+      "NestJS",
+      "WebSocket",
+      "AWS ECS",
+      "CI/CD"
+    ],
+    "visibility": "public"
+  }
+]

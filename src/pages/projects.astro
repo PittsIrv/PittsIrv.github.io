@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import projectData from '../data/projects.json';
+
+const order = ['active', 'shipped', 'paused', 'archived'];
+const visibilities = ['public', 'title'];
+const datePattern = /^(\d{4}-(0[1-9]|1[0-2])|now|unknown)$/;
+for (const p of projectData) {
+  const bad = !order.includes(p.status) ? 'status' : !visibilities.includes(p.visibility) ? 'visibility'
+    : !datePattern.test(p.period.start) || !datePattern.test(p.period.end) ? 'period' : null;
+  if (bad) throw new Error(`projects.json: invalid ${bad} for "${p.name}"`);
+}
+const slug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const heading: Record<string, string> = { active: 'Active', shipped: 'Shipped', paused: 'Paused', archived: 'Archived' };
+const visible = projectData.filter(p => p.visibility === 'public' || p.visibility === 'title');
+const groups = order
+  .map(status => ({ status, items: visible.filter(p => p.status === status) }))
+  .filter(g => g.items.length > 0);
+
+const fmt = (d: string) => {
+  if (d === 'now') return 'Present';
+  const [y, m] = d.split('-');
+  const names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  return m ? `${names[Number(m) - 1]} ${y}` : y;
+};
+const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', paper: 'Paper' };
+---
+<Layout title="Projects - Mingxi Yan" description="Projects by Mingxi Yan, grouped by status.">
+  <Navigation />
+  <main id="main-content" class="flex-grow">
+    <section class="pt-16 pb-10 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+      <div class="max-w-5xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5">Projects</h1>
+        <p class="text-lg text-gray-700 max-w-2xl leading-relaxed font-serif">Current and past projects, active first.</p>
+      </div>
+    </section>
+
+    {groups.map(group => (
+      <section id={group.status} class="py-12 px-4 sm:px-6 lg:px-8 scroll-mt-16">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">{heading[group.status]}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {group.items.map(p => (
+              <article class="project-card" id={slug(p.name)}>
+                <div class="project-top">
+                  <h3>{p.name}</h3>
+                  <span class="status-pill" data-status={p.status}>{heading[p.status]}</span>
+                </div>
+                {p.visibility === 'public' && <p class="project-period">{fmt(p.period.start)} – {fmt(p.period.end)}</p>}
+                <p class="project-line">{p.oneLine}</p>
+                {p.visibility === 'public' && <ul class="project-did">
+                  {p.did.map(b => <li><span aria-hidden="true">—</span><span>{b}</span></li>)}
+                </ul>}
+                {p.visibility === 'public' && Object.keys(p.links).length > 0 && (
+                  <p class="project-links">
+                    {Object.entries(p.links).map(([k, href]) => (
+                      <a href={href as string} target="_blank" rel="noopener noreferrer">{linkLabels[k] ?? k} <span aria-hidden="true">↗</span></a>
+                    ))}
+                  </p>
+                )}
+                {p.visibility === 'public' && p.tags.length > 0 && <p class="project-tags">{p.tags.map(t => <span>{t}</span>)}</p>}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .project-card { border: 1px solid var(--line); background: var(--paper); padding: 1.25rem 1.4rem 1.4rem; display: flex; flex-direction: column; gap: .6rem; }
+  .project-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .project-top h3 { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; letter-spacing: -.02em; }
+  .status-pill { font: 500 .6875rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .075em; text-transform: uppercase; border: 1px solid var(--line); color: var(--muted); padding: .3rem .5rem; white-space: nowrap; }
+  .status-pill[data-status='active'] { color: var(--accent); border-color: var(--accent); }
+  .project-period { font-size: .8125rem; color: var(--muted); }
+  .project-line { font-family: var(--font-serif); line-height: 1.55; }
+  .project-did { display: grid; gap: .4rem; font-size: .9375rem; color: var(--muted); line-height: 1.55; }
+  .project-did li { display: flex; gap: .75rem; }
+  .project-did li > span:first-child { color: var(--line); flex-shrink: 0; }
+  .project-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: .875rem; }
+  .project-links a { border-bottom: 1px solid var(--line); }
+  .project-links a:hover { border-color: var(--accent); color: var(--accent); }
+  .project-tags { display: flex; flex-wrap: wrap; gap: .25rem .75rem; font-size: .75rem; color: var(--muted); margin-top: auto; }
+</style>
