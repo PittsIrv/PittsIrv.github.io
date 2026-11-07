@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · The site only runs its own code
+Try: open any page with the browser console open; ask MeeTwo a question.
+You get: every page refuses scripts from other sites, which protects the site-editor sign-in; nothing visible changes, and MeeTwo works as before.
+
 ## 2026-11-07 · Edit the site from the browser
 Try: create a GitHub token (90 days, this repository only, Contents read and write), open /admin, choose "Sign In Using Access Token", change a line and click Save.
 You get: the change live on the site in about a minute, with no terminal. Covers the Home, Work, Personal and About text, Projects, poems, prose, quotes and poker variants.
