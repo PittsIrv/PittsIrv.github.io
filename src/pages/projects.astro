@@ -69,7 +69,7 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
                   {p.visibility === 'public' && Object.keys(p.links).length > 0 && (
                     <p class="entry-links">
                       {Object.entries(p.links).map(([k, href]) => (
-                        (href as string).startsWith('/')
+                        (href as string).startsWith('/') && !(href as string).startsWith('//')
                           ? <a href={href as string}>{linkLabels[k] ?? k}</a>
                           : <a href={href as string} target="_blank" rel="noopener noreferrer">{linkLabels[k] ?? k} <span aria-hidden="true">↗</span></a>
                       ))}

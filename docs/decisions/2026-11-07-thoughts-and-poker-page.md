@@ -31,3 +31,7 @@ Open https://pittsirv.github.io/projects: project cards say "Thoughts" where the
 ## Revisit when
 
 Mingxi adds more poker content (for example hand write-ups), or wants Poker back on /personal.
+
+## Review — 2026-11-07
+
+Gemini unavailable (3 attempts: two connection resets, one stopped at 3 minutes); Router reviewed the diff and found nothing blocking. Its one nit, applied: a protocol-relative `//host` link is not treated as a page on this site.
