@@ -2,7 +2,7 @@
 // (at most 64 characters, at most 20). Covers replies with cite objects and turns saved by an older widget.
 // Usage: node scripts/check-meetwo-request.mjs
 import assert from 'node:assert/strict';
-import { citeIds, toTurn } from '../src/lib/meetwo-turns.ts';
+import { citeIds, toTurn } from '../src/lib/meetwo-turns.mjs';
 
 const reply = { text: 'I built a chess agent.', cites: [{ id: 'm-1', statement: 'I built a chess agent in the AI agent course.', node: 'Work' }, { id: 'm-2', statement: 'x', node: 'Work' }] };
 assert.deepEqual(citeIds(reply.cites), ['m-1', 'm-2']);

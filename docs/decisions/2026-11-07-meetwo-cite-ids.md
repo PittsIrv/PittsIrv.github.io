@@ -17,7 +17,7 @@ The ask endpoint returns `cites` as objects (`{ id, statement, node }`). The wid
 | Fix on the client, leave the API alone | Router (T-0041) | The client broke the contract; a more tolerant API would need another production deploy. |
 | Turns read back from session storage are normalised too, not only new ones | Worker | A visitor who already has a session saved by the old widget would otherwise keep failing until the tab is closed. |
 | Ids that are not strings or are over 64 characters are dropped; at most 20 are kept | Worker | Same limits as the API, so the request is never rejected for its cites. |
-| A build-time script check (`scripts/check-meetwo-request.mjs`), run by `npm run build` | Worker | The site has no test runner; adding one for one helper is more than the ticket needs. The build already runs the CSP check the same way. |
+| A build-time script check (`scripts/check-meetwo-request.mjs`), run by `npm run build` | Worker | The site has no test runner; adding one for one helper is more than the ticket needs. The build already runs the CSP check the same way. The helper is plain JavaScript (`src/lib/meetwo-turns.mjs`, like `src/csp.mjs`) because the deploy builds on Node 20, which cannot import TypeScript. |
 
 The widget still uses `fetch` and `textContent` only; the CSP is unchanged and the build's CSP check passes.
 
@@ -33,3 +33,15 @@ Open https://pittsirv.github.io/meetwo/ and ask "What do you think about AI agen
 ## Revisit when
 
 The API's history rule changes (for example to accept cite objects), or the widget starts sending anything else back from a reply.
+
+## Independent review — 2026-11-07 (gemini-3.1-pro-preview, single pass)
+
+Full text: `docs/reviews/2026-11-07-meetwo-cite-ids.review.md`.
+
+- "The `npm run build` command will fail because standard Node.js throws an error when natively executing a script that imports a TypeScript file" → agree: the deploy workflow uses Node 20. The helper is now plain JavaScript (`src/lib/meetwo-turns.mjs`), and the check passes under Node 20 (`npx node@20 scripts/check-meetwo-request.mjs`) as well as in the full build.
+- "Empty strings are silently stripped from citation arrays due to a truthiness check" → agree that it was implicit; now an explicit `id.length > 0` rule. The API never issues an empty id.
+- "Does sending an empty `cites` array genuinely resolve the 400 error, or does it trigger a missing-field error?" → done: the API's rule is an array of at most 20 strings, and an empty array satisfies it (turns with no citations already send `[]`).
+- Use Vitest instead of a build script → disagree, reason in Decisions.
+- Documentation gap on Node and TypeScript → resolved by the change to plain JavaScript; nothing extra to document.
+
+Verdict: do not ship (build break). Action taken: helper converted to plain JavaScript and checked under Node 20; the review was re-run on the fixed diff (below).

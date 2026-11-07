@@ -29,7 +29,7 @@ const handle = import.meta.env.PUBLIC_MEETWO_HANDLE || 'mingxi';
 )}
 
 <script>
-  import { citeIds, toTurn, type Turn } from "../lib/meetwo-turns";
+  import { citeIds, toTurn, type Turn } from "../lib/meetwo-turns.mjs";
   const FAILED = "Something went wrong. Please try again.";
   const MAX_HISTORY = 10;
   type Saved = { history: Turn[]; conversationId: string | null };
