@@ -56,3 +56,29 @@ export const aboutSchema = z.object({
   contact: text,
   selfNote: text,
 });
+
+// Optional text an editor may leave blank: a blank value counts as absent.
+const optional = z.string().optional().transform(v => (v && v.trim() ? v : undefined));
+const dropAbsent = <T extends Record<string, unknown>>(o: T) =>
+  Object.fromEntries(Object.entries(o).filter(([, v]) => v !== undefined)) as T;
+const period = z.string().regex(/^(\d{4}-(0[1-9]|1[0-2])|now|unknown)$/, 'Use YYYY-MM, now or unknown');
+
+export const projectsSchema = z.array(z.object({
+  name: text,
+  oneLine: text,
+  intuition: optional,
+  status: z.enum(['active', 'shipped', 'paused', 'archived']),
+  period: z.object({ start: period, end: period }),
+  did: z.array(text).default([]),
+  links: z.object({ site: optional, repo: optional, paper: optional }).default({}).transform(dropAbsent),
+  comingSoon: optional,
+  tags: z.array(text).default([]),
+  visibility: z.enum(['public', 'title']),
+}).transform(dropAbsent));
+
+export const homeSchema = z.object({
+  affiliation: text,
+  currently: text,
+  previously: text,
+  selectedWork: z.array(z.object({ kind: text, title: text, text: text, detail: text, href: text })),
+});

@@ -13,7 +13,6 @@
       "Default-deny airlock: only approved, versioned, reversible bundles reach the public agent.",
       "Hybrid retrieval (keyword search and local embeddings, fused with RRF) and an eval harness that fails on any leak."
     ],
-    "links": {},
     "tags": [
       "TypeScript",
       "SQLite",
@@ -38,7 +37,6 @@
       "Browser client and game server with real-time multiplayer.",
       "Match-length simulation used to tune balance across table sizes."
     ],
-    "links": {},
     "tags": [
       "TypeScript",
       "WebSocket",
@@ -81,10 +79,7 @@
       "start": "2026-11",
       "end": "now"
     },
-    "did": [],
-    "links": {},
     "comingSoon": "Repository",
-    "tags": [],
     "visibility": "title"
   },
   {

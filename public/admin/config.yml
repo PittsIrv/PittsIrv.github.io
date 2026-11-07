@@ -1,0 +1,298 @@
+# Sveltia CMS configuration for the site editor at /admin.
+# Sign-in: a fine-grained GitHub token for this repository only (Contents: read and write).
+# Each save commits to main; the GitHub Pages workflow then rebuilds the site.
+
+backend:
+  name: github
+  repo: PittsIrv/PittsIrv.github.io
+  branch: main
+  commit_messages:
+    create: 'Add {{collection}} “{{slug}}” (site editor)'
+    update: 'Edit {{collection}} “{{slug}}” (site editor)'
+    delete: 'Delete {{collection}} “{{slug}}” (site editor)'
+    uploadMedia: 'Upload “{{path}}” (site editor)'
+    deleteMedia: 'Delete “{{path}}” (site editor)'
+
+site_url: https://pittsirv.github.io
+display_url: https://pittsirv.github.io
+media_folder: public/images
+public_folder: /images
+
+output:
+  omit_empty_optional_fields: true
+  json:
+    indent_size: 2
+  yaml:
+    quote: double
+
+collections:
+  - name: pages
+    label: Pages
+    description: Text on the Home, Work, Personal and About pages.
+    editor:
+      preview: false
+    files:
+      - name: home
+        label: Home
+        file: src/data/home.json
+        format: json
+        preview_path: /
+        fields:
+          - { name: affiliation, label: Affiliation, widget: string }
+          - { name: currently, label: Currently, widget: text }
+          - { name: previously, label: Previously, widget: text }
+          - name: selectedWork
+            label: Selected work
+            widget: list
+            summary: '{{fields.title}}'
+            collapsed: true
+            fields:
+              - { name: kind, label: Kind and place, widget: string, hint: 'For example: Research · Sapling Lab' }
+              - { name: title, label: Title, widget: string }
+              - { name: text, label: One line, widget: text }
+              - { name: detail, label: More detail, widget: text }
+              - { name: href, label: Link, widget: string, hint: 'A page on this site, for example /work#tiktok' }
+
+      - name: work
+        label: Work
+        file: src/data/work.json
+        format: json
+        preview_path: /work
+        fields:
+          - { name: intro, label: Line under the page title, widget: text }
+          - { name: meetwo, label: MeeTwo line, widget: text }
+          - name: education
+            label: Education
+            widget: list
+            summary: '{{fields.degree}}'
+            collapsed: true
+            fields:
+              - { name: degree, label: Degree, widget: string }
+              - { name: school, label: School and city, widget: string }
+              - { name: dates, label: Dates, widget: string }
+              - { name: notes, label: 'Notes (minor, GPA)', widget: list, required: false }
+              - { name: courseLabel, label: Coursework button label, widget: string }
+              - { name: courses, label: Courses, widget: text }
+          - name: experience
+            label: Experience
+            widget: list
+            summary: '{{fields.role}} · {{fields.org}}'
+            collapsed: true
+            fields:
+              - { name: role, label: Role, widget: string }
+              - { name: org, label: Organisation and city, widget: string }
+              - { name: id, label: Link anchor, widget: string, required: false, hint: 'Only if other pages link here, for example tiktok' }
+              - { name: compact, label: Show as one line under “Also”, widget: boolean, required: false, default: false }
+              - { name: dates, label: Dates, widget: string }
+              - { name: lead, label: One line, widget: text }
+              - { name: bullets, label: Details (one per item), widget: list, required: false, field: { name: bullet, label: Detail, widget: text } }
+              - { name: tags, label: Tags, widget: list, required: false }
+          - name: publications
+            label: Publications
+            widget: list
+            summary: '{{fields.title}}'
+            collapsed: true
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: id, label: Link anchor, widget: string, required: false }
+              - { name: meta, label: Venue line, widget: string }
+              - { name: lead, label: One line, widget: text }
+              - { name: body, label: Details, widget: text }
+              - name: link
+                label: Link (optional)
+                widget: object
+                required: false
+                collapsed: auto
+                fields:
+                  - { name: href, label: Address, widget: string }
+                  - { name: label, label: Link text, widget: string }
+          - name: skills
+            label: Skills
+            widget: list
+            summary: '{{fields.group}}'
+            collapsed: true
+            fields:
+              - { name: group, label: Group, widget: string }
+              - { name: items, label: Skills, widget: list }
+          - { name: selfNote, label: Closing note, widget: string }
+
+      - name: personal
+        label: Personal
+        file: src/data/personal.json
+        format: json
+        preview_path: /personal
+        fields:
+          - { name: intro, label: Line under the page title, widget: text }
+          - { name: nowUpdated, label: Now — updated (month and year), widget: string }
+          - name: now
+            label: Now
+            widget: list
+            summary: '{{fields.label}}'
+            collapsed: true
+            fields:
+              - { name: label, label: Heading, widget: string }
+              - { name: text, label: Text, widget: text }
+          - { name: interests, label: Interests, widget: list }
+          - name: sports
+            label: Sports
+            widget: list
+            summary: '{{fields.name}} ({{fields.level}})'
+            collapsed: true
+            fields:
+              - { name: name, label: Sport, widget: string }
+              - { name: level, label: Level, widget: string }
+          - name: terminology
+            label: Poker terms
+            widget: list
+            summary: '{{fields.term}}'
+            collapsed: true
+            fields:
+              - { name: term, label: Term, widget: string }
+              - { name: text, label: Meaning, widget: text }
+          - { name: selfNote, label: Closing note, widget: string }
+
+      - name: about
+        label: About
+        file: src/data/about.json
+        format: json
+        preview_path: /about
+        fields:
+          - { name: opening, label: Opening paragraphs, widget: list, field: { name: paragraph, label: Paragraph, widget: text } }
+          - name: interests
+            label: Interests
+            widget: list
+            summary: '{{fields.title}}'
+            collapsed: true
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: text, label: Text, widget: text }
+              - { name: href, label: Link address, widget: string, required: false }
+              - { name: link, label: Link text, widget: string, required: false }
+          - { name: contact, label: Contact line, widget: text }
+          - { name: selfNote, label: Closing note, widget: string }
+
+  - name: projects
+    label: Projects
+    description: The Projects page and the project preview on Home.
+    editor:
+      preview: false
+    files:
+      - name: projects
+        label: Projects
+        file: src/data/projects.json
+        format: json
+        preview_path: /projects
+        fields:
+          - name: projects
+            label: Projects
+            widget: list
+            root: true
+            summary: '{{fields.name}} ({{fields.status}})'
+            collapsed: true
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: oneLine, label: One line, widget: text }
+              - { name: intuition, label: Intuition, widget: text, required: false }
+              - name: status
+                label: Status
+                widget: select
+                options:
+                  - { label: Active, value: active }
+                  - { label: Shipped, value: shipped }
+                  - { label: Paused, value: paused }
+                  - { label: Archived, value: archived }
+              - name: period
+                label: Period
+                widget: object
+                fields:
+                  - { name: start, label: Start, widget: string, hint: 'YYYY-MM, now or unknown', pattern: ['^(\d{4}-(0[1-9]|1[0-2])|now|unknown)$', 'Use YYYY-MM, now or unknown'] }
+                  - { name: end, label: End, widget: string, hint: 'YYYY-MM, now or unknown', pattern: ['^(\d{4}-(0[1-9]|1[0-2])|now|unknown)$', 'Use YYYY-MM, now or unknown'] }
+              - { name: did, label: What I did (one per item), widget: list, required: false, field: { name: item, label: Item, widget: text } }
+              - name: links
+                label: Links
+                widget: object
+                required: false
+                fields:
+                  - { name: site, label: Live site, widget: string, required: false }
+                  - { name: repo, label: Public repository, widget: string, required: false }
+                  - { name: paper, label: Paper, widget: string, required: false }
+              - { name: comingSoon, label: Coming soon (link label), widget: string, required: false }
+              - { name: tags, label: Stack tags, widget: list, required: false }
+              - name: visibility
+                label: Visibility
+                widget: select
+                options:
+                  - { label: 'Public: everything shown', value: public }
+                  - { label: 'Title only: name and one line', value: title }
+
+  - name: poems
+    label: Poems
+    folder: src/content/poems
+    extension: md
+    format: frontmatter
+    create: true
+    slug: '{{title}}'
+    preview_path: '/poems/{{slug}}'
+    sortable_fields: [title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: titleEn, label: English title, widget: string, required: false }
+      - { name: date, label: Date, widget: string, hint: 'For example: November 10, 2022' }
+      - { name: category, label: Category, widget: string }
+      - { name: draft, label: Draft (hidden from the site), widget: boolean, required: false }
+      - { name: bilingual, label: Bilingual, widget: boolean, required: false }
+      - { name: contentEn, label: English text, widget: text, required: false }
+      - { name: body, label: Poem, widget: markdown }
+
+  - name: articles
+    label: Prose
+    folder: src/content/articles
+    extension: md
+    format: frontmatter
+    create: true
+    slug: '{{title}}'
+    preview_path: '/articles/{{slug}}'
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: titleEn, label: English title, widget: string, required: false }
+      - { name: date, label: Date, widget: string, hint: 'For example: August 25, 2025' }
+      - { name: readTime, label: Reading time, widget: string, hint: 'For example: 8 min' }
+      - { name: tags, label: Tags, widget: list }
+      - { name: draft, label: Draft (hidden from the site), widget: boolean, required: false }
+      - { name: bilingual, label: Bilingual, widget: boolean, required: false }
+      - { name: contentEn, label: English text, widget: text, required: false }
+      - { name: body, label: Text, widget: markdown }
+
+  - name: quotes
+    label: Quotes
+    folder: src/content/quotes
+    extension: md
+    format: frontmatter
+    create: true
+    identifier_field: author
+    summary: '{{author}}: {{text}}'
+    slug: '{{author}}'
+    fields:
+      - { name: text, label: Quote, widget: text }
+      - { name: author, label: Author and source, widget: string }
+      - { name: order, label: Order, widget: number, value_type: int, required: false }
+
+  - name: poker-games
+    label: Poker variants
+    folder: src/content/poker-games
+    extension: md
+    format: frontmatter
+    create: true
+    identifier_field: name
+    slug: '{{name}}'
+    fields:
+      - { name: name, label: Name, widget: string }
+      - name: category
+        label: Kind
+        widget: select
+        options:
+          - { label: Original, value: created }
+          - { label: Learned, value: learned }
+      - { name: description, label: Description, widget: text }
+      - { name: quote, label: Quote, widget: string }
+      - { name: rules, label: Rules (one per item), widget: list, field: { name: rule, label: Rule, widget: string } }
