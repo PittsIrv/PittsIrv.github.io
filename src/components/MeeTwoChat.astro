@@ -29,16 +29,16 @@ const handle = import.meta.env.PUBLIC_MEETWO_HANDLE || 'mingxi';
 )}
 
 <script>
+  import { citeIds, toTurn, type Turn } from "../lib/meetwo-turns.mjs";
   const FAILED = "Something went wrong. Please try again.";
   const MAX_HISTORY = 10;
-  type Turn = { question: string; reply: string; cites: unknown[] };
   type Saved = { history: Turn[]; conversationId: string | null };
   const KEY = "meetwo:v1";
   const load = (): Saved => {
     try {
       const s = JSON.parse(sessionStorage.getItem(KEY) ?? "");
       if (Array.isArray(s?.history)) {
-        const history = s.history.filter((t: Turn) => typeof t?.question === "string" && typeof t?.reply === "string");
+        const history = s.history.map(toTurn).filter((t: Turn | null): t is Turn => t !== null);
         return { history, conversationId: typeof s.conversationId === "string" ? s.conversationId : null };
       }
     } catch {}
@@ -113,7 +113,7 @@ const handle = import.meta.env.PUBLIC_MEETWO_HANDLE || 'mingxi';
         if (r.ok && typeof body.text === "string") {
           reply.textContent = body.text;
           conversationId = body.conversationId ?? conversationId;
-          history.push({ question, reply: body.text, cites: body.cites ?? [] });
+          history.push({ question, reply: body.text, cites: citeIds(body.cites) });
           save({ history: history.slice(-MAX_HISTORY), conversationId });
         } else {
           reply.textContent = r.status === 429 ? (body.text ?? body.error ?? FAILED) : FAILED;
