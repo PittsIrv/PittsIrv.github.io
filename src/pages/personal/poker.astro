@@ -31,11 +31,11 @@ const personal = personalSchema.parse(personalData);
           Playable online, with friends or bots: <a href="https://dealer-s-choice.vercel.app/" target="_blank" rel="noopener noreferrer" class="border-b border-gray-400 hover:border-black transition-colors">dealer-s-choice.vercel.app</a>. <a href="/projects#dealer-s-choice" class="border-b border-gray-400 hover:border-black transition-colors">Project details</a>.
         </p>
 
-        <h3 class="text-xl font-semibold mb-6">Original variants</h3>
+        <h2 class="text-xl font-semibold mb-6">Original variants</h2>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
           {myGames.map(game => (
             <details id={`game-${game.slug}`} class="poker-rule">
-              <summary><h4 class="text-lg font-semibold">{game.data.name}</h4><span aria-hidden="true">+</span></summary>
+              <summary><h3 class="text-lg font-semibold">{game.data.name}</h3><span aria-hidden="true">+</span></summary>
               <p class="text-sm italic text-gray-500 mb-3">"{game.data.quote}"</p>
               <p class="text-gray-600 mb-4 leading-relaxed">{game.data.description}</p>
               <ol class="space-y-2 text-base text-gray-600 list-decimal list-outside pl-5">
@@ -45,11 +45,11 @@ const personal = personalSchema.parse(personalData);
           ))}
         </div>
 
-        <h3 class="text-xl font-semibold mb-6">Learned variants</h3>
+        <h2 class="text-xl font-semibold mb-6">Learned variants</h2>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {learnedGames.map(game => (
             <details id={`game-${game.slug}`} class="poker-rule">
-              <summary><h4 class="text-lg font-semibold">{game.data.name}</h4><span aria-hidden="true">+</span></summary>
+              <summary><h3 class="text-lg font-semibold">{game.data.name}</h3><span aria-hidden="true">+</span></summary>
               <p class="text-sm italic text-gray-500 mb-3">"{game.data.quote}"</p>
               <p class="text-gray-600 mb-4 leading-relaxed">{game.data.description}</p>
               <ol class="space-y-2 text-base text-gray-600 list-decimal list-outside pl-5">
@@ -60,7 +60,7 @@ const personal = personalSchema.parse(personalData);
         </div>
 
         <div class="mt-14 border-t border-gray-300 pt-6">
-          <h3 class="text-base font-semibold mb-5">Terminology</h3>
+          <h2 class="text-base font-semibold mb-5">Terminology</h2>
           <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-sm">
             {personal.terminology.map(t => (
               <div><dt class="font-medium inline">{t.term} — </dt><dd class="text-gray-600 inline">{t.text}</dd></div>

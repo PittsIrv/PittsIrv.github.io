@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · Link previews and accessibility fixes on every page
+Try: paste your site's link, or /personal/poker, into a chat app or a social post; open /personal and check the faint grey text.
+You get: a large preview card in the site's own look instead of a plain link; the faint grey on /personal is now readable; the poker page's headings follow a proper order. Every page scores 100 on Lighthouse and has no axe violations.
+
 ## 2026-11-07 · Thoughts on projects, and poker rules on their own page
 Try: open /projects, then /personal, then click "All 12 variants".
 You get: project cards say "Thoughts"; /personal is about 1,000 px shorter and leads with your writing; every variant and the terminology live at /personal/poker, and old variant links still land there.

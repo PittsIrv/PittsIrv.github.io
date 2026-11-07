@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
+import { excerpt } from '../../lib/excerpt';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -18,7 +19,7 @@ const { poem } = Astro.props;
 const { Content } = await poem.render();
 ---
 
-<Layout title={`${poem.data.title} - Mingxi Yan`}>
+<Layout title={`${poem.data.title} - Mingxi Yan`} description={excerpt(poem.body)}>
   <Navigation />
 
   <main id="main-content" class="flex-grow">
