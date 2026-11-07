@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · Work, Personal and About match the new look
+Try: open /work, /personal, /about and any poem.
+You get: plain serif section headings instead of small spaced capitals, no alternating tinted bands, a "Contact" heading on About, and a quiet "All writing" link at the end of each poem and article.
+
 ## 2026-11-07 · A clearer home page
 Try: open the home page.
 You get: your name and affiliation at a normal size with four links, a "Currently" panel, three selected-work entries with their results visible, and three active projects with their stack, each one click from its full entry.
