@@ -17,3 +17,11 @@ Open `/projects` at desktop and 375px: the list above the cards, each row with o
 
 ## Revisit when
 An entry gains a public link (the row then uses it), or 2026-12-01.
+
+## Independent review — 2026-11-07 (gemini-3.1-pro-preview, single pass)
+Full text outside the repo (`~/.claude/router/reviews/T-0031A-review.md`).
+- A public entry could link a private repo → disagree — `docs/projects-gallery.md` requires `repo` only when `gh repo view` says PUBLIC; checked in T-0024.
+- `links` null breaks the build → disagree — every entry carries `links` (`{}` when empty); the existing cards read it the same way.
+- Detail anchors need card ids → already done — cards carry `id={slug(p.name)}` from the same function.
+- Duplicate content for screen readers, new-tab warning, mobile spacing → disagree — the list is a summary by request; links match the existing cards' behaviour; mobile checked at 375px.
+Verdict: ship with fixes. Action taken: none, reasons above.
