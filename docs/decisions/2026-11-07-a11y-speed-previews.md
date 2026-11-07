@@ -53,7 +53,7 @@ Performance was already 100 on every page, both modes. Layout shift was at most 
 Spend: $0.00
 
 ## Follow-up — 2026-11-07: content added from /admin must not break the build
-The first version failed the build for any page without a committed PNG. A poem or article added from the site editor is only a Markdown file, so publishing it would have broken the Pages deploy. Decision (Claude, small, Router's brief offered two routes): the layout uses `og/home.png` when a page has no image of its own. `check-previews` still fails on a missing title or description, and on an image tag whose file is missing. Rejected: generating images during the build, because the deploy has no Chrome. Checked locally with a poem file in the content folder and no PNG: build green, 11 pages pass, the page's `og:image` is the home image. Generating the page's own image stays optional (`node scripts/generate-og.mjs`). Revisit if per-page cards for CMS content matter to Mingxi.
+The first version failed the build for any page without a committed PNG. A poem or article added from the site editor is only a Markdown file, so publishing it would have broken the Pages deploy. Decision (Claude, small, Router's brief offered two routes): the layout uses `og/home.png` when a page has no image of its own. `check-previews` still fails on a missing title or description, and on an image tag whose file is missing. Rejected: generating images during the build. I had assumed the deploy has no Chrome; that is unverified (GitHub's Ubuntu runners usually ship Chrome), but a fallback is simpler and cannot break the deploy. Checked locally with a poem file in the content folder and no PNG: build green, 11 pages pass, the page's `og:image` is the home image. Generating the page's own image stays optional (`node scripts/generate-og.mjs`). Revisit if per-page cards for CMS content matter to Mingxi.
 
 ## Independent review — 2026-11-07 (gemini-3.1-pro-preview, single pass, middle tier)
 - Excerpt keeps URLs from Markdown links → agree; fixed. The helper moved to `src/lib/excerpt.ts`, strips `[text](url)` to its text, and is shared by poems and articles (the inline copy also tripped the Astro compiler once the pattern grew).
@@ -66,3 +66,12 @@ The first version failed the build for any page without a committed PNG. A poem 
 - Does the body include frontmatter? → no; the built descriptions show clean text.
 - Documentation gap (manual regeneration step) → covered by "Revisit when" above and the script header.
 Verdict: Ship with fixes. Action taken: both fixes made in this PR.
+
+### Review of the fallback change (gemini-3.1-pro-preview, 2026-11-07): ship with fixes
+- Relative `public/og` path fails silently if the build runs from another directory → agree in part. `npm run build` always runs from the project root, as the CSP check and CMS copy script already assume. Added a guard anyway: `check-previews` now fails if a page whose own PNG exists does not use it, so a wrong directory cannot quietly drop every card to the fallback.
+- SSR would break the file check → disagree. The site is static (`output: static`); revisit with any SSR move.
+- Use `import.meta.glob` instead → disagree. Globbing PNGs makes Vite bundle the images into the build output as duplicates; the file check plus the guard is lighter.
+- Slug logic must match `generate-og.mjs` → agree; the new guard verifies exactly that on every page.
+- `home.png` could be missing → covered: the check fails when an `og:image` file is absent from the build.
+- Why not run Chrome in CI → fair; my "no Chrome" premise was unverified and the record now says so. Not pursued, since the fallback already removes the failure.
+Verdict: Ship with fixes. Action taken: guard added.

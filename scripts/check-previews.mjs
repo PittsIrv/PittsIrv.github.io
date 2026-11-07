@@ -33,6 +33,10 @@ for (const file of htmlFiles(dist)) {
     if (!url) { problems.push(`${page}: no ${key}`); continue; }
     if (!existsSync(join(dist, new URL(url).pathname))) problems.push(`${page}: ${key} file missing (${url})`);
   }
+  // A page with its own committed image must use it (guards the layout's fallback against a wrong working directory).
+  const slug = page.replace(/(^|\/)index\.html$/, '').replace(/\//g, '-') || 'home';
+  const own = `public/og/${slug}.png`;
+  if (existsSync(own) && !meta(html, 'property', 'og:image')?.endsWith(`/og/${slug}.png`)) problems.push(`${page}: ${own} exists but og:image does not use it`);
 }
 if (problems.length) { console.error(problems.join('\n')); process.exit(1); }
 console.log(`Preview check: ${checked} pages have a title, description and preview image.`);
