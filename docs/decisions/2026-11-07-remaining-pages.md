@@ -25,3 +25,10 @@ Bring the remaining pages in line with the shared layout and the home and /proje
 
 ## Revisit when
 Page text moves into data files (the layouts here should not need to change).
+
+## Independent review — 2026-11-07 (gemini-3.1-pro-preview, middle tier): "ship with fixes"
+- `poem.title` vs `poem.data.title` mismatch → checked, no — `personal.astro` maps the collection to flat objects; the built page has "A Love Letter", "Adventure" and "Monologue" in the screen-reader text.
+- `ml-5` between inline links indents a wrapped second link → agree — the pair is now a wrapping flex row with a gap.
+- Section distinction without bands on Work → checked at 375 and 1280 px; serif headings and rules separate sections. Kept.
+- Mail links should keep "↗" → disagree — on this site the arrow means "opens another site in a new tab"; mail links do neither.
+Verdict: ship with fixes. Action taken: link row fix.
