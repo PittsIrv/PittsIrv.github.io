@@ -24,5 +24,5 @@ Goal: show that editing a field in `/admin` changes exactly the expected file an
 - **The commit through the GitHub API.** Local mode writes files but does not commit, and a real commit needs a token, which is Mingxi's to create.
 - **Expected behaviour with a token:**
   - One commit on `main`, authored as the token's owner, changing only the edited file, with the message `Edit pages “about” (site editor)`.
-  - The push starts the Pages workflow, and the page updates when the deploy finishes, about two minutes on recent runs.
+  - The push starts the Pages workflow, and the page updates when the deploy finishes: 35–45 seconds on recent runs, plus up to a few minutes of Pages caching.
   - This is confirmed on Mingxi's first real edit.
