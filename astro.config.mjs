@@ -16,7 +16,10 @@ export default defineConfig({
     '/misc': '/personal',
   },
   integrations: [sitemap()],
+  // Emit every stylesheet and script as a file so the Content-Security-Policy needs no inline allowance.
+  build: { inlineStylesheets: 'never' },
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    build: { assetsInlineLimit: 0 },
   }
 });

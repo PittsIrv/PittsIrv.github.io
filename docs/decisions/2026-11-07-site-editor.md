@@ -44,3 +44,6 @@ Goal: Mingxi changes a line of site text from the browser, with no terminal, and
 - *Use an OAuth app for one-click sign-in:* disagree. The brief rules out an OAuth app and a new provider.
 - *Validate in the editor rather than only in CI:* already done; the editor's fields mirror the build schemas.
 - *Fast repeated saves could exhaust Actions minutes:* not a concern. Actions minutes are free for a public repository, and each deploy publishes the latest commit.
+
+## Router acceptance (2026-11-07)
+Accepted. Before the owner creates a token, unpublishing the other Pages site on this account comes first (owner's settings). A site-wide policy followed in `2026-11-07-site-csp.md`.
