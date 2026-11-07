@@ -25,3 +25,14 @@ Goal: Mingxi changes a line of site text from the browser, with no terminal, and
 - **YAML is written with double quotes**, matching the existing Markdown files. On a first save the editor still adds `draft: false` and `bilingual: false` to a poem or article, plus a final newline. Both are harmless and stay after the first save.
 - **The "Sign In with GitHub" button stays visible.** It needs an OAuth app, which the brief rules out; the how-to tells Mingxi to use "Sign In Using Access Token". Sveltia has no setting to hide the button.
 - **Commits go straight to `main` (simple publish mode).** This is Mingxi editing their own text with their own token. The Pages workflow and the build-time schemas are the guard: a bad edit fails the deploy, and the live site keeps its last good version.
+
+## Gemini review (single pass, middle tier): ship with fixes
+- *Copy script assumes `node_modules` next to the repo; pnpm could hoist it:* disagree. The repo uses npm (`package-lock.json`), and CI runs `npm ci`.
+- *CI might call `astro build` directly and skip the copy:* already handled. `.github/workflows/deploy.yml` runs `npm run build`.
+- *A bad edit on `main` fails the deploy with no feedback in the editor:* agree in part.
+  - The editor's own validation mirrors the build schemas: required fields, the YYYY-MM period pattern, and select lists for status, visibility and kind. An edit that passes the editor passes the build.
+  - GitHub emails the pusher when a workflow fails.
+  - The how-to adds a recovery step: if the page has not changed after five minutes, open the Actions tab, then fix the field in the editor and save again. No terminal is needed.
+- *Use the editorial workflow (pull requests) instead:* disagree. It adds a merge step to every edit. The Pages workflow runs only on pushes to `main`, so a pull request would not be built and checked either.
+- *Use `vite-plugin-static-copy` instead of the copy script:* disagree. It adds a dependency to replace an eight-line script.
+- *Are the added `draft`/`bilingual` booleans allowed?:* yes. `src/content/config.ts` declares both as optional booleans.
