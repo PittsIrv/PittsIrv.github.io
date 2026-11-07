@@ -46,11 +46,14 @@ Performance was already 100 on every page, both modes. Layout shift was at most 
 - Paste a page link into a chat app: a large preview card appears (after deploy; some apps cache old unfurls).
 
 ## Revisit when
-- A page, poem or article is added: run `node scripts/generate-og.mjs` and commit the new PNG, or the build fails on purpose.
+- A page, poem or article is added: optionally run `node scripts/generate-og.mjs` and commit the PNG for its own card; without it the page uses the home image.
 - The site colours or font change: regenerate the images.
 - Never for the contrast and heading fixes; they are measured and enforced by the audit.
 
 Spend: $0.00
+
+## Follow-up — 2026-11-07: content added from /admin must not break the build
+The first version failed the build for any page without a committed PNG. A poem or article added from the site editor is only a Markdown file, so publishing it would have broken the Pages deploy. Decision (Claude, small, Router's brief offered two routes): the layout uses `og/home.png` when a page has no image of its own. `check-previews` still fails on a missing title or description, and on an image tag whose file is missing. Rejected: generating images during the build, because the deploy has no Chrome. Checked locally with a poem file in the content folder and no PNG: build green, 11 pages pass, the page's `og:image` is the home image. Generating the page's own image stays optional (`node scripts/generate-og.mjs`). Revisit if per-page cards for CMS content matter to Mingxi.
 
 ## Independent review — 2026-11-07 (gemini-3.1-pro-preview, single pass, middle tier)
 - Excerpt keeps URLs from Markdown links → agree; fixed. The helper moved to `src/lib/excerpt.ts`, strips `[text](url)` to its text, and is shared by poems and articles (the inline copy also tripped the Astro compiler once the pattern grew).

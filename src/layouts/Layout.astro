@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import MeeTwoLauncher from '../components/MeeTwoLauncher.astro';
 import { buildCsp } from '../csp.mjs';
+import { existsSync } from 'node:fs';
 
 interface Props {
   title: string;
@@ -14,7 +15,9 @@ const hasMeeTwo = launcher && Boolean(import.meta.env.PUBLIC_STANDIN_URL);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const slug = Astro.url.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'home';
-const imageURL = new URL(`/og/${slug}.png`, Astro.site).href;
+// A page without its own committed image (a poem or article added from /admin) uses the home image.
+const ownImage = existsSync(`public/og/${slug}.png`);
+const imageURL = new URL(`/og/${ownImage ? slug : 'home'}.png`, Astro.site).href;
 const imageAlt = `${title}`;
 
 const csp = buildCsp(import.meta.env.PUBLIC_STANDIN_URL, Astro.url);
