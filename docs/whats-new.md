@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · Projects, easier to scan
+Try: open `/projects`; read one project left to right, then tap a name in the list at the top on a phone.
+You get: each project as one row, what it is, what was built and its stack on the left, the Intuition beside it; no more empty gaps between cards; the list at the top jumps to each project.
+
 ## 2026-11-07 · Projects in the menu; MeeTwo out of the way
 Try: open any page; the top menu now reads Projects, Work, Personal, About. Scroll a long page such as Work.
 You get: Projects one click from everywhere, plainer section labels, and an "Ask MeeTwo" button that no longer sits on top of text: in the right margin on a laptop, in the top bar on a phone.
