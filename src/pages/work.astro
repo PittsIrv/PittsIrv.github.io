@@ -2,7 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import work from '../data/work.json';
+import workData from '../data/work.json';
+import { workSchema } from '../data/schemas';
+
+const work = workSchema.parse(workData);
 
 const { education, experience, publications, skills } = work;
 ---

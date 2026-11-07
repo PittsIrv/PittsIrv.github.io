@@ -2,8 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import about from '../data/about.json';
+import aboutData from '../data/about.json';
+import { aboutSchema } from '../data/schemas';
 
+const about = aboutSchema.parse(aboutData);
 const { interests } = about;
 ---
 <Layout title="About — Mingxi Yan" description="About Mingxi Yan: AI systems engineer and MS student at Carnegie Mellon’s Language Technologies Institute.">
