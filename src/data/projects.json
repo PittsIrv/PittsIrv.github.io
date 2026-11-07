@@ -2,6 +2,7 @@
   {
     "name": "MeeTwo",
     "oneLine": "Personal agent that answers as its owner and discloses only approved information.",
+    "intuition": "How can an AI represent someone who can never describe themselves completely? MeeTwo infers preferences and judgments from limited information, says when it does not know, and improves through my corrections. I built it because people's attention is the scarce resource in the AI era.",
     "status": "active",
     "period": {
       "start": "2026-10",
@@ -48,6 +49,7 @@
   {
     "name": "Agent Relay",
     "oneLine": "Git-backed handoffs of unfinished coding tasks between collaborators' local coding agents.",
+    "intuition": "When my coding agent reaches its usage limit mid-task, I have to tell a collaborator, wait until they notice, and have them read the code and continue. Their agent often has unused capacity at that moment. I wanted it to pick up the latest checkpoint and continue without anyone waiting.",
     "status": "active",
     "period": {
       "start": "2026-11",
