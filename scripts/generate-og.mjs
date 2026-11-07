@@ -1,6 +1,6 @@
 // Renders the 1200x630 link-preview images in public/og/ from the site's own font and colours.
 // Needs a local Chrome: CHROME_PATH=/path/to/chrome node scripts/generate-og.mjs
-// Re-run after adding a page, poem or article; commit the PNGs.
+// Optional: pages without their own image use og/home.png. Re-run to give new pages, poems or articles their own; commit the PNGs.
 import { execFileSync } from 'node:child_process';
 import { mkdirSync, readdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
 import { join, resolve } from 'node:path';
