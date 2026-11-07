@@ -21,3 +21,13 @@ Rebuild /projects in direction B (Router's pick, 2026-11-07): each project is on
 
 ## Revisit when
 A project gets more than about five bullets or an image, which would unbalance the two columns.
+
+## Independent review — 2026-11-07 (gemini-3.1-pro-preview, middle tier), first pass: "do not ship"
+- Anchor jumps hide the title under the sticky nav → disagree, checked — the global `[id] { scroll-margin-top: 6rem }` applies; tapping "Golfie" puts its title 40–46 px below the nav at 375 and 1280 px.
+- `display: grid` on the bullet list may drop markers → agree — list is plain block with spacing between items; markers verified (`display: list-item`).
+- `.entry-solo` class had no CSS → agree it was dead; removed. Disagree with widening facts to full width when there is no Intuition: full width runs lines past 120 characters; the 7-part column keeps the reading measure. Recorded in the CSS comment.
+- List ignores `paper` links → agree — falls back to site, then repository, then paper.
+- 5-part column too narrow at 768 px → agree — side by side starts at 900 px.
+- `comingSoon` might be a boolean → disagree — `docs/projects-gallery.md` defines it as a link label string.
+- Keep a "Details ↓" fallback in the list → disagree — the name itself is the jump link and is underlined; an extra word per row adds noise.
+- Empty `<span />` placeholder → agree — removed; the link takes grid column 3 explicitly.

@@ -19,11 +19,11 @@ const groups = order
   .map(status => ({ status, items: visible.filter(p => p.status === status) }))
   .filter(g => g.items.length > 0);
 
-// Text-only list: public entries, one line each; the name jumps to the entry, plus the live site or public repo when there is one.
+// Text-only list: public entries, one line each; the name jumps to the entry, plus the live site, public repo or paper when there is one.
 const summary = order.flatMap(status => visible.filter(p => p.status === status && p.visibility === 'public')).map(p => {
   const links = p.links as Record<string, string>;
-  const href = links.site ?? links.repo;
-  return { name: p.name, anchor: `#${slug(p.name)}`, line: p.oneLine, href, label: links.site ? 'Site' : 'Repository' };
+  const href = links.site ?? links.repo ?? links.paper;
+  return { name: p.name, anchor: `#${slug(p.name)}`, line: p.oneLine, href, label: links.site ? 'Site' : links.repo ? 'Repository' : 'Paper' };
 });
 
 const fmt = (d: string) => {
@@ -50,7 +50,7 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
           <li>
             <a class="pl-name" href={p.anchor}>{p.name}</a>
             <span class="pl-line">{p.line}</span>
-            {p.href ? <a class="pl-link" href={p.href} target="_blank" rel="noopener noreferrer">{p.label} <span aria-hidden="true">↗</span></a> : <span />}
+            {p.href && <a class="pl-link" href={p.href} target="_blank" rel="noopener noreferrer">{p.label} <span aria-hidden="true">↗</span></a>}
           </li>
         ))}
       </ul>
@@ -61,7 +61,7 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
         <div class="max-w-5xl mx-auto">
           <h2 class="group-heading">{heading[group.status]}</h2>
           {group.items.map(p => (
-            <article class:list={['entry', { 'entry-solo': !p.intuition }]} id={slug(p.name)}>
+            <article class="entry" id={slug(p.name)}>
               <header class="entry-top">
                 <h3>{p.name}</h3>
                 {p.visibility === 'public' && <p class="entry-period">{fmt(p.period.start)} – {fmt(p.period.end)}</p>}
@@ -97,18 +97,19 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
   .pl-name { font-family: var(--font-serif); font-weight: 500; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: .25em; }
   .pl-name:hover { color: var(--accent); text-decoration-color: currentColor; }
   .pl-line { font-family: var(--font-serif); color: var(--muted); line-height: 1.5; }
-  .pl-link { font-size: .875rem; border-bottom: 1px solid var(--line); white-space: nowrap; justify-self: start; }
+  .pl-link { grid-column: 3; font-size: .875rem; border-bottom: 1px solid var(--line); white-space: nowrap; justify-self: start; }
   .pl-link:hover { border-color: var(--accent); color: var(--accent); }
   @media (max-width: 640px) { .project-list li { grid-template-columns: 1fr; } }
   .group-heading { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 500; letter-spacing: -.02em; margin-bottom: .75rem; }
-  /* One row per project: facts on the left, the Intuition beside them on wide screens and after them on narrow ones. */
+  /* One row per project: facts on the left, the Intuition beside them on wide screens and after them below 900px. Without an Intuition the facts keep their 7-part width so lines stay readable. */
   .entry { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 1rem 3rem; padding-block: 1.75rem 2rem; border-top: 1px solid var(--line); }
   .entry-top { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1.5rem; }
   .entry-top h3 { font-family: var(--font-serif); font-size: 1.625rem; font-weight: 600; letter-spacing: -.015em; line-height: 1.2; }
   .entry-period { font-size: .9375rem; color: var(--muted); font-variant-numeric: tabular-nums; }
   .entry-facts { display: flex; flex-direction: column; gap: .9rem; min-width: 0; }
   .entry-line { font-family: var(--font-serif); font-size: 1.1875rem; line-height: 1.5; }
-  .entry-did { list-style: disc; padding-left: 1.15rem; display: grid; gap: .45rem; font-size: 1rem; line-height: 1.55; }
+  .entry-did { list-style: disc; padding-left: 1.15rem; font-size: 1rem; line-height: 1.55; }
+  .entry-did li + li { margin-top: .45rem; }
   .entry-did li::marker { color: var(--muted); }
   .entry-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.25rem; }
   .entry-tags { display: flex; flex-wrap: wrap; gap: .375rem; }
@@ -120,5 +121,5 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
   .entry-intuition { align-self: start; background: var(--wash); padding: 1.15rem 1.35rem 1.3rem; min-width: 0; }
   .entry-intuition h4 { font-family: var(--font-sans); font-size: .875rem; font-weight: 600; color: var(--muted); margin-bottom: .45rem; }
   .entry-intuition p { font-family: var(--font-serif); font-size: 1.03rem; line-height: 1.65; color: #22304a; }
-  @media (max-width: 767px) { .entry { grid-template-columns: 1fr; } .entry-top h3 { font-size: 1.45rem; } }
+  @media (max-width: 899px) { .entry { grid-template-columns: 1fr; } .entry-top h3 { font-size: 1.45rem; } }
 </style>
