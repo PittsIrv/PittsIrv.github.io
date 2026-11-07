@@ -1,0 +1,10 @@
+{
+  "affiliation": "Language Technologies Institute, Carnegie Mellon University",
+  "currently": "MS student, graduating August 2027. Focus: AI systems and infrastructure.",
+  "previously": "BS, Computer Science and Information Systems, Carnegie Mellon, May 2026",
+  "selectedWork": [
+    { "kind": "Engineering · TikTok", "title": "Enterprise retrieval for AI agents", "text": "Graph-based retrieval over Hive tables, dashboards, and documents.", "detail": "Evaluated on an on-call Q&A benchmark and shipped as an internal skill. Also built a livestream revenue-diagnosis copilot now used by operations.", "href": "/work#tiktok" },
+    { "kind": "Research · CMU–Apple", "title": "PersonaTeaming", "text": "Persona-conditioned automated red-teaming. UIST 2026.", "detail": "Designed the persona-generation algorithm. Across 11 conditions and 6 target models: +46% attack success and +7% attack diversity over RainbowPlus.", "href": "/work#personateaming" },
+    { "kind": "Research · Sapling Lab", "title": "Mind attribution in human–AI conversation", "text": "Simulation study of how users attribute minds to AI over long conversations.", "detail": "Multi-turn user simulation and turn-level LLM judges. Manuscript in preparation.", "href": "/work#sapling" }
+  ]
+}

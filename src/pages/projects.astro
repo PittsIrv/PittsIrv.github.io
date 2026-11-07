@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import projectData from '../data/projects.json';
+import { slug } from '../utils/slug';
 
 const order = ['active', 'shipped', 'paused', 'archived'];
 const visibilities = ['public', 'title'];
@@ -12,7 +13,6 @@ for (const p of projectData) {
     : !datePattern.test(p.period.start) || !datePattern.test(p.period.end) ? 'period' : null;
   if (bad) throw new Error(`projects.json: invalid ${bad} for "${p.name}"`);
 }
-const slug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const heading: Record<string, string> = { active: 'Active', shipped: 'Shipped', paused: 'Paused', archived: 'Archived' };
 const visible = projectData.filter(p => p.visibility === 'public' || p.visibility === 'title');
 const groups = order
