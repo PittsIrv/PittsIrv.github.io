@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+import personalData from '../../data/personal.json';
+import { personalSchema } from '../../data/schemas';
+
+// Sorted by file name so the order is the same on every build.
+const allGames = (await getCollection('poker-games')).sort((a, b) => (a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0));
+const learnedGames = allGames.filter(game => game.data.category === 'learned');
+const myGames = allGames.filter(game => game.data.category === 'created');
+const personal = personalSchema.parse(personalData);
+---
+
+<Layout
+  title="Dealer's Choice - Mingxi Yan"
+  description="Mingxi Yan's home-game poker variants: rules for every original and learned variant, and the terminology."
+>
+  <Navigation />
+
+  <main id="main-content" class="flex-grow">
+    <section id="poker" class="pt-16 pb-14 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <p class="text-sm text-gray-500 mb-4"><a href="/personal#poker" class="hover:text-black transition-colors">Personal</a></p>
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-6">Dealer's Choice</h1>
+        <p class="text-gray-700 max-w-2xl leading-relaxed mb-3">
+          Home-game poker variants: {myGames.length} original, {learnedGames.length} learned. All are <strong>pot limit</strong> and <strong>bomb pots</strong> unless noted; standard Texas Hold'em rules apply.
+        </p>
+        <p class="text-sm text-gray-500 mb-10">
+          Playable online, with friends or bots: <a href="https://dealer-s-choice.vercel.app/" target="_blank" rel="noopener noreferrer" class="border-b border-gray-400 hover:border-black transition-colors">dealer-s-choice.vercel.app</a>. <a href="/projects#dealer-s-choice" class="border-b border-gray-400 hover:border-black transition-colors">Project details</a>.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-6">Original variants</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
+          {myGames.map(game => (
+            <details id={`game-${game.slug}`} class="poker-rule">
+              <summary><h4 class="text-lg font-semibold">{game.data.name}</h4><span aria-hidden="true">+</span></summary>
+              <p class="text-sm italic text-gray-500 mb-3">"{game.data.quote}"</p>
+              <p class="text-gray-600 mb-4 leading-relaxed">{game.data.description}</p>
+              <ol class="space-y-2 text-base text-gray-600 list-decimal list-outside pl-5">
+                {game.data.rules.map(rule => <li class="pl-1">{rule}</li>)}
+              </ol>
+            </details>
+          ))}
+        </div>
+
+        <h3 class="text-xl font-semibold mb-6">Learned variants</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {learnedGames.map(game => (
+            <details id={`game-${game.slug}`} class="poker-rule">
+              <summary><h4 class="text-lg font-semibold">{game.data.name}</h4><span aria-hidden="true">+</span></summary>
+              <p class="text-sm italic text-gray-500 mb-3">"{game.data.quote}"</p>
+              <p class="text-gray-600 mb-4 leading-relaxed">{game.data.description}</p>
+              <ol class="space-y-2 text-base text-gray-600 list-decimal list-outside pl-5">
+                {game.data.rules.map(rule => <li class="pl-1">{rule}</li>)}
+              </ol>
+            </details>
+          ))}
+        </div>
+
+        <div class="mt-14 border-t border-gray-300 pt-6">
+          <h3 class="text-base font-semibold mb-5">Terminology</h3>
+          <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-sm">
+            {personal.terminology.map(t => (
+              <div><dt class="font-medium inline">{t.term} — </dt><dd class="text-gray-600 inline">{t.text}</dd></div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  function openLinkedGame() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const game = document.getElementById(id);
+    if (game instanceof HTMLDetailsElement) game.open = true;
+  }
+  openLinkedGame();
+  window.addEventListener('hashchange', openLinkedGame);
+</script>

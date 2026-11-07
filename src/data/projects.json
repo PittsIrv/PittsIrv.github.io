@@ -170,7 +170,8 @@
       "ECS in private subnets behind a public ALB; CI/CD for testing and deployment."
     ],
     "links": {
-      "site": "https://dealer-s-choice.vercel.app/"
+      "site": "https://dealer-s-choice.vercel.app/",
+      "page": "/personal/poker"
     },
     "tags": [
       "TypeScript",

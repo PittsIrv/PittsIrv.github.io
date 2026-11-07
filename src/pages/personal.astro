@@ -63,7 +63,7 @@ const { nowUpdated, now, interests, sports } = personal;
 
 <Layout
   title="Personal - Mingxi Yan"
-  description="Mingxi Yan: poker variants, writing, quotes, and current activities."
+  description="Mingxi Yan: current activities, writing, poker variants and quotes."
 >
   <Navigation />
 
@@ -77,8 +77,8 @@ const { nowUpdated, now, interests, sports } = personal;
         </p>
         <nav class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-500 opacity-0 animate-fade-in-up delay-200">
           <a href="#now" class="hover:text-black transition-colors">Now</a>
-          <a href="#poker" class="hover:text-black transition-colors">Poker</a>
           <a href="#writing" class="hover:text-black transition-colors">Writing</a>
+          <a href="#poker" class="hover:text-black transition-colors">Poker</a>
           <a href="#quotes" class="hover:text-black transition-colors">Quotes</a>
           <a href="#elsewhere" class="hover:text-black transition-colors">Elsewhere</a>
         </nav>
@@ -103,58 +103,8 @@ const { nowUpdated, now, interests, sports } = personal;
       </div>
     </section>
 
-    <!-- Poker -->
-    <section id="poker" class="py-14 px-4 sm:px-6 lg:px-8 border-t border-gray-200 scroll-mt-16">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="section-title mb-6">Dealer's Choice</h2>
-        <p class="text-gray-700 max-w-2xl leading-relaxed mb-3">
-          Home-game poker variants: {myGames.length} original, {learnedGames.length} learned. All are <strong>pot limit</strong> and <strong>bomb pots</strong> unless noted; standard Texas Hold'em rules apply.
-        </p>
-        <p class="text-sm text-gray-500 mb-10">
-          Playable online, with friends or bots: <a href="https://dealer-s-choice.vercel.app/" target="_blank" rel="noopener noreferrer" class="border-b border-gray-400 hover:border-black transition-colors">dealer-s-choice.vercel.app</a>. <a href="/projects#dealer-s-choice" class="border-b border-gray-400 hover:border-black transition-colors">Project details</a>.
-        </p>
-
-        <h3 class="text-xl font-semibold mb-6">Original variants</h3>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-14">
-          {myGames.map(game => (
-            <details id={`game-${game.slug}`} class="poker-rule">
-              <summary><h4 class="text-lg font-semibold">{game.data.name}</h4><span aria-hidden="true">+</span></summary>
-              <p class="text-sm italic text-gray-500 mb-3">"{game.data.quote}"</p>
-              <p class="text-gray-600 mb-4 leading-relaxed">{game.data.description}</p>
-              <ol class="space-y-2 text-base text-gray-600 list-decimal list-outside pl-5">
-                {game.data.rules.map(rule => <li class="pl-1">{rule}</li>)}
-              </ol>
-            </details>
-          ))}
-        </div>
-
-        <h3 class="text-xl font-semibold mb-6">Learned variants</h3>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {learnedGames.map(game => (
-            <details id={`game-${game.slug}`} class="poker-rule">
-              <summary><h4 class="text-lg font-semibold">{game.data.name}</h4><span aria-hidden="true">+</span></summary>
-              <p class="text-sm italic text-gray-500 mb-3">"{game.data.quote}"</p>
-              <p class="text-gray-600 mb-4 leading-relaxed">{game.data.description}</p>
-              <ol class="space-y-2 text-base text-gray-600 list-decimal list-outside pl-5">
-                {game.data.rules.map(rule => <li class="pl-1">{rule}</li>)}
-              </ol>
-            </details>
-          ))}
-        </div>
-
-        <div class="mt-14 border-t border-gray-300 pt-6">
-          <h3 class="text-base font-semibold mb-5">Terminology</h3>
-          <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-sm">
-            {personal.terminology.map(t => (
-              <div><dt class="font-medium inline">{t.term} — </dt><dd class="text-gray-600 inline">{t.text}</dd></div>
-            ))}
-          </dl>
-        </div>
-      </div>
-    </section>
-
     <!-- Writing -->
-    <section id="writing" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
+    <section id="writing" class="py-14 px-4 sm:px-6 lg:px-8 border-t border-gray-200 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
         <h2 class="section-title mb-8">Writing</h2>
 
@@ -188,8 +138,21 @@ const { nowUpdated, now, interests, sports } = personal;
       </div>
     </section>
 
+    <!-- Poker -->
+    <section id="poker" class="py-14 px-4 sm:px-6 lg:px-8 border-t border-gray-200 scroll-mt-16">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="section-title mb-4">Dealer's Choice</h2>
+        <p class="text-gray-700 max-w-2xl leading-relaxed">
+          Home-game poker variants: {myGames.length} original, {learnedGames.length} learned.
+          <a href="https://dealer-s-choice.vercel.app/" target="_blank" rel="noopener noreferrer" class="border-b border-gray-400 hover:border-black transition-colors">Play online</a> ·
+          <a href="/personal/poker" class="border-b border-gray-400 hover:border-black transition-colors">All {allGames.length} variants</a> ·
+          <a href="/projects#dealer-s-choice" class="border-b border-gray-400 hover:border-black transition-colors">Project details</a>
+        </p>
+      </div>
+    </section>
+
     <!-- Quotes -->
-    <section id="quotes" class="py-14 px-4 sm:px-6 lg:px-8 border-t border-gray-200 scroll-mt-16">
+    <section id="quotes" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
         <h2 class="section-title mb-8">Quotes</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-9">
@@ -236,11 +199,6 @@ const { nowUpdated, now, interests, sports } = personal;
 </Layout>
 
 <script>
-  function openLinkedGame() {
-    const id = decodeURIComponent(location.hash.slice(1));
-    const game = document.getElementById(id);
-    if (game instanceof HTMLDetailsElement) game.open = true;
-  }
-  openLinkedGame();
-  window.addEventListener('hashchange', openLinkedGame);
+  // Variant rules moved to /personal/poker; old /personal#game-… links follow them there.
+  if (location.hash.startsWith('#game-')) location.replace(`/personal/poker${location.hash}`);
 </script>

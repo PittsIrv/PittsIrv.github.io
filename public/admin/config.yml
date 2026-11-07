@@ -192,7 +192,7 @@ collections:
             fields:
               - { name: name, label: Name, widget: string }
               - { name: oneLine, label: One line, widget: text }
-              - { name: intuition, label: Intuition, widget: text, required: false }
+              - { name: intuition, label: Thoughts, widget: text, required: false }
               - name: status
                 label: Status
                 widget: select
@@ -216,6 +216,7 @@ collections:
                   - { name: site, label: Live site, widget: string, required: false }
                   - { name: repo, label: Public repository, widget: string, required: false }
                   - { name: paper, label: Paper, widget: string, required: false }
+                  - { name: page, label: Page on this site (a path such as /personal/poker), widget: string, required: false }
               - { name: comingSoon, label: Coming soon (link label), widget: string, required: false }
               - { name: tags, label: Stack tags, widget: list, required: false }
               - name: visibility

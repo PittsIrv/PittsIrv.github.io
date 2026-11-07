@@ -27,7 +27,7 @@ const fmt = (d: string) => {
   const names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   return m ? `${names[Number(m) - 1]} ${y}` : y;
 };
-const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', paper: 'Paper' };
+const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', paper: 'Paper', page: 'More on this site' };
 ---
 <Layout title="Projects - Mingxi Yan" description="Projects by Mingxi Yan, grouped by status.">
   <Navigation />
@@ -69,14 +69,16 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
                   {p.visibility === 'public' && Object.keys(p.links).length > 0 && (
                     <p class="entry-links">
                       {Object.entries(p.links).map(([k, href]) => (
-                        <a href={href as string} target="_blank" rel="noopener noreferrer">{linkLabels[k] ?? k} <span aria-hidden="true">↗</span></a>
+                        (href as string).startsWith('/') && !(href as string).startsWith('//')
+                          ? <a href={href as string}>{linkLabels[k] ?? k}</a>
+                          : <a href={href as string} target="_blank" rel="noopener noreferrer">{linkLabels[k] ?? k} <span aria-hidden="true">↗</span></a>
                       ))}
                     </p>
                   )}
                   {'comingSoon' in p && <p class="entry-soon">{p.comingSoon}: coming soon</p>}
                 </div>
               </div>
-              {p.intuition && <aside class="entry-intuition" aria-label={`Intuition: ${p.name}`}><h4>Intuition</h4><p>{p.intuition}</p></aside>}
+              {p.intuition && <aside class="entry-intuition" aria-label={`Thoughts: ${p.name}`}><h4>Thoughts</h4><p>{p.intuition}</p></aside>}
             </article>
           ))}
         </div>
@@ -96,7 +98,7 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
   .pl-link:hover { border-color: var(--accent); color: var(--accent); }
   @media (max-width: 640px) { .project-list li { grid-template-columns: 1fr; } .pl-link { grid-column: auto; } }
   .group-heading { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 500; letter-spacing: -.02em; margin-bottom: .75rem; }
-  /* One row per project: facts on the left, the Intuition beside them on wide screens and after them below 900px. Without an Intuition the facts keep their 7-part width so lines stay readable. */
+  /* One row per project: facts on the left, the Thoughts beside them on wide screens and after them below 900px. Without Thoughts the facts keep their 7-part width so lines stay readable. */
   .entry { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 1rem 3rem; padding-block: 1.75rem 2rem; border-top: 1px solid var(--line); }
   .entry-top { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1.5rem; }
   .entry-top h3 { font-family: var(--font-serif); font-size: 1.625rem; font-weight: 600; letter-spacing: -.015em; line-height: 1.2; }
