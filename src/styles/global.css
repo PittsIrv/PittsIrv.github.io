@@ -142,11 +142,12 @@ a, button { touch-action: manipulation; }
 .nav-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
 .site-wordmark { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; letter-spacing: -.04em; }
 .site-wordmark span { color: var(--accent); }
-.nav-links { display: flex; align-items: center; gap: 2rem; font-size: .875rem; }
-.nav-links a { padding-block: .6rem; color: var(--muted); }
+.nav-links { display: flex; align-items: center; gap: 2rem; font-size: .9375rem; }
+.nav-links a { padding-block: .6rem; color: var(--ink); }
 .nav-links a[aria-current='page'] { color: var(--accent); box-shadow: 0 1px var(--accent); }
 .nav-links a:hover, .intro-links a:hover { color: var(--accent); }
-.eyebrow { font: 500 .75rem/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .075em; text-transform: uppercase; color: var(--muted); }
+/* Section labels: small sentence-case sans, not tracked caps. */
+.eyebrow { font-family: var(--font-sans); font-size: .875rem; font-weight: 600; line-height: 1.6; color: var(--muted); }
 .home-intro { display: grid; grid-template-columns: minmax(0, 1fr) 235px; gap: 5rem; padding-top: 5.4rem; padding-bottom: 4.6rem; }
 .ink-dot { color: var(--accent); padding-inline: .5rem; }
 .home-intro h1 { font-size: clamp(4rem, 9vw, 7.5rem); font-weight: 450; line-height: 1; letter-spacing: -.055em; margin: 1.4rem 0 2rem; }
@@ -176,7 +177,6 @@ a, button { touch-action: manipulation; }
 .explore-note summary::-webkit-details-marker { display: none; }
 .explore-note summary:hover { background: var(--wash); }
 .note-top { display: flex; align-items: start; justify-content: space-between; gap: .65rem; }
-.note-number { font: .75rem/1.6 ui-monospace, monospace; color: var(--accent); }
 .explore-note h3 { font-size: 1.55rem; font-weight: 450; line-height: 1.2; letter-spacing: -.025em; margin: 1.5rem 0 1rem; }
 .explore-note summary p { font-size: .95rem; color: var(--muted); line-height: 1.7; }
 .note-prompt { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1.8rem; font-size: .875rem; color: var(--accent); }
