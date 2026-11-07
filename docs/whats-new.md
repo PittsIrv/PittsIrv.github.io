@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · Projects in the menu; MeeTwo out of the way
+Try: open any page; the top menu now reads Projects, Work, Personal, About. Scroll a long page such as Work.
+You get: Projects one click from everywhere, plainer section labels, and an "Ask MeeTwo" button that no longer sits on top of text: in the right margin on a laptop, in the top bar on a phone.
+
 ## 2026-11-07 · Why I built it
 Try: open `/projects` and read the Intuition paragraph on the MeeTwo, Agent Relay, Agent Workspace, Brawl Lab, Dealer's Choice and Table Forty Nine cards.
 You get: your own reasons for each project, in your words with grammar fixed, shown on the cards.

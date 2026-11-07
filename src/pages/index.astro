@@ -35,7 +35,7 @@ const entries = [
       <div class="note-grid">
         {entries.map(entry => (
           <details class="explore-note" id={`note-${entry.number}`}>
-            <summary><span class="note-top"><span class="eyebrow">{entry.kind}</span><span class="note-number">{entry.number}</span></span><h3>{entry.title}</h3><p>{entry.text}</p><span class="note-prompt"><span class="when-closed">Details</span><span class="when-open">Close</span><span class="note-plus" aria-hidden="true">+</span></span></summary>
+            <summary><span class="note-top"><span class="eyebrow">{entry.kind}</span></span><h3>{entry.title}</h3><p>{entry.text}</p><span class="note-prompt"><span class="when-closed">Details</span><span class="when-open">Close</span><span class="note-plus" aria-hidden="true">+</span></span></summary>
             <div class="note-detail"><p>{entry.detail}</p><a class="text-link" href={entry.href}>{entry.link} ↗</a></div>
           </details>
         ))}
