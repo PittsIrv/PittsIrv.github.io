@@ -52,3 +52,17 @@ Full text: `docs/reviews/2026-11-07-meetwo-cite-ids.review2.md`. Verdict: ship.
 
 - Dropping ids over 64 characters or beyond 20 could lose context → disagree as a risk: these are the API's own input limits, so sending more is always a 400; the API's cite ids are memory ids far shorter than 64, and dropping one only narrows what the next turn is told was cited.
 - Use `node --test` instead of a bare assert script → disagree for now: one check, run by the build like `check-csp.mjs`; worth switching if more client checks appear.
+
+## Live check — 2026-11-07, after deploy `af50e7e`
+
+Five questions on https://pittsirv.github.io/meetwo/ in one browser session, history not cleared (it held one earlier turn). Status and the history sent were read from the page's own requests.
+
+| Turn | Visitor | Status | Turns in history sent | Cite ids sent | Reply |
+|---|---|---|---|---|---|
+| 1 | What do you think about AI agents? | 200 | 1 | 0 | I think knowing how they actually work matters way more than just using them. There's a lot of questions about what counts as a good decision when machines are making them, especially as they get more involved in everything. |
+| 2 | What are you working on right now? | 200 | 2 | 2 | Right now I'm interviewing for roles that mix AI engineering and research, ideally somewhere I can learn fast and build things that actually matter. Fundamentals are key to me, so I'm looking for a team that's equally serious about understanding what's happening, not just shipping. |
+| 3 | Where did you study? | 200 | 3 | 7 | Carnegie Mellon, for my Master's in Language Technologies. I'm finishing up right now. |
+| 4 | Do you play any games? | 200 | 4 | 9 | Yeah, I play poker pretty regularly to unwind. |
+| 5 | What was your most interesting project? | 200 | 5 | 10 | I built a chess agent in one of the AI agent courses here at CMU. That's been the most interesting thing I've worked on so far. |
+
+0 failures in 5 turns; four replies carried citations, and every cite sent back was an id string. Before the fix, turn 2 would have failed.
