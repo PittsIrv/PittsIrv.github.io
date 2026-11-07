@@ -99,7 +99,7 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
   .pl-line { font-family: var(--font-serif); color: var(--muted); line-height: 1.5; }
   .pl-link { grid-column: 3; font-size: .875rem; border-bottom: 1px solid var(--line); white-space: nowrap; justify-self: start; }
   .pl-link:hover { border-color: var(--accent); color: var(--accent); }
-  @media (max-width: 640px) { .project-list li { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .project-list li { grid-template-columns: 1fr; } .pl-link { grid-column: auto; } }
   .group-heading { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 500; letter-spacing: -.02em; margin-bottom: .75rem; }
   /* One row per project: facts on the left, the Intuition beside them on wide screens and after them below 900px. Without an Intuition the facts keep their 7-part width so lines stay readable. */
   .entry { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 1rem 3rem; padding-block: 1.75rem 2rem; border-top: 1px solid var(--line); }
@@ -113,13 +113,13 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
   .entry-did li::marker { color: var(--muted); }
   .entry-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.25rem; }
   .entry-tags { display: flex; flex-wrap: wrap; gap: .375rem; }
-  .entry-tags li { font-size: .8125rem; line-height: 1.4; background: var(--wash); color: #2a3650; padding: .2rem .5rem; border-radius: 3px; }
+  .entry-tags li { font-size: .8125rem; line-height: 1.4; background: var(--wash); color: var(--ink); padding: .2rem .5rem; border-radius: 3px; }
   .entry-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: .9375rem; }
   .entry-links a { color: var(--accent); border-bottom: 1px solid #a7b8e5; }
   .entry-links a:hover { border-color: currentColor; }
   .entry-soon { font-size: .9375rem; color: var(--muted); }
   .entry-intuition { align-self: start; background: var(--wash); padding: 1.15rem 1.35rem 1.3rem; min-width: 0; }
   .entry-intuition h4 { font-family: var(--font-sans); font-size: .875rem; font-weight: 600; color: var(--muted); margin-bottom: .45rem; }
-  .entry-intuition p { font-family: var(--font-serif); font-size: 1.03rem; line-height: 1.65; color: #22304a; }
+  .entry-intuition p { font-family: var(--font-serif); font-size: 1.03rem; line-height: 1.65; color: var(--ink); }
   @media (max-width: 899px) { .entry { grid-template-columns: 1fr; } .entry-top h3 { font-size: 1.45rem; } }
 </style>
