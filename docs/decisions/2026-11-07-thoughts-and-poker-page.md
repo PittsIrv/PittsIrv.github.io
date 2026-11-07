@@ -35,3 +35,7 @@ Mingxi adds more poker content (for example hand write-ups), or wants Poker back
 ## Review — 2026-11-07
 
 Gemini unavailable (3 attempts: two connection resets, one stopped at 3 minutes); Router reviewed the diff and found nothing blocking. Its one nit, applied: a protocol-relative `//host` link is not treated as a page on this site.
+
+## Live measurements — 2026-11-07
+
+/personal at 1280 px: 3991 → 2889 px with the first deploy (1102 px shorter); the Poker block measured 190 px, 112 px of it the standard section padding, so its padding was reduced from 3.5rem to 2rem a side to meet the ~150 px target. /personal#game-auction lands on /personal/poker#game-auction with Auction open; 12 expanders open and close; terminology present; no visible "Intuition" on /projects, and the live /admin config labels the field "Thoughts".
