@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · MeeTwo keeps answering after the first question
+Try: on /meetwo ask "What do you think about AI agents?", then keep asking without reloading.
+You get: every follow-up gets a reply; before, any question after an answer drawn from your record showed "Something went wrong".
+
 ## 2026-11-07 · The site only runs its own code
 Try: open any page with the browser console open; ask MeeTwo a question.
 You get: every page refuses scripts from other sites, which protects the site-editor sign-in; nothing visible changes, and MeeTwo works as before.
