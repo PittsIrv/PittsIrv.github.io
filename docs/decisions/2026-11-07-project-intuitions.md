@@ -16,3 +16,9 @@ Open `/projects`: MeeTwo, Table Forty Nine, Dealer's Choice, Brawl Lab, Agent Re
 
 ## Revisit when
 Mingxi answers the open questions, or edits the two drafts.
+
+## Final wording — 2026-11-07
+- Mingxi approved the set: "you should use as much my language as possible, just fix what my grammar or where it sounds weird." Style-only edits were undone (for example "a question of", "I want to show everyone", "the poker rules", "an escape"); colloquial fragments such as "How to avoid garbage exchange then?" and "Want to show everyone!" stay as written.
+- "Agent Overlay" is Agent Relay (Router, relaying Mingxi).
+- Removal Mingxi can restore: the unfinished words "Send email to" at the end of the Agent Workspace text are dropped, because a dangling fragment sounds weird; nothing replaces them. To restore, append " Send email to" to that entry's `intuition` in `src/data/projects.json`.
+- Golfie and Daybook have no paragraph.

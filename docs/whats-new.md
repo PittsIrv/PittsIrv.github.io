@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · Why I built it
+Try: open `/projects` and read the Intuition paragraph on the MeeTwo, Agent Relay, Agent Workspace, Brawl Lab, Dealer's Choice and Table Forty Nine cards.
+You get: your own reasons for each project, in your words with grammar fixed, shown on the cards.
+
 ## 2026-11-07 · Projects at a glance
 Try: open `/projects`; the list above the cards.
 You get: one line per public project (name, its one line, one link), readable on a phone; the full cards stay below.
