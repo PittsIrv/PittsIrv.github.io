@@ -4,7 +4,7 @@ Source: `src/data/projects.json`. Page: `/projects` (`src/pages/projects.astro`)
 
 ## Entry fields
 
-`name`, `oneLine`, `status`, `period` (`start`, `end`: `YYYY-MM`, `now`, or `unknown`), `did` (2–4 public-safe bullets), `links` (`site`, `repo`, `paper`; `repo` only if `gh repo view --json visibility` says PUBLIC), optional `comingSoon` (a link label shown as "<label>: coming soon"), `tags`, `visibility`, optional `intuition` (2-3 sentences, first person, why Mingxi builds it; only from Mingxi's own words, empty or absent when no source states it; public entries only).
+`name`, `oneLine`, `status`, `period` (`start`, `end`: `YYYY-MM`, `now`, or `unknown`), `did` (2–4 public-safe bullets), `links` (`site`, `repo`, `paper`; `repo` only if `gh repo view --json visibility` says PUBLIC), optional `comingSoon` (a link label shown as "<label>: coming soon"), `tags`, `visibility`, optional `intuition` (Mingxi's own text, grammar fixed only; absent when Mingxi has not written one).
 
 ## Status vocabulary
 

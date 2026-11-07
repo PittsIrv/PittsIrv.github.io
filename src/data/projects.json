@@ -50,6 +50,7 @@
   {
     "name": "Agent Relay",
     "oneLine": "Git-backed handoffs of unfinished coding tasks between collaborators' local coding agents.",
+    "intuition": "My friends complain they can't use up their Codex. I was shocked. Then I invited them as my collaborators for my projects and asked them to open their computers.",
     "status": "active",
     "period": {
       "start": "2026-11",
@@ -74,6 +75,7 @@
   {
     "name": "Agent Workspace",
     "oneLine": "Workspace for personal AI agents and tooling.",
+    "intuition": "I want my Codex to talk to my Claude Code and use Gemini to organize documents and connect to my Muse to remind me and connect to Meta AI in my glasses. What? Meta AI can't connect to connectors? Send email to",
     "status": "active",
     "period": {
       "start": "2026-11",
@@ -137,6 +139,7 @@
   {
     "name": "Brawl Lab",
     "oneLine": "Ranked analytics workspace and final-pick recommender for Brawl Stars.",
+    "intuition": "I played Brawl Stars with my friends at college. Some of us are in different places now. But we still play. Like an escape from work, or study, or research, or relationships.... Well, we are busier now, how about saving some time by following what the data tell?",
     "status": "shipped",
     "period": {
       "start": "2026-10",

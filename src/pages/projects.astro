@@ -69,7 +69,7 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
                 </div>
                 {p.visibility === 'public' && <p class="project-period">{fmt(p.period.start)} – {fmt(p.period.end)}</p>}
                 <p class="project-line">{p.oneLine}</p>
-                {p.visibility === 'public' && 'intuition' in p && p.intuition && <p class="project-intuition"><span>Intuition</span>{p.intuition}</p>}
+                {'intuition' in p && p.intuition && <p class="project-intuition"><span>Intuition</span>{p.intuition}</p>}
                 {p.visibility === 'public' && <ul class="project-did">
                   {p.did.map(b => <li><span aria-hidden="true">—</span><span>{b}</span></li>)}
                 </ul>}
