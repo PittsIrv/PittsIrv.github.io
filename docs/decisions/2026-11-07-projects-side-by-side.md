@@ -31,3 +31,10 @@ A project gets more than about five bullets or an image, which would unbalance t
 - `comingSoon` might be a boolean → disagree — `docs/projects-gallery.md` defines it as a link label string.
 - Keep a "Details ↓" fallback in the list → disagree — the name itself is the jump link and is underlined; an extra word per row adds noise.
 - Empty `<span />` placeholder → agree — removed; the link takes grid column 3 explicitly.
+
+## Independent review — third pass (gemini-3.1-pro-preview): "ship with fixes"
+- Group sections carried `scroll-mt-16` (4 rem), weaker than the global 6 rem → agree — removed; the global rule applies.
+- List label computed "Paper" for any other link key → agree — label and href now come from the same key.
+- `links` may be undefined → disagree — the schema (`docs/projects-gallery.md`) requires `links` (an empty object when none); every entry has it.
+- Empty right column on entries without an Intuition; underlined names in the list → design items, not blocking; sent to the Router.
+Verdict: ship with fixes. Action taken: the two execution fixes above.

@@ -22,8 +22,8 @@ const groups = order
 // Text-only list: public entries, one line each; the name jumps to the entry, plus the live site, public repo or paper when there is one.
 const summary = order.flatMap(status => visible.filter(p => p.status === status && p.visibility === 'public')).map(p => {
   const links = p.links as Record<string, string>;
-  const href = links.site ?? links.repo ?? links.paper;
-  return { name: p.name, anchor: `#${slug(p.name)}`, line: p.oneLine, href, label: links.site ? 'Site' : links.repo ? 'Repository' : 'Paper' };
+  const key = (['site', 'repo', 'paper'] as const).find(k => links[k]);
+  return { name: p.name, anchor: `#${slug(p.name)}`, line: p.oneLine, href: key && links[key], label: key && { site: 'Site', repo: 'Repository', paper: 'Paper' }[key] };
 });
 
 const fmt = (d: string) => {
@@ -57,7 +57,7 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
     </section>
 
     {groups.map(group => (
-      <section id={group.status} class="pt-14 pb-4 px-4 sm:px-6 lg:px-8 scroll-mt-16">
+      <section id={group.status} class="pt-14 pb-4 px-4 sm:px-6 lg:px-8">
         <div class="max-w-5xl mx-auto">
           <h2 class="group-heading">{heading[group.status]}</h2>
           {group.items.map(p => (
