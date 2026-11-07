@@ -2,7 +2,7 @@
   {
     "name": "MeeTwo",
     "oneLine": "Personal agent that answers as its owner and discloses only approved information.",
-    "intuition": "How can an AI represent someone who can never describe themselves completely? MeeTwo infers preferences and judgments from limited information, says when it does not know, and improves through my corrections. I built it because people's attention is the scarce resource in the AI era.",
+    "intuition": "As I got to know more about research and engineering, I gradually realized the importance of networking. Well, it was hard for me for a while. Then it became a question of how to be polite and talk differently to different people. But I admit that talking with people, especially with experienced ones, gains valuable insights. So how could we skip the waste of time talking about useless things and find the right person we want to talk to? Let's use AI. But how? How could I know? Information exchange! Automatically. How do we avoid garbage exchange, then? How do we make sure people want to network with the AI version of me? It should know me, sound like me, but more importantly, it should be able to infer my mind, inherit my limitations as a human, and decide just like me! I am trying to make this without it telling my card number.",
     "status": "active",
     "period": {
       "start": "2026-10",
@@ -27,6 +27,7 @@
   {
     "name": "Table Forty Nine",
     "oneLine": "Card battler where poker hands are attacks and skill cards bend the rules.",
+    "intuition": "How about turning poker into a board game? It is easy to learn as long as you know the poker rules. So no matter how weird my skill cards are, anyone who plays poker can play this, in a minute. Can you hit a royal in this game?",
     "status": "active",
     "period": {
       "start": "2026-10",
@@ -49,7 +50,6 @@
   {
     "name": "Agent Relay",
     "oneLine": "Git-backed handoffs of unfinished coding tasks between collaborators' local coding agents.",
-    "intuition": "When my coding agent reaches its usage limit mid-task, I have to tell a collaborator, wait until they notice, and have them read the code and continue. Their agent often has unused capacity at that moment. I wanted it to pick up the latest checkpoint and continue without anyone waiting.",
     "status": "active",
     "period": {
       "start": "2026-11",
@@ -161,6 +161,7 @@
   {
     "name": "Dealer’s Choice",
     "oneLine": "Online multiplayer platform for home-game poker variants.",
+    "intuition": "I play home games at the poker table with our friends. And I created some fun versions of my own, verified and evolved at our table for three and a half years. I want to show everyone!",
     "status": "shipped",
     "period": {
       "start": "2025-06",
