@@ -2,6 +2,7 @@
   {
     "name": "MeeTwo",
     "oneLine": "Personal agent that answers as its owner and discloses only approved information.",
+    "intuition": "As I got to know more about research and engineering, I gradually realized the importance of networking. Well, it was hard for me for a while. Then it became how to be polite and talk differently to different people. But I admit that talking with people, especially with experienced ones, gains valuable insights. So how could we skip the waste of time talking about useless things and find the right person we want to talk to? Let's use AI. But how? How could I know? Information exchange! Automatically. How to avoid garbage exchange then? How to make sure people want to network with the AI version of me? It should know me, sound like me, but more importantly, it should be able to infer my mind, inherit my limitations as a human, and decide just like me! I am trying to make this without it telling my card number.",
     "status": "active",
     "period": {
       "start": "2026-10",
@@ -26,6 +27,7 @@
   {
     "name": "Table Forty Nine",
     "oneLine": "Card battler where poker hands are attacks and skill cards bend the rules.",
+    "intuition": "How about turning poker into a board game? It is easy to learn as long as you know poker rules. So no matter how weird my skill cards are, anyone who plays poker can play this, in a minute. Can you hit a royal in this game?",
     "status": "active",
     "period": {
       "start": "2026-10",
@@ -48,6 +50,7 @@
   {
     "name": "Agent Relay",
     "oneLine": "Git-backed handoffs of unfinished coding tasks between collaborators' local coding agents.",
+    "intuition": "My friends complain they can't use up their Codex. I was shocked. Then I invited them as my collaborators for my projects and asked them to open their computers.",
     "status": "active",
     "period": {
       "start": "2026-11",
@@ -72,6 +75,7 @@
   {
     "name": "Agent Workspace",
     "oneLine": "Workspace for personal AI agents and tooling.",
+    "intuition": "I want my Codex to talk to my Claude Code and use Gemini to organize documents and connect to my Muse to remind me and connect to Meta AI in my glasses. What? Meta AI can't connect to connectors?",
     "status": "active",
     "period": {
       "start": "2026-11",
@@ -135,6 +139,7 @@
   {
     "name": "Brawl Lab",
     "oneLine": "Ranked analytics workspace and final-pick recommender for Brawl Stars.",
+    "intuition": "I played Brawl Stars with my friends at college. Some of us are in different places now. But we still play. Like escape from work, or study, or research, or relationships.... Well, we are busier now, how about saving some time by following what the data tell?",
     "status": "shipped",
     "period": {
       "start": "2026-10",
@@ -159,6 +164,7 @@
   {
     "name": "Dealer’s Choice",
     "oneLine": "Online multiplayer platform for home-game poker variants.",
+    "intuition": "I play home games at the poker table with our friends. And I created some fun versions of my own, verified and evolved at our table for three and a half years. Want to show everyone!",
     "status": "shipped",
     "period": {
       "start": "2025-06",

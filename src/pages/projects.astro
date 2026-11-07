@@ -69,6 +69,7 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
                 </div>
                 {p.visibility === 'public' && <p class="project-period">{fmt(p.period.start)} – {fmt(p.period.end)}</p>}
                 <p class="project-line">{p.oneLine}</p>
+                {'intuition' in p && p.intuition && <p class="project-intuition"><span>Intuition</span>{p.intuition}</p>}
                 {p.visibility === 'public' && <ul class="project-did">
                   {p.did.map(b => <li><span aria-hidden="true">—</span><span>{b}</span></li>)}
                 </ul>}
@@ -106,6 +107,8 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
   .status-pill[data-status='active'] { color: var(--accent); border-color: var(--accent); }
   .project-period { font-size: .8125rem; color: var(--muted); }
   .project-line { font-family: var(--font-serif); line-height: 1.55; }
+  .project-intuition { font-size: .9375rem; line-height: 1.6; color: var(--ink, inherit); }
+  .project-intuition span { display: block; font: 500 .6875rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .075em; text-transform: uppercase; color: var(--muted); margin-bottom: .4rem; }
   .project-did { display: grid; gap: .4rem; font-size: .9375rem; color: var(--muted); line-height: 1.55; }
   .project-did li { display: flex; gap: .75rem; }
   .project-did li > span:first-child { color: var(--line); flex-shrink: 0; }
