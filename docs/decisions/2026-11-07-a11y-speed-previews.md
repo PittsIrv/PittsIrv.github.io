@@ -52,5 +52,14 @@ Performance was already 100 on every page, both modes. Layout shift was at most 
 
 Spend: $0.00
 
-## Independent review
-Pending.
+## Independent review — 2026-11-07 (gemini-3.1-pro-preview, single pass, middle tier)
+- Excerpt keeps URLs from Markdown links → agree; fixed. The helper moved to `src/lib/excerpt.ts`, strips `[text](url)` to its text, and is shared by poems and articles (the inline copy also tripped the Astro compiler once the pattern grew).
+- Checker depends on meta attribute order → agree; fixed. It now reads every attribute of each meta tag, so order no longer matters. Checked by deleting a preview file from a copy of the build: the check fails and names the page.
+- Image script skips nested content folders → disagree. Collection slugs here are flat; a nested file would also fail the preview check, so it cannot ship silently.
+- Subpath deployment breaks the file lookup → disagree. The site is a user site with no `base`; the lookup is correct for it and would be revisited with any `base`.
+- Script assumes macOS Chrome path → agree in part. The header already documents `CHROME_PATH`; no change.
+- Committed PNGs bloat the repo → disagree. 10 files, about 220 KB in total; satori or resvg would add dependencies for a one-off. Revisit if the page count passes about 50.
+- Parse the built HTML with cheerio → disagree. The attribute-order fix covers the failure; a dependency is not warranted.
+- Does the body include frontmatter? → no; the built descriptions show clean text.
+- Documentation gap (manual regeneration step) → covered by "Revisit when" above and the script header.
+Verdict: Ship with fixes. Action taken: both fixes made in this PR.

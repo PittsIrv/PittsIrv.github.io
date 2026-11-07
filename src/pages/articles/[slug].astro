@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
+import { excerpt } from '../../lib/excerpt';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -16,12 +17,6 @@ export async function getStaticPaths() {
 
 const { article } = Astro.props;
 const { Content } = await article.render();
-const excerpt = (text: string) => {
-  const plain = text.replace(/[#*_>`\[\]]/g, '').replace(/\s+/g, ' ').trim();
-  if (plain.length <= 155) return plain;
-  return plain.slice(0, 155).replace(/\s+\S*$/, '') + '…';
-};
-
 ---
 
 <Layout title={`${article.data.title} - Mingxi Yan`} description={excerpt(article.body)}>

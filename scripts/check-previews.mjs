@@ -10,7 +10,13 @@ const htmlFiles = (dir) => readdirSync(dir).flatMap((name) => {
   if (statSync(path).isDirectory()) return htmlFiles(path);
   return name.endsWith('.html') ? [path] : [];
 });
-const meta = (html, attr, key) => html.match(new RegExp(`<meta\\b[^>]*${attr}="${key}"[^>]*content="([^"]*)"`, 'i'))?.[1]?.trim();
+// Reads the content of the first <meta> whose attr equals key, whatever the attribute order.
+const meta = (html, attr, key) => {
+  for (const tag of html.match(/<meta\b[^>]*>/gi) ?? []) {
+    const attrs = Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map((m) => [m[1].toLowerCase(), m[2]]));
+    if (attrs[attr] === key && attrs.content?.trim()) return attrs.content.trim();
+  }
+};
 
 const problems = [];
 let checked = 0;
