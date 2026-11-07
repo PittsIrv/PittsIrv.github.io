@@ -6,7 +6,8 @@ import { getCollection } from 'astro:content';
 import personalData from '../data/personal.json';
 import { personalSchema } from '../data/schemas';
 
-const allGames = await getCollection('poker-games');
+// Sorted by file name so the order is the same on every build.
+const allGames = (await getCollection('poker-games')).sort((a, b) => (a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0));
 const learnedGames = allGames.filter(game => game.data.category === 'learned');
 const myGames = allGames.filter(game => game.data.category === 'created');
 
