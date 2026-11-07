@@ -13,12 +13,12 @@ const hasMeeTwo = launcher && Boolean(import.meta.env.PUBLIC_STANDIN_URL);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Content-Security-Policy: only this site's own scripts, styles and fonts; network calls also to the MeeTwo API when it is configured.
-const meetwoOrigin = import.meta.env.PUBLIC_STANDIN_URL ? new URL(import.meta.env.PUBLIC_STANDIN_URL).origin : '';
+const meetwoOrigin = import.meta.env.PUBLIC_STANDIN_URL ? new URL(import.meta.env.PUBLIC_STANDIN_URL, Astro.url).origin : '';
 const csp = [
   "default-src 'self'",
   "script-src 'self'",
   "style-src 'self'",
-  "img-src 'self' data:",
+  "img-src 'self'",
   "font-src 'self'",
   `connect-src 'self'${meetwoOrigin ? ` ${meetwoOrigin}` : ''}`,
   "object-src 'none'",
