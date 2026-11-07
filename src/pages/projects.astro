@@ -2,17 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import projectData from '../data/projects.json';
+import projectsData from '../data/projects.json';
+import { projectsSchema } from '../data/schemas';
 import { slug } from '../utils/slug';
 
+const projectData = projectsSchema.parse(projectsData);
 const order = ['active', 'shipped', 'paused', 'archived'];
-const visibilities = ['public', 'title'];
-const datePattern = /^(\d{4}-(0[1-9]|1[0-2])|now|unknown)$/;
-for (const p of projectData) {
-  const bad = !order.includes(p.status) ? 'status' : !visibilities.includes(p.visibility) ? 'visibility'
-    : !datePattern.test(p.period.start) || !datePattern.test(p.period.end) ? 'period' : null;
-  if (bad) throw new Error(`projects.json: invalid ${bad} for "${p.name}"`);
-}
 const heading: Record<string, string> = { active: 'Active', shipped: 'Shipped', paused: 'Paused', archived: 'Archived' };
 const visible = projectData.filter(p => p.visibility === 'public' || p.visibility === 'title');
 const groups = order
