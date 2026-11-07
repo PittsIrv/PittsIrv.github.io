@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · A clearer home page
+Try: open the home page.
+You get: your name and affiliation at a normal size with four links, a "Currently" panel, three selected-work entries with their results visible, and three active projects with their stack, each one click from its full entry.
+
 ## 2026-11-07 · Projects, easier to scan
 Try: open `/projects`; read one project left to right, then tap a name in the list at the top on a phone.
 You get: each project as one row, what it is, what was built and its stack on the left, the Intuition beside it; no more empty gaps between cards; the list at the top jumps to each project.
