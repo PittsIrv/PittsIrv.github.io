@@ -45,3 +45,10 @@ Full text: `docs/reviews/2026-11-07-meetwo-cite-ids.review.md`.
 - Documentation gap on Node and TypeScript → resolved by the change to plain JavaScript; nothing extra to document.
 
 Verdict: do not ship (build break). Action taken: helper converted to plain JavaScript and checked under Node 20; the review was re-run on the fixed diff (below).
+
+## Independent review, second pass — 2026-11-07 (gemini-3.1-pro-preview)
+
+Full text: `docs/reviews/2026-11-07-meetwo-cite-ids.review2.md`. Verdict: ship.
+
+- Dropping ids over 64 characters or beyond 20 could lose context → disagree as a risk: these are the API's own input limits, so sending more is always a 400; the API's cite ids are memory ids far shorter than 64, and dropping one only narrows what the next turn is told was cited.
+- Use `node --test` instead of a bare assert script → disagree for now: one check, run by the build like `check-csp.mjs`; worth switching if more client checks appear.
