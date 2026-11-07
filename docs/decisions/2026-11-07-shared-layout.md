@@ -26,3 +26,13 @@ First build step of the site redesign (direction B, picked by the Router on 2026
 
 ## Revisit when
 The site's content width changes (`.page-shell` max-width or padding), since the breakpoints depend on the gutter width.
+
+## Independent review — 2026-11-07 (gemini-3.1-pro-preview, middle tier)
+- `:has()` for the nav padding fails on browsers older than Firefox 121 / Safari 15.4 → agree — the layout now adds a `has-meetwo` class to `<body>` at build time; no `:has()`.
+- Button `right` (viewport) and nav padding (container) can misalign → disagree — they only coexist below 1200 px; between 1160 and 1199 px the reserved slot (68–124 px from the right edge) still contains the button (48–92 px), so links never run under it.
+- Nav may overflow at 320–375 px → checked, no — at 320 and 375 px the links wrap to their own row under the name, `scrollWidth` equals the viewport, the button sits beside the name.
+- Panel may open off-screen from a top button → checked, no — at 320 and 375 px the open panel spans 8–134 px from the top and stays inside the viewport.
+- Top-right is harder to reach one-handed than bottom-right → disagree for now — the Router's requirement is that the button cover nothing; the nav bar is the only text-free place on a phone. Revisit if visitors miss it.
+- Resume lost `target="_blank"` → disagree — it never had one; only the arrow and label changed.
+- Package lacked the directions record → agree — later packages include it.
+Verdict: ship with fixes. Action taken: `:has()` replaced; other points checked as above.

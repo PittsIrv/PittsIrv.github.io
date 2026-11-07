@@ -45,13 +45,13 @@ const url = import.meta.env.PUBLIC_STANDIN_URL;
 <style is:global>
   /* Placement keeps the button off the text column: in the nav bar's reserved right slot below 1200px, in the side gutter above it (mark only), with its label once the gutter fits it. */
   #meetwo-launcher { position: fixed; z-index: 60; top: .5rem; right: clamp(1.25rem, 4vw, 3rem); display: flex; flex-direction: column; align-items: flex-end; }
-  body:has(#meetwo-launcher) .nav-inner { padding-right: calc(clamp(1.25rem, 4vw, 3rem) + 3.5rem); }
+  body.has-meetwo .nav-inner { padding-right: calc(clamp(1.25rem, 4vw, 3rem) + 3.5rem); }
   #meetwo-launcher .ml-label { display: none; }
   #meetwo-launcher .ml-fab { padding: 0 .5rem; }
   @media (min-width: 641px) { #meetwo-launcher { top: 1.0625rem; } }
   @media (min-width: 1200px) {
     #meetwo-launcher { top: auto; bottom: 1rem; right: 1rem; }
-    body:has(#meetwo-launcher) .nav-inner { padding-right: clamp(1.25rem, 4vw, 3rem); }
+    body.has-meetwo .nav-inner { padding-right: clamp(1.25rem, 4vw, 3rem); }
   }
   @media (min-width: 1440px) {
     #meetwo-launcher .ml-label { display: inline; }

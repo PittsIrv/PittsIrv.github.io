@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { launcher = true, title, description = "Mingxi Yan - AI systems engineer and CMU Language Technologies master's student. Previously Data Engineer Intern at TikTok." } = Astro.props;
+const hasMeeTwo = launcher && Boolean(import.meta.env.PUBLIC_STANDIN_URL);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 ---
@@ -57,7 +58,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       }
     </script>
   </head>
-  <body class="bg-white text-black antialiased">
+  <body class:list={["bg-white text-black antialiased", { "has-meetwo": hasMeeTwo }]}>
     <div class="min-h-screen flex flex-col">
       <slot />
     </div>
