@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · Projects at a glance
+Try: open `/projects`; the list above the cards.
+You get: one line per public project (name, its one line, one link), readable on a phone; the full cards stay below.
+
 ## 2026-11-06 · MeeTwo on every page
 Try: open any page on the site and click "Ask MeeTwo" in the bottom-right corner; ask something, then go to another page.
 You get: a small floating MeeTwo that opens the chat in place, closes back to a button, and keeps the conversation while you move between pages. Golfie is now Active, the Agent Relay project and a coming-soon Agent Workspace entry are on the gallery, Brawl Lab links its repository, and the "seeking full-time roles" and "NLP lead" wording is gone.

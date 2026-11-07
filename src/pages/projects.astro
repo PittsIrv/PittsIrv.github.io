@@ -19,6 +19,13 @@ const groups = order
   .map(status => ({ status, items: visible.filter(p => p.status === status) }))
   .filter(g => g.items.length > 0);
 
+// Text-only list: public entries, one line each, one link (live site, else public repo, else the card below).
+const summary = order.flatMap(status => visible.filter(p => p.status === status && p.visibility === 'public')).map(p => {
+  const links = p.links as Record<string, string>;
+  const href = links.site ?? links.repo;
+  return { name: p.name, line: p.oneLine, href: href ?? `#${slug(p.name)}`, external: Boolean(href), label: links.site ? 'Site' : links.repo ? 'Repository' : 'Details' };
+});
+
 const fmt = (d: string) => {
   if (d === 'now') return 'Present';
   const [y, m] = d.split('-');
@@ -35,6 +42,18 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
         <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5">Projects</h1>
         <p class="text-lg text-gray-700 max-w-2xl leading-relaxed font-serif">Current and past projects, active first.</p>
       </div>
+    </section>
+
+    <section id="list" class="pt-10 px-4 sm:px-6 lg:px-8 scroll-mt-16" aria-label="Projects at a glance">
+      <ul class="max-w-5xl mx-auto project-list">
+        {summary.map(p => (
+          <li>
+            <span class="pl-name">{p.name}</span>
+            <span class="pl-line">{p.line}</span>
+            <a class="pl-link" href={p.href} {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{p.label} <span aria-hidden="true">{p.external ? '↗' : '↓'}</span></a>
+          </li>
+        ))}
+      </ul>
     </section>
 
     {groups.map(group => (
@@ -73,6 +92,13 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
 </Layout>
 
 <style>
+  .project-list { border-top: 1px solid var(--line); }
+  .project-list li { display: grid; grid-template-columns: 11rem 1fr auto; gap: .25rem 1.5rem; align-items: baseline; padding: .8rem 0; border-bottom: 1px solid var(--line); }
+  .pl-name { font-family: var(--font-serif); font-weight: 500; }
+  .pl-line { font-family: var(--font-serif); color: var(--muted); line-height: 1.5; }
+  .pl-link { font-size: .875rem; border-bottom: 1px solid var(--line); white-space: nowrap; justify-self: start; }
+  .pl-link:hover { border-color: var(--accent); color: var(--accent); }
+  @media (max-width: 640px) { .project-list li { grid-template-columns: 1fr; } }
   .project-card { border: 1px solid var(--line); background: var(--paper); padding: 1.25rem 1.4rem 1.4rem; display: flex; flex-direction: column; gap: .6rem; }
   .project-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
   .project-top h3 { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; letter-spacing: -.02em; }
