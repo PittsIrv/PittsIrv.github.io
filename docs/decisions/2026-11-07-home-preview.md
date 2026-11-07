@@ -21,3 +21,12 @@ Replace the home page's oversized name and empty "All projects" heading with the
 
 ## Revisit when
 Mingxi provides a research statement or photo (they go in the identity block), or more than three projects are active and a different preview rule is wanted.
+
+## Independent review — 2026-11-07 (gemini-3.1-pro-preview, middle tier): "ship with fixes"
+- Removed `.built-*` styles may be used elsewhere → checked, no — no file under `src/` references them.
+- Inline `slug()` may drift from /projects ids → agree — one `src/utils/slug.ts` used by both pages; built /projects has `#meetwo`, `#table-forty-nine`, `#agent-relay`.
+- /work anchors assumed → checked — the built /work page has `#tiktok`, `#personateaming`, `#sapling`.
+- `tags` may be undefined → disagree — required by the schema in `docs/projects-gallery.md`; every entry has it.
+- `home.json` is needless indirection → disagree — site content must live in data files so a form editor can change it (ticket rule).
+- Add a `featured` flag → disagree for now — a new field and an editorial choice for Mingxi; recorded under rejected alternatives.
+Verdict: ship with fixes. Action taken: shared slug utility.

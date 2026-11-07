@@ -4,8 +4,8 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import home from '../data/home.json';
 import projectData from '../data/projects.json';
+import { slug } from '../utils/slug';
 
-const slug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 // Project preview: the first three active public projects, in data-file order.
 const preview = projectData.filter(p => p.status === 'active' && p.visibility === 'public').slice(0, 3);
 ---
