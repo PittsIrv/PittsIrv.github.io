@@ -1,0 +1,30 @@
+{
+  "opening": [
+    "MS student at Carnegie Mellon’s Language Technologies Institute. I work on AI systems: retrieval, evaluation, agents, and the data around them.",
+    "Previously at TikTok, Sapling Lab, and Chimps Lab."
+  ],
+  "interests": [
+    {
+      "title": "Poker",
+      "text": "Home games, GTO study, and original variants.",
+      "href": "/personal#poker",
+      "link": "Variants"
+    },
+    {
+      "title": "Writing",
+      "text": "Poems and prose. Philosophy, especially logic.",
+      "href": "/personal#writing",
+      "link": "Writing"
+    },
+    {
+      "title": "Basketball",
+      "text": "Pickup games."
+    },
+    {
+      "title": "Games",
+      "text": "Strategy and competitive games."
+    }
+  ],
+  "contact": "Graduating August 2027. AI systems and infrastructure: retrieval, evaluation, agents, and data.",
+  "selfNote": "Mingxi is a good learner and builder."
+}

@@ -1,0 +1,236 @@
+{
+  "intro": "AI systems and infrastructure: retrieval, evaluation, agents, and data pipelines.",
+  "meetwo": "Personal agent that answers as you and discloses only approved information.",
+  "education": [
+    {
+      "degree": "MS in Language Technologies (Artificial Intelligence)",
+      "school": "Carnegie Mellon University, Pittsburgh, PA",
+      "dates": "Expected August 2027",
+      "notes": [],
+      "courseLabel": "Current coursework",
+      "courses": "Search Engines (11-642), AI Agents (11-768), Multimodal Machine Learning (11-777), Introduction to Research in Language Technologies (11-705), Directed Research (11-910)"
+    },
+    {
+      "degree": "BS in Computer Science and Information Systems",
+      "school": "Carnegie Mellon University, Pittsburgh, PA",
+      "dates": "May 2026",
+      "notes": [
+        "Minor in Logic and Computation",
+        "GPA: 3.86/4.0"
+      ],
+      "courseLabel": "Selected coursework",
+      "courses": "Machine Learning (10-301), Generative AI (10-423), Natural Language Processing (11-411), Algorithm Design and Analysis (15-451), Distributed Systems (15-440), Introduction to Computer Systems (15-213), Parallel and Sequential Algorithms (15-210), Bug Catching: Automated Program Verification (15-414), Foundations of Software Engineering (17-313), Database Design and Development (67-262), Probability and Statistical Inference I–II (36-235/236), Game Theory (80-305)"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Data Engineer Intern",
+      "org": "TikTok, San Jose",
+      "id": "tiktok",
+      "dates": "June – August 2026",
+      "lead": "Enterprise retrieval for internal AI agents; livestream revenue-diagnosis copilot.",
+      "bullets": [
+        "Designed a graph-based enterprise retrieval skill over Hive tables, datasets, dashboards, documents, and millions of metadata fields and values, using query decomposition, contextual rewriting, graph expansion, and reciprocal rank fusion (RRF).",
+        "Built a benchmark from on-call Q&A pairs to evaluate agent results. The skill was integrated and published as an internal skill.",
+        "Built a livestream revenue-diagnosis copilot: LightGBM percentile prediction, comparison cohorts, and business rules flag revenue drops and abnormal metrics; retrieved business documentation grounds the recommendations.",
+        "Validated with operations stakeholders and integrated into their workflow."
+      ],
+      "tags": [
+        "Python",
+        "SQL",
+        "Graph retrieval",
+        "Query rewriting",
+        "RRF",
+        "LightGBM",
+        "Feature engineering",
+        "LLM agents"
+      ]
+    },
+    {
+      "role": "Research Assistant",
+      "org": "Sapling Lab, CMU",
+      "id": "sapling",
+      "dates": "May 2026 – Present",
+      "lead": "Theory-of-Mind attribution toward AI in long-term interaction.",
+      "bullets": [
+        "Research on an NSF- and OpenAI-funded interdisciplinary project.",
+        "Developing a multi-turn user simulation that varies user traits, assistant social behavior, memory, and scenario.",
+        "Developing turn-level LLM judges and heuristic measures to evaluate how attributions change across a conversation. Manuscript in preparation."
+      ],
+      "tags": [
+        "User simulation",
+        "Multi-turn evaluation",
+        "LLM-as-judge",
+        "Measurement design",
+        "Python"
+      ]
+    },
+    {
+      "role": "Research Assistant",
+      "org": "Chimps Lab, CMU",
+      "dates": "May 2024 – May 2026",
+      "lead": "LLM red-teaming and image-generation bias auditing.",
+      "bullets": [
+        "PersonaTeaming (UIST 2026, with Apple Research): designed the persona-generation algorithm for adaptive LLM red-teaming.",
+        "Evaluated 11 experimental conditions on 6 target LLMs. Improved mean attack success rate by 46% and attack diversity by 7% over the RainbowPlus baseline.",
+        "Built and deployed the PersonaTeaming Playground on AWS, used in an industry practitioner study.",
+        "Built bias-auditing infrastructure for image generation: persistent history, caching, and batching at 100 images per prompt, with interactive visualizations."
+      ],
+      "tags": [
+        "Python",
+        "React",
+        "AWS",
+        "LLM red-teaming",
+        "Evaluation pipelines",
+        "LLM-as-judge",
+        "AI safety"
+      ]
+    },
+    {
+      "role": "Full Stack Engineer & Tech Lead",
+      "org": "Enterview (AI startup), Pittsburgh, PA",
+      "dates": "June 2023 – November 2024",
+      "lead": "AI interview-preparation platform.",
+      "bullets": [
+        "Led a team of four engineers; owned technical product decisions.",
+        "Designed user-context data models and backend APIs, integrating an LLM and speech recognition to evaluate spoken answers.",
+        "Reduced feedback latency by optimizing WebSocket handling."
+      ],
+      "tags": [
+        "TypeScript",
+        "Backend APIs",
+        "Data modeling",
+        "Speech recognition",
+        "WebSocket"
+      ]
+    },
+    {
+      "role": "Software Engineer Intern",
+      "compact": true,
+      "org": "AlpSoft, Singapore",
+      "dates": "May 2025 – August 2025",
+      "lead": "Enterprise sites for EnterpriseSG; penetration-test fixes and AWS deployments.",
+      "bullets": [],
+      "tags": []
+    },
+    {
+      "role": "Research Intern",
+      "compact": true,
+      "org": "Tsinghua University, THUNLP — OpenBMB",
+      "dates": "May 2023 – August 2023",
+      "lead": "REST APIs as LLM-callable tools; embedding-based clustering for tool retrieval.",
+      "bullets": [],
+      "tags": []
+    },
+    {
+      "role": "Teaching Assistant",
+      "compact": true,
+      "org": "CMU — Great Ideas in Theoretical Computer Science (15-251)",
+      "dates": "February – May 2025",
+      "lead": "Proof and theory tutoring; study guides and exam reviews.",
+      "bullets": [],
+      "tags": []
+    },
+    {
+      "role": "IS Consulting Project",
+      "compact": true,
+      "org": "ProtectPT (Non-Profit), Pittsburgh, PA",
+      "dates": "Spring 2024",
+      "lead": "Searchable database for a local anti-fracking non-profit.",
+      "bullets": [],
+      "tags": []
+    }
+  ],
+  "publications": [
+    {
+      "title": "PersonaTeaming: Persona-Conditioned Automated Red Teaming",
+      "id": "personateaming",
+      "meta": "UIST 2026 · CMU–Apple collaboration",
+      "lead": "Persona-conditioned automated red-teaming.",
+      "body": "Conditions adversarial prompt mutation on personas, including a dynamic method that generates and scores candidate personas. Designed the persona-generation algorithm, implemented the workflow, and ran the evaluation: 11 conditions, 6 target LLMs. Over RainbowPlus: +46% mean attack success rate, +7% attack diversity."
+    },
+    {
+      "title": "Solver-Guided Fine-Tuning for Accurate and Explainable Poker Decisions",
+      "id": "poker-paper",
+      "meta": "10-423/623 Generative AI, Spring 2026 · with Cassandra Shi & Harry Huang",
+      "lead": "Solver-guided post-training of an 8B model for accurate, explainable poker decisions.",
+      "body": "Llama 3 8B trained on 3,000 SFT examples and 2,534 DPO pairs from PokerBench solver labels and verifier-ranked Llama 3.3 70B explanations; rule-based verifier validated against 200 blind human judgments. LoRA SFT: solver-action match 18.0% → 56.2%, verifier score 0.426 → 0.645. DPO improved explanations at a small cost to action accuracy.",
+      "link": {
+        "href": "/papers/solver-guided-poker-finetuning.pdf",
+        "label": "Read the paper (PDF)"
+      }
+    },
+    {
+      "title": "Mutual Theory of Mind in Multi-Turn Human–AI Conversation",
+      "meta": "Manuscript in preparation",
+      "lead": "Turn-by-turn mind attribution in multi-turn human–AI conversation.",
+      "body": "Multi-turn user simulation varying user traits, assistant social behavior, memory, and scenario; measured with turn-level LLM judges and heuristic measures. Sapling Lab."
+    }
+  ],
+  "skills": [
+    {
+      "group": "Programming",
+      "items": [
+        "Python",
+        "SQL",
+        "C",
+        "JavaScript",
+        "TypeScript",
+        "Data structures",
+        "Database design",
+        "Distributed systems"
+      ]
+    },
+    {
+      "group": "Machine learning",
+      "items": [
+        "PyTorch",
+        "vLLM",
+        "Hugging Face",
+        "TRL",
+        "PEFT / LoRA",
+        "SFT",
+        "DPO",
+        "Transformers",
+        "Multimodal ML"
+      ]
+    },
+    {
+      "group": "Agents",
+      "items": [
+        "Agentic RAG",
+        "Agentic search",
+        "Tool use",
+        "LLM evaluation",
+        "Skills",
+        "MCP",
+        "Context management"
+      ]
+    },
+    {
+      "group": "Data",
+      "items": [
+        "PostgreSQL",
+        "SQLite",
+        "Feature engineering",
+        "Data pipelines",
+        "Information retrieval",
+        "Heuristic search"
+      ]
+    },
+    {
+      "group": "Backend & infrastructure",
+      "items": [
+        "FastAPI",
+        "NestJS",
+        "REST APIs",
+        "WebSocket",
+        "Docker",
+        "AWS (EC2, ECS)",
+        "Terraform",
+        "CI/CD"
+      ]
+    }
+  ],
+  "selfNote": "Mingxi is a good engineer and researcher."
+}

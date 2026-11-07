@@ -1,0 +1,92 @@
+{
+  "intro": "Poker variants, writing, and current activities.",
+  "nowUpdated": "November 2026",
+  "now": [
+    {
+      "label": "Building",
+      "text": "MeeTwo, Agent Relay, Golfie, Daybook, Brawl Lab, Table Forty Nine; mind-attribution research."
+    },
+    {
+      "label": "Learning",
+      "text": "Search Engines, AI Agents, Multimodal Machine Learning."
+    },
+    {
+      "label": "Reading",
+      "text": "The Unbearable Lightness of Being (Kundera), Ludwig Wittgenstein: The Duty of Genius (Monk), The Order of Time (Rovelli)."
+    },
+    {
+      "label": "Playing",
+      "text": "Basketball, Poker, Games."
+    }
+  ],
+  "interests": [
+    "Guitar & songwriting",
+    "Photography",
+    "Storytelling"
+  ],
+  "sports": [
+    {
+      "name": "Basketball",
+      "level": "Good"
+    },
+    {
+      "name": "Ping Pong",
+      "level": "Good"
+    },
+    {
+      "name": "Pool",
+      "level": "Med"
+    },
+    {
+      "name": "Frisbee",
+      "level": "Med"
+    },
+    {
+      "name": "Badminton",
+      "level": "Med"
+    },
+    {
+      "name": "Volleyball",
+      "level": "Low"
+    },
+    {
+      "name": "Football",
+      "level": "Low"
+    },
+    {
+      "name": "Tennis",
+      "level": "Low"
+    },
+    {
+      "name": "Soccer",
+      "level": "Low"
+    },
+    {
+      "name": "Golf",
+      "level": "Low"
+    },
+    {
+      "name": "Climbing",
+      "level": "Low"
+    }
+  ],
+  "terminology": [
+    {
+      "term": "Bomb pot",
+      "text": "All players ante before cards are dealt. No pre-flop betting; action starts at the flop."
+    },
+    {
+      "term": "Pot limit",
+      "text": "Maximum bet or raise cannot exceed the current pot size."
+    },
+    {
+      "term": "Double board",
+      "text": "Two separate community boards are dealt; the pot typically splits between the winners of each."
+    },
+    {
+      "term": "BB",
+      "text": "Big blind. The standard betting unit; 1BB is the minimum bet for that game."
+    }
+  ],
+  "selfNote": "Mingxi is a good writer and thinker."
+}

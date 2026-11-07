@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
+import personal from '../data/personal.json';
 
 const allGames = await getCollection('poker-games');
 const learnedGames = allGames.filter(game => game.data.category === 'learned');
@@ -54,30 +55,7 @@ const quotes = shuffleArray(allQuotes)
   .slice(0, 6)
   .map(quote => ({ text: quote.data.text, author: quote.data.author }));
 
-// Update this by hand every couple of months — the date is the honesty mechanism.
-const nowUpdated = 'November 2026';
-const now = [
-  { label: 'Building', text: 'MeeTwo, Agent Relay, Golfie, Daybook, Brawl Lab, Table Forty Nine; mind-attribution research.' },
-  { label: 'Learning', text: 'Search Engines, AI Agents, Multimodal Machine Learning.' },
-  { label: 'Reading', text: 'The Unbearable Lightness of Being (Kundera), Ludwig Wittgenstein: The Duty of Genius (Monk), The Order of Time (Rovelli).' },
-  { label: 'Playing', text: 'Basketball, Poker, Games.' },
-];
-
-const interests = ['Guitar & songwriting', 'Photography', 'Storytelling'];
-
-const sports = [
-  { name: 'Basketball', level: 'Good' },
-  { name: 'Ping Pong', level: 'Good' },
-  { name: 'Pool', level: 'Med' },
-  { name: 'Frisbee', level: 'Med' },
-  { name: 'Badminton', level: 'Med' },
-  { name: 'Volleyball', level: 'Low' },
-  { name: 'Football', level: 'Low' },
-  { name: 'Tennis', level: 'Low' },
-  { name: 'Soccer', level: 'Low' },
-  { name: 'Golf', level: 'Low' },
-  { name: 'Climbing', level: 'Low' },
-];
+const { nowUpdated, now, interests, sports } = personal;
 ---
 
 <Layout
@@ -92,7 +70,7 @@ const sports = [
       <div class="max-w-5xl mx-auto">
         <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-5 opacity-0 animate-fade-in-up">Personal</h1>
         <p class="text-lg text-gray-700 max-w-2xl leading-relaxed font-serif opacity-0 animate-fade-in-up delay-100">
-          Poker variants, writing, and current activities.
+          {personal.intro}
         </p>
         <nav class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-500 opacity-0 animate-fade-in-up delay-200">
           <a href="#now" class="hover:text-black transition-colors">Now</a>
@@ -164,10 +142,9 @@ const sports = [
         <div class="mt-14 border-t border-gray-300 pt-6">
           <h3 class="text-base font-semibold mb-5">Terminology</h3>
           <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-sm">
-            <div><dt class="font-medium inline">Bomb pot — </dt><dd class="text-gray-600 inline">All players ante before cards are dealt. No pre-flop betting; action starts at the flop.</dd></div>
-            <div><dt class="font-medium inline">Pot limit — </dt><dd class="text-gray-600 inline">Maximum bet or raise cannot exceed the current pot size.</dd></div>
-            <div><dt class="font-medium inline">Double board — </dt><dd class="text-gray-600 inline">Two separate community boards are dealt; the pot typically splits between the winners of each.</dd></div>
-            <div><dt class="font-medium inline">BB — </dt><dd class="text-gray-600 inline">Big blind. The standard betting unit; 1BB is the minimum bet for that game.</dd></div>
+            {personal.terminology.map(t => (
+              <div><dt class="font-medium inline">{t.term} — </dt><dd class="text-gray-600 inline">{t.text}</dd></div>
+            ))}
           </dl>
         </div>
       </div>
@@ -249,7 +226,7 @@ const sports = [
       </div>
     </section>
 
-    <p class="self-note page-shell">Mingxi is a good writer and thinker.</p>
+    <p class="self-note page-shell">{personal.selfNote}</p>
   </main>
 
   <Footer />
