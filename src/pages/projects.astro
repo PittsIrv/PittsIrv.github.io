@@ -19,11 +19,11 @@ const groups = order
   .map(status => ({ status, items: visible.filter(p => p.status === status) }))
   .filter(g => g.items.length > 0);
 
-// Text-only list: public entries, one line each, one link (live site, else public repo, else the card below).
+// Text-only list: public entries, one line each; the name jumps to the entry, plus the live site, public repo or paper when there is one.
 const summary = order.flatMap(status => visible.filter(p => p.status === status && p.visibility === 'public')).map(p => {
   const links = p.links as Record<string, string>;
-  const href = links.site ?? links.repo;
-  return { name: p.name, line: p.oneLine, href: href ?? `#${slug(p.name)}`, external: Boolean(href), label: links.site ? 'Site' : links.repo ? 'Repository' : 'Details' };
+  const key = (['site', 'repo', 'paper'] as const).find(k => links[k]);
+  return { name: p.name, anchor: `#${slug(p.name)}`, line: p.oneLine, href: key && links[key], label: key && { site: 'Site', repo: 'Repository', paper: 'Paper' }[key] };
 });
 
 const fmt = (d: string) => {
@@ -48,43 +48,42 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
       <ul class="max-w-5xl mx-auto project-list">
         {summary.map(p => (
           <li>
-            <span class="pl-name">{p.name}</span>
+            <a class="pl-name" href={p.anchor}>{p.name}</a>
             <span class="pl-line">{p.line}</span>
-            <a class="pl-link" href={p.href} {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{p.label} <span aria-hidden="true">{p.external ? '↗' : '↓'}</span></a>
+            {p.href && <a class="pl-link" href={p.href} target="_blank" rel="noopener noreferrer">{p.label} <span aria-hidden="true">↗</span></a>}
           </li>
         ))}
       </ul>
     </section>
 
     {groups.map(group => (
-      <section id={group.status} class="py-12 px-4 sm:px-6 lg:px-8 scroll-mt-16">
+      <section id={group.status} class="pt-14 pb-4 px-4 sm:px-6 lg:px-8">
         <div class="max-w-5xl mx-auto">
-          <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">{heading[group.status]}</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {group.items.map(p => (
-              <article class="project-card" id={slug(p.name)}>
-                <div class="project-top">
-                  <h3>{p.name}</h3>
-                  <span class="status-pill" data-status={p.status}>{heading[p.status]}</span>
+          <h2 class="group-heading">{heading[group.status]}</h2>
+          {group.items.map(p => (
+            <article class="entry" id={slug(p.name)}>
+              <header class="entry-top">
+                <h3>{p.name}</h3>
+                {p.visibility === 'public' && <p class="entry-period">{fmt(p.period.start)} – {fmt(p.period.end)}</p>}
+              </header>
+              <div class="entry-facts">
+                <p class="entry-line">{p.oneLine}</p>
+                {p.visibility === 'public' && p.did.length > 0 && <ul class="entry-did">{p.did.map(b => <li>{b}</li>)}</ul>}
+                <div class="entry-foot">
+                  {p.visibility === 'public' && p.tags.length > 0 && <ul class="entry-tags" aria-label="Stack">{p.tags.map(t => <li>{t}</li>)}</ul>}
+                  {p.visibility === 'public' && Object.keys(p.links).length > 0 && (
+                    <p class="entry-links">
+                      {Object.entries(p.links).map(([k, href]) => (
+                        <a href={href as string} target="_blank" rel="noopener noreferrer">{linkLabels[k] ?? k} <span aria-hidden="true">↗</span></a>
+                      ))}
+                    </p>
+                  )}
+                  {'comingSoon' in p && <p class="entry-soon">{p.comingSoon}: coming soon</p>}
                 </div>
-                {p.visibility === 'public' && <p class="project-period">{fmt(p.period.start)} – {fmt(p.period.end)}</p>}
-                <p class="project-line">{p.oneLine}</p>
-                {'intuition' in p && p.intuition && <p class="project-intuition"><span>Intuition</span>{p.intuition}</p>}
-                {p.visibility === 'public' && <ul class="project-did">
-                  {p.did.map(b => <li><span aria-hidden="true">—</span><span>{b}</span></li>)}
-                </ul>}
-                {'comingSoon' in p && <p class="project-links"><span>{p.comingSoon}: coming soon</span></p>}
-                {p.visibility === 'public' && Object.keys(p.links).length > 0 && (
-                  <p class="project-links">
-                    {Object.entries(p.links).map(([k, href]) => (
-                      <a href={href as string} target="_blank" rel="noopener noreferrer">{linkLabels[k] ?? k} <span aria-hidden="true">↗</span></a>
-                    ))}
-                  </p>
-                )}
-                {p.visibility === 'public' && p.tags.length > 0 && <p class="project-tags">{p.tags.map(t => <span>{t}</span>)}</p>}
-              </article>
-            ))}
-          </div>
+              </div>
+              {p.intuition && <aside class="entry-intuition" aria-label={`Intuition: ${p.name}`}><h4>Intuition</h4><p>{p.intuition}</p></aside>}
+            </article>
+          ))}
         </div>
       </section>
     ))}
@@ -95,25 +94,32 @@ const linkLabels: Record<string, string> = { site: 'Site', repo: 'Repository', p
 <style>
   .project-list { border-top: 1px solid var(--line); }
   .project-list li { display: grid; grid-template-columns: 11rem 1fr auto; gap: .25rem 1.5rem; align-items: baseline; padding: .8rem 0; border-bottom: 1px solid var(--line); }
-  .pl-name { font-family: var(--font-serif); font-weight: 500; }
+  .pl-name { font-family: var(--font-serif); font-weight: 500; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: .25em; }
+  .pl-name:hover { color: var(--accent); text-decoration-color: currentColor; }
   .pl-line { font-family: var(--font-serif); color: var(--muted); line-height: 1.5; }
-  .pl-link { font-size: .875rem; border-bottom: 1px solid var(--line); white-space: nowrap; justify-self: start; }
+  .pl-link { grid-column: 3; font-size: .875rem; border-bottom: 1px solid var(--line); white-space: nowrap; justify-self: start; }
   .pl-link:hover { border-color: var(--accent); color: var(--accent); }
-  @media (max-width: 640px) { .project-list li { grid-template-columns: 1fr; } }
-  .project-card { border: 1px solid var(--line); background: var(--paper); padding: 1.25rem 1.4rem 1.4rem; display: flex; flex-direction: column; gap: .6rem; }
-  .project-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-  .project-top h3 { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; letter-spacing: -.02em; }
-  .status-pill { font: 500 .6875rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .075em; text-transform: uppercase; border: 1px solid var(--line); color: var(--muted); padding: .3rem .5rem; white-space: nowrap; }
-  .status-pill[data-status='active'] { color: var(--accent); border-color: var(--accent); }
-  .project-period { font-size: .8125rem; color: var(--muted); }
-  .project-line { font-family: var(--font-serif); line-height: 1.55; }
-  .project-intuition { font-size: .9375rem; line-height: 1.6; color: var(--ink, inherit); }
-  .project-intuition span { display: block; font: 500 .6875rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .075em; text-transform: uppercase; color: var(--muted); margin-bottom: .4rem; }
-  .project-did { display: grid; gap: .4rem; font-size: .9375rem; color: var(--muted); line-height: 1.55; }
-  .project-did li { display: flex; gap: .75rem; }
-  .project-did li > span:first-child { color: var(--line); flex-shrink: 0; }
-  .project-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: .875rem; }
-  .project-links a { border-bottom: 1px solid var(--line); }
-  .project-links a:hover { border-color: var(--accent); color: var(--accent); }
-  .project-tags { display: flex; flex-wrap: wrap; gap: .25rem .75rem; font-size: .75rem; color: var(--muted); margin-top: auto; }
+  @media (max-width: 640px) { .project-list li { grid-template-columns: 1fr; } .pl-link { grid-column: auto; } }
+  .group-heading { font-family: var(--font-serif); font-size: 1.75rem; font-weight: 500; letter-spacing: -.02em; margin-bottom: .75rem; }
+  /* One row per project: facts on the left, the Intuition beside them on wide screens and after them below 900px. Without an Intuition the facts keep their 7-part width so lines stay readable. */
+  .entry { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 1rem 3rem; padding-block: 1.75rem 2rem; border-top: 1px solid var(--line); }
+  .entry-top { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1.5rem; }
+  .entry-top h3 { font-family: var(--font-serif); font-size: 1.625rem; font-weight: 600; letter-spacing: -.015em; line-height: 1.2; }
+  .entry-period { font-size: .9375rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .entry-facts { display: flex; flex-direction: column; gap: .9rem; min-width: 0; }
+  .entry-line { font-family: var(--font-serif); font-size: 1.1875rem; line-height: 1.5; }
+  .entry-did { list-style: disc; padding-left: 1.15rem; font-size: 1rem; line-height: 1.55; }
+  .entry-did li + li { margin-top: .45rem; }
+  .entry-did li::marker { color: var(--muted); }
+  .entry-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.25rem; }
+  .entry-tags { display: flex; flex-wrap: wrap; gap: .375rem; }
+  .entry-tags li { font-size: .8125rem; line-height: 1.4; background: var(--wash); color: var(--ink); padding: .2rem .5rem; border-radius: 3px; }
+  .entry-links { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: .9375rem; }
+  .entry-links a { color: var(--accent); border-bottom: 1px solid #a7b8e5; }
+  .entry-links a:hover { border-color: currentColor; }
+  .entry-soon { font-size: .9375rem; color: var(--muted); }
+  .entry-intuition { align-self: start; background: var(--wash); padding: 1.15rem 1.35rem 1.3rem; min-width: 0; }
+  .entry-intuition h4 { font-family: var(--font-sans); font-size: .875rem; font-weight: 600; color: var(--muted); margin-bottom: .45rem; }
+  .entry-intuition p { font-family: var(--font-serif); font-size: 1.03rem; line-height: 1.65; color: var(--ink); }
+  @media (max-width: 899px) { .entry { grid-template-columns: 1fr; } .entry-top h3 { font-size: 1.45rem; } }
 </style>
