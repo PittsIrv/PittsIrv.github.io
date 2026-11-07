@@ -36,3 +36,11 @@ Goal: Mingxi changes a line of site text from the browser, with no terminal, and
 - *Use the editorial workflow (pull requests) instead:* disagree. It adds a merge step to every edit. The Pages workflow runs only on pushes to `main`, so a pull request would not be built and checked either.
 - *Use `vite-plugin-static-copy` instead of the copy script:* disagree. It adds a dependency to replace an eight-line script.
 - *Are the added `draft`/`bilingual` booleans allowed?:* yes. `src/content/config.ts` declares both as optional booleans.
+
+## How-to review (Gemini, single pass, middle tier): ship with fixes
+- *Add what to do when the token expires:* agree; added to `docs/site-editor.md` and the rendered guide.
+- *Explain how to find the error in the Actions log:* agree; both now name the run, the job and the step.
+- *Say where Sign Out is:* agree; it is in the account menu at the top right.
+- *Use an OAuth app for one-click sign-in:* disagree. The brief rules out an OAuth app and a new provider.
+- *Validate in the editor rather than only in CI:* already done; the editor's fields mirror the build schemas.
+- *Fast repeated saves could exhaust Actions minutes:* not a concern. Actions minutes are free for a public repository, and each deploy publishes the latest commit.

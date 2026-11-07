@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · Edit the site from the browser
+Try: create a GitHub token (90 days, this repository only, Contents read and write), open /admin, choose "Sign In Using Access Token", change a line and click Save.
+You get: the change live on the site in about a minute, with no terminal. Covers the Home, Work, Personal and About text, Projects, poems, prose, quotes and poker variants.
+
 ## 2026-11-07 · Work, Personal and About match the new look
 Try: open /work, /personal, /about and any poem.
 You get: plain serif section headings instead of small spaced capitals, no alternating tinted bands, a "Contact" heading on About, and a quiet "All writing" link at the end of each poem and article.
