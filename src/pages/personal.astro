@@ -108,7 +108,7 @@ const sports = [
     <section id="now" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
         <div class="flex items-baseline justify-between mb-8">
-          <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500">Now</h2>
+          <h2 class="section-title">Now</h2>
           <span class="text-sm text-gray-400">Updated {nowUpdated}</span>
         </div>
         <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-7 max-w-4xl">
@@ -123,9 +123,9 @@ const sports = [
     </section>
 
     <!-- Poker -->
-    <section id="poker" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
+    <section id="poker" class="py-14 px-4 sm:px-6 lg:px-8 border-t border-gray-200 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-6">Dealer's Choice</h2>
+        <h2 class="section-title mb-6">Dealer's Choice</h2>
         <p class="text-gray-700 max-w-2xl leading-relaxed mb-3">
           Home-game poker variants: {myGames.length} original, {learnedGames.length} learned. All are <strong>pot limit</strong> and <strong>bomb pots</strong> unless noted; standard Texas Hold'em rules apply.
         </p>
@@ -176,17 +176,17 @@ const sports = [
     <!-- Writing -->
     <section id="writing" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Writing</h2>
+        <h2 class="section-title mb-8">Writing</h2>
 
         <h3 class="text-xl font-semibold mb-6">Poems</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
           {poems.map(poem => (
             <div class="border-t border-gray-300 pt-5">
-              <span class="text-xs uppercase tracking-wide text-gray-500">{poem.category}</span>
+              <span class="text-sm text-gray-500">{poem.category}</span>
               <h4 class="text-lg font-semibold mt-1 mb-1">{poem.title}</h4>
               <p class="text-sm text-gray-500 mb-4">{poem.date}</p>
               <p class="text-gray-600 italic leading-relaxed whitespace-pre-line font-serif">{poem.excerpt}</p>
-              <a href={`/poems/${poem.slug}`} class="inline-block mt-4 text-sm text-gray-500 hover:text-black transition-colors">Read →</a>
+              <a href={`/poems/${poem.slug}`} class="inline-block mt-4 text-sm text-gray-500 hover:text-black transition-colors underline underline-offset-4 decoration-gray-300">Read<span class="sr-only"> {poem.title}</span></a>
             </div>
           ))}
         </div>
@@ -201,7 +201,7 @@ const sports = [
               <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4 text-xs text-gray-500">
                 {article.tags.map(tag => <span>{tag}</span>)}
               </div>
-              <a href={`/articles/${article.slug}`} class="inline-block mt-4 text-sm text-gray-500 hover:text-black transition-colors">Read →</a>
+              <a href={`/articles/${article.slug}`} class="inline-block mt-4 text-sm text-gray-500 hover:text-black transition-colors underline underline-offset-4 decoration-gray-300">Read<span class="sr-only"> {article.title}</span></a>
             </div>
           ))}
         </div>
@@ -209,9 +209,9 @@ const sports = [
     </section>
 
     <!-- Quotes -->
-    <section id="quotes" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
+    <section id="quotes" class="py-14 px-4 sm:px-6 lg:px-8 border-t border-gray-200 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Quotes</h2>
+        <h2 class="section-title mb-8">Quotes</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-9">
           {quotes.map(quote => (
             <div class="border-t border-gray-300 pt-5">
@@ -226,7 +226,7 @@ const sports = [
     <!-- Elsewhere -->
     <section id="elsewhere" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Elsewhere</h2>
+        <h2 class="section-title mb-8">Elsewhere</h2>
 
         <div class="border-t border-gray-300 pt-6 mb-10">
           <h3 class="text-base font-semibold mb-5">Interests</h3>

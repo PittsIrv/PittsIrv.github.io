@@ -181,9 +181,9 @@ const skills = [
     </section>
 
     <!-- Experience -->
-    <section id="experience" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
+    <section id="experience" class="py-14 px-4 sm:px-6 lg:px-8 border-t border-gray-200 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Experience</h2>
+        <h2 class="section-title mb-8">Experience</h2>
         <div class="space-y-10">
           {experience.filter(job => !job.compact).map(job => (
             <div id={job.id} class="border-t border-gray-300 pt-6">
@@ -234,18 +234,18 @@ const skills = [
     <!-- MeeTwo -->
     <section id="meetwo" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">MeeTwo</h2>
+        <h2 class="section-title mb-8">MeeTwo</h2>
         <div class="border-t border-gray-300 pt-6 max-w-3xl">
           <p class="text-gray-700 leading-relaxed font-serif text-[1.0625rem]">Personal agent that answers as you and discloses only approved information.</p>
-          <p class="mt-2 text-sm"><a href="/meetwo" class="border-b border-gray-400 hover:border-black transition-colors">Ask MeeTwo ↗</a> <span class="text-gray-400">·</span> <a href="/projects#meetwo" class="border-b border-gray-400 hover:border-black transition-colors">Project details ↗</a></p>
+          <p class="mt-2 text-sm"><a href="/meetwo" class="border-b border-gray-400 hover:border-black transition-colors">Ask MeeTwo</a><a href="/projects#meetwo" class="ml-5 border-b border-gray-400 hover:border-black transition-colors">Project details</a></p>
         </div>
       </div>
     </section>
 
     <!-- Publications -->
-    <section id="publications" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
+    <section id="publications" class="py-14 px-4 sm:px-6 lg:px-8 border-t border-gray-200 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Publications</h2>
+        <h2 class="section-title mb-8">Publications</h2>
         <div class="space-y-10 max-w-3xl">
           {publications.map(pub => (
             <div id={pub.id} class="border-t border-gray-300 pt-6">
@@ -275,7 +275,7 @@ const skills = [
     <!-- Education -->
     <section id="education" class="py-14 px-4 sm:px-6 lg:px-8 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Education</h2>
+        <h2 class="section-title mb-8">Education</h2>
         <div class="space-y-10">
           {education.map(item => (
             <div>
@@ -301,9 +301,9 @@ const skills = [
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="py-14 px-4 sm:px-6 lg:px-8 bg-gray-50 border-y border-gray-200 scroll-mt-16">
+    <section id="skills" class="py-14 px-4 sm:px-6 lg:px-8 border-t border-gray-200 scroll-mt-16">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-sm font-sans font-semibold uppercase tracking-[0.15em] text-gray-500 mb-8">Skills</h2>
+        <h2 class="section-title mb-8">Skills</h2>
         <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-7">
           {skills.map(s => (
             <div class="border-t border-gray-300 pt-4">
