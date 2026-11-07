@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · Thoughts on projects, and poker rules on their own page
+Try: open /projects, then /personal, then click "All 12 variants".
+You get: project cards say "Thoughts"; /personal is about 1,000 px shorter and leads with your writing; every variant and the terminology live at /personal/poker, and old variant links still land there.
+
 ## 2026-11-07 · MeeTwo keeps answering after the first question
 Try: on /meetwo ask "What do you think about AI agents?", then keep asking without reloading.
 You get: every follow-up gets a reply; before, any question after an answer drawn from your record showed "Something went wrong".

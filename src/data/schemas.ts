@@ -70,7 +70,7 @@ export const projectsSchema = z.array(z.object({
   status: z.enum(['active', 'shipped', 'paused', 'archived']),
   period: z.object({ start: period, end: period }),
   did: z.array(text).default([]),
-  links: z.object({ site: optional, repo: optional, paper: optional }).default({}).transform(dropAbsent),
+  links: z.object({ site: optional, repo: optional, paper: optional, page: optional }).default({}).transform(dropAbsent),
   comingSoon: optional,
   tags: z.array(text).default([]),
   visibility: z.enum(['public', 'title']),
