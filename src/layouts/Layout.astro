@@ -13,6 +13,10 @@ const { launcher = true, title, description = "Mingxi Yan - AI systems engineer 
 const hasMeeTwo = launcher && Boolean(import.meta.env.PUBLIC_STANDIN_URL);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
+const slug = Astro.url.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'home';
+const imageURL = new URL(`/og/${slug}.png`, Astro.site).href;
+const imageAlt = `${title}`;
+
 const csp = buildCsp(import.meta.env.PUBLIC_STANDIN_URL, Astro.url);
 
 ---
@@ -41,12 +45,18 @@ const csp = buildCsp(import.meta.env.PUBLIC_STANDIN_URL, Astro.url);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Mingxi Yan" />
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={imageURL} />
+    <meta property="twitter:image:alt" content={imageAlt} />
 
     <!-- Structured Data for Search Engines -->
     <script type="application/ld+json">

@@ -126,7 +126,7 @@
 }
 
 /* Shared notebook theme. Existing long-form pages use the same ink and paper. */
-:root { --paper: #fbfcff; --ink: #17243c; --muted: #56627a; --line: #d6deec; --accent: #244fc2; --wash: #eef3fc; }
+:root { --paper: #fbfcff; --ink: #17243c; --muted: #56627a; --line: #d6deec; --accent: #244fc2; --wash: #eef3fc; --faint: #606c84; }
 body { background: var(--paper); color: var(--ink); }
 ::selection { background: #cad8ff; color: #17243c; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
@@ -165,6 +165,7 @@ body .border-gray-200, body .border-gray-300 { border-color: var(--line); }
 body .bg-black { background-color: var(--ink); }
 body .text-black { color: var(--ink); }
 body .text-gray-500, body .text-gray-600 { color: var(--muted); }
+body .text-gray-400 { color: var(--faint); }
 .poem-content { font-family: var(--font-serif); }
 @media (max-width: 640px) { .nav-inner { min-height: 70px; gap: .8rem; flex-wrap: wrap; padding-block: .7rem; } .site-wordmark { font-size: 1.25rem; } .nav-links { gap: 1rem; } .section-heading { align-items: start; flex-direction: column; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; transition-duration: .01ms !important; } }
@@ -186,5 +187,5 @@ body .text-gray-500, body .text-gray-600 { color: var(--muted); }
 .poker-rule summary > span { color: var(--accent); font-size: 1.4rem; transition: transform .2s; }
 .poker-rule[open] summary > span { transform: rotate(45deg); }
 .poker-rule:target { background: #e1eaff; outline: 12px solid #e1eaff; }
-.poker-rule summary:hover h4 { color: var(--accent); }
+.poker-rule summary:hover h3 { color: var(--accent); }
 @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } .about-opening { padding-block: 3rem; } }

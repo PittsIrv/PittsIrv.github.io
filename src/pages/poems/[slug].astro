@@ -16,9 +16,15 @@ export async function getStaticPaths() {
 
 const { poem } = Astro.props;
 const { Content } = await poem.render();
+const excerpt = (text: string) => {
+  const plain = text.replace(/[#*_>`\[\]]/g, '').replace(/\s+/g, ' ').trim();
+  if (plain.length <= 155) return plain;
+  return plain.slice(0, 155).replace(/\s+\S*$/, '') + '…';
+};
+
 ---
 
-<Layout title={`${poem.data.title} - Mingxi Yan`}>
+<Layout title={`${poem.data.title} - Mingxi Yan`} description={excerpt(poem.body)}>
   <Navigation />
 
   <main id="main-content" class="flex-grow">
