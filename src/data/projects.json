@@ -91,6 +91,7 @@
       "end": "now"
     },
     "did": [
+      "Full-stack app for swing video upload and in-browser recording, with a coach review queue and scheduling.",
       "Three-phase pipeline: pose estimation, rule-based fault detection across five swing phases, LLM-generated drill plan.",
       "Per-video pose tiers, from RTMPose on CPU to GPU models on Modal.",
       "Coarse pass to locate the swing, then a dense pass at native frame rate to capture impact."
@@ -102,9 +103,11 @@
       "Python",
       "FastAPI",
       "Next.js",
+      "TypeScript",
       "RTMPose",
       "ONNX Runtime",
-      "Modal"
+      "Modal",
+      "Docker"
     ],
     "visibility": "public"
   },
@@ -166,8 +169,9 @@
       "end": "now"
     },
     "did": [
-      "Custom variants with real-time multiplayer over WebSocket.",
-      "ECS in private subnets behind a public ALB; CI/CD for testing and deployment."
+      "House game variants (self-created), private rooms, chat, account authentication, and bot opponents, with table state in sync for every player in real time over WebSockets.",
+      "Originally Dockerized on AWS ECS in private subnets behind a public ALB; migrated to Vercel to cut infrastructure costs. Automated CI/CD.",
+      "Built with AI-assisted workflows (Claude Code and Codex): plan, specs, and tests; agent-written code; human-in-the-loop review."
     ],
     "links": {
       "site": "https://dealer-s-choice.vercel.app/",
@@ -176,8 +180,11 @@
     "tags": [
       "TypeScript",
       "NestJS",
+      "Next.js",
       "WebSocket",
       "AWS ECS",
+      "Docker",
+      "Vercel",
       "CI/CD"
     ],
     "visibility": "public"
