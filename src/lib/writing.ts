@@ -1,6 +1,6 @@
 // One ordered list of poems and articles for the feeds, the previous/next links and the reading time.
 import { getCollection } from 'astro:content';
-import { excerpt } from './excerpt';
+import { excerpt, plainText } from './excerpt';
 
 export type Writing = {
   kind: 'poem' | 'article';
@@ -22,6 +22,7 @@ export function parseDate(text: string): number {
 
 // About 200 words a minute; Chinese and Japanese characters count at about 400 a minute.
 export function readingMinutes(markdown: string): number {
+  markdown = plainText(markdown);
   const cjk = (markdown.match(/[぀-ヿ㐀-鿿]/g) ?? []).length;
   const words = markdown.replace(/[぀-ヿ㐀-鿿]/g, ' ').split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(words / 200 + cjk / 400));

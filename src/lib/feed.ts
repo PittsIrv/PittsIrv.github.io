@@ -4,7 +4,13 @@ import { getWriting } from './writing';
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const NAME = 'Mingxi Yan: writing';
 
-export async function rssXml(site: URL): Promise<string> {
+const need = (site: URL | undefined): URL => {
+  if (!site) throw new Error('Set `site` in astro.config.mjs: the feeds need absolute links.');
+  return site;
+};
+
+export async function rssXml(siteUrl: URL | undefined): Promise<string> {
+  const site = need(siteUrl);
   const items = await getWriting();
   const home = new URL('/personal#writing', site).href;
   const built = new Date().toUTCString();
@@ -32,7 +38,8 @@ ${body}
 `;
 }
 
-export async function atomXml(site: URL): Promise<string> {
+export async function atomXml(siteUrl: URL | undefined): Promise<string> {
+  const site = need(siteUrl);
   const items = await getWriting();
   const newest = Math.max(0, ...items.map((w) => w.time));
   const updated = new Date(newest || Date.now()).toISOString();
