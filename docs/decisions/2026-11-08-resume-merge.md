@@ -80,3 +80,12 @@ Open https://pittsirv.github.io/work. Experience shows TikTok, Sapling Lab, Chim
 ## Revisit when
 
 Mingxi settles the items under "Stopped on", or either resume changes.
+
+## Independent review — 2026-11-08 (Gemini 3.1 Pro, middle tier)
+- Hosted resume.pdf is outdated and shows a phone number; hide the link → agree it is a risk; not changed here — the brief says report, and removing a long-standing public link is Mingxi's call. Escalated to the Router.
+- work.json structure changes could break the build → done — `work.json` is validated by `src/data/schemas.ts` (`compact`, `id` optional); `npx tsc --noEmit` and `npm run build` pass.
+- Dense tags and seven skills groups may clutter mobile → done — checked /work and /projects at 375 px: no horizontal scroll, groups stack to one column.
+- Dual-persona intro may read as unfocused → disagree — Mingxi asked for both resumes on the site; the intro states the two areas as labels.
+- Conflicts should default to the newer resume → disagree — the brief says stop and report; both resumes are current.
+- CLAUDE.md does not document `src/data/work.json` → agree — CLAUDE.md now lists the `src/data/*.json` page files and `schemas.ts`.
+Verdict: "Ship with fixes." Action taken: CLAUDE.md line fixed; resume.pdf escalated.
