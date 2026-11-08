@@ -257,7 +257,7 @@ collections:
       - { name: title, label: Title, widget: string }
       - { name: titleEn, label: English title, widget: string, required: false }
       - { name: date, label: Date, widget: string, hint: 'For example: August 25, 2025' }
-      - { name: readTime, label: Reading time, widget: string, hint: 'For example: 8 min' }
+      - { name: readTime, label: Reading time (not used; the site counts it), widget: string, required: false }
       - { name: tags, label: Tags, widget: list }
       - { name: draft, label: Draft (hidden from the site), widget: boolean, required: false }
       - { name: bilingual, label: Bilingual, widget: boolean, required: false }

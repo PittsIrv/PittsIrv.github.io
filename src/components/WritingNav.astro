@@ -1,0 +1,13 @@
+---
+import { neighbours } from '../lib/writing';
+interface Props { kind: 'poem' | 'article'; slug: string; }
+const { kind, slug } = Astro.props;
+const { previous, next } = await neighbours(kind, slug);
+---
+<nav class="writing-nav" aria-label="More writing">
+  <div class="writing-nav-pair">
+    {previous ? <a class="writing-nav-link" href={previous.url} rel="prev"><span class="writing-nav-label">Previous</span><span class="writing-nav-title">{previous.title}</span></a> : <span></span>}
+    {next ? <a class="writing-nav-link writing-nav-next" href={next.url} rel="next"><span class="writing-nav-label">Next</span><span class="writing-nav-title">{next.title}</span></a> : <span></span>}
+  </div>
+  <a class="text-link" href="/personal#writing">More writing</a>
+</nav>
