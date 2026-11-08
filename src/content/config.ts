@@ -19,7 +19,7 @@ const articles = defineCollection({
     title: z.string(),
     titleEn: z.string().optional(),
     date: z.string(),
-    readTime: z.string(),
+    readTime: z.string().optional(),
     tags: z.array(z.string()),
     draft: z.boolean().optional(),
     bilingual: z.boolean().optional(),

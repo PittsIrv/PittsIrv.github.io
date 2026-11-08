@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 import { excerpt } from '../../lib/excerpt';
+import WritingNav from '../../components/WritingNav.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -47,10 +48,9 @@ const { Content } = await poem.render();
       </div>
     </section>
 
-    <!-- Navigation to other poems -->
     <section class="pb-16 px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto border-t border-gray-200 pt-6">
-        <a href="/personal#writing" class="text-link">All writing</a>
+        <WritingNav kind="poem" slug={poem.slug} />
       </div>
     </section>
   </main>

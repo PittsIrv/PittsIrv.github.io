@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-07 · Follow your writing, and keep reading
+Try: open /poems/adventure and click "Next"; open /articles/monologue; add /rss.xml to a feed reader.
+You get: previous and next links at the end of every poem and article, an RSS and an Atom feed that pick up new poems and articles by themselves, an "RSS" link in every footer, and a reading time worked out from the article's text (Monologue now reads 6 min, not the 8 min you typed).
+
 ## 2026-11-07 · Link previews and accessibility fixes on every page
 Try: paste your site's link, or /personal/poker, into a chat app or a social post; open /personal and check the faint grey text.
 You get: a large preview card in the site's own look instead of a plain link; the faint grey on /personal is now readable; the poker page's headings follow a proper order. Every page scores 100 on Lighthouse and has no axe violations.
