@@ -75,7 +75,7 @@
       ]
     },
     {
-      "role": "Research Assistant",
+      "role": "Research Engineer",
       "org": "Chimps Lab, CMU",
       "dates": "May 2024 – May 2026",
       "lead": "LLM red-teaming, image-generation bias auditing, and a research web platform.",
@@ -127,7 +127,7 @@
     },
     {
       "role": "Full Stack Engineer & Tech Lead",
-      "org": "Enterview (AI startup), Pittsburgh, PA",
+      "org": "Enterview.ai (AI startup), Pittsburgh, PA",
       "dates": "June 2023 – November 2024",
       "lead": "AI interview-preparation platform.",
       "bullets": [

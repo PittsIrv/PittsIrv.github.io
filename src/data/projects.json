@@ -166,7 +166,7 @@
     "status": "shipped",
     "period": {
       "start": "2025-06",
-      "end": "now"
+      "end": "2026-06"
     },
     "did": [
       "House game variants (self-created), private rooms, chat, account authentication, and bot opponents, with table state in sync for every player in real time over WebSockets.",
