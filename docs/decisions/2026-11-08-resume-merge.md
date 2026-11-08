@@ -89,3 +89,14 @@ Mingxi settles the items under "Stopped on", or either resume changes.
 - Conflicts should default to the newer resume → disagree — the brief says stop and report; both resumes are current.
 - CLAUDE.md does not document `src/data/work.json` → agree — CLAUDE.md now lists the `src/data/*.json` page files and `schemas.ts`.
 Verdict: "Ship with fixes." Action taken: CLAUDE.md line fixed; resume.pdf escalated.
+
+## Mingxi's rulings — 2026-11-08
+
+| Item | Ruling | Change |
+|---|---|---|
+| Chimps Lab title | "Research Engineer" | `work.json` role |
+| MS program name | Keep "(Artificial Intelligence)" | none |
+| Startup name | "Enterview.ai" | `work.json` org |
+| Poker paper term | Keep "Spring 2026" | none |
+| Dealer's Choice | Done | period end `2026-06` (SWE resume date); status already `shipped` |
+| Resume PDF | Post the AI-engineer resume | `public/resume.pdf` replaced; it shows the same phone number and email as the old file |
