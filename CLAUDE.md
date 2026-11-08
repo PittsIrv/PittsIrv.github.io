@@ -9,7 +9,7 @@ Personal website for Mingxi Yan. Astro + Tailwind CSS + TypeScript, deployed to 
 
 ## Content
 
-All content lives in `src/content/` collections (poems, articles, quotes, projects, poker-games), except the projects gallery, which reads `src/data/projects.json` (see `docs/projects-gallery.md`); schemas in `src/content/config.ts`. Pages are in `src/pages/`, shared layout in `src/layouts/Layout.astro`.
+All content lives in `src/content/` collections (poems, articles, quotes, projects, poker-games), except page text and the projects gallery, which read `src/data/*.json` (`home`, `work`, `about`, `personal`, `projects`; see `docs/projects-gallery.md`), validated by `src/data/schemas.ts`; collection schemas in `src/content/config.ts`. Pages are in `src/pages/`, shared layout in `src/layouts/Layout.astro`.
 
 ## Implementation workflow
 

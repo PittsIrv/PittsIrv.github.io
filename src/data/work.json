@@ -1,5 +1,5 @@
 {
-  "intro": "AI systems and infrastructure: retrieval, evaluation, agents, and data pipelines.",
+  "intro": "AI engineering and research: agents, LLM applications, evaluation, and retrieval. Software engineering: full-stack web apps, REST APIs, real-time systems, data pipelines, and cloud infrastructure.",
   "meetwo": "Personal agent that answers as you and discloses only approved information.",
   "education": [
     {
@@ -25,25 +25,30 @@
   "experience": [
     {
       "role": "Data Engineer Intern",
-      "org": "TikTok, San Jose",
+      "org": "TikTok, San Jose, CA",
       "id": "tiktok",
       "dates": "June – August 2026",
-      "lead": "Enterprise retrieval for internal AI agents; livestream revenue-diagnosis copilot.",
+      "lead": "Enterprise search service and retrieval skill for internal AI agents; livestream revenue-diagnosis copilot.",
       "bullets": [
-        "Designed a graph-based enterprise retrieval skill over Hive tables, datasets, dashboards, documents, and millions of metadata fields and values, using query decomposition, contextual rewriting, graph expansion, and reciprocal rank fusion (RRF).",
-        "Built a benchmark from on-call Q&A pairs to evaluate agent results. The skill was integrated and published as an internal skill.",
-        "Built a livestream revenue-diagnosis copilot: LightGBM percentile prediction, comparison cohorts, and business rules flag revenue drops and abnormal metrics; retrieved business documentation grounds the recommendations.",
-        "Validated with operations stakeholders and integrated into their workflow."
+        "Led design and implementation of a graph-based enterprise search service and retrieval skill over Hive tables, datasets, dashboards, and documents, indexing millions of metadata fields and values in an embedded SQLite graph with query decomposition, contextual rewriting, graph expansion, and reciprocal rank fusion (RRF). Improved accuracy by 23%.",
+        "Built the service’s lookup API to return data-source IDs only after verifying each candidate against internal metadata APIs.",
+        "Built a regression benchmark from on-call Q&A pairs to evaluate agent results and catch quality regressions. Shipped as an internal published skill.",
+        "Built a livestream revenue-diagnosis copilot and scheduled data pipeline: feature engineering, SQL, LightGBM percentile prediction, comparison cohorts, and business rules detect revenue drops and abnormal metrics; retrieved business documentation grounds the recommendations.",
+        "Validated with operations stakeholders and adopted into the operations team’s daily workflow."
       ],
       "tags": [
         "Python",
         "SQL",
+        "Hive",
+        "SQLite",
         "Graph retrieval",
         "Query rewriting",
         "RRF",
         "LightGBM",
         "Feature engineering",
-        "LLM agents"
+        "Data pipelines",
+        "LLM agents",
+        "Skills"
       ]
     },
     {
@@ -53,15 +58,19 @@
       "dates": "May 2026 – Present",
       "lead": "Theory-of-Mind attribution toward AI in long-term interaction.",
       "bullets": [
-        "Research on an NSF- and OpenAI-funded interdisciplinary project.",
-        "Developing a multi-turn user simulation that varies user traits, assistant social behavior, memory, and scenario.",
-        "Developing turn-level LLM judges and heuristic measures to evaluate how attributions change across a conversation. Manuscript in preparation."
+        "Led NLP research for an NSF- and OpenAI-funded interdisciplinary AI safety project on how users form and update Theory-of-Mind attributions toward AI during long-term human–AI interaction.",
+        "Designed, conducted, and analyzed data from a human study.",
+        "Developed a multi-turn user simulation that varies user traits, assistant social behavior, memory, and scenario.",
+        "Created a human-calibrated LLM judge and distilled a cheap, fast decision model for online evaluation. Manuscript in preparation."
       ],
       "tags": [
         "User simulation",
+        "Human study",
         "Multi-turn evaluation",
         "LLM-as-judge",
+        "Model distillation",
         "Measurement design",
+        "AI safety",
         "Python"
       ]
     },
@@ -69,17 +78,22 @@
       "role": "Research Assistant",
       "org": "Chimps Lab, CMU",
       "dates": "May 2024 – May 2026",
-      "lead": "LLM red-teaming and image-generation bias auditing.",
+      "lead": "LLM red-teaming, image-generation bias auditing, and a research web platform.",
       "bullets": [
         "PersonaTeaming (UIST 2026, with Apple Research): designed the persona-generation algorithm for adaptive LLM red-teaming.",
         "Evaluated 11 experimental conditions on 6 target LLMs. Improved mean attack success rate by 46% and attack diversity by 7% over the RainbowPlus baseline.",
-        "Built and deployed the PersonaTeaming Playground on AWS, used in an industry practitioner study.",
-        "Built bias-auditing infrastructure for image generation: persistent history, caching, and batching at 100 images per prompt, with interactive visualizations."
+        "Built and deployed an automated red-teaming pipeline and interface, the PersonaTeaming Playground on AWS, used in an industry practitioner study.",
+        "Engineered and maintained a React/Django web platform used by researchers and study participants, with PostgreSQL-backed audit history, caching, REST APIs, Python data workflows, and interactive data visualizations.",
+        "Built image-generation bias-auditing infrastructure; reworked execution with bounded batching to support requests of up to 100 images, eliminating timeout failures on large requests and improving end-to-end throughput."
       ],
       "tags": [
         "Python",
         "React",
+        "Django",
+        "PostgreSQL",
+        "REST APIs",
         "AWS",
+        "Data visualization",
         "LLM red-teaming",
         "Evaluation pipelines",
         "LLM-as-judge",
@@ -87,38 +101,61 @@
       ]
     },
     {
+      "role": "Software Engineer Intern",
+      "org": "AlpSoft, Singapore",
+      "dates": "May 2025 – August 2025",
+      "lead": "Production platform for Enterprise Singapore; security hardening, real-time chat, and AWS deployments.",
+      "bullets": [
+        "Built and maintained a production Next.js/React and TypeScript platform for Enterprise Singapore: backend REST APIs, MySQL-backed features, authentication, RBAC, and AWS deployments via Terraform and CI/CD pipelines.",
+        "Redesigned API trust boundaries to move sensitive configuration behind server-side endpoints and tighten authorization, resolving penetration-test findings and passing the client’s follow-up security validation.",
+        "Shipped a WebSocket-based real-time chat system after an external messaging dependency became unavailable, owning frontend state, backend message handling, database persistence, deployment, and production debugging."
+      ],
+      "tags": [
+        "TypeScript",
+        "Next.js",
+        "React",
+        "MySQL",
+        "REST APIs",
+        "Authentication",
+        "RBAC",
+        "AWS",
+        "Terraform",
+        "CI/CD",
+        "WebSocket"
+      ],
+      "id": "alpsoft"
+    },
+    {
       "role": "Full Stack Engineer & Tech Lead",
       "org": "Enterview (AI startup), Pittsburgh, PA",
       "dates": "June 2023 – November 2024",
       "lead": "AI interview-preparation platform.",
       "bullets": [
-        "Led a team of four engineers; owned technical product decisions.",
-        "Designed user-context data models and backend APIs, integrating an LLM and speech recognition to evaluate spoken answers.",
-        "Reduced feedback latency by optimizing WebSocket handling."
+        "Led a four-engineer team building an AI interview-preparation platform while partnering on technical product decisions.",
+        "Designed persistent user-context data models and backend REST APIs for personalized interview coaching; integrated an LLM and a speech recognition model to score spoken answers and generate targeted feedback.",
+        "Reduced feedback latency by optimizing WebSocket message handling."
       ],
       "tags": [
         "TypeScript",
-        "Backend APIs",
+        "React",
+        "Django",
+        "PostgreSQL",
+        "Redis",
+        "Docker",
+        "Azure",
+        "REST APIs",
         "Data modeling",
         "Speech recognition",
+        "LLM APIs",
         "WebSocket"
       ]
     },
     {
-      "role": "Software Engineer Intern",
-      "compact": true,
-      "org": "AlpSoft, Singapore",
-      "dates": "May 2025 – August 2025",
-      "lead": "Enterprise sites for EnterpriseSG; penetration-test fixes and AWS deployments.",
-      "bullets": [],
-      "tags": []
-    },
-    {
       "role": "Research Intern",
       "compact": true,
-      "org": "Tsinghua University, THUNLP — OpenBMB",
+      "org": "ModelBest, THUNLP Lab, Tsinghua University",
       "dates": "May 2023 – August 2023",
-      "lead": "REST APIs as LLM-callable tools; embedding-based clustering for tool retrieval.",
+      "lead": "REST APIs as LLM-callable tools with searchable metadata and instructions; tool-invocation tests; embedding-based clustering for tool retrieval.",
       "bullets": [],
       "tags": []
     },
@@ -176,9 +213,15 @@
         "C",
         "JavaScript",
         "TypeScript",
+        "Go",
+        "HTML",
+        "CSS",
+        "Prompt engineering",
         "Data structures",
         "Database design",
-        "Distributed systems"
+        "Distributed systems",
+        "System design",
+        "Web applications"
       ]
     },
     {
@@ -198,12 +241,15 @@
     {
       "group": "Agents",
       "items": [
-        "Agentic RAG",
         "Agentic search",
+        "Agent memory",
+        "Agentic RAG",
+        "Agentic RL",
         "Tool use",
         "LLM evaluation",
         "Skills",
         "MCP",
+        "Agent safety",
         "Context management"
       ]
     },
@@ -211,24 +257,68 @@
       "group": "Data",
       "items": [
         "PostgreSQL",
+        "MySQL",
         "SQLite",
+        "Redis",
+        "MongoDB",
+        "Hive",
+        "Spark SQL",
+        "Django ORM",
+        "Supabase",
+        "Search",
         "Feature engineering",
         "Data pipelines",
         "Information retrieval",
+        "DataOps",
         "Heuristic search"
       ]
     },
     {
-      "group": "Backend & infrastructure",
+      "group": "Web & backend",
       "items": [
-        "FastAPI",
+        "React",
+        "Next.js",
+        "Redux",
+        "Tailwind CSS",
+        "Node.js",
         "NestJS",
+        "Express",
+        "Django",
+        "FastAPI",
+        "Flask",
         "REST APIs",
-        "WebSocket",
+        "WebSockets",
+        "Microservices",
+        "RBAC"
+      ]
+    },
+    {
+      "group": "Cloud & DevOps",
+      "items": [
+        "AWS (ECS, EC2, S3, ALB, VPC)",
+        "Azure",
+        "Vercel",
+        "Modal",
         "Docker",
-        "AWS (EC2, ECS)",
+        "Kubernetes",
         "Terraform",
-        "CI/CD"
+        "GitHub Actions",
+        "CI/CD",
+        "Git",
+        "Linux",
+        "Agile"
+      ]
+    },
+    {
+      "group": "AI-assisted development",
+      "items": [
+        "Claude Code",
+        "Claude Cowork",
+        "Codex",
+        "Cursor",
+        "Muse",
+        "LLM APIs",
+        "Agentic workflows"
       ]
     }
   ],
