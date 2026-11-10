@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "node scripts/copy-cms.mjs && astro dev",
-    "build": "node scripts/copy-cms.mjs && astro build && node scripts/check-csp.mjs && node scripts/check-previews.mjs && node scripts/check-feeds.mjs && node scripts/check-meetwo-request.mjs",
+    "build": "node scripts/copy-cms.mjs && astro build && node scripts/check-csp.mjs && node scripts/check-admin.mjs && node scripts/check-previews.mjs && node scripts/check-feeds.mjs && node scripts/check-meetwo-request.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
