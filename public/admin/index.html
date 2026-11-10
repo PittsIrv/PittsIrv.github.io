@@ -7,6 +7,8 @@
   <!-- Only scripts served by this site may run here: the editor keeps the sign-in token in this origin's storage. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://avatars.githubusercontent.com; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' blob: data: https://api.github.com https://www.githubstatus.com; worker-src 'self' blob:; frame-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'">
   <title>Site editor</title>
+  <!-- "Sign In with GitHub" needs an OAuth app this site does not have; its popup ends on a "Not Found" page. Only the access-token sign-in works, so the OAuth button is hidden. -->
+  <style>.buttons > button[data-label*="GitHub"] { display: none; }</style>
   <link href="/admin/config.yml" type="application/yaml" rel="cms-config-url">
 </head>
 <body>

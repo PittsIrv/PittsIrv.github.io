@@ -1,5 +1,9 @@
 # What's new
 
+## 2026-11-10 · Editor sign-in
+Try: open `/admin`; the only sign-in button is "Sign In Using Access Token". Follow `docs/site-editor.md` to create the token (Only select repositories, Contents Read and write) and paste it.
+You get: no more dead-end "Sign In with GitHub" button (it ended on a "Not Found" page), and a table of what each sign-in error means.
+
 ## 2026-11-08 · Your rulings on the resume merge
 Try: open /work and click "Resume (PDF)"; read the Chimps Lab and Enterview.ai entries; open /projects and find Dealer's Choice.
 You get: the AI-engineer resume as the site's PDF, Chimps Lab as "Research Engineer", "Enterview.ai", and Dealer's Choice dated June 2025 to June 2026.
