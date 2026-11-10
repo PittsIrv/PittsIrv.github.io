@@ -23,5 +23,24 @@ This step finds why sign-in fails, fixes whatever is on the site's side (policy,
 - **Selector uses `data-label*="GitHub"`, not position.** Safari has no "Work with Local Repository" button, so a position rule could hide the token button. Revisit when: the CMS locale is set to a language whose label drops the word GitHub.
 - **No new allowed host.** Nothing needed one.
 
+## Intuitions and rejected alternatives
+- Rejected: adding api.netlify.com to the CSP. It would not help; the endpoint returns 404 for this site.
+- Rejected: an OAuth app or proxy (ruled out by the brief: no new provider, no secret in the site).
+- Rejected: patching the bundle's login screen; the CSS rule keeps the pinned package untouched.
+
+## How to verify
+Open `https://pittsirv.github.io/admin/` after the deploy: only "Work with Local Repository" and "Sign In Using Access Token" show. Create the token as in `docs/site-editor.md`, paste it, open an entry and save. Locally: `npm run build` prints "Admin check: …".
+
 ## Revisit when
 First real sign-in: if it still fails, the single thing needed is the exact red message on the sign-in screen (or "popup", if a new window opened).
+
+## Independent review — 2026-11-10 (gemini-3.1-pro-preview, single pass)
+Checked against files or the browser:
+- Owner parsed from `config.site` breaks on a custom domain → agree; the check now requires `repo` to be `owner/owner.github.io` and no longer reads the Astro config.
+- CSS assumes the light DOM (no shadow root) → already done; in the browser the button's computed display is `none`.
+- Check tests the bundle's text, not the DOM → partly agree; a build cannot render the DOM, so the manual check above stands and the bundle check is a proxy. Revisit when: a browser test runner is added.
+- Button flash before CSS applies → disagree; the rule is in the page head and the app renders after it.
+- Token renewal steps missing → already done; "When the token expires" in `docs/site-editor.md`.
+Not checked (reviewer's opinion, no evidence): an OAuth proxy would remove token rotation → out of scope; the brief rules out a new provider.
+Unsaved draft lost on a mid-session 401 → not checked; Sveltia keeps draft backups by default (`useDraftBackup`, seen in the bundle).
+Verdict: ship with fixes. Action taken: owner derivation fixed. No point on secrets, the CSP or data loss.

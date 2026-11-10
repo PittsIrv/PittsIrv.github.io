@@ -3,7 +3,6 @@
 // Usage: node scripts/check-admin.mjs [distDir]
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import config from '../astro.config.mjs';
 
 const dist = process.argv[2] ?? 'dist';
 const html = readFileSync(join(dist, 'admin/index.html'), 'utf8');
@@ -29,9 +28,8 @@ need(dirs['img-src']?.includes('https://avatars.githubusercontent.com'), 'admin 
 
 // Config: GitHub backend on this site's own repository and branch.
 const repo = yml.match(/^\s+repo:\s*(\S+)/m)?.[1];
-const owner = new URL(config.site).hostname.split('.')[0];
 need(/^\s+name:\s*github\s*$/m.test(yml), 'config.yml backend is not github');
-need(repo?.toLowerCase() === `${owner}/${owner}.github.io`.toLowerCase(), `config.yml repo "${repo}" is not ${owner}/${owner}.github.io`);
+need(/^([^/]+)\/\1\.github\.io$/i.test(repo ?? ''), `config.yml repo "${repo}" is not a user site repository (owner/owner.github.io)`);
 need(/^\s+branch:\s*main\s*$/m.test(yml), 'config.yml branch is not main');
 
 // The unusable OAuth button stays hidden, and the selector still matches the pinned bundle's button.
